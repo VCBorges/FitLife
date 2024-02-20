@@ -32,6 +32,10 @@ export function LoginForm() {
             },
             onError: (error) => {
             },
+            onFinally: (data) => {
+                console.log('Finally');
+                console.log(data);
+            }
         })
     };
 

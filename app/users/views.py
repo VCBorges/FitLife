@@ -4,31 +4,27 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth.views import LogoutView as BaseLogoutView
-from django.forms import ValidationError
-from django.http import HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from ..core.views import LoggedOutFormView, LoggedOutTemplateView, BaseTemplateView
+from ..core.views import BaseTemplateView, LoggedOutFormView, LoggedOutTemplateView
 from . import forms
 
 
 class LoginTemplateView(LoggedOutTemplateView):
     template_name = 'core/login.html'
-    
 
 
 class UserTemplateView(BaseTemplateView):
     template_name = 'users/user.html'
-    
-    
+
 
 class RegisterTemplateView(LoggedOutTemplateView):
     template_name = 'users/user_registration.html'
-
 
 
 class LogoutView(BaseLogoutView):
@@ -70,8 +66,10 @@ class LoginView(
         }
 
 
-
-
 class UserRegisterView(LoggedOutFormView):
     form_class = forms.UserRegisterForm
-    has_return_data = True    
+    has_return_data = True
+    
+    def post(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
+        print(f'{request.POST = }')
+        return super().post(request, *args, **kwargs)

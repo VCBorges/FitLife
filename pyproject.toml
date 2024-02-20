@@ -1,14 +1,16 @@
 [tool.poetry]
-name = "django-react"
+name = "FitLife"
 version = "0.1.0"
 description = ""
 authors = ["VCBorges <vinicius.costa.borges98@gmail.com>"]
 readme = "README.md"
 
+
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "^5.0.1"
 python-ulid = "^2.2.0"
+gunicorn = "^21.2.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -16,6 +18,7 @@ ruff = "^0.1.11"
 pytest-django = "^4.7.0"
 rich = "^13.7.0"
 django-extensions = "^3.2.3"
+pytest-mock = "^3.12.0"
 
 
 [build-system]

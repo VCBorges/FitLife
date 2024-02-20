@@ -43,6 +43,7 @@ export async function makeRequest({
             ...headers
         }
     });
+    
     const data = await response.json();
     if (response.ok) {
         onSuccess(data);

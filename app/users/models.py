@@ -14,8 +14,8 @@ class Users(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     birth_date = models.DateField(_('birth date'), blank=True, null=True)
-    cpf = models.CharField(max_length=11, unique=True) 
-    
+    document = models.CharField(max_length=17, unique=True, blank=True, null=True)
+
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)

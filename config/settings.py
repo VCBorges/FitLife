@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-l1y3au7drs(1kv)s%x2d3x8(0+y&mth8h^8$t+4fq6h1py(+kg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = 'user_template'
 
@@ -63,15 +63,17 @@ DJANGO_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-LOCAL_MIDDLEWARE = ['app.core.middlewares.NoCacheStaticFilesMiddleware']
+LOCAL_MIDDLEWARE = [
+    'app.core.middlewares.NoCacheStaticFilesMiddleware',
+]
 
-MIDDLEWARE = LOCAL_MIDDLEWARE + DJANGO_MIDDLEWARE
+MIDDLEWARE = DJANGO_MIDDLEWARE + LOCAL_MIDDLEWARE
 
 ROOT_URLCONF = 'config.urls'
 
