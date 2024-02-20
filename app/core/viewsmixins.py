@@ -8,7 +8,7 @@ from django.http import HttpRequest, JsonResponse, QueryDict
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
-from rich import print
+# from rich import print
 
 from .exceptions import ProcessingError
 from .forms import BaseForm
