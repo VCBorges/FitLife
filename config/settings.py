@@ -170,6 +170,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CSRF_TRUSTED_ORIGIN = os.getenv("CSRF_TRUSTED_ORIGIN")
+
 CSRF_TRUSTED_ORIGINS = [
-    'https://fitlife-production.up.railway.app',
+    CSRF_TRUSTED_ORIGIN,
 ]

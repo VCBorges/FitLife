@@ -6,5 +6,6 @@
 {% endblock content %}
 
 {% block js %}
+{{ endpoints|json_script:'endpoints-id' }}
 <script src="{% static 'bundles/userRegistration-bundle.js' %}"></script>
 {% endblock js %}

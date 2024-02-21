@@ -4,7 +4,12 @@ import { BaseInput } from '../inputs/BaseInput';
 import { BasetButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
 
-export function LoginForm() {
+/**
+ * @param {object} props
+ * @param {string} props.endpoint
+ * @returns {JSX.Element}
+ */
+export function LoginForm({ endpoint }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,7 +26,7 @@ export function LoginForm() {
         e.preventDefault();
 
         await makeRequest({
-            url: 'http://127.0.0.1:8000/api/login/',
+            url: endpoint,
             method: 'POST',
             body: { username: email, password },
             headers: {

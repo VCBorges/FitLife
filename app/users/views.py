@@ -17,15 +17,28 @@ from . import forms
 
 class LoginTemplateView(LoggedOutTemplateView):
     template_name = 'core/login.html'
-
+    
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['endpoints'] = {
+            'login': reverse('login'),
+        }
+        return context
 
 class UserTemplateView(BaseTemplateView):
     template_name = 'users/user.html'
+    
 
 
 class RegisterTemplateView(LoggedOutTemplateView):
     template_name = 'users/user_registration.html'
 
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['endpoints'] = {
+            'register': reverse('user_register'),
+        }
+        return context
 
 class LogoutView(BaseLogoutView):
     next_page = reverse_lazy('login_template')

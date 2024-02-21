@@ -4,7 +4,12 @@ import { BaseInput } from '../inputs/BaseInput';
 import { BasetButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
 
-export function UserRegisterForm() {
+/**
+ * @param {object} props
+ * @param {string} props.endpoint
+ * @returns {JSX.Element}
+ */
+export function UserRegisterForm({ endpoint }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
@@ -37,7 +42,7 @@ export function UserRegisterForm() {
         e.preventDefault();
 
         await makeRequest({
-            url: 'http://127.0.0.1:8000/users/registration/',
+            url: endpoint,
             method: 'POST',
             body: { 
                 username: email, 

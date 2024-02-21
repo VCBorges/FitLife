@@ -5,6 +5,10 @@
 <div id="root"></div>
 {% endblock content %}
 
+
+{{ endpoints }}
+
 {% block js %}
+{{ endpoints|json_script:'endpoints-id' }}
 <script src="{% static 'bundles/login-bundle.js' %}"></script>
 {% endblock js %}
