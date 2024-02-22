@@ -7,7 +7,7 @@
 </head>
 <body>
     user
-    <form method="post" action="/api/logout/">
+    <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <input type="submit" value="Logout">
     </form>

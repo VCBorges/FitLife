@@ -12,20 +12,20 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
-import dj_database_url
+
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-load_dotenv(os.path.join(BASE_DIR, ".env"))
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
@@ -44,8 +44,8 @@ LOCAL_APPS = [
 
 
 THIRD_PARTY_APPS = [
-    # 'django_extensions',
-    'whitenoise.runserver_nostatic',
+    'django_extensions',
+    # 'whitenoise.runserver_nostatic',
 ]
 
 
@@ -70,7 +70,7 @@ DJANGO_MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 LOCAL_MIDDLEWARE = [
@@ -105,17 +105,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -157,7 +151,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'static')]
 
-STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_ROOT = os.path.join(FRONTEND_DIR, 'dist')
 
@@ -170,8 +164,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGIN = os.getenv("CSRF_TRUSTED_ORIGIN")
+# CSRF_TRUSTED_ORIGIN = os.getenv("CSRF_TRUSTED_ORIGIN")
 
-CSRF_TRUSTED_ORIGINS = [
-    CSRF_TRUSTED_ORIGIN,
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     CSRF_TRUSTED_ORIGIN,
+# ]

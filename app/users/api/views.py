@@ -58,9 +58,7 @@ class LoginView(
         self, form: AuthenticationForm, *args, **kwargs
     ) -> dict[str, Any]:
         user = form.get_user()
-        # if user.is_staff:
-        #     raise ValidationError('Internal error.')
-        login(self.request, form.get_user())
+        login(request=self.request, user=user)
         return {
             'redirect_url': reverse('user_template'),
         }
@@ -69,7 +67,7 @@ class LoginView(
 class UserRegisterView(LoggedOutFormView):
     form_class = forms.UserRegisterForm
     has_return_data = True
-    
+
     def post(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
         print(f'{request.POST = }')
         return super().post(request, *args, **kwargs)

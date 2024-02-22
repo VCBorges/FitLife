@@ -17,7 +17,7 @@ from . import forms
 
 class LoginTemplateView(LoggedOutTemplateView):
     template_name = 'core/login.html'
-    
+
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context['endpoints'] = {
@@ -25,9 +25,9 @@ class LoginTemplateView(LoggedOutTemplateView):
         }
         return context
 
+
 class UserTemplateView(BaseTemplateView):
     template_name = 'users/user.html'
-    
 
 
 class RegisterTemplateView(LoggedOutTemplateView):
@@ -39,6 +39,7 @@ class RegisterTemplateView(LoggedOutTemplateView):
             'register': reverse('user_register'),
         }
         return context
+
 
 class LogoutView(BaseLogoutView):
     next_page = reverse_lazy('login_template')
@@ -52,6 +53,11 @@ class LoginView(
     success_url = reverse_lazy('login')
     success_message = 'You are now logged in.'
     has_return_data = True
+
+    def post(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
+        response = super().post(request, *args, **kwargs)
+        print(f'{self.data = }')
+        return response
 
     @method_decorator(sensitive_post_parameters())
     @method_decorator(csrf_protect)
@@ -71,9 +77,10 @@ class LoginView(
         self, form: AuthenticationForm, *args, **kwargs
     ) -> dict[str, Any]:
         user = form.get_user()
-        # if user.is_staff:
-        #     raise ValidationError('Internal error.')
-        login(self.request, form.get_user())
+        login(
+            request=self.request,
+            user=user,
+        )
         return {
             'redirect_url': reverse('user_template'),
         }
@@ -82,7 +89,7 @@ class LoginView(
 class UserRegisterView(LoggedOutFormView):
     form_class = forms.UserRegisterForm
     has_return_data = True
-    
+
     def post(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
         print(f'{request.POST = }')
         return super().post(request, *args, **kwargs)
