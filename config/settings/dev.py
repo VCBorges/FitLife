@@ -40,6 +40,7 @@ LOGIN_URL = 'login_template'
 LOCAL_APPS = [
     'app.core',
     'app.users',
+    'app.gym',
 ]
 
 
