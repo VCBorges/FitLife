@@ -16,6 +16,7 @@ export function UserRegisterForm({ endpoint }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [birthDate, setBirthDate] = useState('');
+    const [cpf, setCPF] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,6 +37,9 @@ export function UserRegisterForm({ endpoint }) {
         else if (name === 'birth_date') {
             setBirthDate(value);
         }
+        else if (name === 'cpf') {
+            setCPF(value);
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -51,6 +55,7 @@ export function UserRegisterForm({ endpoint }) {
                 first_name: firstName,
                 last_name: lastName,
                 birth_date: birthDate,
+                cpf: cpf,
             },
             headers: {
                 'X-CSRFToken': getCookie('csrftoken'),
@@ -58,8 +63,7 @@ export function UserRegisterForm({ endpoint }) {
             onSuccess: (data) => {
                 window.location.href = data.redirect_url
             },
-            onError: (error) => {
-            },
+            onError: (error) => {},
         })
     };
 
@@ -69,6 +73,15 @@ export function UserRegisterForm({ endpoint }) {
 
     return (
         <form onSubmit={handleSubmit}>
+            <BaseInput
+                label="CPF"
+                type="text"
+                name="cpf"
+                placeholder='Enter your cpf'
+                value={cpf}
+                onChange={handleChange}
+                required={true}
+            />  
             <BaseInput
                 label="Email"
                 type="text"

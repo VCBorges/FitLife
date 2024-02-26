@@ -4,6 +4,7 @@ from django.urls import reverse
 from ..core.forms import BaseForm
 from .models import Users
 
+from validate_docbr import CPF
 
 class UserRegisterForm(BaseForm):
     username = forms.EmailField(required=True)  # Email
@@ -12,6 +13,7 @@ class UserRegisterForm(BaseForm):
     birth_date = forms.DateField(required=True)
     password1 = forms.CharField(required=True)
     password2 = forms.CharField(required=True)
+    cpf = forms.CharField(required=False)
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -25,6 +27,14 @@ class UserRegisterForm(BaseForm):
         if password1 and password2 != password2:
             raise forms.ValidationError('Passwords do not match.')
         return password2
+    
+    def clean_cpf(self):
+        cpf = self.cleaned_data.get('cpf')
+        if cpf and Users.objects.filter(document=cpf).exists():
+            raise forms.ValidationError('CPF is already in use.')
+        if not CPF().validate(cpf):
+            raise forms.ValidationError('Invalid CPF.')
+        return cpf
 
     def save(self):
         Users.objects.create_user(
@@ -33,6 +43,7 @@ class UserRegisterForm(BaseForm):
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name'],
             birth_date=self.cleaned_data['birth_date'],
+            document=self.cleaned_data['cpf'],
         )
         return {
             'redirect_url': reverse('login_template'),

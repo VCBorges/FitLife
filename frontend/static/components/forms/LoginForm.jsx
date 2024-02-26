@@ -38,8 +38,6 @@ export function LoginForm({ endpoint }) {
             onError: (error) => {
             },
             onFinally: (data) => {
-                console.log('Finally');
-                console.log(data);
             }
         })
     };

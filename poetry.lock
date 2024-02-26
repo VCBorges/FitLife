@@ -425,6 +425,16 @@ files = [
 ]
 
 [[package]]
+name = "validate-docbr"
+version = "1.10.0"
+description = "Validate brazilian documents."
+optional = false
+python-versions = "*"
+files = [
+    {file = "validate_docbr-1.10.0-py3-none-any.whl", hash = "sha256:ff016f180b0c5ecff06abce1d83385924438c4d4c7f5c050e90fb724f1d968bb"},
+]
+
+[[package]]
 name = "whitenoise"
 version = "6.6.0"
 description = "Radically simplified static file serving for WSGI applications"
@@ -441,4 +451,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f206283ef7279b3f47cfe5c325252a3ab82c3ddb08c112449e4cf52ad79a2d67"
+content-hash = "59ffbf1cb5ad754773cfa0bf8abe91af6ff36d2c5984f0c8d082628a21d5a670"

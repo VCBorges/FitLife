@@ -1,8 +1,9 @@
-import pytest
 from django.urls import reverse
 
 from app.users import forms
 from app.users.models import Users
+
+import pytest
 
 
 @pytest.mark.django_db
