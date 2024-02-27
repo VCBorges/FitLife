@@ -13,13 +13,21 @@ def test_user_registration_form_succsess():
             'username': 'test3@test.com',
             'password1': 'testpassword',
             'password2': 'testpassword',
+            'first_name': 'test',
+            'last_name': 'test',
+            'birth_date': '1990-01-01',
+            'cpf': '52358375098',
         },
     )
     assert form.is_valid() is True
     data = form.save()
-    assert data['next_url'] == reverse('login_template')
+    assert data['redirect_url'] == reverse('login_template')
     user = Users.objects.get(email='test3@test.com')
     assert user.email == 'test3@test.com'
+    assert user.first_name == 'test'
+    assert user.last_name == 'test'
+    assert user.birth_date == '1990-01-01'
+    assert user.document == '52358375098'
 
 
 @pytest.mark.django_db

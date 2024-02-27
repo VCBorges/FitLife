@@ -12,9 +12,9 @@ if TYPE_CHECKING:
 
 class CustomUserManager(BaseUserManager):
     def create_user(
-        self, 
-        email: str, 
-        password: str, 
+        self,
+        email: str,
+        password: str,
         **extra_fields,
     ) -> Users:
         if not email:

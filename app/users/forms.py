@@ -68,7 +68,7 @@ class UpdatePasswordForm(BaseForm):
         return {
             'redirect_url': reverse('login_template'),
         }
-        
+
 
 class UpdateUserForm(BaseForm):
     ...
