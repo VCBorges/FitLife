@@ -6,10 +6,13 @@ import { makeRequest } from '../../utils/requests';
 
 /**
  * @param {object} props
- * @param {string} props.endpoint
+ * @param {string} props.registerEndpoint
  * @returns {JSX.Element}
  */
-export function UserRegisterForm({ endpoint }) {
+export function UserRegisterForm({ 
+    registerEndpoint,
+    loginEndpoint,
+}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
@@ -46,7 +49,7 @@ export function UserRegisterForm({ endpoint }) {
         e.preventDefault();
 
         await makeRequest({
-            url: endpoint,
+            url: registerEndpoint,
             method: 'POST',
             body: { 
                 username: email, 
@@ -67,8 +70,8 @@ export function UserRegisterForm({ endpoint }) {
         })
     };
 
-    const handleRegistrationBtnClick = () => {
-        window.location.href = '/login/'
+    const handleLoginBtnClick = () => {
+        window.location.href = loginEndpoint;
     }
 
     return (
@@ -145,7 +148,7 @@ export function UserRegisterForm({ endpoint }) {
                 type="button"
                 classes={['btn-primary']}
                 text="Login"
-                onClick={handleRegistrationBtnClick}
+                onClick={handleLoginBtnClick}
             />
         </form>
     );

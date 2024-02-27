@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { BaseInput } from '../inputs/BaseInput';
 import { BasetButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
@@ -9,9 +9,13 @@ import { makeRequest } from '../../utils/requests';
  * @param {string} props.endpoint
  * @returns {JSX.Element}
  */
-export function LoginForm({ endpoint }) {
+export function LoginForm({ 
+    loginEndpoint,
+    registerEndpoint,
+}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const formRef = useRef();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,10 +27,17 @@ export function LoginForm({ endpoint }) {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        if (!formRef.current.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        formRef.current.classList.add('was-validated');
+
+        const form = formRef.current;
+        form.addEventListener('submit', handleSubmit);
 
         await makeRequest({
-            url: endpoint,
+            url: loginEndpoint,
             method: 'POST',
             body: { username: email, password },
             headers: {
@@ -43,11 +54,17 @@ export function LoginForm({ endpoint }) {
     };
 
     const handleRegistrationBtnClick = () => {
-        window.location.href = '/users/register/'
+        window.location.href = registerEndpoint;
     }
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form
+            onSubmit={handleSubmit} 
+            className="needs-validation"
+            noValidate
+            ref={formRef}
+        >
             <BaseInput
                 label="Email"
                 type="text"

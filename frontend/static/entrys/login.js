@@ -5,11 +5,11 @@ import { LoginForm } from '../components/forms/LoginForm.jsx';
 
 const root = createRoot(document.getElementById('root'));
 const endpoints = JSON.parse(document.getElementById('endpoints-id').textContent);
-console.log(endpoints);
 root.render(
     <StrictMode>
         <LoginForm
-            endpoint={endpoints.login}
+            loginEndpoint={endpoints.login}
+            registerEndpoint={endpoints.register}
         />
     </StrictMode>
 );

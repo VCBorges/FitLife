@@ -40,6 +40,9 @@ export function BaseInput({
                 readOnly={readOnly}
                 required={required}
             />
+            <div className="invalid-feedback">
+                Please choose a username.
+            </div>
         </div>
     );
 }

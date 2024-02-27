@@ -22,6 +22,7 @@ class LoginTemplateView(LoggedOutTemplateView):
         context = super().get_context_data(**kwargs)
         context['endpoints'] = {
             'login': reverse('login'),
+            'register': reverse('user_register_template'),
         }
         return context
 
@@ -37,6 +38,7 @@ class RegisterTemplateView(LoggedOutTemplateView):
         context = super().get_context_data(**kwargs)
         context['endpoints'] = {
             'register': reverse('user_register'),
+            'login': reverse('login_template'),
         }
         return context
 
@@ -91,5 +93,4 @@ class UserRegisterView(LoggedOutFormView):
     has_return_data = True
 
     def post(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
-        print(f'{request.POST = }')
         return super().post(request, *args, **kwargs)

@@ -8,7 +8,8 @@ const endpoints = JSON.parse(document.getElementById('endpoints-id').textContent
 root.render(
     <StrictMode>
         <UserRegisterForm
-            endpoint={endpoints.register}
+            registerEndpoint={endpoints.register}
+            loginEndpoint={endpoints.login}
         />
     </StrictMode>   
 );
