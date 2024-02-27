@@ -11,7 +11,12 @@ if TYPE_CHECKING:
 
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email: str, password: str, **extra_fields) -> Users:
+    def create_user(
+        self, 
+        email: str, 
+        password: str, 
+        **extra_fields,
+    ) -> Users:
         if not email:
             raise ValidationError(_('The Email must be set'))
         email = self.normalize_email(email)

@@ -263,6 +263,16 @@ plugins = ["importlib-metadata"]
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "pygraphviz"
+version = "1.12"
+description = "Python interface to Graphviz"
+optional = false
+python-versions = ">=3.10"
+files = [
+    {file = "pygraphviz-1.12.tar.gz", hash = "sha256:8b0b9207954012f3b670e53b8f8f448a28d12bdbbcf69249313bd8dbe680152f"},
+]
+
+[[package]]
 name = "pytest"
 version = "7.4.4"
 description = "pytest: simple powerful testing with Python"
@@ -451,4 +461,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "59ffbf1cb5ad754773cfa0bf8abe91af6ff36d2c5984f0c8d082628a21d5a670"
+content-hash = "93c403acf341f145e02969ab8cdd7e7e77a413f0c28fc9bace3df94ba23efdcb"

@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['fitlife-production.up.railway.app']
 
 LOGIN_REDIRECT_URL = 'user_template'
 
@@ -40,11 +40,11 @@ LOGIN_URL = 'login_template'
 LOCAL_APPS = [
     'app.core',
     'app.users',
+    'app.gym',
 ]
 
 
 THIRD_PARTY_APPS = [
-    # 'django_extensions',
     'whitenoise.runserver_nostatic',
 ]
 

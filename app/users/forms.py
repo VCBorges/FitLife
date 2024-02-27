@@ -6,6 +6,7 @@ from .models import Users
 
 from validate_docbr import CPF
 
+
 class UserRegisterForm(BaseForm):
     username = forms.EmailField(required=True)  # Email
     first_name = forms.CharField(required=True)
@@ -27,7 +28,7 @@ class UserRegisterForm(BaseForm):
         if password1 and password2 != password2:
             raise forms.ValidationError('Passwords do not match.')
         return password2
-    
+
     def clean_cpf(self):
         cpf = self.cleaned_data.get('cpf')
         if cpf and Users.objects.filter(document=cpf).exists():
@@ -48,3 +49,26 @@ class UserRegisterForm(BaseForm):
         return {
             'redirect_url': reverse('login_template'),
         }
+
+
+class UpdatePasswordForm(BaseForm):
+    password1 = forms.CharField(required=True)
+    password2 = forms.CharField(required=True)
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        if password1 and password2 != password2:
+            raise forms.ValidationError('Passwords do not match.')
+        return password2
+
+    def save(self, user):
+        user.set_password(self.cleaned_data['password1'])
+        user.save()
+        return {
+            'redirect_url': reverse('login_template'),
+        }
+        
+
+class UpdateUserForm(BaseForm):
+    ...

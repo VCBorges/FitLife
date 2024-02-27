@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('users', '0003_users_document'),
     ]
@@ -18,6 +17,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='users',
             name='document',
-            field=models.CharField(blank=True, max_length=17, null=True, unique=True, verbose_name='CPF'),
+            field=models.CharField(
+                blank=True, max_length=17, null=True, unique=True, verbose_name='CPF'
+            ),
         ),
     ]

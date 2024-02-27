@@ -6,15 +6,21 @@ from ..core.models import BaseModel
 class Workouts(BaseModel):
     name = models.CharField(max_length=255)
     description = models.TextField()
+    user = models.ForeignKey(
+        'users.Users', on_delete=models.CASCADE, null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = 'Workout'
+        verbose_name_plural = 'Workouts'
+        default_related_name = 'workouts'
 
     def __str__(self):
         return self.name
 
 
 class WorkoutHistory(BaseModel):
-    workout = models.ForeignKey(
-        Workouts, on_delete=models.CASCADE, related_name='workout_history'
-    )
+    workout = models.ForeignKey(Workouts, on_delete=models.CASCADE)
     date = models.DateField()
     duration = models.DurationField()
     repetitions = models.IntegerField()
@@ -34,6 +40,9 @@ class WorkoutHistory(BaseModel):
 class Exercises(BaseModel):
     name = models.CharField(max_length=255)
     description = models.TextField()
+    equipment = models.ForeignKey(
+        'gym.Equipments', on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     class Meta:
         verbose_name = 'Exercise'
