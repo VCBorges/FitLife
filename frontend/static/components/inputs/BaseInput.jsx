@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../../styles/baseInput.css';
 /**
  * BaseInput
  * @param {object} props
@@ -26,9 +27,13 @@ export function BaseInput({
     required = false,
 }) {
     classes.push('form-control');
+    classes.push('base-input');
     return (
         <div>
-            <label htmlFor={name}>{label}</label>
+            <label 
+                className='base-input-label' 
+                htmlFor={name}>{label}
+            </label>
             <input 
                 className={classes.join(' ')} 
                 type={type} 

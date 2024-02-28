@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../../styles/baseButton.css";
+
 /**
  * @param {object} props
  * @param {string} props.type
@@ -15,6 +17,7 @@ export function BasetButton({
     text,
 }) {
     classes.push('btn');
+    classes.push('base-btn');
     return (
         <button
             type={type}
