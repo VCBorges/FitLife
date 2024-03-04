@@ -4,9 +4,11 @@ import { BaseInput } from '../inputs/BaseInput';
 import { BasetButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
 
+import '../../styles/userRegistrationForm.css';
+
 /**
  * @param {object} props
- * @param {string} props.registerEndpoint
+ * @param {string} props.registerEndApoint
  * @returns {JSX.Element}
  */
 export function UserRegisterForm({ 
@@ -139,17 +141,20 @@ export function UserRegisterForm({
                 onChange={handleChange}
                 required={true}
             />
-            <BasetButton
-                type="submit"
-                classes={['btn-primary']}
-                text="Register"
-            />
-            <BasetButton
-                type="button"
-                classes={['btn-primary']}
-                text="Login"
-                onClick={handleLoginBtnClick}
-            />
+
+            <div className='buttons-wrapper'>
+                <BasetButton
+                    type="submit"
+                    classes={['btn-primary']}
+                    text="Register"
+                />
+                <BasetButton
+                    type="button"
+                    classes={['btn-primary']}
+                    text="Login"
+                    onClick={handleLoginBtnClick}
+                />
+            </div>
         </form>
     );
 }

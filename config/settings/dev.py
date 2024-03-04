@@ -46,7 +46,6 @@ LOCAL_APPS = [
 
 THIRD_PARTY_APPS = [
     'django_extensions',
-    # 'whitenoise.runserver_nostatic',
 ]
 
 
@@ -156,7 +155,7 @@ STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(FRONTEND_DIR, 'dist')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(FRONTEND_DIR, 'media/')
 
 MEDIA_URL = '/media/'
 

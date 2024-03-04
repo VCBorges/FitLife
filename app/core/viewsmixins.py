@@ -5,6 +5,7 @@ import traceback
 from typing import Any, TypeVar
 
 from django.http import HttpRequest, JsonResponse, QueryDict
+from django.templatetags.static import static
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -20,6 +21,9 @@ T = TypeVar('T', bound=BaseForm)
 class BaseContextTemplateViewMixin:
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
+        context['images'] = {
+            'fitlifeLogo': static('public/images/fitlife_logo.jpeg'),
+        }
         return context
 
     def get(self, request: HttpRequest, *args, **kwargs) -> dict[str, Any]:

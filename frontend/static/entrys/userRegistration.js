@@ -1,15 +1,17 @@
 import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { UserRegisterForm } from '../components/forms/UserRegisterForm.jsx';
+import { UserRegisterTemplate } from '../components/UserRegisterTemplate.jsx';
 
 const root = createRoot(document.getElementById('root'));
 const endpoints = JSON.parse(document.getElementById('endpoints-id').textContent);
+const images = JSON.parse(document.getElementById('images-id').textContent);
 root.render(
     <StrictMode>
-        <UserRegisterForm
+        <UserRegisterTemplate
             registerEndpoint={endpoints.register}
             loginEndpoint={endpoints.login}
+            fitLifeLogo={images.fitlifeLogo}
         />
     </StrictMode>   
 );

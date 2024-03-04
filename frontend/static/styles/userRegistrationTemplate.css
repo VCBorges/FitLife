@@ -1,0 +1,18 @@
+.container-fluid {
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: hsl(0, 0%, 0%);
+}
+
+
+.fitlife-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px; /* Adjust as necessary */
+    height: 150px;; /* Adjust as necessary */
+    max-width: 100%; /* Ensure it doesn't overflow the viewport */
+    max-height: 100%; /* Ensure it doesn't overflow the viewport */
+}

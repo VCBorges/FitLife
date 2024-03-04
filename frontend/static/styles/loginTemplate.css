@@ -5,3 +5,15 @@
     align-items: center; /* Center vertically */
     background-color: hsl(0, 0%, 0%);
 }
+
+.fitlife-logo {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+    /* margin-bottom: 20px; */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: center;
+}

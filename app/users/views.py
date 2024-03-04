@@ -24,6 +24,9 @@ class LoginTemplateView(LoggedOutTemplateView):
             'login': reverse('login'),
             'register': reverse('user_register_template'),
         }
+        # context['images'] = {
+        #     'fitlifeLogo': static('public/images/fitlife_logo.jpeg'),
+        # }
         return context
 
 
