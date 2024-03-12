@@ -13,6 +13,7 @@ import '../../styles/baseInput.css';
  * @param {string[]} props.classes
  * @param {boolean} props.readOnly
  * @param {boolean} props.required
+ * @param {string} props.autoComplete
  * @returns {JSX.Element}
  */
 export function BaseInput({ 
@@ -25,6 +26,7 @@ export function BaseInput({
     classes = [],
     readOnly = false,
     required = false,
+    autoComplete = '',
 }) {
     classes.push('form-control');
     classes.push('base-input');
@@ -44,6 +46,7 @@ export function BaseInput({
                 onChange={onChange} 
                 readOnly={readOnly}
                 required={required}
+                autoComplete={autoComplete}
             />
             <div className="invalid-feedback">
                 Please choose a username.

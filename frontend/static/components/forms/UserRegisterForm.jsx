@@ -95,6 +95,7 @@ export function UserRegisterForm({
                 value={email}
                 onChange={handleChange}
                 required={true}
+                autoComplete='email'
             />
             <BaseInput
                 label="Password"
@@ -104,6 +105,7 @@ export function UserRegisterForm({
                 value={password}
                 onChange={handleChange}
                 required={true}
+                autoComplete='new-password'
             />
             <BaseInput
                 label="Password"

@@ -1,7 +1,10 @@
+from typing import Any
+
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
+from django.templatetags.static import static
+from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, View
 
 from ..core import viewsmixins as mixins
@@ -22,12 +25,22 @@ class LoggedOutFormView(
     pass
 
 
-class BaseTemplateView(
+class AuthenticatedTemplateView(
     LoginRequiredMixin,
     mixins.BaseContextTemplateViewMixin,
     TemplateView,
 ):
-    pass
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['context'] = {
+            'endpoints': {
+                'logout': reverse('logout'),
+            },
+            'images': {
+                'fitLifeLogo': static('public/images/fitlife_logo.jpeg'),
+            },
+        }
+        return context
 
 
 class LoggedOutTemplateView(

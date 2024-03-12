@@ -11,7 +11,11 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 
-from ..core.views import BaseTemplateView, LoggedOutFormView, LoggedOutTemplateView
+from ..core.views import (
+    AuthenticatedTemplateView,
+    LoggedOutFormView,
+    LoggedOutTemplateView,
+)
 from . import forms
 
 
@@ -24,13 +28,10 @@ class LoginTemplateView(LoggedOutTemplateView):
             'login': reverse('login'),
             'register': reverse('user_register_template'),
         }
-        # context['images'] = {
-        #     'fitlifeLogo': static('public/images/fitlife_logo.jpeg'),
-        # }
         return context
 
 
-class UserTemplateView(BaseTemplateView):
+class UserTemplateView(AuthenticatedTemplateView):
     template_name = 'users/user.html'
 
 
