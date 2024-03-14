@@ -14,7 +14,7 @@ from .exceptions import ProcessingError
 from .forms import BaseForm
 from .utils.forms import get_form_errors
 
-from rich import print  # noqa
+# from rich import print  # noqa
 
 T = TypeVar('T', bound=BaseForm)
 
