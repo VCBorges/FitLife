@@ -2,6 +2,7 @@ from django import forms
 from django.urls import reverse
 
 from ..core.forms import BaseForm
+from . import utils
 from .models import Users
 
 from validate_docbr import CPF
@@ -25,17 +26,23 @@ class UserRegisterForm(BaseForm):
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
-        if password1 and password2 != password2:
+        if password1 != password2:
             raise forms.ValidationError('Passwords do not match.')
         return password2
 
     def clean_cpf(self):
-        cpf = self.cleaned_data.get('cpf')
+        cpf = utils.clean_cpf(self.cleaned_data.get('cpf'))
         if cpf and Users.objects.filter(document=cpf).exists():
             raise forms.ValidationError('CPF is already in use.')
         if not CPF().validate(cpf):
             raise forms.ValidationError('Invalid CPF.')
         return cpf
+
+    # def clean(self) -> dict[str, Any]:
+    #     data = super().clean()
+    #     if data['password1'] != data['password2']:
+    #         raise forms.ValidationError('Passwords do not match.')
+    #     return data
 
     def save(self):
         Users.objects.create_user(

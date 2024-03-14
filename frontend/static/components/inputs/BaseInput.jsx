@@ -27,9 +27,12 @@ export function BaseInput({
     readOnly = false,
     required = false,
     autoComplete = '',
+    errorMessage = '',
+    // ref = null
 }) {
     classes.push('form-control');
     classes.push('base-input');
+    // classes.push('is-invalid');
     return (
         <div>
             <label 
@@ -47,9 +50,10 @@ export function BaseInput({
                 readOnly={readOnly}
                 required={required}
                 autoComplete={autoComplete}
+                // ref={ref}
             />
-            <div className="invalid-feedback">
-                Please choose a username.
+            <div className='base-input-error-message'>
+                {errorMessage}
             </div>
         </div>
     );

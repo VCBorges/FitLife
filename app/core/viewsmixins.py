@@ -10,10 +10,11 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
-# from rich import print
 from .exceptions import ProcessingError
 from .forms import BaseForm
 from .utils.forms import get_form_errors
+
+from rich import print  # noqa
 
 T = TypeVar('T', bound=BaseForm)
 
@@ -42,6 +43,8 @@ class BaseFormViewMixin:
     def parse_request_body(self, request: HttpRequest) -> dict[str, Any]:
         try:
             body = json.loads(request.body.decode('utf-8'))
+            print(f'{body = }')
+            print(f'{type(body) = }')
             return body
         except Exception as e:
             raise ProcessingError(
@@ -123,6 +126,8 @@ class BaseFormViewMixin:
         self.request = request
         self.data = self.get_body_data(request)
         print(f'{self.data = }')
+        print(f'{self.request.POST = }')
+        print(f'{self.request.body = }')
         try:
             form: T = self.get_form()
             if form.is_valid():

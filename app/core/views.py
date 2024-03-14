@@ -10,7 +10,7 @@ from django.views.generic import TemplateView, View
 from ..core import viewsmixins as mixins
 
 
-class BaseFormView(
+class AuthenticatedFormView(
     LoginRequiredMixin,
     mixins.BaseFormViewMixin,
     View,

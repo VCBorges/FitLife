@@ -3,8 +3,25 @@ import { useState, useRef } from 'react';
 import { BaseInput } from '../inputs/BaseInput';
 import { BasetButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
+import { atom, useAtom } from 'jotai';
 
 import '../../styles/loginForm.css';
+
+const loginFormAtom = atom({
+    username: {
+        value: '',
+        error: '',
+    },
+    password: {
+        value: '',
+        error: '',
+    },
+    __all__: {
+        value: '',
+        error: '',
+    },
+});
+
 /**
  * @param {object} props
  * @param {string} props.endpoint
@@ -14,43 +31,60 @@ export function LoginForm({
     loginEndpoint,
     registerEndpoint,
 }) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const formRef = useRef();
+    const [loginState, setLoginState] = useAtom(loginFormAtom);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name === 'username') {
-            setEmail(value);
-        } else if (name === 'password') {
-            setPassword(value);
+        setLoginState((oldState) => ({
+            ...oldState,
+            [name]: {
+                ...oldState[name],
+                value,
+            },
+        }));
+    };
+
+    const handleErrors = (errors) => {
+        Object.keys(errors).forEach((key) => {
+            setLoginState((oldState) => ({
+                ...oldState,
+                [key]: {
+                    ...oldState[key],
+                    error: errors[key],
+                },
+            }));
         }
+        );
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        if (!formRef.current.checkValidity()) {
-        }
-        formRef.current.classList.add('was-validated');
+        // if (!formRef.current.checkValidity()) {}
+        // formRef.current.classList.add('was-validated');
 
-        const form = formRef.current;
-        form.addEventListener('submit', handleSubmit);
+        // const form = formRef.current;
+        // form.addEventListener('submit', handleSubmit);
 
         await makeRequest({
             url: loginEndpoint,
             method: 'POST',
-            body: { username: email, password },
+            body: { 
+                username: loginState.username.value,
+                password: loginState.password.value,
+            },
             headers: {
                 'X-CSRFToken': getCookie('csrftoken'),
             },
             onSuccess: (data) => {
                 window.location.href = data.redirect_url
             },
-            onError: (error) => {
+            onError: (data) => {
+                const errors = data.errors;
+                handleErrors(errors);
+                console.log(errors)
+                console.log(loginState)
             },
-            onFinally: (data) => {
-            }
         })
     };
 
@@ -63,26 +97,30 @@ export function LoginForm({
             onSubmit={handleSubmit} 
             className="needs-validation"
             noValidate
-            ref={formRef}
         >
             <BaseInput
                 label="Email"
                 type="text"
                 name="username"
                 placeholder='Enter your email'
-                value={email}
+                value={loginState.username.value}
                 onChange={handleChange}
                 required={true}
+                errorMessage={loginState.username.error}
             />
             <BaseInput
                 label="Password"
                 type="password"
                 name="password"
                 placeholder='Enter your password'
-                value={password}
+                value={loginState.password.value}
                 onChange={handleChange}
                 required={true}
+                errorMessage={loginState.password.error}
             />
+            <div className='base-input-error-message'>
+                {loginState.__all__.error}
+            </div>
             <div className='buttons-wrapper'>
                 <BasetButton
                     type="submit"

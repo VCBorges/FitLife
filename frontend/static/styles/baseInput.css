@@ -24,3 +24,7 @@
 .base-input::placeholder{
     color: hsl(0, 0%, 94%);
 }
+
+.base-input-error-message{
+    color: rgb(255, 30, 30);
+}
