@@ -43,8 +43,6 @@ class BaseFormViewMixin:
     def parse_request_body(self, request: HttpRequest) -> dict[str, Any]:
         try:
             body = json.loads(request.body.decode('utf-8'))
-            print(f'{body = }')
-            print(f'{type(body) = }')
             return body
         except Exception as e:
             raise ProcessingError(
@@ -83,7 +81,6 @@ class BaseFormViewMixin:
         return form
 
     def get_form_kwargs(self, *args, **kwargs) -> dict[str, Any]:
-        # kwargs['data'] = self.request.POST
         kwargs['data'] = self.data
         kwargs['files'] = self.request.FILES
         kwargs['request'] = self.request
@@ -125,9 +122,6 @@ class BaseFormViewMixin:
     def post(self, request: HttpRequest, *args, **kwargs) -> JsonResponse:
         self.request = request
         self.data = self.get_body_data(request)
-        print(f'{self.data = }')
-        print(f'{self.request.POST = }')
-        print(f'{self.request.body = }')
         try:
             form: T = self.get_form()
             if form.is_valid():

@@ -60,11 +60,6 @@ export function LoginForm({
     const handleSubmit = async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        // if (!formRef.current.checkValidity()) {}
-        // formRef.current.classList.add('was-validated');
-
-        // const form = formRef.current;
-        // form.addEventListener('submit', handleSubmit);
 
         await makeRequest({
             url: loginEndpoint,
