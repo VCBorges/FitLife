@@ -58,7 +58,7 @@ export function NavBar({
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">
-                                    Link
+                                    Treinos
                                 </a>
                             </li>
                             <li className="nav-item dropdown">

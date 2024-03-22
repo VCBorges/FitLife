@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.urls import reverse
 
 from app.users import forms
@@ -15,7 +17,7 @@ def test_user_registration_form_succsess():
             'password2': 'testpassword',
             'first_name': 'test',
             'last_name': 'test',
-            'birth_date': '1990-01-01',
+            'birth_date': '1980-01-01',
             'cpf': '52358375098',
         },
     )
@@ -26,7 +28,7 @@ def test_user_registration_form_succsess():
     assert user.email == 'test3@test.com'
     assert user.first_name == 'test'
     assert user.last_name == 'test'
-    assert user.birth_date == '1990-01-01'
+    assert user.birth_date == datetime(1980, 1, 1).date()
     assert user.document == '52358375098'
 
 

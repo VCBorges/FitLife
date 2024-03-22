@@ -34,6 +34,9 @@ class AuthenticatedTemplateView(
         context = super().get_context_data(**kwargs)
         context['context'] = {
             'endpoints': {
+                'templates': {
+                    'workouts': reverse('workout_template'),
+                },
                 'logout': reverse('logout'),
             },
             'images': {

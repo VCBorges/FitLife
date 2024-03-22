@@ -1,6 +1,18 @@
 .buttons-wrapper{
-    display: flex;
+    margin-top: 10px;
+    display: flex; /* Enables Flexbox */
+    flex-direction: column; /* Stacks children vertically */
     justify-content: center;
-    margin-top: 15px;
     gap: 10px;
+}
+
+
+.base-btn{
+    border-color: hsl(0, 0%, 100%);
+    background-color: hsl(212, 76%, 38%);
+}
+
+.base-btn:hover{
+    background-color: hsl(212, 76%, 27%);
+    border-color: hsl(0, 0%, 100%);
 }

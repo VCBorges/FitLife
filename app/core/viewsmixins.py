@@ -40,6 +40,9 @@ class BaseFormViewMixin:
     )
     has_return_data: bool = False
 
+    request: HttpRequest | None = None
+    data: dict[str, Any] | QueryDict | None = None
+
     def parse_request_body(self, request: HttpRequest) -> dict[str, Any]:
         try:
             body = json.loads(request.body.decode('utf-8'))

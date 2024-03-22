@@ -1,26 +1,26 @@
 import React from 'react';
-import { useState, useRef } from 'react';
 import { BaseInput } from '../inputs/BaseInput';
 import { BasetButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
-import { atom, useAtom } from 'jotai';
+import { useAtom } from 'jotai';
+
+import { 
+    createFormStateAtom, 
+    handleFormInputChange, 
+    handleFormErrors, 
+} from '../../utils/atoms';
+
 
 import '../../styles/loginForm.css';
 
-const loginFormAtom = atom({
-    username: {
-        value: '',
-        error: '',
-    },
-    password: {
-        value: '',
-        error: '',
-    },
-    __all__: {
-        value: '',
-        error: '',
-    },
-});
+
+const loginFormAtom = createFormStateAtom([
+    'username',
+    'password',
+    '__all__',
+]);
+
+
 
 /**
  * @param {object} props
@@ -34,28 +34,12 @@ export function LoginForm({
     const [loginState, setLoginState] = useAtom(loginFormAtom);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setLoginState((oldState) => ({
-            ...oldState,
-            [name]: {
-                ...oldState[name],
-                value,
-            },
-        }));
+        handleFormInputChange({ 
+            event: e, 
+            setStateAction: setLoginState, 
+        });
     };
 
-    const handleErrors = (errors) => {
-        Object.keys(errors).forEach((key) => {
-            setLoginState((oldState) => ({
-                ...oldState,
-                [key]: {
-                    ...oldState[key],
-                    error: errors[key],
-                },
-            }));
-        }
-        );
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,7 +60,10 @@ export function LoginForm({
             },
             onError: (data) => {
                 const errors = data.errors;
-                handleErrors(errors);
+                handleFormErrors({ 
+                    errors, 
+                    setStateAction: setLoginState, 
+                });
                 console.log(errors)
                 console.log(loginState)
             },
@@ -97,17 +84,17 @@ export function LoginForm({
                 label="Email"
                 type="text"
                 name="username"
-                placeholder='Enter your email'
+                placeholder='Digite seu email'
                 value={loginState.username.value}
                 onChange={handleChange}
                 required={true}
                 errorMessage={loginState.username.error}
             />
             <BaseInput
-                label="Password"
+                label="Senha"
                 type="password"
                 name="password"
-                placeholder='Enter your password'
+                placeholder='Digite sua senha'
                 value={loginState.password.value}
                 onChange={handleChange}
                 required={true}
@@ -119,13 +106,13 @@ export function LoginForm({
             <div className='buttons-wrapper'>
                 <BasetButton
                     type="submit"
-                    classes={['btn-primary']}
+                    classes={['btn-primary', 'btn-blue']}
                     text="Login"
                 />
                 <BasetButton
                     type="button"
-                    classes={['btn-primary']}
-                    text="Registration"
+                    classes={['btn-primary', 'btn-blue']}
+                    text="Registrar-se"
                     onClick={handleRegistrationBtnClick}
                 />
             </div>

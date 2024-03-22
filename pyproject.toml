@@ -60,6 +60,7 @@ select = [
     "E9",
     "F",
     "I",
+    "DJ",
 ]
 ignore = []
 

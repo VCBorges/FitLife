@@ -18,3 +18,11 @@ collectstatic:
 lint:
 	ruff format .
 	ruff check . --fix
+
+.PHONY: migration
+migration:
+	python manage.py makemigrations
+
+.PHONY: migrate
+migrate:
+	python manage.py migrate

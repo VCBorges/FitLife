@@ -5,39 +5,25 @@ import { BasetButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
 import { atom, useAtom } from 'jotai';
 
+import { 
+    createFormStateAtom, 
+    handleFormInputChange, 
+    handleFormErrors, 
+} from '../../utils/atoms';
+
+
 import '../../styles/userRegistrationForm.css';
 
 
-const userRegisterAtom = atom({
-    username: {
-        value: '',
-        error: '',
-    },
-    password: {
-        value: '',
-        error: '',
-    },
-    password2: {
-        value: '',
-        error: '',
-    },
-    first_name: {
-        value: '',
-        error: '',
-    },
-    last_name: {
-        value: '',
-        error: '',
-    },
-    birth_date: {
-        value: '',
-        error: '',
-    },
-    cpf: {
-        value: '',
-        error: '',
-    },
-});
+const userRegisterAtom = createFormStateAtom([
+    'username',
+    'password',
+    'password2',
+    'first_name',
+    'last_name',
+    'birth_date',
+    'cpf',
+]);
 
 /**
  * @param {object} props
@@ -51,27 +37,10 @@ export function UserRegisterForm({
     const [userState, setUserState] = useAtom(userRegisterAtom);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUserState((oldState) => ({
-            ...oldState,
-            [name]: {
-                ...oldState[name],
-                value,
-            },
-        }));
-    };
-
-    const handleErrors = (errors) => {
-        Object.keys(errors).forEach((key) => {
-            setUserState((oldState) => ({
-                ...oldState,
-                [key]: {
-                    ...oldState[key],
-                    error: errors[key],
-                },
-            }));
-        }
-        );
+        handleFormInputChange({ 
+            event: e, 
+            setStateAction: setUserState, 
+        });
     };
 
     const handleSubmit = async (e) => {
@@ -98,7 +67,10 @@ export function UserRegisterForm({
             },
             onError: (data, status) => {
                 if (status === 400) {
-                    handleErrors(data.errors);
+                    handleFormErrors({
+                        errors: data.errors,
+                        setStateAction: setUserState,
+                    });
                 }
             },
         })
@@ -118,7 +90,7 @@ export function UserRegisterForm({
                 label="CPF"
                 type="text"
                 name="cpf"
-                placeholder='Enter your cpf'
+                placeholder='Digite seu CPF'
                 value={userState.cpf.value}
                 onChange={handleChange}
                 required={true}
@@ -128,7 +100,7 @@ export function UserRegisterForm({
                 label="Email"
                 type="text"
                 name="username"
-                placeholder='Enter your email'
+                placeholder='Digite seu email'
                 value={userState.username.value}
                 onChange={handleChange}
                 required={true}
@@ -136,10 +108,10 @@ export function UserRegisterForm({
                 errorMessage={userState.username.error}
             />
             <BaseInput
-                label="Password"
+                label="Senha"
                 type="password"
                 name="password"
-                placeholder='Enter your password'
+                placeholder='Digite sua senha'
                 value={userState.password.value}
                 onChange={handleChange}
                 required={true}
@@ -147,40 +119,40 @@ export function UserRegisterForm({
                 errorMessage={userState.password.error}
             />
             <BaseInput
-                label="Password"
+                label="Confirmar Senha"
                 type="password"
                 name="password2"
-                placeholder='Enter your password'
+                placeholder='Confirme sua senha'
                 value={userState.password2.value}
                 onChange={handleChange}
                 required={true}
                 errorMessage={userState.password2.error}
             />
             <BaseInput
-                label="First Name"
+                label="Primeiro Nome"
                 type="text"
                 name="first_name"
-                placeholder='Enter your first name'
+                placeholder='Digite seu primeiro nome'
                 value={userState.first_name.value}
                 onChange={handleChange}
                 required={true}
                 errorMessage={userState.first_name.error}
             />
             <BaseInput
-                label="Last Name"
+                label="Sobrenome"
                 type="text"
                 name="last_name"
-                placeholder='Enter your last name'
+                placeholder='Digite seu sobrenome'
                 value={userState.last_name.value}
                 onChange={handleChange}
                 required={true}
                 errorMessage={userState.last_name.error}
             />
             <BaseInput
-                label="Birth Date"
+                label="Data de Nascimento"
                 type="date"
                 name="birth_date"
-                placeholder='Enter your birth date'
+                placeholder='Digite sua data de nascimento'
                 value={userState.birth_date.value}
                 onChange={handleChange}
                 required={true}
@@ -191,12 +163,12 @@ export function UserRegisterForm({
                 <BasetButton
                     type="submit"
                     classes={['btn-primary']}
-                    text="Register"
+                    text="Cadastrar"
                 />
                 <BasetButton
                     type="button"
                     classes={['btn-primary']}
-                    text="Login"
+                    text="Ir para Login"
                     onClick={handleLoginBtnClick}
                 />
             </div>
