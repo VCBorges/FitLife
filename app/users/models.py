@@ -20,6 +20,14 @@ class Users(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    height = models.FloatField(_('height'), blank=True, null=True)
+    weight = models.FloatField(_('weight'), blank=True, null=True)
+
+    class Meta:
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
+        db_table = 'users'
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 

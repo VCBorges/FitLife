@@ -10,7 +10,7 @@ import "../../styles/baseButton.css";
  * @param {string} props.text
  * @returns {JSX.Element}
  */
-export function BasetButton({
+export function BaseButton({
     type,
     classes = [],
     onClick,

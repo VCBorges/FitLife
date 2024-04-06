@@ -19,10 +19,19 @@ lint:
 	ruff format .
 	ruff check . --fix
 
-.PHONY: migration
-migration:
+.PHONY: migrations
+migrations:
 	python manage.py makemigrations
 
 .PHONY: migrate
 migrate:
 	python manage.py migrate
+
+.PHONY: run-db
+run-db:
+	docker start postgres-fitlife
+
+
+.PHONY: shell
+shell:
+	python manage.py shell_plus

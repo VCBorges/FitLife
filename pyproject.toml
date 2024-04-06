@@ -36,7 +36,11 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings.dev"
 python_files = ["test_*.py"]
-
+addopts = [
+    "-vv", 
+    "-s",
+    "--reuse-db",
+]
 
 [tool.ruff]
 exclude = [
@@ -62,11 +66,12 @@ select = [
     "I",
     "DJ",
 ]
-ignore = []
+ignore = ["DJ001"]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
 unfixable = []
+
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"

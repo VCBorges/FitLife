@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { BaseInput } from '../inputs/BaseInput';
-import { BasetButton } from '../buttons/BaseButton';
+import { BaseButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
 import { atom, useAtom } from 'jotai';
 
@@ -160,12 +160,12 @@ export function UserRegisterForm({
             />
 
             <div className='buttons-wrapper'>
-                <BasetButton
+                <BaseButton
                     type="submit"
                     classes={['btn-primary']}
                     text="Cadastrar"
                 />
-                <BasetButton
+                <BaseButton
                     type="button"
                     classes={['btn-primary']}
                     text="Ir para Login"

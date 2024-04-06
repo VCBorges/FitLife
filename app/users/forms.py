@@ -3,6 +3,8 @@ from datetime import datetime
 from django import forms
 from django.urls import reverse
 
+from app.users.services.users import create_user
+
 from ..core.forms import BaseForm
 from ..core.utils.date import get_current_year
 from ..core.utils.string import has_special_characters
@@ -61,7 +63,7 @@ class UserRegisterForm(BaseForm):
         return birth_date
 
     def save(self) -> dict[str, str]:
-        Users.objects.create_user(
+        create_user(
             email=self.cleaned_data['username'],
             password=self.cleaned_data['password1'],
             first_name=self.cleaned_data['first_name'],

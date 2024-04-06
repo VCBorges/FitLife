@@ -26,6 +26,8 @@ class WorkoutsHistoryRepository(BaseRepository):
         workout_history = models.WorkoutHistory(
             workout=workout,
             finished_at=finished_at,
+            name=workout.name,
+            description=workout.description,
         )
         workout_history.save()
         exercises = [
@@ -36,6 +38,7 @@ class WorkoutsHistoryRepository(BaseRepository):
             for exercise in exercises
         ]
         models.WorkoutHistoryExercises.objects.bulk_create(exercises)
+        return workout_history
 
     @staticmethod
     def update(
@@ -51,9 +54,11 @@ class WorkoutsHistoryRepository(BaseRepository):
 
     @staticmethod
     def get_exercises(
-        workout: models.WorkoutHistory,
+        workout_history: models.WorkoutHistory,
     ) -> QuerySet[models.WorkoutHistoryExercises]:
-        return models.WorkoutHistoryExercises.objects.filter(workout=workout)
+        return models.WorkoutHistoryExercises.objects.filter(
+            workout_history=workout_history
+        )
 
     @staticmethod
     def _get_exercise_by_uuid(
@@ -79,36 +84,3 @@ class WorkoutsHistoryRepository(BaseRepository):
             sets=exercise.sets,
             rest_period=exercise.rest_period,
         )
-
-    # @classmethod
-    # def remove_exercise_by_uuid(
-    #     cls,
-    #     *,
-    #     workout: models.Workouts,
-    #     exercise_uuid: str,
-    # ) -> None:
-    #     workout_exercise = cls._get_exercise_by_uuid(
-    #         workout=workout,
-    #         exercise_uuid=exercise_uuid,
-    #     )
-    #     workout_exercise.delete()
-
-    # @classmethod
-    # def update_exercise_by_uuid(
-    #     cls,
-    #     *,
-    #     workout: models.Workouts,
-    #     exercise_uuid: str,
-    #     repetitions: int,
-    #     sets: int,
-    #     rest_period: int,
-    # ) -> models.WorkoutHistoryExercises:
-    #     workout_exercise = cls._get_exercise_by_uuid(
-    #         workout=workout,
-    #         exercise_uuid=exercise_uuid,
-    #     )
-    #     workout_exercise.repetitions = repetitions
-    #     workout_exercise.sets = sets
-    #     workout_exercise.rest_period = rest_period
-    #     workout_exercise.save()
-    #     return workout_exercise

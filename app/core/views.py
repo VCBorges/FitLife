@@ -1,13 +1,17 @@
-from typing import Any
+from typing import Any, TypeVar
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import models
 from django.http import HttpResponseRedirect
 from django.templatetags.static import static
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, View
 
-from ..core import viewsmixins as mixins
+from app.core import viewsmixins as mixins
+from app.core.protocols import AuthenticatedRequest
+
+T = TypeVar('T', bound=models.Model)
 
 
 class AuthenticatedFormView(
@@ -15,7 +19,15 @@ class AuthenticatedFormView(
     mixins.BaseFormViewMixin,
     View,
 ):
-    pass
+    request: AuthenticatedRequest
+
+
+class AuthenticatedUpdateFormView(
+    LoginRequiredMixin,
+    mixins.BaseUpdateFormViewMixin,
+    View,
+):
+    request: AuthenticatedRequest
 
 
 class LoggedOutFormView(
@@ -36,12 +48,14 @@ class AuthenticatedTemplateView(
             'endpoints': {
                 'templates': {
                     'workouts': reverse('workout_template'),
+                    'user': reverse('user_template'),
                 },
                 'logout': reverse('logout'),
             },
             'images': {
                 'fitLifeLogo': static('public/images/fitlife_logo.jpeg'),
             },
+            'data': {},
         }
         return context
 

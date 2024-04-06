@@ -6,7 +6,7 @@ import '../../styles/baseInput.css';
  * @param {object} props
  * @param {string} props.label
  * @param {string} props.type
- * @param {string} props.name
+ * @param {string} props.nwame
  * @param {string} props.placeholder
  * @param {string} props.value
  * @param {function} props.onChange

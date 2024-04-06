@@ -1,6 +1,8 @@
-from gym import models
+from django import forms
+from django.db.models.query import QuerySet
 
-from core.repositories import BaseRepository
+from app.core.repositories import BaseRepository
+from app.gym import models
 
 
 class ExercisesRepository(BaseRepository):
@@ -11,6 +13,13 @@ class ExercisesRepository(BaseRepository):
     @staticmethod
     def get_by_uuid(uuid: str) -> models.Exercises:
         return models.Exercises.objects.get(uuid=uuid)
+
+    @classmethod
+    def get_by_uuid_or_400(cls, uuid: str) -> models.Exercises:
+        try:
+            return ExercisesRepository.get_by_uuid(uuid)
+        except models.Workouts.DoesNotExist:
+            raise forms.ValidationError('Workout not found')
 
     @staticmethod
     def create(
@@ -34,3 +43,8 @@ class ExercisesRepository(BaseRepository):
     @staticmethod
     def delete(instance: models.Exercises) -> None:
         instance.delete()
+
+
+    @staticmethod
+    def list_all() -> QuerySet[models.Exercises]:
+        return models.Exercises.objects.all().values('uuid', 'name')

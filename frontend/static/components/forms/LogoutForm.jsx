@@ -1,5 +1,5 @@
 import React from 'react';
-import { BasetButton } from '../buttons/BaseButton';
+import { BaseButton } from '../buttons/BaseButton';
 
 export function LogoutForm({
     logoutEndpoint,
@@ -10,7 +10,7 @@ export function LogoutForm({
             action={logoutEndpoint}
         >
             <input type="hidden" name="csrfmiddlewaretoken" value={getCookie('csrftoken')} />
-            <BasetButton
+            <BaseButton
                 type="submit"
                 classes={['btn-primary']}
                 text="Logout"

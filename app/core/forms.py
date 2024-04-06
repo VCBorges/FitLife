@@ -9,3 +9,11 @@ class BaseForm(
 ):
     def save(self, *args, **kwargs):
         raise NotImplementedError
+
+
+class BaseUpdateForm(
+    mixins.BaseUpdateFormMixin,
+    forms.Form,
+):
+    def save(self, *args, **kwargs):
+        raise NotImplementedError

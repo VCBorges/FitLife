@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseInput } from '../inputs/BaseInput';
-import { BasetButton } from '../buttons/BaseButton';
+import { BaseButton } from '../buttons/BaseButton';
 import { makeRequest } from '../../utils/requests';
 import { useAtom } from 'jotai';
 
@@ -104,12 +104,12 @@ export function LoginForm({
                 {loginState.__all__.error}
             </div>
             <div className='buttons-wrapper'>
-                <BasetButton
+                <BaseButton
                     type="submit"
                     classes={['btn-primary', 'btn-blue']}
                     text="Login"
                 />
-                <BasetButton
+                <BaseButton
                     type="button"
                     classes={['btn-primary', 'btn-blue']}
                     text="Registrar-se"

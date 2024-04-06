@@ -1,8 +1,31 @@
+from dataclasses import dataclass
+
 from django.db.models import QuerySet
 
-from app.core.repositories import BaseRepository
+from app.core.repositories import BaseDTO, BaseRepository
 from app.gym import models
 from app.users.models import Users
+
+
+@dataclass
+class WorkoutUpdateDTO(BaseDTO):
+    name: str | None = None
+    description: str | None = None
+
+
+@dataclass
+class WorkoutExerciseUpdateDTO(BaseDTO):
+    repetitions: int | None = None
+    sets: int | None = None
+    rest_period: int | None = None
+
+
+@dataclass
+class WorkoutExerciseCreateDTO(BaseDTO):
+    exercise: models.Exercises
+    repetitions: int = 0
+    sets: int = 0
+    rest_period: int = 0
 
 
 class WorkoutsRepository(BaseRepository):
@@ -13,6 +36,12 @@ class WorkoutsRepository(BaseRepository):
     @staticmethod
     def get_by_uuid(uuid: str) -> models.Workouts:
         return models.Workouts.objects.get(uuid=uuid)
+
+    @staticmethod
+    def get_all_by_user(user: Users) -> QuerySet[models.Workouts]:
+        return models.Workouts.objects.prefetch_related('workout_exercises').filter(
+            user=user
+        )
 
     @staticmethod
     def create(
@@ -28,9 +57,12 @@ class WorkoutsRepository(BaseRepository):
         )
 
     @staticmethod
-    def update(instance: models.Workouts, **kwargs) -> None:
-        for key, value in kwargs.items():
-            setattr(instance, key, value)
+    def update(
+        instance: models.Workouts,
+        *,
+        dto: WorkoutUpdateDTO,
+    ) -> None:
+        instance(**dto.to_dict())
 
     @staticmethod
     def delete(instance: models.Workouts) -> None:
@@ -41,7 +73,7 @@ class WorkoutsRepository(BaseRepository):
         return models.WorkoutExercises.objects.filter(workout=workout)
 
     @staticmethod
-    def _get_exercise_by_uuid(
+    def get_exercise_by_uuid(
         *,
         workout: models.Workouts,
         exercise_uuid: str,
@@ -55,48 +87,58 @@ class WorkoutsRepository(BaseRepository):
     def create_exercise(
         *,
         workout: models.Workouts,
-        exercise: models.Exercises,
-        repetitions: int,
-        sets: int,
-        rest_period: int,
+        dto: WorkoutExerciseCreateDTO,
     ) -> models.WorkoutExercises:
-        return models.WorkoutExercises(
-            workout=workout,
-            exercise=exercise,
-            repetitions=repetitions,
-            sets=sets,
-            rest_period=rest_period,
-        )
+        return models.WorkoutExercises(workout=workout, **dto.to_dict())
 
     @classmethod
-    def remove_exercise_by_uuid(
+    def bulk_create_exercises(
         cls,
         *,
         workout: models.Workouts,
-        exercise_uuid: str,
+        exercises: list[WorkoutExerciseCreateDTO],
+    ) -> list[models.WorkoutExercises]:
+        workout_exercises = [
+            cls.create_exercise(
+                workout=workout,
+                dto=exercise,
+            )
+            for exercise in exercises
+        ]
+        models.WorkoutExercises.objects.bulk_create(workout_exercises)
+        return workout_exercises
+
+    @staticmethod
+    def remove_exercise(instance: models.WorkoutExercises) -> None:
+        instance.delete()
+
+    @classmethod
+    def update_exercise(
+        cls,
+        instance: models.WorkoutExercises,
+        *,
+        dto: WorkoutExerciseUpdateDTO,
     ) -> None:
-        workout_exercise = cls._get_exercise_by_uuid(
-            workout=workout,
-            exercise_uuid=exercise_uuid,
-        )
-        workout_exercise.delete()
+        instance(**dto.to_dict())
 
     @classmethod
-    def update_exercise_by_uuid(
+    def _update_exercise(
         cls,
-        *,
-        workout: models.Workouts,
-        exercise_uuid: str,
-        repetitions: int,
-        sets: int,
-        rest_period: int,
+        instance: models.WorkoutExercises,
+        dto: WorkoutExerciseUpdateDTO,
     ) -> models.WorkoutExercises:
-        workout_exercise = cls._get_exercise_by_uuid(
-            workout=workout,
-            exercise_uuid=exercise_uuid,
+        cls.update_exercise(instance, dto=dto)
+        return instance
+
+    @classmethod
+    def bulk_update_exercises(
+        cls,
+        excercises: list[tuple[models.WorkoutExercises, WorkoutExerciseUpdateDTO]],
+    ) -> None:
+        exercises_to_update = [
+            cls._update_exercise(instance=exercise, dto=dto)
+            for exercise, dto in excercises
+        ]
+        models.WorkoutExercises.objects.bulk_update(
+            exercises_to_update, fields=WorkoutExerciseUpdateDTO.get_field_names()
         )
-        workout_exercise.repetitions = repetitions
-        workout_exercise.sets = sets
-        workout_exercise.rest_period = rest_period
-        workout_exercise.save()
-        return workout_exercise
