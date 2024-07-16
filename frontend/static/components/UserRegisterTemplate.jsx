@@ -2,6 +2,7 @@ import React from 'react';
 import { UserRegisterForm } from './forms/UserRegisterForm';
 
 import '../styles/userRegistrationTemplate.css';
+import { TemplateContext } from './providers/TemplateContextProvider';
 
 /**
  * @param {*} props
@@ -9,19 +10,14 @@ import '../styles/userRegistrationTemplate.css';
  * @param {string} props.loginEndpoint
  * @returns {JSX.Element}
  */
-export function UserRegisterTemplate({ 
-    registerEndpoint,
-    loginEndpoint,
-    fitLifeLogo,
-}) {
+export function UserRegisterTemplate() {
+    const context = React.useContext(TemplateContext);
+
     return (
         <div className='container-fluid'>
-        <img src={fitLifeLogo} alt='FitLife Logo' className='fitlife-logo' />
+        <img src={context.images.fitLifeLogo} alt='FitLife Logo' className='fitlife-logo' />
             <div className='form-container col-lg-4'>
-                <UserRegisterForm
-                    registerEndpoint={registerEndpoint}
-                    loginEndpoint={loginEndpoint}    
-                />
+                <UserRegisterForm />
             </div>
         </div>    
     )

@@ -1,5 +1,4 @@
 from django import forms
-from django.db.models.query import QuerySet
 
 from app.core.repositories import BaseRepository
 from app.gym import models
@@ -43,8 +42,3 @@ class ExercisesRepository(BaseRepository):
     @staticmethod
     def delete(instance: models.Exercises) -> None:
         instance.delete()
-
-
-    @staticmethod
-    def list_all() -> QuerySet[models.Exercises]:
-        return models.Exercises.objects.all().values('uuid', 'name')

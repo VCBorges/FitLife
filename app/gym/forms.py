@@ -1,27 +1,44 @@
 from __future__ import annotations
 
-from typing import Any
-
 from django import forms
 
 from app.core import fields
-from app.core.forms import BaseForm, BaseUpdateForm
+from app.core.forms import BaseForm, BaseInstanceForm
+from app.gym import models
+from app.gym.repositories.workouts import (
+    WorkoutExerciseCreateDTO,
+    WorkoutExerciseUpdateDTO,
+)
 from app.gym.services.workouts import (
     create_workout,
-    get_workout_or_404,
+    delete_workout,
     update_workout,
-    validate_workouts_exercises_to_create,
 )
 
 
 class CreateWorkoutExerciseForm(BaseForm):
-    exercise_id = forms.UUIDField(required=True)
+    exercise_id = fields.ModelField(
+        required=True,
+        model_class=models.Exercises,
+    )
     sets = forms.IntegerField(required=True)
     repetitions = forms.IntegerField(required=True)
+    weight_in_kg = forms.IntegerField(required=True)
+    rest_period = forms.IntegerField(required=False)
+
+    def clean(self) -> WorkoutExerciseCreateDTO:
+        cleaned_data = super().clean()
+        return WorkoutExerciseCreateDTO(
+            exercise=cleaned_data.get('exercise_id', None),
+            sets=cleaned_data.get('sets', None),
+            repetitions=cleaned_data.get('repetitions', None),
+            weight_in_kg=cleaned_data.get('weight_in_kg', None),
+            rest_period=cleaned_data.get('rest_period', None),
+        )
 
 
 class CreateWorkoutForm(BaseForm):
-    name = fields.StrictCharField(required=True)
+    title = fields.StrictCharField(required=True)
     description = fields.StrictCharField(required=False)
     exercises = fields.ListField(
         children_field=fields.NestedFormField(
@@ -31,64 +48,66 @@ class CreateWorkoutForm(BaseForm):
     )
 
     def save(self) -> dict:
-        exercises, errors = validate_workouts_exercises_to_create(
-            self.cleaned_data['exercises']
-        )
-        if errors:
-            raise forms.ValidationError('Some error')
-
         workout = create_workout(
             user=self.request.user,
-            name=self.cleaned_data['name'],
+            title=self.cleaned_data['title'],
             description=self.cleaned_data['description'],
-            exercises=exercises,
+            exercises=self.cleaned_data['exercises'],
         )
         return {
             'workout_id': workout.uuid,
-            'name': workout.name,
+            'title': workout.title,
             'description': workout.description,
         }
 
 
 class UpdateWorkoutExerciseForm(forms.Form):
-    workout_exercise_id = forms.UUIDField(required=True)
-    exercise_id = forms.UUIDField(required=True)
+    workout_exercise_id = fields.ModelField(
+        required=True,
+        model_class=models.WorkoutExercises,
+    )
+    exercise_id = fields.ModelField(required=True, model_class=models.Exercises)
     repetitions = forms.IntegerField(required=True)
     sets = forms.IntegerField(required=True)
     rest_period = forms.IntegerField(required=True)
 
-    def clean(self) -> dict[str, Any]:
+    def clean(self) -> tuple[models.WorkoutExercises, WorkoutExerciseUpdateDTO]:
         cleaned_data = super().clean()
-        exercise_id = cleaned_data['exercise_id']
-        workout_exercise_id = cleaned_data['workout_exercise_id']
-        if not exercise_id or not workout_exercise_id:
-            raise forms.ValidationError('Invalid exercise or workout exercise id')
-        return cleaned_data
+        return WorkoutExerciseUpdateDTO(
+            instance=cleaned_data.get('workout_exercise_id', None),
+            exercise=cleaned_data.get('exercise_id', None),
+            sets=cleaned_data.get('sets', None),
+            repetitions=cleaned_data.get('repetitions', None),
+        )
 
 
-class ExercisesInUpdateForm(BaseForm):
-    to_create = fields.ListField(
+class ModifiedExercisesForm(BaseForm):
+    create = fields.ListField(
         children_field=fields.NestedFormField(
             form_class=CreateWorkoutExerciseForm,
         ),
     )
-    to_update = fields.ListField(
+    update = fields.ListField(
         children_field=fields.NestedFormField(
             form_class=UpdateWorkoutExerciseForm,
         ),
     )
+    delete = fields.ListField(
+        children_field=fields.ModelField(
+            model_class=models.WorkoutExercises,
+        ),
+    )
 
 
-class UpdateWorkoutForm(BaseUpdateForm):
+class UpdateWorkoutForm(BaseInstanceForm):
     name = forms.CharField(required=True)
     description = forms.CharField(required=False)
-    workout_has_changed = forms.BooleanField(required=False)
     exercises = fields.NestedFormField(
-        form_class=ExercisesInUpdateForm,
+        form_class=ModifiedExercisesForm,
         required=False,
     )
 
-    get_or_404_fn = get_workout_or_404
+    model_class = models.Workouts
 
     def save(self, *args, **kwargs):
         update_workout(
@@ -99,9 +118,16 @@ class UpdateWorkoutForm(BaseUpdateForm):
         )
 
 
-class CreateEquipment(BaseForm):
-    ...
+class DeleteWorkoutForm(BaseInstanceForm[models.Workouts]):
+    model_class = models.Workouts
+
+    def save(self):
+        delete_workout(self.instance)
 
 
-class CreateExerciseForm(BaseForm):
-    ...
+class CompleteWorkoutForm(BaseInstanceForm[models.Workouts]):
+    model_class = models.Workouts
+
+    def save(self):
+        ...
+        # workout_history = complete_workout(self.instance)

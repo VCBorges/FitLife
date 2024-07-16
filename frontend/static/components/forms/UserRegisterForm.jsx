@@ -13,6 +13,7 @@ import {
 
 
 import '../../styles/userRegistrationForm.css';
+import { TemplateContext } from '../providers/TemplateContextProvider';
 
 
 const userRegisterAtom = createFormStateAtom([
@@ -30,10 +31,9 @@ const userRegisterAtom = createFormStateAtom([
  * @param {string} props.registerEndApoint
  * @returns {JSX.Element}
  */
-export function UserRegisterForm({ 
-    registerEndpoint,
-    loginEndpoint,
-}) {
+export function UserRegisterForm() {
+    const context = React.useContext(TemplateContext);
+
     const [userState, setUserState] = useAtom(userRegisterAtom);
 
     const handleChange = (e) => {
@@ -48,7 +48,7 @@ export function UserRegisterForm({
         e.stopPropagation();
 
         await makeRequest({
-            url: registerEndpoint,
+            url: context.endpoints.register,
             method: 'POST',
             body: { 
                 username: userState.username.value, 
@@ -77,7 +77,7 @@ export function UserRegisterForm({
     };
 
     const handleLoginBtnClick = () => {
-        window.location.href = loginEndpoint;
+        window.location.href = context.endpoints.login;
     }
 
     return (
@@ -119,7 +119,7 @@ export function UserRegisterForm({
                 errorMessage={userState.password.error}
             />
             <BaseInput
-                label="Confirmar Senha"
+                label="Confirmar senha"
                 type="password"
                 name="password2"
                 placeholder='Confirme sua senha'
@@ -129,7 +129,7 @@ export function UserRegisterForm({
                 errorMessage={userState.password2.error}
             />
             <BaseInput
-                label="Primeiro Nome"
+                label="Primeiro nome"
                 type="text"
                 name="first_name"
                 placeholder='Digite seu primeiro nome'
@@ -149,7 +149,7 @@ export function UserRegisterForm({
                 errorMessage={userState.last_name.error}
             />
             <BaseInput
-                label="Data de Nascimento"
+                label="Data de nascimento"
                 type="date"
                 name="birth_date"
                 placeholder='Digite sua data de nascimento'

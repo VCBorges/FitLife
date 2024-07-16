@@ -5,6 +5,7 @@ import { CreateWorkoutForm } from './forms/CreateWorkoutForm/CreateWorkoutForm';
 
 import '../styles/WorkoutTemplate.css';
 import { BaseSelectInput } from './selects/BaseSelectInput/BaseSelectInput';
+import { WorkoutsTable } from './tables/WorkoutsTable/WorkoutsTable';
 
 /**
  * @param {*} props
@@ -14,7 +15,7 @@ import { BaseSelectInput } from './selects/BaseSelectInput/BaseSelectInput';
  */
 export function WorkoutTemplate() {
     const context = React.useContext(TemplateContext);
-    console.log(context);
+
     return (
         <>
             <NavBar
@@ -22,6 +23,7 @@ export function WorkoutTemplate() {
                 fitLifeLogo={context.images.fitLifeLogo}
             />
             <div className="template-body">
+                <WorkoutsTable workouts={context.data.user_workouts} />
                 <CreateWorkoutForm
                     createWorkoutEndpoint={context.endpoints.createWorkout}
                 />

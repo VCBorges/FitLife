@@ -1,54 +1,46 @@
-from abc import ABC, abstractmethod, abstractstaticmethod
-from dataclasses import asdict, astuple, dataclass, fields
-from typing import TypeVar
+from typing import Generic, Type
 
-from django.db import models
-
-from app.core.utils.common import remove_dict_none_values
-
-T = TypeVar('T', bound=models.Model)
+from app.core.types import CreateDTOType, ModelType, UpdateDTOType
+from app.core.utils import db
 
 
-@dataclass
-class BaseDTO:
-    def to_dict(self):
-        return remove_dict_none_values(asdict(self))
+class BaseRepository(Generic[ModelType, CreateDTOType, UpdateDTOType]):
+    model_class: Type[ModelType]
 
-    def to_tuple(self):
-        return tuple(filter(lambda x: x is not None), astuple(self))
+    def __repr__(self) -> str:
+        return f'<{self.__class__.__name__} model_class={self.model_class}>'
 
     @classmethod
-    def get_field_names(cls) -> tuple[str]:
-        """Return a tuple with all the field names of the dataclass.
+    def get_by_id(cls, id: int) -> ModelType:
+        return db.get_by_id(
+            model=cls.model_class,
+            id=id,
+        )
 
-        Returns:
-            tuple: A tuple containing all the field names.
-        """
-        return tuple(field.name for field in fields(cls))
+    @classmethod
+    def get_by_uuid(cls, uuid: str) -> ModelType:
+        return db.get_by_uuid(
+            model=cls.model_class,
+            uuid=uuid,
+        )
 
+    @classmethod
+    def get_by_uuid_or_400(cls, uuid: str) -> ModelType:
+        return db.get_by_uuid_or_400(
+            cls.model_class,
+            uuid=uuid,
+        )
 
-class BaseRepository(ABC):
-    @staticmethod
-    @abstractmethod
-    def get_by_id(id: int) -> T:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def get_by_uuid(uuid: str) -> T:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def create(**kwargs) -> T:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def update(instance: int, **kwargs) -> None:
-        pass
+    @classmethod
+    def create(cls, dto: CreateDTOType) -> ModelType:
+        return db.create(model=cls.model_class, dto=dto)
 
     @staticmethod
-    @abstractmethod
-    def delete(self, instance: T) -> None:
-        pass
+    def update(
+        dto: UpdateDTOType,
+    ) -> None:
+        db.update(dto)
+
+    @staticmethod
+    def delete(instance: ModelType) -> None:
+        instance.delete()

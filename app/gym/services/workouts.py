@@ -1,122 +1,111 @@
-from django import forms
+from django.db import transaction
 
 from app.gym import models
-from app.gym.repositories.exercises import ExercisesRepository
+from app.gym.repositories.workout_history import (
+    WorkoutsHistoryCreateDTO,
+    WorkoutsHistoryExercisesCreateDTO,
+    WorkoutsHistoryRepository,
+)
 from app.gym.repositories.workouts import (
+    WorkoutCreateDTO,
     WorkoutExerciseCreateDTO,
-    WorkoutExerciseUpdateDTO,
     WorkoutsRepository,
     WorkoutUpdateDTO,
 )
+from app.gym.types import UpdateWorkoutExercisesDict
 from app.users.models import Users
-
-
-def get_workout_or_404(uuid: str) -> models.Workouts:
-    try:
-        return WorkoutsRepository.get_by_uuid(uuid)
-    except models.Workouts.DoesNotExist:
-        raise forms.ValidationError('Workout not found')
-
-
-def get_workout_exercise_by_uuid_or_404(
-    *,
-    workout: models.Workouts,
-    exercise_uuid: str,
-) -> models.WorkoutExercises:
-    try:
-        return WorkoutsRepository.get_exercise_by_uuid(
-            workout=workout,
-            exercise_uuid=exercise_uuid,
-        )
-    except models.WorkoutExercises.DoesNotExist:
-        raise forms.ValidationError('Workout exercise not found')
 
 
 def create_workout(
     *,
-    name: str,
     user: Users,
-    exercises: list[WorkoutExerciseCreateDTO] | None = None,
+    title: str,
     description: str | None = None,
+    exercises: list[WorkoutExerciseCreateDTO] | None = None,
 ) -> models.Workouts:
-    workout = WorkoutsRepository.create(
-        name=name,
-        user=user,
-        description=description,
-    )
-    workout.save()
-    if exercises:
-        WorkoutsRepository.bulk_create_exercises(
-            workout=workout,
-            dtos=exercises,
+    with transaction.atomic():
+        workout = WorkoutsRepository.create(
+            WorkoutCreateDTO(
+                user=user,
+                title=title,
+                description=description,
+            )
         )
-    return workout
-
-
-def add_exercises_to_workout(
-    *,
-    workout: models.Workouts,
-    exercises: list[WorkoutExerciseCreateDTO],
-) -> models.WorkoutExercises:
-    workout_exercises = [
-        WorkoutsRepository.create_exercise(
-            workout=workout,
-            dto=exercise,
-        )
-        for exercise in exercises
-    ]
-    models.WorkoutExercises.objects.bulk_create(workout_exercises)
-    return workout_exercises
-
-
-def add_exercise_to_workout(
-    *,
-    workout: models.Workouts,
-    exercise: models.Exercises,
-) -> models.WorkoutExercises:
-    workout_exercise = WorkoutsRepository.create_exercise(
-        workout=workout,
-        dto=WorkoutExerciseCreateDTO(
-            exercise=exercise,
-        ),
-    )
-    workout_exercise.save()
-    return workout_exercise
+        if exercises:
+            WorkoutsRepository.bulk_create_exercises(
+                workout=workout,
+                exercises=exercises,
+            )
+        return workout
 
 
 def update_workout(
     *,
     workout: models.Workouts,
-    name: str,
+    name: str | None = None,
     description: str | None = None,
-    excercises: list[tuple[models.WorkoutExercises, WorkoutExerciseUpdateDTO]],
+    exercises: UpdateWorkoutExercisesDict | None = None,
 ) -> None:
-    WorkoutsRepository.update(
-        workout,
-        dto=WorkoutUpdateDTO(
-            name=name,
-            description=description,
-        ),
-    )
-    WorkoutsRepository.bulk_update_exercises(excercises)
+    with transaction.atomic():
+        WorkoutsRepository.update(
+            WorkoutUpdateDTO(
+                instance=workout,
+                title=name,
+                description=description,
+            ),
+        )
 
+        if not exercises:
+            return
 
-def validate_workouts_exercises_to_create(
-    exercises: list[dict[str, str | int]],
-) -> tuple[list[WorkoutExerciseCreateDTO], list[dict[str, str | int]]]:
-    exercises_to_create = []
-    exercises_with_error = []
-    for exercise in exercises:
-        try:
-            exercises_to_create.append(
-                WorkoutExerciseCreateDTO(
-                    exercise=ExercisesRepository.get_by_uuid_or_400(
-                        exercise['exercise_id']
-                    ),
-                    sets=exercise['sets'],
-                    repetitions=exercise['repetitions'],
-                )
+        if 'create' in exercises:
+            WorkoutsRepository.bulk_create_exercises(
+                workout=workout,
+                exercises=exercises['create'],
             )
-        except forms.ValidationError:
-            exercises_with_error.append(exercise)
-    return (exercises_to_create, exercises_with_error)
+        if 'update' in exercises:
+            WorkoutsRepository.bulk_update_exercises(
+                exercises=exercises['update'],
+            )
+        if 'delete' in exercises:
+            WorkoutsRepository.bulk_delete_exercises(
+                exercises=exercises['delete'],
+            )
+
+
+def delete_workout(workout: models.Workouts) -> None:
+    with transaction.atomic():
+        workout_exercises = workout.exercises.all()
+        workout_exercises.delete()
+        workout.delete()
+
+
+def complete_workout(
+    workout: models.Workouts,
+) -> models.WorkoutHistory:
+    with transaction.atomic():
+        workout_history = WorkoutsHistoryRepository.create(
+            WorkoutsHistoryCreateDTO(workout=workout)
+        )
+        workout_exercises = workout.exercises.all()
+        workout_history_exercises = [
+            WorkoutsHistoryExercisesCreateDTO(workout_exercise=exercise)
+            for exercise in workout_exercises
+        ]
+        WorkoutsHistoryRepository.bulk_create_exercises(
+            workout_history=workout_history,
+            exercises=workout_history_exercises,
+        )
+    return workout_history
+
+
+def uncomplete_workout(
+    workout_history: models.WorkoutHistory,
+) -> None:
+    with transaction.atomic():
+        exercises = workout_history.exercises.all()
+        WorkoutsHistoryRepository.bulk_delete_exercises(
+            workout_history=workout_history,
+            exercises=exercises,
+        )
+        workout_history.delete()

@@ -2,16 +2,15 @@ import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { UserRegisterTemplate } from '../components/UserRegisterTemplate.jsx';
+import { TemplateContextProvider } from '../components/providers/TemplateContextProvider.jsx';
 
 const root = createRoot(document.getElementById('root'));
-const endpoints = JSON.parse(document.getElementById('endpoints-id').textContent);
-const images = JSON.parse(document.getElementById('images-id').textContent);
+const context = JSON.parse(document.getElementById('context-id').textContent);
+
 root.render(
     <StrictMode>
-        <UserRegisterTemplate
-            registerEndpoint={endpoints.register}
-            loginEndpoint={endpoints.login}
-            fitLifeLogo={images.fitlifeLogo}
-        />
+        <TemplateContextProvider value={context}>
+            <UserRegisterTemplate/>
+        </TemplateContextProvider>
     </StrictMode>   
 );

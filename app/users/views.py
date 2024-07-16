@@ -20,11 +20,12 @@ from . import forms
 
 
 class LoginTemplateView(LoggedOutTemplateView):
-    template_name = 'core/login.html'
+    title = 'Login'
+    bundle = 'login-bundle.js'
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context['endpoints'] = {
+        context['context']['endpoints'] = {
             'login': reverse('login'),
             'register': reverse('user_register_template'),
         }
@@ -32,15 +33,17 @@ class LoginTemplateView(LoggedOutTemplateView):
 
 
 class UserTemplateView(AuthenticatedTemplateView):
-    template_name = 'users/user.html'
+    title = 'Usuário'
+    bundle = 'user-bundle.js'
 
 
 class RegisterTemplateView(LoggedOutTemplateView):
-    template_name = 'users/user_registration.html'
+    title = 'Cadastro de usuário'
+    bundle = 'userRegistration-bundle.js'
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context['endpoints'] = {
+        context['context']['endpoints'] = {
             'register': reverse('user_register'),
             'login': reverse('login_template'),
         }

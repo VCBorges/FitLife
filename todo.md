@@ -1,32 +1,20 @@
 # Todo
 
+## Client side
+
 ## Application
-- [ ] Create custom Ulid model field
-- [ ] Create a form field to support nested data
-- [ ] NestedFormField
-    - [ ] Tests
-- [ ] ListField
-    - [ ] Tests
-
-## Features
-- [x] Create workout 
-    - [x] Component
-        - [ ] Create exercie form section
-            - [ ] styles
-    - [x] Form
-    - [x] View
-    - [x] Service
-    - [x] Tests
-- [ ] Update workout
-    - [ ] Component
-    - [ ] Form
-    - [ ] View
-    - [ ] Service
-    - [ ] Tests
-
-
-## Domain
-- [] Create diferent types of users: member and instructor
+- [ ] Create a template tag to control production static files
+- [ ] Create a logger
+- [ ] Create custom ULID model field
+- [x] Create a form field to support nested data
+- [x] NestedFormField
+- [x] ListField
+- [ ] Front-end handle both client-side and server-side validation messages
+- [ ] Add a library to CSS-in-JS (SASS)
+- [ ] Create diferent types of users: member and instructor
+- [ ] List workouts
+- [ ] ProcessingError to have propertys: status_code, message and params
+- [ ] Learn how to optimize read queries
 
 
 

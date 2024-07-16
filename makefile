@@ -27,8 +27,8 @@ migrations:
 migrate:
 	python manage.py migrate
 
-.PHONY: run-db
-run-db:
+.PHONY: rundb
+rundb:
 	docker start postgres-fitlife
 
 

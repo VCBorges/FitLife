@@ -3,13 +3,12 @@ from datetime import datetime
 from django import forms
 from django.urls import reverse
 
+from app.core.forms import BaseForm
+from app.core.utils.date import get_current_year
+from app.core.utils.string import has_special_characters
+from app.users import utils
+from app.users.models import Users
 from app.users.services.users import create_user
-
-from ..core.forms import BaseForm
-from ..core.utils.date import get_current_year
-from ..core.utils.string import has_special_characters
-from . import utils
-from .models import Users
 
 from validate_docbr import CPF
 

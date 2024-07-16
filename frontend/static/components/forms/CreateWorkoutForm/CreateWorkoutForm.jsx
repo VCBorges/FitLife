@@ -2,110 +2,99 @@ import React from "react";
 import { BaseInput } from "../../inputs/BaseInput";
 import { BaseButton } from "../../buttons/BaseButton";
 import { makeRequest } from "../../../utils/requests";
-import { useAtom } from "jotai";
 import { BaseTextArea } from "../../inputs/BaseTextArea/BaseTextArea";
-import { atom } from "jotai";
-import { CreateWorkoutExerciseFormSection } from "../CreateWorkoutExerciseFormSection/CreateWorkoutExerciseFormSection";
-import { 
-    createFormStateAtom, 
-    createFormStateKey,
-    handleFormErrors, 
-    handleFormInputChange 
-} from "../../../utils/atoms";
+import { useForm, useFieldArray } from 'react-hook-form';
 
 import "./CreateWorkoutForm.css";
+import { TemplateContext } from "../../providers/TemplateContextProvider";
+import { BaseSelectInput } from "../../selects/BaseSelectInput/BaseSelectInput";
 
-
-const createWorkoutFormAtom = atom({
-    name: createFormStateKey(),
-    description: createFormStateKey(),
-    __all__: createFormStateKey(),
-    exercises: [],
-});
 
 export function CreateWorkoutForm({ createWorkoutEndpoint }) {
-    const [createWorkoutState, setCreateWorkoutState] = useAtom(createWorkoutFormAtom);
+    const context = React.useContext(TemplateContext);
+    const { 
+        register, 
+        control, 
+        handleSubmit, 
+        setError,
+        clearErrors,
+        formState: { errors } 
+    } = useForm({
+        defaultValues: {
+            name: '',
+            description: '',
+            exercises: []
+        }
+    });
 
-    const handleChange = (e) => {
-        handleFormInputChange({
-            event: e,
-            setStateAction: setCreateWorkoutState,
+    const { 
+        fields, 
+        append, 
+        remove,
+    } = useFieldArray({
+        control,
+        name: "exercises",
+        shouldUnregister: true, // Make sure to unregister fields on remove
+        excludeKeys: ['id']
+    });
+
+
+    const addExercise = () => {
+        append({
+            // id: Date.now(),
+            exercise_id: '',
+            sets: 0,
+            repetitions: 0
         });
     };
 
-    const addExercise = () => {
-        setCreateWorkoutState((prevState) => ({
-            ...prevState,
-            exercises: [
-                ...prevState.exercises,
-                { 
-                    id: Date.now(), 
-                    exercise_id: '', 
-                    sets: 0,
-                    repetitions: 0
-                },
-            ],
-        }));
-    };
+    const onSubmit = async (data) => {
+        clearErrors();
+        const { exercises, ...rest } = data;
+        const sanitizedExercises = exercises.map(({ id, ...exercise }) => exercise);
 
-    const handleExerciseChange = (id, e) => {
-        const { name, value } = e.target;
-        setCreateWorkoutState((prevState) => ({
-          ...prevState,
-          exercises: prevState.exercises.map((exercise) =>
-            exercise.id === id ? { ...exercise, [name]: value } : exercise
-          ),
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        const sanitizedData = {
+            ...rest,
+            exercises: sanitizedExercises,
+        };
 
         await makeRequest({
             url: createWorkoutEndpoint,
             method: 'POST',
-            body: {
-                name: createWorkoutState.name.value,
-                description: createWorkoutState.description.value,
-                exercises: createWorkoutState.exercises,
+            body: sanitizedData,
+            onSuccess: (response) => {
             },
-            headers: {
-                'X-CSRFToken': getCookie('csrftoken'),
-            },
-            onSuccess: (data) => {
-                // window.location.href = data.redirect_url;
-            },
-            onError: (data) => {
-                const errors = data.errors;
-                handleFormErrors({
-                    errors: errors,
-                    setStateAction: setCreateWorkoutState,
+            onError: (response) => {
+                Object.keys(response.errors).forEach(key => {
+                    setError(key, {
+                        type: "server",
+                        message: response.errors[key][0]  // Assuming each field errors are in arrays
+                    });
                 });
             },
         });
     };
 
     return (
-        <form className="create-workout-form" onSubmit={handleSubmit}>
+        <form 
+            className="create-workout-form" 
+            onSubmit={handleSubmit(onSubmit)}
+        >
             <BaseInput
                 label="Nome"
                 name="name"
                 type="text"
-                value={createWorkoutState.name.value}
-                onChange={handleChange}
                 placeholder="Nome"
-                errorMessage={createWorkoutState.name.error}
                 required={true}
+                register={register}
+                errorMessage={errors.name && errors.name.message}
             />
             <BaseTextArea
                 label="Descrição"
                 name="description"
                 type="text"
-                value={createWorkoutState.description.value}
-                onChange={handleChange}
                 placeholder="Descrição"
-                errorMessage={createWorkoutState.description.error}
+                register={register}
             />
             <BaseButton
                 type="button"
@@ -113,18 +102,42 @@ export function CreateWorkoutForm({ createWorkoutEndpoint }) {
                 text="+ Exercicio"
                 onClick={addExercise}
             />
-            {createWorkoutState.exercises.map((exercise, index) => (
-                <CreateWorkoutExerciseFormSection
-                    key={exercise.id}
-                    exercise={exercise}
-                    index={index}
-                    onExerciseChange={handleExerciseChange}
-                />
+            {fields.map((exercise, index) => (
+                <div key={exercise.id}>
+                    <BaseSelectInput
+                        label="Exercício"
+                        options={context.selectOptions.exercises}
+                        name={`exercises[${index}].exercise_id`}
+                        register={register}
+                    />
+                    <BaseInput
+                        label="Séries"
+                        name={`exercises[${index}].sets`}
+                        type="number"
+                        required={true}
+                        register={register}
+                    />
+                    <BaseInput
+                        label="Repetições"
+                        name={`exercises[${index}].repetitions`}
+                        type="number"
+                        required={true}
+                        register={register}
+                    />
+                    <BaseInput
+                        label="Pesos (Kg)"
+                        name={`exercises[${index}].weight_in_kg`}
+                        type="number"
+                        required={true}
+                        register={register}
+                    />
+                </div>
             ))}
             <BaseButton
                 type="submit"
                 classes={['btn-primary', 'btn-blue']}
                 text="Criar Treino"
+                onClick={() => console.log(errors)}
             />
         </form>
     );

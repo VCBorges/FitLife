@@ -1,5 +1,9 @@
 import React from 'react';
 import { BaseButton } from '../buttons/BaseButton';
+import { getCookie } from '../../utils/requests';
+
+
+
 
 export function LogoutForm({
     logoutEndpoint,

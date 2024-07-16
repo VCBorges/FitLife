@@ -13,7 +13,8 @@ export function BaseTextArea({
     readOnly = false,
     required = false,
     autoComplete = '',
-    errorMessage = ''
+    errorMessage = '',
+    register,
 }) {
     classes.push('form-control')
     classes.push('base-text-area')
@@ -33,6 +34,9 @@ export function BaseTextArea({
                 readOnly={readOnly}
                 required={required}
                 autoComplete={autoComplete}
+                {...register(name, {
+                    required: required
+                })}
             />
             <div className='base-text-area-error-message'>
                 {errorMessage}

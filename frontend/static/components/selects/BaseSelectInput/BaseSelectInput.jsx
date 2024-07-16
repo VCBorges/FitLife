@@ -2,6 +2,21 @@ import React from "react";
 
 import './BaseSelectInput.css'
 
+/**
+ * BaseSelectInput component
+ * @param {{
+ * name: string,
+ * label: string,
+ * value: string,
+ * options: {value: string, label: string}[],
+ * onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
+ * required: boolean,
+ * disabled: boolean,
+ * classes: string,
+ * register: function,
+ * }} props
+ * @returns {JSX.Element}
+ */
 export function BaseSelectInput({
     name,
     label,
@@ -11,6 +26,7 @@ export function BaseSelectInput({
     required = false,
     disabled = false,
     classes = '',
+    register,
 }) {
     return (
         <div className="form-group base-select-label">
@@ -23,6 +39,7 @@ export function BaseSelectInput({
                 onChange={onChange}
                 required={required}
                 disabled={disabled}
+                {...register(name, {required: required})}
             >
                 {options.map((option, index) => {
                     return (

@@ -1,37 +1,34 @@
-from typing import Any, TypeVar
+from typing import Any
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db import models
 from django.http import HttpResponseRedirect
 from django.templatetags.static import static
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, View
 
-from app.core import viewsmixins as mixins
+from app.core.mixins import views
 from app.core.protocols import AuthenticatedRequest
-
-T = TypeVar('T', bound=models.Model)
 
 
 class AuthenticatedFormView(
     LoginRequiredMixin,
-    mixins.BaseFormViewMixin,
+    views.BaseFormViewMixin,
     View,
 ):
     request: AuthenticatedRequest
 
 
-class AuthenticatedUpdateFormView(
+class AuthenticatedInstanceFormView(
     LoginRequiredMixin,
-    mixins.BaseUpdateFormViewMixin,
+    views.BaseInstanceFormViewMixin,
     View,
 ):
     request: AuthenticatedRequest
 
 
 class LoggedOutFormView(
-    mixins.BaseFormViewMixin,
+    views.BaseFormViewMixin,
     View,
 ):
     pass
@@ -39,9 +36,11 @@ class LoggedOutFormView(
 
 class AuthenticatedTemplateView(
     LoginRequiredMixin,
-    mixins.BaseContextTemplateViewMixin,
+    views.BaseTemplateViewMixin,
     TemplateView,
 ):
+    request: AuthenticatedRequest
+
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context['context'] = {
@@ -61,7 +60,7 @@ class AuthenticatedTemplateView(
 
 
 class LoggedOutTemplateView(
-    mixins.BaseContextTemplateViewMixin,
+    views.BaseTemplateViewMixin,
     TemplateView,
 ):
     def dispatch(self, request, *args, **kwargs):
@@ -69,3 +68,16 @@ class LoggedOutTemplateView(
             redirect_to = reverse_lazy(settings.LOGIN_REDIRECT_URL)
             return HttpResponseRedirect(redirect_to)
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['context'] = {
+            'endpoints': {
+                'templates': {},
+            },
+            'images': {
+                'fitLifeLogo': static('public/images/fitlife_logo.jpeg'),
+            },
+            'data': {},
+        }
+        return context

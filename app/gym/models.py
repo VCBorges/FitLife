@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from app.core.models import BaseModel
+from app.users.models import Users
 
 
 class MuscleGroups(BaseModel):
@@ -21,8 +22,8 @@ class MuscleGroups(BaseModel):
 
 
 class Equipments(BaseModel):
-    name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa
+    name = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)  # ruff: noqa
 
     class Meta:
         db_table = 'equipments'
@@ -35,8 +36,8 @@ class Equipments(BaseModel):
 
 
 class Exercises(BaseModel):
-    name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa
+    name = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)  # ruff: noqa
     primary_muscle = models.ForeignKey(
         'gym.MuscleGroups',
         on_delete=models.SET_NULL,
@@ -64,13 +65,20 @@ class Exercises(BaseModel):
 
 
 class Workouts(BaseModel):
-    name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa
-    user = models.ForeignKey(
+    title = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)  # ruff: noqa
+    user: Users = models.ForeignKey(
         'users.Users',
         on_delete=models.CASCADE,
         null=True,
         blank=True,
+    )
+    created_by: Users = models.ForeignKey(
+        'users.Users',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='created_by',
     )
 
     class Meta:
@@ -79,20 +87,46 @@ class Workouts(BaseModel):
         verbose_name_plural = 'Workouts'
         default_related_name = 'workouts'
 
+    def __repr__(self) -> str:
+        return f'<{self.__class__.__name__} {self.title}>'
 
+    @property
+    def exercises(self) -> models.QuerySet[WorkoutExercises]:
+        return self.workout_exercises
+
+
+# TODO: Fix the plural name to <Histories>
 class WorkoutHistory(BaseModel):
-    name = models.CharField(_('name'), max_length=255, null=True, blank=True)
-    description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa
-    workout = models.ForeignKey('gym.Workouts', on_delete=models.CASCADE)
-    finished_at = models.DateTimeField(_('finished at'), null=True, blank=True)
-    duration = models.DurationField(_('duration'))
-    calories = models.FloatField(_('calories'))
+    user = models.ForeignKey(
+        'users.Users',
+        on_delete=models.DO_NOTHING,
+        null=True,
+        blank=True,
+    )
+    title = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)  # ruff: noqa
+    workout = models.ForeignKey(
+        'gym.Workouts',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+    completed_at = models.DateTimeField(null=True, blank=True)
+    # duration = models.DurationField()
+    # calories = models.IntegerField(null=True, blank=True)
 
     class Meta:
         db_table = 'workout_history'
         verbose_name = 'Workout History'
         verbose_name_plural = 'Workout Historys'
         default_related_name = 'workout_history'
+
+    def __repr__(self) -> str:
+        return f'<{self.__class__.__name__} {self.title} {self.completed_at}>'
+
+    @property
+    def exercises(self) -> models.QuerySet[WorkoutHistoryExercises]:
+        return self.workout_history_exercises
 
 
 class WorkoutExercises(BaseModel):
@@ -110,34 +144,14 @@ class WorkoutExercises(BaseModel):
     )
     repetitions = models.PositiveIntegerField(null=True)
     sets = models.PositiveIntegerField(null=True)  # series
-    rest_period = models.DurationField(null=True)
+    weight_in_kg = models.IntegerField(null=True)
+    rest_period = models.IntegerField(null=True)
 
     class Meta:
-        db_table = 'workout_efrom django.utils.translation import gettext_lazy as _xercises'
+        db_table = 'workout_exercises'
         verbose_name = 'Workout Exercise'
         verbose_name_plural = 'Workouts Exercises'
         default_related_name = 'workout_exercises'
-
-
-class ExerciseMuscleGroups(BaseModel):
-    exercise = models.ForeignKey(
-        'gym.Exercises',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-    muscle_group = models.ForeignKey(
-        'gym.MuscleGroups',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-
-    class Meta:
-        db_table = 'exercise_muscle_groups'
-        verbose_name = 'Exercise Muscle Group'
-        verbose_name_plural = 'Exercise Muscle Groups'
-        default_related_name = 'exercise_muscle_groups'
 
 
 class WorkoutHistoryExercises(BaseModel):
@@ -155,7 +169,10 @@ class WorkoutHistoryExercises(BaseModel):
     )
     repetitions = models.PositiveIntegerField(null=True)
     sets = models.PositiveIntegerField(null=True)  # series
-    rest_period = models.DurationField(null=True)
+    exercise_name = models.CharField(max_length=255, null=True, blank=True)
+    weight_in_kg = models.IntegerField(null=True)
+    rest_period = models.IntegerField(null=True)
+    # rest_period = models.DurationField(null=True)
 
     class Meta:
         db_table = 'workout_history_exercises'
@@ -163,26 +180,24 @@ class WorkoutHistoryExercises(BaseModel):
         verbose_name_plural = 'Workout History Exercises'
         default_related_name = 'workout_history_exercises'
 
-    # def __str__(self):
-    #     return self.name
+    # class GymMember(BaseModel):
+    ...
 
+    # class GymInstructor(BaseModel):
+    ...
+    # user = models.ForeignKey(
+    #     'users.Users',
+    #     on_delete=models.CASCADE,
+    #     null=True,
+    #     blank=True,
+    # )
+    # gym = models.ForeignKey(
+    #     'users.Gym',
+    #     on_delete=models.CASCADE,
+    #     null=True,
+    #     blank=True,
+    # )
+    # instructor_type = models.CharField(max_length=255)
 
-class EquipmentMuscleGroups(BaseModel):
-    equipment = models.ForeignKey(
-        'gym.Equipments',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-    muscle_group = models.ForeignKey(
-        'gym.MuscleGroups',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-
-    class Meta:
-        db_table = 'equipment_muscle_groups'
-        verbose_name = 'Equipment Muscle Group'
-        verbose_name_plural = 'Equipment Muscle Groups'
-        default_related_name = 'equipment_muscle_groups'
+    # class Meta:
+    #

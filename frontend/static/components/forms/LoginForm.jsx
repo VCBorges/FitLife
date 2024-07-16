@@ -12,6 +12,7 @@ import {
 
 
 import '../../styles/loginForm.css';
+import { TemplateContext } from '../providers/TemplateContextProvider';
 
 
 const loginFormAtom = createFormStateAtom([
@@ -27,10 +28,9 @@ const loginFormAtom = createFormStateAtom([
  * @param {string} props.endpoint
  * @returns {JSX.Element}
  */
-export function LoginForm({ 
-    loginEndpoint,
-    registerEndpoint,
-}) {
+export function LoginForm() {
+    const context = React.useContext(TemplateContext);
+
     const [loginState, setLoginState] = useAtom(loginFormAtom);
 
     const handleChange = (e) => {
@@ -46,14 +46,11 @@ export function LoginForm({
         e.stopPropagation();
 
         await makeRequest({
-            url: loginEndpoint,
+            url: context.endpoints.login,
             method: 'POST',
             body: { 
                 username: loginState.username.value,
                 password: loginState.password.value,
-            },
-            headers: {
-                'X-CSRFToken': getCookie('csrftoken'),
             },
             onSuccess: (data) => {
                 window.location.href = data.redirect_url
@@ -64,14 +61,12 @@ export function LoginForm({
                     errors, 
                     setStateAction: setLoginState, 
                 });
-                console.log(errors)
-                console.log(loginState)
             },
         })
     };
 
     const handleRegistrationBtnClick = () => {
-        window.location.href = registerEndpoint;
+        window.location.href = context.endpoints.register;
     }
 
     return (

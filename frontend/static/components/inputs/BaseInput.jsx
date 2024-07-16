@@ -2,18 +2,20 @@ import React from 'react';
 
 import '../../styles/baseInput.css';
 /**
- * BaseInput
- * @param {object} props
- * @param {string} props.label
- * @param {string} props.type
- * @param {string} props.nwame
- * @param {string} props.placeholder
- * @param {string} props.value
- * @param {function} props.onChange
- * @param {string[]} props.classes
- * @param {boolean} props.readOnly
- * @param {boolean} props.required
- * @param {string} props.autoComplete
+ * @param {{
+ *      label: string,
+ *      type: string,
+ *      name: string,   
+ *      placeholder: string,
+ *      value: string,
+ *      onChange: function,
+ *      classes: string[],
+ *      readOnly: boolean,
+ *      required: boolean,
+ *      autoComplete: string,
+ *      errorMessage: string,
+ *      register: function
+ * }} props
  * @returns {JSX.Element}
  */
 export function BaseInput({ 
@@ -28,7 +30,7 @@ export function BaseInput({
     required = false,
     autoComplete = '',
     errorMessage = '',
-    // ref = null
+    register = () => {},
 }) {
     classes.push('form-control');
     classes.push('base-input');
@@ -48,9 +50,13 @@ export function BaseInput({
                 placeholder={placeholder} 
                 onChange={onChange} 
                 readOnly={readOnly}
-                required={required}
                 autoComplete={autoComplete}
-                // ref={ref}
+                {...register(name, {
+                    required: {
+                        value: required,
+                        message: `O campo ${label.toLowerCase()} é obrigatório`
+                    }
+                })}
             />
             <div className='base-input-error-message'>
                 {errorMessage}

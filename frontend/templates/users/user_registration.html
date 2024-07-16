@@ -6,7 +6,6 @@
 {% endblock content %}
 
 {% block js %}
-{{ endpoints|json_script:'endpoints-id' }}
-{{ images | json_script:'images-id' }}
+{{ context | json_script:'context-id' }}
 <script src="{% static 'bundles/userRegistration-bundle.js' %}"></script>
 {% endblock js %}

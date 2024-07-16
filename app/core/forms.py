@@ -1,6 +1,7 @@
 from django import forms
 
-from app.core import formsmixins as mixins
+from app.core.mixins import forms as mixins
+from app.core.types import ModelType
 
 
 class BaseForm(
@@ -11,8 +12,8 @@ class BaseForm(
         raise NotImplementedError
 
 
-class BaseUpdateForm(
-    mixins.BaseUpdateFormMixin,
+class BaseInstanceForm(
+    mixins.BaseInstanceFormMixin[ModelType],
     forms.Form,
 ):
     def save(self, *args, **kwargs):

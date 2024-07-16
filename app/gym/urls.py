@@ -2,10 +2,12 @@ from django.urls import path
 
 from . import views
 
+urlpatterns = []
+
 workout_urlpatterns = [
     path(
         'workouts/',
-        views.WorkoutTemplateView.as_view(),
+        views.CreateWorkoutTemplateView.as_view(),
         name='workout_template',
     ),
     path(
@@ -25,5 +27,4 @@ workout_urlpatterns = [
     # ),
 ]
 
-urlpatterns = []
 urlpatterns += workout_urlpatterns
