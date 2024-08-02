@@ -1,0 +1,9 @@
+class UserService:
+    def create_user(self, user_data):
+        ...
+
+    def update_user(self, user_data):
+        ...
+
+    def delete_user(self, user_data):
+        ...
