@@ -29,7 +29,7 @@ migrate:
 
 .PHONY: rundb
 rundb:
-	docker start postgres-fitlife
+	docker start fitlife-database
 
 
 .PHONY: shell

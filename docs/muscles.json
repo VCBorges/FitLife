@@ -1,0 +1,192 @@
+{
+    "abdominals": {
+        "en": {
+            "name": "abdominals",
+            "description": "Muscles located in the front of the abdomen that help in flexing the spine."
+        },
+        "pt": {
+            "name": "abdominais",
+            "description": "Músculos localizados na parte frontal do abdômen que ajudam na flexão da coluna."
+        }
+    },
+    "abductors": {
+        "en": {
+            "name": "abductors",
+            "description": "Muscles on the outer thigh that move the leg away from the body's midline."
+        },
+        "pt": {
+            "name": "abdutores",
+            "description": "Músculos na parte externa da coxa que movem a perna para longe da linha média do corpo."
+        }
+    },
+    "adductors": {
+        "en": {
+            "name": "adductors",
+            "description": "Muscles on the inner thigh that bring the leg towards the body's midline."
+        },
+        "pt": {
+            "name": "adutores",
+            "description": "Músculos na parte interna da coxa que trazem a perna em direção à linha média do corpo."
+        }
+    },
+    "biceps": {
+        "en": {
+            "name": "biceps",
+            "description": "Muscles on the front of the upper arm responsible for elbow flexion."
+        },
+        "pt": {
+            "name": "bíceps",
+            "description": "Músculos na parte frontal do braço superior responsáveis pela flexão do cotovelo."
+        }
+    },
+    "lower back": {
+        "en": {
+            "name": "lower back",
+            "description": "Muscles that support the lower spine and help with bending and lifting."
+        },
+        "pt": {
+            "name": "parte inferior das costas",
+            "description": "Músculos que suportam a parte inferior da coluna e auxiliam na flexão e levantamento."
+        }
+    },
+    "upper back": {
+        "en": {
+            "name": "upper back",
+            "description": "Muscles in the upper part of the back that stabilize the shoulders and spine."
+        },
+        "pt": {
+            "name": "parte superior das costas",
+            "description": "Músculos na parte superior das costas que estabilizam os ombros e a coluna."
+        }
+    },
+    "cardio": {
+        "en": {
+            "name": "cardio",
+            "description": "Exercises that primarily target the cardiovascular system to improve heart health."
+        },
+        "pt": {
+            "name": "cardio",
+            "description": "Exercícios que visam principalmente o sistema cardiovascular para melhorar a saúde do coração."
+        }
+    },
+    "chest": {
+        "en": {
+            "name": "chest",
+            "description": "Muscles in the upper front of the torso, crucial for pushing movements."
+        },
+        "pt": {
+            "name": "peitoral",
+            "description": "Músculos na parte superior frontal do torso, cruciais para movimentos de empurrar."
+        }
+    },
+    "calves": {
+        "en": {
+            "name": "calves",
+            "description": "Muscles located at the back of the lower leg that are involved in standing and walking."
+        },
+        "pt": {
+            "name": "panturrilhas",
+            "description": "Músculos localizados na parte de trás da perna inferior que estão envolvidos em ficar de pé e caminhar."
+        }
+    },
+    "forearms": {
+        "en": {
+            "name": "forearms",
+            "description": "Muscles in the lower arm that control hand and wrist movements."
+        },
+        "pt": {
+            "name": "antebraços",
+            "description": "Músculos no antebraço que controlam os movimentos da mão e do pulso."
+        }
+    },
+    "glutes": {
+        "en": {
+            "name": "glutes",
+            "description": "Muscles in the buttocks that are important for hip movement and stability."
+        },
+        "pt": {
+            "name": "glúteos",
+            "description": "Músculos nas nádegas que são importantes para o movimento e estabilidade do quadril."
+        }
+    },
+    "hamstrings": {
+        "en": {
+            "name": "hamstrings",
+            "description": "Muscles at the back of the thigh that are crucial for bending the knee."
+        },
+        "pt": {
+            "name": "isquiotibiais",
+            "description": "Músculos na parte de trás da coxa que são cruciais para dobrar o joelho."
+        }
+    },
+    "lats": {
+        "en": {
+            "name": "lats",
+            "description": "Large muscles on the back that help in pulling movements and shoulder extension."
+        },
+        "pt": {
+            "name": "lombares",
+            "description": "Grandes músculos nas costas que ajudam nos movimentos de puxar e na extensão do ombro."
+        }
+    },
+    "quadriceps": {
+        "en": {
+            "name": "quadriceps",
+            "description": "Muscles on the front of the thigh that extend the knee and stabilize the leg."
+        },
+        "pt": {
+            "name": "quadríceps",
+            "description": "Músculos na parte frontal da coxa que estendem o joelho e estabilizam a perna."
+        }
+    },
+    "shoulders": {
+        "en": {
+            "name": "shoulders",
+            "description": "Muscles that support the arms and are involved in a wide range of arm movements."
+        },
+        "pt": {
+            "name": "ombros",
+            "description": "Músculos que suportam os braços e estão envolvidos em uma ampla gama de movimentos do braço."
+        }
+    },
+    "triceps": {
+        "en": {
+            "name": "triceps",
+            "description": "Muscles at the back of the upper arm responsible for elbow extension."
+        },
+        "pt": {
+            "name": "tríceps",
+            "description": "Músculos na parte de trás do braço superior responsáveis pela extensão do cotovelo."
+        }
+    },
+    "traps": {
+        "en": {
+            "name": "traps",
+            "description": "Muscles on the upper back and neck that help move and stabilize the shoulder blades."
+        },
+        "pt": {
+            "name": "trapézios",
+            "description": "Músculos na parte superior das costas e pescoço que ajudam a mover e estabilizar as escápulas."
+        }
+    },
+    "neck": {
+        "en": {
+            "name": "neck",
+            "description": "Muscles that support the head and are involved in its movement."
+        },
+        "pt": {
+            "name": "pescoço",
+            "description": "Músculos que sustentam a cabeça e estão envolvidos em seus movimentos."
+        }
+    },
+    "full body": {
+        "en": {
+            "name": "full body",
+            "description": "Exercises that engage multiple muscle groups across the entire body."
+        },
+        "pt": {
+            "name": "corpo inteiro",
+            "description": "Exercícios que envolvem vários grupos musculares em todo o corpo."
+        }
+    }
+}

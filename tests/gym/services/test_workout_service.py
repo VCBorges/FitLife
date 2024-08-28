@@ -1,6 +1,6 @@
-from src.gym import models
-from src.gym.services import WorkoutService
-from src.gym.typed import CreateWorkoutExerciseSchema
+from apps.gym import models
+from apps.gym.services import WorkoutService
+from apps.gym.typed import CreateWorkoutExerciseSchema
 from tests.gym import factories
 
 import pytest
@@ -100,12 +100,12 @@ def test_update_workout_to_delete_exercises():
         with_exercises=True,
         user=user,
     )
-    execises_count_before = workout.exercises.count()
+    execises_count_before = workout.workout_exercises.count()
     workout_service = WorkoutService()
     workout = workout_service.update_workout(
         workout=workout,
         title='Workout 2',
-        exercises={'delete': workout.exercises.all()},
+        exercises={'delete': workout.workout_exercises.all()},
     )
     execises_count_after = workout.workout_exercises.count()
 
@@ -155,20 +155,20 @@ def test_complete_workout_to_create_a_workout_with_the_same_attrs():
 
 @pytest.mark.django_db
 def test_complete_workout_to_create_workout_history_exercises():
-    workout = factories.WorkoutsFactory(with_exercises=True)
+    workout: models.Workouts = factories.WorkoutsFactory(with_exercises=True)
 
-    workkout_history = WorkoutService().complete_workout(
+    workout_history = WorkoutService().complete_workout(
         user=workout.user,
         workout=workout,
     )
 
-    assert workkout_history.exercises.count() == workout.exercises.count()
-    for i, exercise in enumerate(workout.exercises.all()):
-        assert workkout_history.exercises.all()[i].exercise == exercise.exercise
-        assert workkout_history.exercises.all()[i].sets == exercise.sets
-        assert workkout_history.exercises.all()[i].repetitions == exercise.repetitions
-        assert workkout_history.exercises.all()[i].rest_period == exercise.rest_period
-        assert workkout_history.exercises.all()[i].weight == exercise.weight
+    assert workout_history.exercises.count() == workout.workout_exercises.count()
+    for i, exercise in enumerate(workout.workout_exercises.all()):
+        assert workout_history.exercises.all()[i].exercise == exercise.exercise
+        assert workout_history.exercises.all()[i].sets == exercise.sets
+        assert workout_history.exercises.all()[i].repetitions == exercise.repetitions
+        assert workout_history.exercises.all()[i].rest_period == exercise.rest_period
+        assert workout_history.exercises.all()[i].weight == exercise.weight
 
 
 @pytest.mark.django_db
@@ -202,5 +202,5 @@ def test_clone_workout_to_create_a_new_workout_with_the_same_attrs():
     assert workout_clone.title == workout.title
     assert workout_clone.description == workout.description
     assert workout_clone.user != workout.user
-    assert workout_clone.created_by == workout.created_by
-    assert workout_clone.workout_exercises.count() == workout.exercises.count()
+    assert workout_clone.creator == workout.creator
+    assert workout_clone.workout_exercises.count() == workout.workout_exercises.count()

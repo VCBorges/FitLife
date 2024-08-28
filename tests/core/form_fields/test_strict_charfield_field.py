@@ -1,6 +1,6 @@
 from django import forms
 
-from src.core import form_fields as ff
+from apps.core import form_fields as ff
 
 from rich import print  # noqa
 

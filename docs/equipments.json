@@ -1,0 +1,72 @@
+{
+    "barbell": {
+        "en": {
+            "name": "barbell",
+            "description": "A long bar with weights attached, used for strength training."
+        },
+        "pt": {
+            "name": "barra",
+            "description": "Uma barra longa com pesos anexados, usada para treinamento de força."
+        }
+    },
+    "dumbbell": {
+        "en": {
+            "name": "dumbbell",
+            "description": "A short bar with a weight at each end, used for weight training."
+        },
+        "pt": {
+            "name": "halteres",
+            "description": "Uma barra curta com um peso em cada extremidade, usada para treinamento de peso."
+        }
+    },
+    "kettlebell": {
+        "en": {
+            "name": "kettlebell",
+            "description": "A cast-iron or steel ball with a handle, used for ballistic exercises."
+        },
+        "pt": {
+            "name": "kettlebell",
+            "description": "Uma bola de ferro fundido ou aço com uma alça, usada para exercícios balísticos."
+        }
+    },
+    "machine": {
+        "en": {
+            "name": "machine",
+            "description": "Equipment designed to assist with specific exercises, often found in gyms."
+        },
+        "pt": {
+            "name": "máquina",
+            "description": "Equipamento projetado para auxiliar em exercícios específicos, geralmente encontrado em academias."
+        }
+    },
+    "plate": {
+        "en": {
+            "name": "plate",
+            "description": "A flat, typically circular weight used in various exercises, often with barbells."
+        },
+        "pt": {
+            "name": "anilha",
+            "description": "Um peso plano, tipicamente circular, usado em vários exercícios, geralmente com barras."
+        }
+    },
+    "resistance band": {
+        "en": {
+            "name": "resistance band",
+            "description": "A stretchable band used for strength training and rehabilitation exercises."
+        },
+        "pt": {
+            "name": "faixa de resistência",
+            "description": "Uma faixa elástica usada para treinamento de força e exercícios de reabilitação."
+        }
+    },
+    "suspension": {
+        "en": {
+            "name": "suspension",
+            "description": "Equipment used for suspension training, allowing for bodyweight exercises."
+        },
+        "pt": {
+            "name": "suspensão",
+            "description": "Equipamento usado para treinamento em suspensão, permitindo exercícios com o peso corporal."
+        }
+    }
+}

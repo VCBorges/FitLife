@@ -1,4 +1,4 @@
-from src.gym import models
+from apps.gym import models
 from tests.users.factories import UsersFactory
 
 import factory
@@ -28,7 +28,7 @@ class ExercisesFactory(factory.django.DjangoModelFactory):
     description = factory.Faker('text')
     primary_muscle = factory.SubFactory(MuscleGroupsFactory)
     secondary_muscle = factory.SubFactory(MuscleGroupsFactory)
-    use_equipment = factory.Faker('boolean')
+    equipment = factory.SubFactory(EquipmentsFactory)
 
 
 # FIXME: To have the same user from the workout
@@ -50,7 +50,7 @@ class WorkoutsFactory(factory.django.DjangoModelFactory):
     title = factory.Faker('word')
     description = factory.Faker('text')
     user = factory.SubFactory(UsersFactory)
-    created_by = factory.SubFactory(UsersFactory)
+    creator = factory.SubFactory(UsersFactory)
 
     class Params:
         with_exercises = factory.Trait(
@@ -75,7 +75,7 @@ class WorkoutHistoriesFactory(factory.django.DjangoModelFactory):
 
     user = factory.SubFactory(UsersFactory)
     workout = factory.SubFactory(WorkoutsFactory)
-    created_by = factory.SubFactory(UsersFactory)
+    creator = factory.SubFactory(UsersFactory)
     completed_at = factory.Faker('date_time')
     title = factory.Faker('word')
     description = factory.Faker('text')

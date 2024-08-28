@@ -1,0 +1,77 @@
+{% extends 'core/_base.html' %}
+
+{% block title %}
+Sign up
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <form 
+        class="signup-form-id" 
+        action="{% url 'signup' %}"
+        data-errors-alert="#signup-errors-alert"
+        method="POST"
+        novalidate
+    >
+        <div>
+            <label for="email" class="primary-label">Your email</label>
+            <input 
+                type="text" 
+                class="primary-input"
+                placeholder="email"
+                name="email"
+                required
+            >
+            <div class="input-errors"></div>
+        </div>
+        <div>
+            <label for="password" class="primary-label">Your password</label>
+            <input 
+                type="password" 
+                class="primary-input"
+                placeholder="Your password"
+                name="password1"
+                required
+            >    
+            <div class="input-errors"></div>
+        </div>
+        <div>
+            <label for="password2" class="primary-label">Your password again</label>
+            <input 
+                type="password" 
+                class="primary-input"
+                placeholder="Your password"
+                name="password2"
+                required
+            >    
+            <div class="input-errors"></div>
+        </div>
+        <div>
+            <button 
+                type="submit"
+                class="btn btn-primary"
+            >Sign up</button>
+
+            <a 
+                type="button"
+                href="{% url 'login_template' %}" 
+                class="btn btn-secondary"
+            >Go to sign in</a>
+        <div 
+            class="alert alert-danger form-alert d-none" 
+            role="alert"
+            id="signup-errors-alert"
+        ></div>
+    </form>
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+<script>
+    document.querySelector('.signup-form-id').addEventListener('submit', async function(event) {
+        handleFormSubmit({ event })
+    });
+</script>
+{% endblock js %}

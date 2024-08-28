@@ -24,6 +24,8 @@ ipython = "^8.26.0"
 django-extensions = "^3.2.3"
 django-browser-reload = "^1.13.0"
 ipykernel = "^6.29.5"
+djangorestframework = "^3.15.2"
+pydantic = "^2.8.2"
 
 
 [build-system]
@@ -38,6 +40,7 @@ addopts = [
     "-vv", 
     "-s",
     "--reuse-db",
+    "-p no:warnings",
 ]
 
 [tool.ruff]

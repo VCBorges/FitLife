@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.users.models import Users
+from apps.users.models import Users
 
 import factory
 import factory.fuzzy
