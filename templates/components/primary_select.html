@@ -1,0 +1,21 @@
+{% if label %}
+<label 
+    for="{{ name }}" 
+    class="primary-label"
+>{{ label }}</label>
+{% endif %}
+<select 
+    class="primary-select {{ class }}" 
+    name="{{ name }}"
+    {% if id %}
+        id="{{ id }}"
+    {% endif %}
+    {% if required %}
+        required
+    {% endif %}
+>
+    <option selected>Open this select menu</option>
+    {% for option in options %}
+        <option value="{{ option.value }}">{{ option.text }}</option>
+    {% endfor %}
+</select>

@@ -13,8 +13,8 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
 from apps.core.exceptions import BaseError
-from apps.core.querysets import get_or_404
 from apps.core.typed import BaseFormType, DjangoModelType
+from apps.core.utils import get_or_404
 
 logger = logging.getLogger(__name__)
 

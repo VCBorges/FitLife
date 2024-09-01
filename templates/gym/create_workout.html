@@ -6,12 +6,37 @@ Create Workout
 
 {% block content %}
 <div class="container-fluid">
-    <c-primary-input
-        label="Title"
-        name="title"
-        placeholder="Workout title"
-        required
-    ></c-primary-input>
+    <div>
+        <c-primary-input
+            label="Title"
+            name="title"
+            placeholder="Workout title"
+            required
+        ></c-primary-input>
+    </div>
+    <div>
+        <c-primary-textarea
+            label="Description"
+            name="description"
+            placeholder="Workout description"
+            rows="5"
+            cols="50"
+        />
+    </div>
+    <div>
+        <c-primary-select
+            label="Muscle"
+            name="muscle"
+            :options="{{ muscles | safe | escape }}"
+        />
+    </div>
+    <div>
+        <c-primary-select
+            label="Exercises"
+            name="exercise"
+            :options="{{ exercises | safe | escape }}"
+        />
+    </div>
 </div>
 {% endblock content %}
 

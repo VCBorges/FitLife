@@ -4,13 +4,14 @@
     class="primary-label"
 >{{ label }}</label>
 {% endif %}
-<input 
-    type="{{ type }}" 
-    class="primary-input {{ class }}"
+<textarea 
+    class="primary-textarea {{ class }}"
     placeholder="{{ placeholder }}"
     name="{{ name }}"
     {% if required %}
         required
     {% endif %}
->
+    rows="{{ rows }}"
+    cols="{{ cols }}"
+></textarea>
 <div class="input-errors"></div>

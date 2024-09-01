@@ -6,7 +6,7 @@ from apps.core.views import (
     AuthenticatedTemplateView,
     LoggedOutTemplateView,
 )
-from apps.gym import forms, selectors
+from apps.gym import forms, ui
 from apps.gym.services import WorkoutService
 
 # Create your views here.
@@ -27,17 +27,12 @@ class CreateWorkoutTemplateView(AuthenticatedTemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         language = Language.EN
-        context['context'] = {
-            'exercises': selectors.list_exercises(
-                language=language,
-            ),
-            'muscles': selectors.list_muscles(
-                language=language,
-            ),
-            'equipments': selectors.list_equipments(
-                language=language,
-            ),
-        }
+        context['muscles'] = ui.muscles_select_input_options(
+            language=language,
+        )
+        context['exercises'] = ui.exercises_select_input_options(
+            language=language,
+        )
         return context
 
 
