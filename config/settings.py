@@ -20,6 +20,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'django_extensions',
     'django_browser_reload',
+    'django_cotton',
 ]
 
 DJANGO_APPS = [
@@ -73,6 +74,9 @@ TEMPLATES = [
         },
     },
 ]
+
+
+COTTON_DIR = 'components'
 
 WSGI_APPLICATION = 'config.wsgi.application'
 

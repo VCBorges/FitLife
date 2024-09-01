@@ -8,6 +8,7 @@ import pytest
 def test_UserSignUpForm_to_be_valid():
     form = forms.UserSignUpForm(
         data={
+            'first_name': 'Test',
             'email': 'test@test.com',
             'password1': '123qaz123',
             'password2': '123qaz123',
@@ -22,6 +23,7 @@ def test_UserSignUpForm_to_be_invalid_when_email_already_exists(
 ):
     form = forms.UserSignUpForm(
         data={
+            'first_name': 'Test',
             'email': mock_user['email'],
             'password1': '123qaz123',
             'password2': '123qaz123',

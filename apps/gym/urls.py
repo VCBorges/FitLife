@@ -5,6 +5,11 @@ from apps.gym import views
 templates_urls = [
     path('', views.LandingPageTemplateView.as_view(), name='landing_page_template'),
     path('home/', views.HomepageTemplateView.as_view(), name='homepage_template'),
+    path(
+        'workout/create/',
+        views.CreateWorkoutTemplateView.as_view(),
+        name='create_workout_template',
+    ),
 ]
 
 api_urls = [

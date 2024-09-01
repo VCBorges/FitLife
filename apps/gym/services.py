@@ -1,7 +1,7 @@
 from django.db import transaction
 from django.utils import timezone
 
-from apps.core.utils import set_model_fields
+from apps.core.utils import clean_models, set_model_fields
 from apps.gym import models, typed
 from apps.users.models import Users
 
@@ -23,6 +23,7 @@ class WorkoutService:
             description=description,
             creator=creator or user,
         )
+        clean_models(workout)
         workout.save()
         if exercises:
             self._create_workout_exercises(
@@ -37,7 +38,7 @@ class WorkoutService:
         workout: models.Workouts,
         exercises: list[typed.CreateWorkoutExerciseSchema],
     ) -> list[models.Exercises]:
-        exercises_instances = [
+        instances = [
             models.WorkoutExercises(
                 user=workout.user,
                 workout=workout,
@@ -45,7 +46,8 @@ class WorkoutService:
             )
             for exercise in exercises
         ]
-        models.WorkoutExercises.objects.bulk_create(exercises_instances)
+        clean_models(*instances)
+        models.WorkoutExercises.objects.bulk_create(instances)
 
     @transaction.atomic
     def update_workout(
@@ -58,8 +60,13 @@ class WorkoutService:
     ) -> models.Workouts:
         workout.title = title
         workout.description = description
-        workout.save()
-
+        clean_models(workout)
+        workout.save(
+            update_fields=[
+                'title',
+                'description',
+            ]
+        )
         if exercises:
             if 'create' in exercises:
                 self._create_workout_exercises(
@@ -79,17 +86,17 @@ class WorkoutService:
         self,
         exercises: list[typed.ExercisesUpdateWorkout],
     ) -> None:
-        exercises_instance = []
+        instances = []
         for exercise in exercises:
             exercise_instance = exercise.pop('workout_exercise')
             set_model_fields(
                 model=exercise_instance,
-                fields=exercise,
+                data=exercise,
             )
-            exercises_instance.append(exercise_instance)
-
+            instances.append(exercise_instance)
+        clean_models(*instances)
         models.WorkoutExercises.objects.bulk_update(
-            exercises_instance,
+            instances,
             fields=[
                 'sets',
                 'repetitions',
@@ -124,6 +131,7 @@ class WorkoutService:
             completed_at=timezone.now(),
             creator=workout.creator,
         )
+        clean_models(workout_history)
         workout_history.save()
         exercises = workout.workout_exercises.all()
         exercises_instances = [
@@ -138,6 +146,7 @@ class WorkoutService:
             )
             for exercise in exercises
         ]
+        clean_models(*exercises_instances)
         models.WorkoutHistoryExercises.objects.bulk_create(exercises_instances)
         return workout_history
 

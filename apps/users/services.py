@@ -7,6 +7,7 @@ class UserService:
         user = Users.objects.create_user(
             email=data['email'],
             password=data['password'],
+            first_name=data['first_name'],
         )
         return user
 

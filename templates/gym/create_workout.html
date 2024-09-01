@@ -6,12 +6,18 @@ Create Workout
 
 {% block content %}
 <div class="container-fluid">
+    <c-primary-input
+        label="Title"
+        name="title"
+        placeholder="Workout title"
+        required
+    ></c-primary-input>
 </div>
-
 {% endblock content %}
 
 
 {% block js %}
+{{ context | json_script:"context-id" }}
 <script>
     // document.querySelector('.login-form-id').addEventListener('submit', async function(event) {
     // });

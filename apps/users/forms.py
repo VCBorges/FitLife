@@ -21,6 +21,8 @@ class UserLoginForm(LoginForm):
 
 
 class UserSignUpForm(BaseForm, SignupForm):
+    first_name = forms.CharField(required=True)
+
     normalized_fields_mapping = {
         'password1': 'password',
     }

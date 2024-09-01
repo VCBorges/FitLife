@@ -13,6 +13,7 @@ def test_create_user_to_create_a_new_user():
         data={
             'email': 'testcreateuser@test.com',
             'password': 'testpassword',
+            'first_name': 'Test',
         }
     )
     assert Users.objects.filter(email='testcreateuser@test.com').exists()
@@ -24,6 +25,7 @@ def test_create_user_to_create_a_email_address():
         data={
             'email': 'testcreateuser@test.com',
             'password': 'testpassword',
+            'first_name': 'Test',
         }
     )
 
@@ -36,6 +38,7 @@ def test_create_user_to_create_a_non_verified_email_address():
         data={
             'email': 'testcreateuser@test.com',
             'password': 'testpassword',
+            'first_name': 'Test',
         }
     )
 
@@ -50,6 +53,7 @@ def test_create_user_to_create_a_primary_email_address():
         data={
             'email': 'testcreateuser@test.com',
             'password': 'testpassword',
+            'first_name': 'Test',
         }
     )
 
@@ -65,6 +69,7 @@ def test_create_user_to_raise_error_when_email_already_exists(existent_user_emai
             data={
                 'email': existent_user_email,
                 'password': 'testpassword',
+                'first_name': 'Test',
             }
         )
 

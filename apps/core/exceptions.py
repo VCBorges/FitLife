@@ -82,3 +82,18 @@ class FormValidationError(BaseError):
             status_code=self.STATUS_CODE,
             data=errors,
         )
+
+
+class ObjectDoesNotExist(BaseError):
+    MESSAGE = 'Object does not exist.'
+    STATUS_CODE = 404
+
+    @override
+    def __init__(
+        self,
+        message: str | None = None,
+    ) -> None:
+        super().__init__(
+            message=message or self.MESSAGE,
+            status_code=self.STATUS_CODE,
+        )

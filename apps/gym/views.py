@@ -1,11 +1,12 @@
 from django.http import JsonResponse
 
+from apps.core.constants import Language
 from apps.core.views import (
     AuthenticatedFormView,
     AuthenticatedTemplateView,
     LoggedOutTemplateView,
 )
-from apps.gym import forms
+from apps.gym import forms, selectors
 from apps.gym.services import WorkoutService
 
 # Create your views here.
@@ -25,6 +26,18 @@ class CreateWorkoutTemplateView(AuthenticatedTemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        language = Language.EN
+        context['context'] = {
+            'exercises': selectors.list_exercises(
+                language=language,
+            ),
+            'muscles': selectors.list_muscles(
+                language=language,
+            ),
+            'equipments': selectors.list_equipments(
+                language=language,
+            ),
+        }
         return context
 
 

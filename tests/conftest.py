@@ -22,10 +22,12 @@ def mock_request() -> WSGIRequest:
 def mock_user() -> dict[str, str]:
     email = 'test@test.com'
     password = '123qaz123'
+    first_name = 'Test'
     UserService.create_user(
         data={
             'email': email,
             'password': password,
+            'first_name': first_name,
         }
     )
     return {
@@ -38,10 +40,12 @@ def mock_user() -> dict[str, str]:
 def existent_user_email() -> str:
     email = 'test@test.com'
     password = '123qaz123'
+    first_name = 'Test'
     UserService.create_user(
         data={
             'email': email,
             'password': password,
+            'first_name': first_name,
         }
     )
     return email
@@ -51,10 +55,12 @@ def existent_user_email() -> str:
 def user():
     email = 'test@test.com'
     password = '123qaz123'
+    first_name = 'Test'
     user = UserService.create_user(
         data={
             'email': email,
             'password': password,
+            'first_name': first_name,
         }
     )
     return user

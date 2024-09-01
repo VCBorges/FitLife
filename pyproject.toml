@@ -11,6 +11,7 @@ python = "^3.12"
 django = "^5.0.7"
 psycopg2-binary = "^2.9.9"
 django-allauth = {extras = ["socialaccount"], version = "^0.63.6"}
+django-cotton = "^0.9.33"
 
 
 [tool.poetry.group.dev.dependencies]

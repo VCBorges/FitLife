@@ -75,9 +75,9 @@ class UserSignUpView(LoggedOutFormView):
         data = self.get_cleaned_data(forms.UserSignUpForm)
         UserService.create_user(data)
         return self.get_response(
-            status_code=302,
+            status_code=201,
             data={
-                'redirect_url': '',
+                'redirect_url': reverse_lazy(settings.LOGIN_URL),
             },
         )
 

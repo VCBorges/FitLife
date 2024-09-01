@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from apps.core.exceptions import BaseError
 from apps.core.querysets import get_or_404
-from apps.core.typed import BaseFormType, ModelType
+from apps.core.typed import BaseFormType, DjangoModelType
 
 logger = logging.getLogger(__name__)
 
@@ -35,10 +35,10 @@ class BaseFormViewMixin:
         'There was an error processing your request. Please try again later.'
     )
     request: HttpRequest
-    model: type[ModelType] | None = None
+    model: type[DjangoModelType] | None = None
     data: dict[str, Any] | QueryDict
     pk_url_kwarg = 'pk'
-    object: ModelType | None = None
+    object: DjangoModelType | None = None
 
     def parse_request_body(self, request: HttpRequest) -> dict[str, Any]:
         try:
@@ -123,7 +123,7 @@ class BaseFormViewMixin:
         return getattr(self.request, self.request.method)
 
     @override
-    def get_object(self) -> ModelType | None:
+    def get_object(self) -> DjangoModelType | None:
         if self.model:
             return get_or_404(
                 model=self.model,

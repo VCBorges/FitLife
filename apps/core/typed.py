@@ -7,7 +7,7 @@ from django.http import HttpRequest
 from apps.core.forms import BaseForm
 from apps.users.models import Users
 
-ModelType = TypeVar('ModelType', bound=Model)
+DjangoModelType = TypeVar('DjangoModelType', bound=Model)
 BaseFormType = TypeVar('BaseFormType', bound=BaseForm)
 FieldType = TypeVar('FieldType', bound=Field)
 

@@ -9,6 +9,7 @@ import pytest
 @pytest.mark.django_db
 def test_UserLoginView_to_return_status_code_200_when_form_is_valid():
     Users.objects.create_user(
+        first_name='Test',
         email='test@test.com',
         password='123qaz123',
     )
@@ -28,6 +29,7 @@ def test_UserLoginView_to_return_status_code_200_when_form_is_valid():
 @pytest.mark.django_db
 def test_UserLoginView_to_have_redirect_url_in_reponse_when_form_is_valid():
     Users.objects.create_user(
+        first_name='Test',
         email='test@test.com',
         password='123qaz123',
     )
@@ -51,6 +53,7 @@ def test_UserSignUpView_to_create_a_new_user():
     client.post(
         path=url,
         data={
+            'first_name': 'Test',
             'email': 'testcreateuser@test.com',
             'password1': '123qaz123',
             'password2': '123qaz123',

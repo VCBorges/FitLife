@@ -1,7 +1,101 @@
-from django.core.paginator import Paginator
-from django.db.models import Prefetch
+from dataclasses import dataclass
+from typing import Any
 
+from django.core.paginator import Paginator
+from django.db.models import F, Prefetch
+
+from apps.core.constants import Language
+from apps.core.utils import BaseLookupDTO
 from apps.gym import models, typed
+
+
+@dataclass
+class ListExercisesLookups(BaseLookupDTO):
+    name: str | None = None
+    primary_muscle: models.MuscleGroups | None = None
+    equipment: models.Equipments | None = None
+
+
+def list_exercises(
+    *,
+    language: Language = Language.EN,
+    lookups: ListExercisesLookups | None = None,
+    order_by: list[str] | None = None,
+) -> list[dict[str, str]]:
+    fields = [
+        'id',
+        'name',
+        'muscle',
+    ]
+    queryset = models.Exercises.objects.values(
+        'id'
+    )  # This is necessary for renaming result fields that have the same name of moodel fields
+    queryset = queryset.annotate(
+        name=F(f'name__{language}'),
+        muscle=F(f'primary_muscle__name__{language}'),
+        muscle_id=F('primary_muscle__id'),
+    )
+    queryset = queryset.values(*fields)
+    if lookups:
+        queryset = queryset.filter(**lookups.to_dict())
+
+    if order_by:
+        queryset = queryset.order_by(*order_by)
+    return list(queryset)
+
+
+@dataclass
+class ListMusclesLookups(BaseLookupDTO):
+    name: str | None = None
+
+
+def list_muscles(
+    *,
+    language: Language = Language.EN,
+    lookups: ListMusclesLookups | None = None,
+    order_by: list[str] | None = None,
+) -> list[dict[str, Any]]:
+    fields = [
+        'id',
+        'name',
+    ]
+    queryset = models.MuscleGroups.objects.values('id')
+    queryset = queryset.annotate(
+        name=F(f'name__{language}'),
+    )
+    queryset = queryset.values(*fields)
+    if lookups:
+        queryset = queryset.filter(**lookups.to_dict())
+    if order_by:
+        queryset = queryset.order_by(*order_by)
+    return list(queryset)
+
+
+@dataclass
+class ListEquipmentsLookups(BaseLookupDTO):
+    name: str | None = None
+
+
+def list_equipments(
+    *,
+    language: Language = Language.EN,
+    lookups: ListEquipmentsLookups | None = None,
+    order_by: list[str] | None = None,
+) -> list[dict[str, Any]]:
+    fields = [
+        'id',
+        'name',
+    ]
+    queryset = models.Equipments.objects.values('id')
+    queryset = queryset.annotate(
+        name=F(f'name__{language}'),
+    )
+    queryset = queryset.values(*fields)
+    if lookups:
+        queryset = queryset.filter(**lookups.to_dict())
+    if order_by:
+        queryset = queryset.order_by(*order_by)
+    return list(queryset)
 
 
 class WorkoutSelector:

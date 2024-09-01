@@ -1,22 +1,30 @@
 from __future__ import annotations
 
-from functools import partial
+from typing import TYPE_CHECKING
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.core.models import BaseModel
 from apps.core.utils import default_translation
+from apps.gym.validators import translated_field_validator
 from apps.users.models import Users
+
+if TYPE_CHECKING:
+    from apps.gym.typed import TranslationsSchema
 
 
 class MuscleGroups(BaseModel):
-    name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), null=True)  # ruff: noqa
-    translations = models.JSONField(
-        _('translation'),
-        default=partial(default_translation, 'name', 'description'),
+    name: TranslationsSchema = models.JSONField(
+        _('name'),
+        validators=[translated_field_validator],
+        default=default_translation,
     )
+    description: TranslationsSchema = models.JSONField(
+        _('description'),
+        validators=[translated_field_validator],
+        default=default_translation,
+    )  # ruff: noqa
 
     class Meta:
         db_table = 'muscle_groups'
@@ -28,12 +36,16 @@ class MuscleGroups(BaseModel):
 
 
 class Equipments(BaseModel):
-    name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa
-    translations = models.JSONField(
-        _('translation'),
-        default=partial(default_translation, 'name', 'description'),
+    name: TranslationsSchema = models.JSONField(
+        _('name'),
+        validators=[translated_field_validator],
+        default=default_translation,
     )
+    description: TranslationsSchema = models.JSONField(
+        _('description'),
+        validators=[translated_field_validator],
+        default=default_translation,
+    )  # ruff: noqa
 
     class Meta:
         db_table = 'equipments'
@@ -45,8 +57,16 @@ class Equipments(BaseModel):
 
 
 class Exercises(BaseModel):
-    name = models.CharField(_('name'), max_length=255)
-    description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa
+    name: TranslationsSchema = models.JSONField(
+        _('name'),
+        validators=[translated_field_validator],
+        default=default_translation,
+    )
+    description: TranslationsSchema = models.JSONField(
+        _('description'),
+        validators=[translated_field_validator],
+        default=default_translation,
+    )  # ruff: noqa
     primary_muscle = models.ForeignKey(
         'gym.MuscleGroups',
         verbose_name=_('primary muscle'),
@@ -70,10 +90,6 @@ class Exercises(BaseModel):
         null=True,
         blank=True,
     )
-    translations = models.JSONField(
-        _('translation'),
-        default=partial(default_translation, 'name', 'description'),
-    )
 
     class Meta:
         db_table = 'exercises'
@@ -82,9 +98,6 @@ class Exercises(BaseModel):
         default_related_name = 'exercises'
 
     REPR_FIELDS = ['name']
-
-    # def __str__(self):
-    #     return f'<{self.__class__.__name__} {self.name}>'
 
 
 class Workouts(BaseModel):
@@ -182,10 +195,10 @@ class WorkoutExercises(BaseModel):
         on_delete=models.SET_NULL,
         null=True,
     )
-    repetitions = models.PositiveIntegerField(_('repetitions'), null=True)
-    sets = models.PositiveIntegerField(_('sets'), null=True)  # series
-    weight = models.IntegerField(_('weight'), null=True)
-    rest_period = models.IntegerField(_('rest period'), null=True)
+    repetitions = models.PositiveIntegerField(_('repetitions'), null=True, default=0)
+    sets = models.PositiveIntegerField(_('sets'), null=True, default=0)  # series
+    weight = models.IntegerField(_('weight'), null=True, default=0)
+    rest_period = models.IntegerField(_('rest period'), null=True, default=0)
 
     class Meta:
         db_table = 'workout_exercises'
@@ -217,10 +230,10 @@ class WorkoutHistoryExercises(BaseModel):
         blank=True,
     )
     repetitions = models.PositiveIntegerField(_('repetitions'), null=True)
-    sets = models.PositiveIntegerField(_('sets'), null=True)  # series
+    sets = models.PositiveIntegerField(_('sets'), null=True, default=0)  # series
     name = models.CharField(_('name'), max_length=255, null=True, blank=True)
-    weight = models.IntegerField(_('weight'), null=True)
-    rest_period = models.IntegerField(_('rest period'), null=True)
+    weight = models.IntegerField(_('weight'), null=True, default=0)
+    rest_period = models.IntegerField(_('rest period'), null=True, default=0)
 
     class Meta:
         db_table = 'workout_history_exercises'
