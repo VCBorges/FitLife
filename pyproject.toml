@@ -12,10 +12,10 @@ django = "^5.0.7"
 psycopg2-binary = "^2.9.9"
 django-allauth = {extras = ["socialaccount"], version = "^0.63.6"}
 django-cotton = "^0.9.33"
+ruff = "^0.6.3"
 
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.5.2"
 pytest = "^8.2.2"
 pytest-django = "^4.8.0"
 rich = "^13.7.1"
@@ -47,7 +47,8 @@ addopts = [
 [tool.ruff]
 exclude = [
     ".venv",
-    "node_modules"
+    "node_modules",
+    "*.ipynb",
 ]
 
 # Same as Black.
