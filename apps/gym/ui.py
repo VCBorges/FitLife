@@ -5,7 +5,7 @@ from django.db.models.fields.json import KeyTextTransform
 from django.db.models.functions import Concat
 
 from apps.core.constants import Language
-from apps.core.ui import model_select_input_options_2
+from apps.core.ui import model_select_input_options
 from apps.core.utils import BaseLookupDTO
 from apps.gym import models
 
@@ -21,7 +21,7 @@ def muscles_select_input_options(
     lookups: ListMusclesLookups | None = None,
     order_by: list[str] | None = None,
 ) -> list[dict[str, str]]:
-    return model_select_input_options_2(
+    return model_select_input_options(
         queryset=models.MuscleGroups.objects.all(),
         value_field='id',
         text_field=f'name__{language}',
@@ -55,7 +55,7 @@ def exercises_select_input_options(
             output_field=CharField(),
         ),
     )
-    return model_select_input_options_2(
+    return model_select_input_options(
         queryset=queryset,
         value_field='id',
         text_field='text_field',
