@@ -3,29 +3,36 @@ from tests.users.factories import UsersFactory
 
 import factory
 
+translatable_field = factory.Dict(
+    {
+        'en': factory.Faker('word'),
+        'es': factory.Faker('word', locale='pt_BR'),
+    }
+)
+
 
 class MuscleGroupsFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.MuscleGroups
 
-    name = factory.Faker('word')
-    description = factory.Faker('text')
+    name = translatable_field
+    description = translatable_field
 
 
 class EquipmentsFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Equipments
 
-    name = factory.Faker('word')
-    description = factory.Faker('text')
+    name = translatable_field
+    description = translatable_field
 
 
 class ExercisesFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Exercises
 
-    name = factory.Faker('word')
-    description = factory.Faker('text')
+    name = translatable_field
+    description = translatable_field
     primary_muscle = factory.SubFactory(MuscleGroupsFactory)
     secondary_muscle = factory.SubFactory(MuscleGroupsFactory)
     equipment = factory.SubFactory(EquipmentsFactory)

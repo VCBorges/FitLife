@@ -1,16 +1,11 @@
 {% if label %}
 <label 
     for="{{ name }}" 
-    class="primary-label"
+    class="primary-label {{ labelClass }}"
 >{{ label }}</label>
 {% endif %}
 <input 
-    type="{{ type }}" 
     class="primary-input {{ class }}"
-    placeholder="{{ placeholder }}"
-    name="{{ name }}"
-    {% if required %}
-        required
-    {% endif %}
+    {{ attrs }}
 >
 <div class="input-errors"></div>

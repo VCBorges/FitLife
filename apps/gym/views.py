@@ -26,13 +26,18 @@ class CreateWorkoutTemplateView(AuthenticatedTemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        language = Language.EN
-        context['muscles'] = ui.muscles_select_input_options(
-            language=language,
-        )
-        context['exercises'] = ui.exercises_select_input_options(
-            language=language,
-        )
+        language = Language.PT
+        context['context'] = {
+            'muscles': ui.muscles_select_input_options(
+                language=language,
+            ),
+            'equipments': ui.equipments_select_input_options(
+                language=language,
+            ),
+            'exercises': ui.exercises_select_input_options(
+                language=language,
+            ),
+        }
         return context
 
 

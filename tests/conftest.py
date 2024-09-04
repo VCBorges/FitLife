@@ -19,47 +19,18 @@ def mock_request() -> WSGIRequest:
 
 
 @pytest.fixture
-def mock_user() -> dict[str, str]:
-    email = 'test@test.com'
-    password = '123qaz123'
-    first_name = 'Test'
-    UserService.create_user(
-        data={
-            'email': email,
-            'password': password,
-            'first_name': first_name,
-        }
-    )
-    return {
-        'email': email,
-        'password': password,
-    }
+def user_password() -> str:
+    return '123qaz123'
 
 
 @pytest.fixture
-def existent_user_email() -> str:
+def user(user_password: str):
     email = 'test@test.com'
-    password = '123qaz123'
-    first_name = 'Test'
-    UserService.create_user(
-        data={
-            'email': email,
-            'password': password,
-            'first_name': first_name,
-        }
-    )
-    return email
-
-
-@pytest.fixture
-def user():
-    email = 'test@test.com'
-    password = '123qaz123'
     first_name = 'Test'
     user = UserService.create_user(
         data={
             'email': email,
-            'password': password,
+            'password': user_password,
             'first_name': first_name,
         }
     )
@@ -67,9 +38,20 @@ def user():
 
 
 @pytest.fixture
-def authenticated_client(user: Users) -> Client:
+def existent_user_email(user: Users) -> str:
+    return user.email
+
+
+@pytest.fixture
+def authenticated_client(
+    user: Users,
+    user_password: str,
+) -> Client:
     client = Client()
-    client.login(email=user.email, password='123qaz123')
+    client.login(
+        email=user.email,
+        password=user_password,
+    )
     return client
 
 

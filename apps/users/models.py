@@ -49,4 +49,4 @@ class Users(
     objects: UsersManager = UsersManager()
 
     def __str__(self):
-        return f'<{self.__class__.__name__}: {self.email}>'
+        return f'<{self.__class__.__name__} (email="{self.email}")>'

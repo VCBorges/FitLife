@@ -1,5 +1,6 @@
 from apps.core.exceptions import BaseError
 from apps.users import forms
+from apps.users.models import Users
 
 import pytest
 
@@ -19,12 +20,12 @@ def test_UserSignUpForm_to_be_valid():
 
 @pytest.mark.django_db
 def test_UserSignUpForm_to_be_invalid_when_email_already_exists(
-    mock_user: dict[str, str],
+    user: Users,
 ):
     form = forms.UserSignUpForm(
         data={
             'first_name': 'Test',
-            'email': mock_user['email'],
+            'email': user.email,
             'password1': '123qaz123',
             'password2': '123qaz123',
         },

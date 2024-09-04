@@ -65,6 +65,7 @@ class UsersManager(BaseUserManager):
 
     def _try_save_user(self, user: Users) -> None:
         try:
+            user.full_clean()
             user.save()
         except IntegrityError as e:
             if (

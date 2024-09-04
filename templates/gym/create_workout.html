@@ -1,4 +1,5 @@
 {% extends 'core/_base.html' %}
+{% load static %}
 
 {% block title %}
 Create Workout
@@ -12,7 +13,7 @@ Create Workout
             name="title"
             placeholder="Workout title"
             required
-        ></c-primary-input>
+        />
     </div>
     <div>
         <c-primary-textarea
@@ -27,24 +28,47 @@ Create Workout
         <c-primary-select
             label="Muscle"
             name="muscle"
-            :options="{{ muscles | safe | escape }}"
+            id="muscle-select-id"
+            :options="{{ context.muscles | safe | escape }}"
         />
     </div>
     <div>
         <c-primary-select
-            label="Exercises"
-            name="exercise"
-            :options="{{ exercises | safe | escape }}"
+            label="Equipments"
+            name="equipment"
+            id="equipment-select-id"
+            :options="{{ context.equipments | safe | escape }}"
+        />
+    </div>
+    <div>
+        <c-primary-input
+            name="search"
+            placeholder="Search exercise"
         />
     </div>
 </div>
+
+<template id="exercise-select-btn-template-id">
+    <c-exercise-select-card
+        value=""
+        name=""
+    />
+</template>
+
+<div id="exercises-select-root">
+{% for exercise in context.exercises %}
+    <c-exercise-select-card
+        value="{{ exercise.value }}"
+     name="{{ exercise.text }}"
+    />    
+{% endfor %}
+</div>
+
+
 {% endblock content %}
 
 
 {% block js %}
 {{ context | json_script:"context-id" }}
-<script>
-    // document.querySelector('.login-form-id').addEventListener('submit', async function(event) {
-    // });
-</script>
+<script src="{% static 'js/pages/create-workout.js' %}"></script>
 {% endblock js %}
