@@ -8,7 +8,7 @@ from apps.core.typed import AuthenticatedRequest
 
 
 class AuthenticatedFormView(
-    # LoginRequiredMixin,
+    LoginRequiredMixin,
     viewsmixins.BaseFormViewMixin,
     View,
 ):
