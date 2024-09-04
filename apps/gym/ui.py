@@ -1,64 +1,90 @@
-from dataclasses import dataclass
-
-from django.db.models import CharField, Value
+from django.db.models import CharField, F, Value
 from django.db.models.fields.json import KeyTextTransform
-from django.db.models.functions import Concat
+from django.db.models.functions import Cast, Concat
 
 from apps.core.constants import Language
-from apps.core.ui import model_select_input_options
-from apps.core.utils import BaseLookupDTO
-from apps.gym import models
-
-
-@dataclass(frozen=True)
-class ListMusclesLookups(BaseLookupDTO):
-    name: str | None = None
+from apps.core.ui import SelectOptionsSchema, model_select_input_options
+from apps.gym import dtos, models
 
 
 def muscles_select_input_options(
     *,
     language: Language = Language.EN,
-    lookups: ListMusclesLookups | None = None,
+    lookups: dtos.MusclesLookups = dtos.MusclesLookups(),
     order_by: list[str] | None = None,
-) -> list[dict[str, str]]:
+) -> list[SelectOptionsSchema]:
+    queryset = models.MuscleGroups.objects.filter(**lookups.to_dict())
+    if order_by:
+        queryset = queryset.order_by(*order_by)
     return model_select_input_options(
-        queryset=models.MuscleGroups.objects.all(),
+        queryset=queryset,
         value_field='id',
         text_field=f'name__{language}',
-        lookups=lookups.to_dict() if lookups else {},
-        order_by=order_by,
     )
 
 
-@dataclass(frozen=True)
-class ListExercisesLookups(BaseLookupDTO):
-    name: str | None = None
-    primary_muscle: models.MuscleGroups | None = None
-    equipment: models.Equipments | None = None
-
-
-# TODO: Captalize the first letter of the muscle group name
 def exercises_select_input_options(
     *,
     language: Language = Language.EN,
-    lookups: ListExercisesLookups | None = None,
+    lookups: dtos.ExercisesLookups = dtos.ExercisesLookups(),
     order_by: list[str] | None = None,
-) -> list[dict[str, str]]:
-    queryset = models.Exercises.objects.annotate(
-        name_language=KeyTextTransform(language, 'name'),
-        primary_muscle_language=KeyTextTransform(language, 'primary_muscle__name'),
-        text_field=Concat(
-            'name_language',
-            Value(' ('),
-            'primary_muscle_language',
-            Value(')'),
-            output_field=CharField(),
-        ),
+) -> list[SelectOptionsSchema]:
+    queryset = (
+        models.Exercises.objects.select_related(
+            'primary_muscle',
+            'equipment',
+        )
+        .filter(**lookups.to_dict())
+        .values('id')
+        .annotate(
+            name_language=KeyTextTransform(
+                language,
+                'name',
+            ),
+            primary_muscle_language=KeyTextTransform(
+                language,
+                'primary_muscle__name',
+            ),
+            text_field=Concat(
+                'name_language',
+                Value(' ('),
+                'primary_muscle_language',
+                Value(')'),
+                output_field=CharField(),
+            ),
+            primary_muscle_id=Cast(
+                F('primary_muscle_id'),
+                output_field=CharField(),
+            ),
+            equipment_id=Cast(
+                F('equipment_id'),
+                output_field=CharField(),
+            ),
+        )
+        .order_by(*order_by or [])
     )
     return model_select_input_options(
         queryset=queryset,
         value_field='id',
         text_field='text_field',
-        lookups=lookups.to_dict() if lookups else {},
-        order_by=order_by,
+        extra_expressions={
+            'muscle_id': F('primary_muscle_id'),
+            'equipment_id': F('equipment_id'),
+        },
+    )
+
+
+def equipments_select_input_options(
+    *,
+    language: Language = Language.EN,
+    lookups: dtos.EquipmentsLookups = dtos.EquipmentsLookups(),
+    order_by: list[str] | None = None,
+) -> list[SelectOptionsSchema]:
+    queryset = models.Equipments.objects.filter(**lookups.to_dict())
+    if order_by:
+        queryset = queryset.order_by(*order_by)
+    return model_select_input_options(
+        queryset=queryset,
+        value_field='id',
+        text_field=f'name__{language}',
     )

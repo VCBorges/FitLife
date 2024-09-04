@@ -5,12 +5,12 @@ from django.core.paginator import Paginator
 from django.db.models import F, Prefetch
 
 from apps.core.constants import Language
-from apps.core.utils import BaseLookupDTO
+from apps.core.utils import BaseDTO
 from apps.gym import models, typed
 
 
 @dataclass
-class ListExercisesLookups(BaseLookupDTO):
+class ListExercisesLookups(BaseDTO):
     name: str | None = None
     primary_muscle: models.MuscleGroups | None = None
     equipment: models.Equipments | None = None
@@ -45,7 +45,7 @@ def list_exercises(
 
 
 @dataclass
-class ListMusclesLookups(BaseLookupDTO):
+class ListMusclesLookups(BaseDTO):
     name: str | None = None
 
 
@@ -72,7 +72,7 @@ def list_muscles(
 
 
 @dataclass
-class ListEquipmentsLookups(BaseLookupDTO):
+class ListEquipmentsLookups(BaseDTO):
     name: str | None = None
 
 
