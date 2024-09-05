@@ -1,0 +1,51 @@
+<div 
+    class="exercise-form-card" 
+    data-exercise-id="{{ exercise_id }}"
+>
+    <div class="exercise-form-card-header">
+        <div class="exercise-form-card-title">{{ name }}</div>
+        <c-close-button/>
+    </div>
+    <hr>
+    <div>
+        <c-primary-input
+            label="Sets"
+            name="sets"
+            type="number"
+            required
+            min="0"
+            value="0"
+        />
+        <c-primary-input
+            label="Repetitions"
+            name="repetitions"
+            type="number"
+            required
+            min="0"
+            value="0"
+        />
+        <c-primary-input
+            label="Weight"
+            name="weight"
+            type="number"
+            required
+            min="0"
+            value="0"
+        />
+        <c-primary-input
+            label="Rest"
+            name="rest_period"
+            type="number"
+            required
+            min="0"
+            value="0"
+        />
+        <c-primary-textarea
+            label="Notes"
+            name="notes"
+            placeholder="Your notes about the exercises"
+            rows="5"
+            cols="50"
+        />
+    </div>
+</div>

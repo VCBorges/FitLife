@@ -18,6 +18,17 @@
  * @property {Array<Muscle>} muscles
  * @property {Array<Equipment>} equipment
  */
+const MUSCLE_SELECT_ID = "muscle-select-id";
+const EQUIPMENT_SELECT_ID = "equipment-select-id";
+const SEARCH_EXERCISE_INPUT_ID = "search-exercise-input-id";
+const EXERCISE_SELECT_BTN_CLASS = ".exercise-select-btn";
+const SELECTED_EXERCISES_ROOT_ID = "selected-exercises-id";
+
+const EXERCISE_FORM_CARD_TEMPLATE_ID = "exercise-form-card-template-id";
+const EXERCISE_FORM_CARD_CLASS = ".exercise-form-card";
+const EXERCISE_FORM_CARD_TITLE_CLASS = ".exercise-form-card-title";
+
+const SELECT_ALL = "all";
 
 /**
  * @type {Context}
@@ -26,23 +37,27 @@ const CONTEXT = JSON.parse(document.getElementById("context-id").textContent);
 const EXERCISE_SELECT_BTN_TEMPLATE = document.getElementById(
   "exercise-select-btn-template-id"
 );
+const EXERCISE_FORM_CARD_TEMPLATE = document.getElementById(
+  EXERCISE_FORM_CARD_TEMPLATE_ID
+);
+const SELECTED_EXERCISES_ROOT = document.getElementById(
+  SELECTED_EXERCISES_ROOT_ID
+);
 const EXERCISES_SELECT_ROOT = document.getElementById("exercises-select-root");
-const MUSCLE_SELECT_ID = "muscle-select-id";
-const EQUIPMENT_SELECT_ID = "equipment-select-id";
 const MUSCLE_SELECT = document.getElementById(MUSCLE_SELECT_ID);
 const EQUIPMENT_SELECT = document.getElementById(EQUIPMENT_SELECT_ID);
-const SELECT_ALL = "all";
+const SEARCH_EXERCISE_INPUT = document.getElementById(SEARCH_EXERCISE_INPUT_ID);
 
 /**
  * @param {{
  * value: string,
  * name: string
  * }}
- * @returns {Context}
+ * @returns {HTMLButtonElement}
  */
 function ExerciseSelectBtn({ value, name }) {
   const templateClone = EXERCISE_SELECT_BTN_TEMPLATE.content.cloneNode(true);
-  const btn = templateClone.querySelector(".exercise-select-btn");
+  const btn = templateClone.querySelector(EXERCISE_SELECT_BTN_CLASS);
   btn.value = value;
   btn.textContent = `+ ${name}`;
   return btn;
@@ -50,19 +65,48 @@ function ExerciseSelectBtn({ value, name }) {
 
 /**
  * @param {{
+ * name: string,
+ * exerciseId: string,
+ * }} props
+ * @returns {HTMLDivElement}
+ */
+function ExerciseFormCard({ name, exerciseId }) {
+  const templateClone = EXERCISE_FORM_CARD_TEMPLATE.content.cloneNode(true);
+  const card = templateClone.querySelector(EXERCISE_FORM_CARD_CLASS);
+  card.querySelector(EXERCISE_FORM_CARD_TITLE_CLASS).textContent = name;
+  card.dataset.exerciseId = exerciseId;
+  return card;
+}
+
+/**
+ * @param {{
  * exercises: Array<Exercise>,
- * muscleId: string,
- * equipmentId: string
- * }}
+ * selectedMuscleId: string,
+ * selectedEquipmentId: string,
+ * searchValue: string,
+ * }} props
  * @returns {Array<Exercise>}
  */
-function filterExercises({ exercises, muscleId, equipmentId }) {
+function filterExercises({
+  exercises,
+  selectedMuscleId,
+  selectedEquipmentId,
+  searchValue,
+}) {
   return exercises.filter((exercise) => {
     const isMuscleMatch =
-      muscleId === SELECT_ALL || exercise.muscle_id === muscleId;
+      selectedMuscleId === SELECT_ALL ||
+      exercise.muscle_id === selectedMuscleId;
+
     const isEquipmentMatch =
-      equipmentId === SELECT_ALL || exercise.equipment_id === equipmentId;
-    return isMuscleMatch && isEquipmentMatch;
+      selectedEquipmentId === SELECT_ALL ||
+      exercise.equipment_id === selectedEquipmentId;
+
+    const isSearchValueMatch =
+      !searchValue ||
+      exercise.text.toLowerCase().includes(searchValue.toLowerCase());
+
+    return isMuscleMatch && isEquipmentMatch && isSearchValueMatch;
   });
 }
 
@@ -86,32 +130,87 @@ function updateExerciseSelectRoot({ exercises, rootElement }) {
   rootElement.appendChild(fragment);
 }
 
+/**
+ * @param {{
+ * exercises: Array<Exercise>,
+ * muscleId: string,
+ * equipmentId: string,
+ * searchValue: string,
+ * exerciseSelectRoot: HTMLElement,
+ * }}
+ */
+function filterExercisesSelectOptions({
+  exercises,
+  muscleId,
+  equipmentId,
+  searchValue,
+  exerciseSelectRoot,
+}) {
+  const options = filterExercises({
+    exercises: exercises,
+    selectedMuscleId: muscleId,
+    selectedEquipmentId: equipmentId,
+    searchValue: searchValue,
+  });
+  updateExerciseSelectRoot({
+    exercises: options,
+    rootElement: exerciseSelectRoot,
+  });
+}
+
 document
   .getElementById(MUSCLE_SELECT_ID)
-  .addEventListener("change", async function (event) {
-    const value = event.target.value;
-    const exercises = filterExercises({
+  .addEventListener("change", function () {
+    filterExercisesSelectOptions({
       exercises: CONTEXT.exercises,
-      muscleId: value,
+      muscleId: MUSCLE_SELECT.value,
       equipmentId: EQUIPMENT_SELECT.value,
-    });
-    updateExerciseSelectRoot({
-      exercises: exercises,
-      rootElement: EXERCISES_SELECT_ROOT,
+      searchValue: SEARCH_EXERCISE_INPUT.value,
+      exerciseSelectRoot: EXERCISES_SELECT_ROOT,
     });
   });
 
 document
   .getElementById(EQUIPMENT_SELECT_ID)
-  .addEventListener("change", async function (event) {
-    const value = event.target.value;
-    const exercises = filterExercises({
+  .addEventListener("change", function () {
+    filterExercisesSelectOptions({
       exercises: CONTEXT.exercises,
       muscleId: MUSCLE_SELECT.value,
-      equipmentId: value,
-    });
-    updateExerciseSelectRoot({
-      exercises: exercises,
-      rootElement: EXERCISES_SELECT_ROOT,
+      equipmentId: EQUIPMENT_SELECT.value,
+      searchValue: SEARCH_EXERCISE_INPUT.value,
+      exerciseSelectRoot: EXERCISES_SELECT_ROOT,
     });
   });
+
+document
+  .getElementById(SEARCH_EXERCISE_INPUT_ID)
+  .addEventListener("input", function () {
+    filterExercisesSelectOptions({
+      exercises: CONTEXT.exercises,
+      muscleId: MUSCLE_SELECT.value,
+      equipmentId: EQUIPMENT_SELECT.value,
+      searchValue: SEARCH_EXERCISE_INPUT.value,
+      exerciseSelectRoot: EXERCISES_SELECT_ROOT,
+    });
+  });
+
+/** @param {MouseEvent} event  */
+function onClickExerciseSelectBtn(event) {
+  const exerciseValue = event.target.value;
+
+  /** @type {Exercise} */
+  const exercise = CONTEXT.exercises.find(
+    (exercise) => exercise.value === exerciseValue
+  );
+  const card = ExerciseFormCard({
+    name: exercise.text,
+    exerciseId: exercise.value,
+  });
+  SELECTED_EXERCISES_ROOT.appendChild(card);
+}
+
+document.addEventListener("click", function (event) {
+  if (event.target.matches(EXERCISE_SELECT_BTN_CLASS)) {
+    onClickExerciseSelectBtn(event);
+  }
+});

@@ -7,6 +7,17 @@ Create Workout
 
 {% block content %}
 <div class="container-fluid">
+    <div>Create Workout</div>
+    <c-primary-button
+        id="add-exercise-btn-id"
+        text="Add exercise"
+    />
+    <hr>
+
+    <div id="selected-exercises-id">
+
+    </div>
+
     <div>
         <c-primary-input
             label="Title"
@@ -43,26 +54,33 @@ Create Workout
     <div>
         <c-primary-input
             name="search"
+            id="search-exercise-input-id"
             placeholder="Search exercise"
         />
     </div>
 </div>
 
+<div id="exercises-select-root">
+{% for exercise in context.exercises %}
+    <c-exercise-select-button
+        value="{{ exercise.value }}"
+        name="{{ exercise.text }}"
+    />    
+{% endfor %}
+</div>
+
 <template id="exercise-select-btn-template-id">
-    <c-exercise-select-card
+    <c-exercise-select-button
         value=""
         name=""
     />
 </template>
 
-<div id="exercises-select-root">
-{% for exercise in context.exercises %}
-    <c-exercise-select-card
-        value="{{ exercise.value }}"
-     name="{{ exercise.text }}"
-    />    
-{% endfor %}
-</div>
+<template id="exercise-form-card-template-id">
+    <c-exercise-form-card
+        name="Supino"
+    />  
+</template>
 
 
 {% endblock content %}
