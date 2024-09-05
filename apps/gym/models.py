@@ -195,6 +195,7 @@ class WorkoutExercises(BaseModel):
         on_delete=models.SET_NULL,
         null=True,
     )
+    notes = models.TextField(_('notes'), null=True, blank=True)  # ruff: noqa
     repetitions = models.PositiveIntegerField(_('repetitions'), null=True, default=0)
     sets = models.PositiveIntegerField(_('sets'), null=True, default=0)  # series
     weight = models.IntegerField(_('weight'), null=True, default=0)
