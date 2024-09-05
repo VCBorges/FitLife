@@ -27,7 +27,10 @@ const SELECTED_EXERCISES_ROOT_ID = "selected-exercises-id";
 const EXERCISE_FORM_CARD_TEMPLATE_ID = "exercise-form-card-template-id";
 const EXERCISE_FORM_CARD_CLASS = ".exercise-form-card";
 const EXERCISE_FORM_CARD_TITLE_CLASS = ".exercise-form-card-title";
-
+const EXERCISES_FORM_CARD = {
+  closeButtonClass: ".exercise-form-card-close-btn",
+  headerClass: ".exercise-form-card-header",
+};
 const SELECT_ALL = "all";
 
 /**
@@ -75,6 +78,11 @@ function ExerciseFormCard({ name, exerciseId }) {
   const card = templateClone.querySelector(EXERCISE_FORM_CARD_CLASS);
   card.querySelector(EXERCISE_FORM_CARD_TITLE_CLASS).textContent = name;
   card.dataset.exerciseId = exerciseId;
+  const header = card.querySelector(EXERCISES_FORM_CARD.headerClass);
+  header.addEventListener("click", function () {
+    const card = this.parentElement;
+    card.classList.toggle("collapsed");
+  });
   return card;
 }
 
@@ -212,5 +220,7 @@ function onClickExerciseSelectBtn(event) {
 document.addEventListener("click", function (event) {
   if (event.target.matches(EXERCISE_SELECT_BTN_CLASS)) {
     onClickExerciseSelectBtn(event);
+  } else if (event.target.matches(EXERCISES_FORM_CARD.closeButtonClass)) {
+    event.target.closest(EXERCISE_FORM_CARD_CLASS).remove();
   }
 });

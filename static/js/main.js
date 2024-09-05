@@ -7,7 +7,7 @@ const INPUT_VALIDATION_MESSAGES = {
 
 /**
  * @param {string} name
- * @returns
+ * @returns {string}
  */
 function getCookie(name) {
   let cookieValue = null;

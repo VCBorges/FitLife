@@ -4,10 +4,12 @@
 >
     <div class="exercise-form-card-header">
         <div class="exercise-form-card-title">{{ name }}</div>
-        <c-close-button/>
+        <c-close-button
+            class="exercise-form-card-close-btn"
+        />
     </div>
     <hr>
-    <div>
+    <div class="exercise-form-card-content">
         <c-primary-input
             label="Sets"
             name="sets"
