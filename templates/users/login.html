@@ -1,4 +1,6 @@
 {% extends 'core/_base.html' %}
+{% load static %}
+{% load i18n %}
 
 {% block title %}
 Login
@@ -7,7 +9,7 @@ Login
 {% block content %}
 <div class="container-fluid">
     <form 
-        class="login-form-id" 
+        id="login-form-id" 
         action="{% url 'login' %}"
         data-errors-alert="#login-errors-alert"
         method="POST"
@@ -15,33 +17,33 @@ Login
     >
         <div>
             <c-primary-input
-                type="text"
-                label="Your email"
+                label="{% trans 'Seu email' %}"
+                placeholder="{% trans 'Digite seu email' %}"
+                type="email"
                 name="login"
-                placeholder="Your email"
                 required="True"
             />
         </div>
         <div>
             <c-primary-input
+                label="{% trans 'Sua senha' %}"
+                placeholder="{% trans 'Digite sua senha' %}"
                 type="password"
-                label="Your password"
                 name="password"
-                placeholder="Your password"
                 required="True"
             />
         </div>
         <div>
             <c-primary-button
-                type="submit"
                 text="Login"
+                type="submit"
                 class="btn-primary"
             />
             <a 
                 type="button"
                 href="{% url 'signup_template' %}" 
                 class="btn btn-secondary"
-            >Sign up</a>
+            >{% trans 'Cadastre-se' %}</a>
         </div>
         <div 
             class="alert alert-danger form-alert d-none" 
@@ -54,9 +56,5 @@ Login
 {% endblock content %}
 
 {% block js %}
-<script>
-    document.querySelector('.login-form-id').addEventListener('submit', async function(event) {
-        handleFormSubmit({ event })
-    });
-</script>
+<script type="module" src="{% static 'js/pages/login.js' %}"></script>
 {% endblock js %}

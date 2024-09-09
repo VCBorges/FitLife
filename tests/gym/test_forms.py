@@ -9,7 +9,6 @@ from rich import print  # noqa
 def test_CreateWorkoutExerciseForm_cleaned_data_with_valid_input_to_have_expected_keys():
     # Arrange
     expected_keys = [
-        'workout_exercise',
         'exercise',
         'sets',
         'repetitions',

@@ -1,3 +1,4 @@
+{% load i18n %}
 <div 
     class="exercise-form-card" 
     data-exercise-id="{{ exercise_id }}"
@@ -11,7 +12,7 @@
     <hr>
     <div class="exercise-form-card-content">
         <c-primary-input
-            label="Sets"
+            label="{% trans 'Séries' %}"
             name="sets"
             type="number"
             required
@@ -19,15 +20,15 @@
             value="0"
         />
         <c-primary-input
-            label="Repetitions"
-            name="repetitions"
+            label="{% trans 'Repetições' %}"
+            name="reps"
             type="number"
             required
             min="0"
             value="0"
         />
         <c-primary-input
-            label="Weight"
+            label="{% trans 'Peso' %}"
             name="weight"
             type="number"
             required
@@ -35,7 +36,7 @@
             value="0"
         />
         <c-primary-input
-            label="Rest"
+            label="{% trans 'Descanso' %}"
             name="rest_period"
             type="number"
             required
@@ -43,9 +44,9 @@
             value="0"
         />
         <c-primary-textarea
-            label="Notes"
+            label="{% trans 'Notas' %}"
             name="notes"
-            placeholder="Your notes about the exercises"
+            placeholder="{% trans 'Suas notas sobre o exercício' %}"
             rows="5"
             cols="50"
         />

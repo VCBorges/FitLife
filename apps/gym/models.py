@@ -24,7 +24,7 @@ class MuscleGroups(BaseModel):
         _('description'),
         validators=[translated_field_validator],
         default=default_translation,
-    )  # ruff: noqa
+    )
 
     class Meta:
         db_table = 'muscle_groups'
@@ -45,7 +45,7 @@ class Equipments(BaseModel):
         _('description'),
         validators=[translated_field_validator],
         default=default_translation,
-    )  # ruff: noqa
+    )
 
     class Meta:
         db_table = 'equipments'
@@ -66,7 +66,7 @@ class Exercises(BaseModel):
         _('description'),
         validators=[translated_field_validator],
         default=default_translation,
-    )  # ruff: noqa
+    )
     primary_muscle = models.ForeignKey(
         'gym.MuscleGroups',
         verbose_name=_('primary muscle'),

@@ -1,5 +1,6 @@
 {% extends 'core/_base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
 Create Workout
@@ -7,35 +8,38 @@ Create Workout
 
 {% block content %}
 <div class="container-fluid">
-    <div>Create Workout</div>
+    <div>{% trans 'Criação de Treinos' %}</div>
     <c-primary-button
-        id="add-exercise-btn-id"
-        text="Add exercise"
+        id="create-workout-btn-id"
+        text="{% trans 'Criar treino' %}"
+        data-endpoint="{% url 'create_list_workouts' %}"
     />
     <hr>
+
+    <c-error-alert id="create-workout-errors-alert-id"/>
 
     <div id="selected-exercises-id"></div>
 
     <div>
         <c-primary-input
-            label="Title"
+            label="{% trans 'Título' %}"
             name="title"
-            placeholder="Workout title"
+            placeholder="{% trans 'Título do treino' %}"
             required
         />
     </div>
     <div>
         <c-primary-textarea
-            label="Description"
+            label="{% trans 'Descrição' %}"
             name="description"
-            placeholder="Workout description"
+            placeholder="{% trans 'Descrição do treino' %}"
             rows="5"
             cols="50"
         />
     </div>
     <div>
         <c-primary-select
-            label="Muscle"
+            label="Músculos"
             name="muscle"
             id="muscle-select-id"
             :options="{{ context.muscles | safe | escape }}"
@@ -43,7 +47,7 @@ Create Workout
     </div>
     <div>
         <c-primary-select
-            label="Equipments"
+            label="Equipamentos"
             name="equipment"
             id="equipment-select-id"
             :options="{{ context.equipments | safe | escape }}"
@@ -51,9 +55,9 @@ Create Workout
     </div>
     <div>
         <c-primary-input
-            name="search"
+            name="{% trans 'Busca' %}"
             id="search-exercise-input-id"
-            placeholder="Search exercise"
+            placeholder="{% trans 'Busque um exercício' %}"
         />
     </div>
 </div>
@@ -63,28 +67,21 @@ Create Workout
     <c-exercise-select-button
         value="{{ exercise.value }}"
         name="{{ exercise.text }}"
-    />    
+    />
 {% endfor %}
 </div>
 
 <template id="exercise-select-btn-template-id">
-    <c-exercise-select-button
-        value=""
-        name=""
-    />
+    <c-exercise-select-button/>
 </template>
 
 <template id="exercise-form-card-template-id">
-    <c-exercise-form-card
-        name="Supino"
-    />  
+    <c-exercise-form-card/>  
 </template>
-
-
 {% endblock content %}
 
 
 {% block js %}
 {{ context | json_script:"context-id" }}
-<script src="{% static 'js/pages/create-workout.js' %}"></script>
+<script type="module" src="{% static 'js/pages/create-workout.js' %}"></script>
 {% endblock js %}

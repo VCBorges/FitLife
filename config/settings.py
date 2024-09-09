@@ -108,14 +108,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
+
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('pt', 'Portuguese'),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
+
+TIME_ZONE = 'UTC'
 
 
 STATIC_URL = '/static/'

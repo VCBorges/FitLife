@@ -6,18 +6,15 @@ from apps.gym import models
 
 
 class CreateWorkoutExerciseForm(BaseForm):
-    workout_exercise_id = forms.ModelChoiceField(
-        queryset=models.WorkoutExercises.objects.all(),
-        required=True,
-    )
     exercise_id = forms.ModelChoiceField(
         queryset=models.Exercises.objects.all(),
         required=True,
     )
-    sets = forms.IntegerField(required=False)
-    repetitions = forms.IntegerField(required=False)
-    weight = forms.FloatField(required=False)
-    rest_period = forms.IntegerField(required=False)
+    sets = forms.IntegerField(required=False, min_value=0)
+    repetitions = forms.IntegerField(required=False, min_value=0)
+    weight = forms.FloatField(required=False, min_value=0)
+    rest_period = forms.IntegerField(required=False, min_value=0)
+    notes = forms.CharField(required=False)
 
     normalized_fields_mapping = {
         'workout_exercise_id': 'workout_exercise',

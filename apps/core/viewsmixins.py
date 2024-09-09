@@ -140,6 +140,7 @@ class BaseFormViewMixin:
     @override
     def dispatch(self, *args: Any, **kwargs: Any) -> JsonResponse:
         try:
+            # print(f'{self.request.POST = }')
             data: dict[str, Any] = super().dispatch(*args, **kwargs)
             if not data:
                 data = {}
