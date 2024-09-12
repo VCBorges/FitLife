@@ -36,5 +36,8 @@ class BaseModel(models.Model):
 
     REPR_FIELDS = []
 
+    def __str__(self) -> str:
+        return self.__repr__()
+
     def __repr__(self) -> str:
         return f'<{self.__class__.__name__} ({', '.join([f'{field}="{getattr(self, field)}"' for field in self.REPR_FIELDS])})>'

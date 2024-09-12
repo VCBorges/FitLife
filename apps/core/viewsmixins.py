@@ -36,9 +36,10 @@ class BaseFormViewMixin:
     )
     request: HttpRequest
     model: type[DjangoModelType] | None = None
+    object: DjangoModelType | None = None
     data: dict[str, Any] | QueryDict
     pk_url_kwarg = 'pk'
-    object: DjangoModelType | None = None
+    kwargs: dict[str, Any]
 
     def parse_request_body(self, request: HttpRequest) -> dict[str, Any]:
         try:

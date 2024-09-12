@@ -1,10 +1,12 @@
 from typing import Any
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.base import Model as Model
 from django.views.generic import TemplateView, View
+from django.views.generic.detail import DetailView
 
 from apps.core import viewsmixins
-from apps.core.typed import AuthenticatedRequest
+from apps.core.typed import AuthenticatedRequest, DjangoModelType
 
 
 class AuthenticatedFormView(
@@ -33,6 +35,14 @@ class AuthenticatedTemplateView(
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         return context
+
+
+class AuthDetailTemplateView(
+    LoginRequiredMixin,
+    viewsmixins.BaseTemplateViewContextMixin,
+    DetailView,
+):
+    model: DjangoModelType
 
 
 class LoggedOutTemplateView(

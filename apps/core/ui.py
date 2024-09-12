@@ -5,6 +5,13 @@ from django.db.models.functions import Cast
 
 
 class SelectOptionsSchema(TypedDict):
+    """
+    Fields
+    ------
+    - value (str)
+    - text (str)
+    """
+
     value: str
     text: str
 
