@@ -84,17 +84,9 @@ class WorkoutExercisesUpdateWorkoutForm(BaseForm):
 
 
 class UpdateWorkoutForm(BaseForm):
-    workout_id = forms.ModelChoiceField(
-        queryset=models.Workouts.objects.all(),
-        required=True,
-    )
     title = forms.CharField(max_length=255)
     description = forms.CharField(required=False)
     exercises = form_fields.NestedFormField(
         form_class=WorkoutExercisesUpdateWorkoutForm,
         required=False,
     )
-
-    normalized_fields_mapping = {
-        'workout_id': 'workout',
-    }
