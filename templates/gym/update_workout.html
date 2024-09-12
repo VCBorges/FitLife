@@ -1,0 +1,23 @@
+{% extends 'core/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans 'Atualização de Treinos' %}
+{% endblock title %}
+
+{% block content %}
+<c-create-update-workout
+    title="{% trans 'Atualização de Treinos' %}"
+    submit_btn_text="{% trans 'Atualizar treino' %}"
+    submit_btn_endpoint="{% url 'update_detail_delete_workouts' workout.pk %}"
+/>
+{% endblock content %}
+
+{% comment %}
+{% endcomment %}
+
+{% block js %}
+{{ context | json_script:"context-id" }}
+<script type="module" src="{% static 'js/pages/create-workout.js' %}"></script>
+{% endblock js %}

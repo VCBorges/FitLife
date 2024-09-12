@@ -128,7 +128,7 @@ class Workouts(BaseModel):
     REPR_FIELDS = ['title']
 
     @property
-    def workout_exercises(self) -> models.QuerySet[WorkoutExercises]:
+    def workout_exercises(self) -> models.BaseManager[WorkoutExercises]:
         return self.workout_exercises
 
 

@@ -1,12 +1,16 @@
+from typing import Any
+
 from django.http import JsonResponse
+from django.http.response import HttpResponse as HttpResponse
 
 from apps.core.constants import Language
 from apps.core.views import (
+    AuthDetailTemplateView,
     AuthenticatedFormView,
     AuthenticatedTemplateView,
     LoggedOutTemplateView,
 )
-from apps.gym import forms, ui
+from apps.gym import forms, models, ui
 from apps.gym.services import WorkoutService
 
 # Create your views here.
@@ -41,18 +45,38 @@ class CreateWorkoutTemplateView(AuthenticatedTemplateView):
         return context
 
 
-class UpdateWorkoutTemplateView(AuthenticatedTemplateView):
+class UpdateWorkoutTemplateView(AuthDetailTemplateView):
     template_name = 'gym/update_workout.html'
+    model = models.Workouts
+    object: models.Workouts
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        language = Language.PT
+        context['context'] = {
+            'muscles': ui.muscles_select_input_options(
+                language=language,
+            ),
+            'equipments': ui.equipments_select_input_options(
+                language=language,
+            ),
+            'exercises': ui.exercises_select_input_options(
+                language=language,
+            ),
+        }
+        context['workout'] = self.object
+        context['workout_exercises'] = ui.workout_exercises_card_form(
+            workout=self.object,
+            language=language,
+        )
         return context
 
 
 class CreateListWorkoutsView(AuthenticatedFormView):
-    http_method_names = ['post', 'get']
+    http_method_names = ['post']
 
     def post(self, *args, **kwargs) -> JsonResponse:
+        print(f'{self.data = }')
         data = self.get_cleaned_data(forms.CreateWorkoutForm)
         workout = WorkoutService().create_workout(
             user=self.request.user,
@@ -66,6 +90,21 @@ class CreateListWorkoutsView(AuthenticatedFormView):
             data={'workout': workout.id},
         )
 
-    def get(self, *args, **kwargs) -> JsonResponse:
-        print(f'{self.request = }')
-        return {'get': self.request.GET}
+
+class UpdateDetailDeleteWorkoutView(AuthenticatedFormView):
+    http_method_names = ['put', 'delete']
+    model = models.Workouts
+
+    def put(self, *args, **kwargs) -> JsonResponse:
+        data = self.get_cleaned_data(forms.UpdateWorkoutExerciseForm)
+        WorkoutService().update_workout(
+            workout=self.object,
+            title=data.get('title'),
+            description=data.get('description'),
+            exercises=data.get('exercises'),
+        )
+
+    def delete(self, *args, **kwargs) -> dict[str, Any]:
+        WorkoutService.delete_workout(
+            workout=self.object,
+        )

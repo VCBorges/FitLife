@@ -88,3 +88,41 @@ def equipments_select_input_options(
         value_field='id',
         text_field=f'name__{language}',
     )
+
+
+def workout_exercises_card_form(
+    *,
+    workout: models.Workouts,
+    language: Language,
+    # lookups: dtos.WorkoutExercisesLookups = dtos.WorkoutExercisesLookups(),
+) -> list[dict[str, str]]:
+    queryset = (
+        workout.workout_exercises.select_related('exercise')
+        .values('id')
+        .annotate(
+            name=KeyTextTransform(
+                language,
+                'exercise__name',
+            ),
+            workout_exercise_id=Cast(
+                F('id'),
+                output_field=CharField(),
+            ),
+            exercise_id=Cast(
+                F('exercise__id'),
+                output_field=CharField(),
+            ),
+        )
+        .order_by('created_at')
+        .values(
+            'workout_exercise_id',
+            'exercise_id',
+            'name',
+            'notes',
+            'sets',
+            'repetitions',
+            'weight',
+            'rest_period',
+        )
+    )
+    return queryset

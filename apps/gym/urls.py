@@ -18,6 +18,11 @@ templates_urls = [
         view=views.CreateWorkoutTemplateView.as_view(),
         name='create_workout_template',
     ),
+    path(
+        route='update/workout/<uuid:pk>/',
+        view=views.UpdateWorkoutTemplateView.as_view(),
+        name='update_workout_template',
+    ),
 ]
 
 api_urls = [
@@ -25,6 +30,11 @@ api_urls = [
         route='workout/',
         view=views.CreateListWorkoutsView.as_view(),
         name='create_list_workouts',
+    ),
+    path(
+        route='workout/<str:pk>/',
+        view=views.UpdateDetailDeleteWorkoutView.as_view(),
+        name='update_detail_delete_workouts',
     ),
 ]
 

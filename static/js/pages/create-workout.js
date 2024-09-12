@@ -27,10 +27,7 @@ const SEARCH_EXERCISE_INPUT_ID = "search-exercise-input-id";
 const EXERCISE_SELECT_BTN_CLS = ".exercise-select-btn";
 const EXERCISE_SELECT_ROOT_ID = "exercises-select-root";
 const SELECTED_EXERCISES_ROOT_ID = "selected-exercises-id";
-const CREATE_WORKOUT_BTN_ID = "create-workout-btn-id";
-const EXERCISE_FORM_CARD_TEMPLATE_ID = "exercise-form-card-template-id";
-const EXERCISE_FORM_CARD_CLS = ".exercise-form-card";
-const EXERCISE_FORM_CARD_TITLE_CLS = ".exercise-form-card-title";
+const SUBMIT_WORKOUT_BTN_ID = "create-workout-btn-id";
 const EXERCISES_FORM_CARD = {
   CLS: ".exercise-form-card",
   CLOSE_BTN_CLS: ".exercise-form-card-close-btn",
@@ -38,7 +35,7 @@ const EXERCISES_FORM_CARD = {
   TITLE_CLS: ".exercise-form-card-title",
 };
 
-const CREATE_WORKOUT_ERROR_ALERT_ID = "create-workout-errors-alert-id";
+const ERROR_ALERT_ID = "errors-alert-id";
 
 const TEMPLATES = {
   EXERCISE_FORM_CARD_ID: "exercise-form-card-template-id",
@@ -64,10 +61,55 @@ const EXERCISES_SELECT_ROOT = document.getElementById(EXERCISE_SELECT_ROOT_ID);
 const MUSCLE_SELECT = document.getElementById(MUSCLE_SELECT_ID);
 const EQUIPMENT_SELECT = document.getElementById(EQUIPMENT_SELECT_ID);
 const SEARCH_EXERCISE_INPUT = document.getElementById(SEARCH_EXERCISE_INPUT_ID);
-const CREATE_WORKOUT_BTN = document.getElementById(CREATE_WORKOUT_BTN_ID);
-const CREATE_WORKOUT_ERROR_ALERT = document.getElementById(
-  CREATE_WORKOUT_ERROR_ALERT_ID
-);
+const SUBMIT_WORKOUT_BTN = document.getElementById(SUBMIT_WORKOUT_BTN_ID);
+const ERROR_ALERT = document.getElementById(ERROR_ALERT_ID);
+
+// TODO: Fix when the click is on the card title div the collapse does not work
+SELECTED_EXERCISES_ROOT.addEventListener("click", function (event) {
+  if (event.target.matches(EXERCISES_FORM_CARD.HEADER_CLS)) {
+    event.target.closest(EXERCISES_FORM_CARD.CLS).classList.toggle("collapsed");
+  } else if (event.target.matches(EXERCISES_FORM_CARD.CLOSE_BTN_CLS)) {
+    event.target.closest(EXERCISES_FORM_CARD.CLS).remove();
+  }
+});
+
+EXERCISES_SELECT_ROOT.addEventListener("click", function (event) {
+  if (event.target.matches(EXERCISE_SELECT_BTN_CLS)) {
+    onClickExerciseSelectBtn(event);
+  }
+});
+
+SUBMIT_WORKOUT_BTN.addEventListener("click", onClickSubmitWorkoutBtn);
+
+MUSCLE_SELECT.addEventListener("change", function () {
+  filterExercisesSelectOptions({
+    exercises: CONTEXT.exercises,
+    muscleId: MUSCLE_SELECT.value,
+    equipmentId: EQUIPMENT_SELECT.value,
+    searchValue: SEARCH_EXERCISE_INPUT.value,
+    exerciseSelectRoot: EXERCISES_SELECT_ROOT,
+  });
+});
+
+EQUIPMENT_SELECT.addEventListener("change", function () {
+  filterExercisesSelectOptions({
+    exercises: CONTEXT.exercises,
+    muscleId: MUSCLE_SELECT.value,
+    equipmentId: EQUIPMENT_SELECT.value,
+    searchValue: SEARCH_EXERCISE_INPUT.value,
+    exerciseSelectRoot: EXERCISES_SELECT_ROOT,
+  });
+});
+
+SEARCH_EXERCISE_INPUT.addEventListener("input", function () {
+  filterExercisesSelectOptions({
+    exercises: CONTEXT.exercises,
+    muscleId: MUSCLE_SELECT.value,
+    equipmentId: EQUIPMENT_SELECT.value,
+    searchValue: SEARCH_EXERCISE_INPUT.value,
+    exerciseSelectRoot: EXERCISES_SELECT_ROOT,
+  });
+});
 
 /**
  * @param {{
@@ -179,36 +221,6 @@ function filterExercisesSelectOptions({
   });
 }
 
-MUSCLE_SELECT.addEventListener("change", function () {
-  filterExercisesSelectOptions({
-    exercises: CONTEXT.exercises,
-    muscleId: MUSCLE_SELECT.value,
-    equipmentId: EQUIPMENT_SELECT.value,
-    searchValue: SEARCH_EXERCISE_INPUT.value,
-    exerciseSelectRoot: EXERCISES_SELECT_ROOT,
-  });
-});
-
-EQUIPMENT_SELECT.addEventListener("change", function () {
-  filterExercisesSelectOptions({
-    exercises: CONTEXT.exercises,
-    muscleId: MUSCLE_SELECT.value,
-    equipmentId: EQUIPMENT_SELECT.value,
-    searchValue: SEARCH_EXERCISE_INPUT.value,
-    exerciseSelectRoot: EXERCISES_SELECT_ROOT,
-  });
-});
-
-SEARCH_EXERCISE_INPUT.addEventListener("input", function () {
-  filterExercisesSelectOptions({
-    exercises: CONTEXT.exercises,
-    muscleId: MUSCLE_SELECT.value,
-    equipmentId: EQUIPMENT_SELECT.value,
-    searchValue: SEARCH_EXERCISE_INPUT.value,
-    exerciseSelectRoot: EXERCISES_SELECT_ROOT,
-  });
-});
-
 /** @param {MouseEvent} event  */
 function onClickExerciseSelectBtn(event) {
   const exerciseValue = event.target.value;
@@ -227,19 +239,19 @@ function onClickExerciseSelectBtn(event) {
 /**
  * @param {MouseEvent} event
  */
-async function onClickCreateWorkoutBtn(event) {
+async function onClickSubmitWorkoutBtn(event) {
   const url = event.target.dataset.endpoint;
   const title = document.querySelector('input[name="title"]').value;
   const description = document.querySelector(
     'textarea[name="description"]'
   ).value;
   const exercises = Array.from(
-    document.querySelectorAll(EXERCISE_FORM_CARD_CLS)
+    document.querySelectorAll(EXERCISES_FORM_CARD.CLS)
   ).map((card) => {
     return {
       exercise_id: card.dataset.exerciseId,
       sets: card.querySelector('input[name="sets"]').value,
-      reps: card.querySelector('input[name="reps"]').value,
+      repetitions: card.querySelector('input[name="repetitions"]').value,
       rest_period: card.querySelector('input[name="rest_period"]').value,
       weight: card.querySelector('input[name="weight"]').value,
       notes: card.querySelector('textarea[name="notes"]').value,
@@ -255,7 +267,7 @@ async function onClickCreateWorkoutBtn(event) {
     },
     beforeSend: async () => {
       event.target.disabled = true;
-      hideElement(CREATE_WORKOUT_ERROR_ALERT);
+      hideElement(ERROR_ALERT);
     },
     onSuccess: async (data) => {
       event.target.disabled = false;
@@ -263,27 +275,10 @@ async function onClickCreateWorkoutBtn(event) {
     onError: async (data, status) => {
       console.log(data.errors);
       event.target.disabled = false;
-      showElement(CREATE_WORKOUT_ERROR_ALERT);
-      const errorAlertContent =
-        CREATE_WORKOUT_ERROR_ALERT.querySelector(".content");
+      showElement(ERROR_ALERT);
+      const errorAlertContent = ERROR_ALERT.querySelector(".content");
       errorAlertContent.innerHTML = "";
       errorAlertContent.textContent = data.errors;
     },
   });
 }
-
-SELECTED_EXERCISES_ROOT.addEventListener("click", function (event) {
-  if (event.target.matches(EXERCISES_FORM_CARD.HEADER_CLS)) {
-    event.target.closest(EXERCISES_FORM_CARD.CLS).classList.toggle("collapsed");
-  } else if (event.target.matches(EXERCISES_FORM_CARD.CLOSE_BTN_CLS)) {
-    event.target.closest(EXERCISES_FORM_CARD.CLS).remove();
-  }
-});
-
-EXERCISES_SELECT_ROOT.addEventListener("click", function (event) {
-  if (event.target.matches(EXERCISE_SELECT_BTN_CLS)) {
-    onClickExerciseSelectBtn(event);
-  }
-});
-
-CREATE_WORKOUT_BTN.addEventListener("click", onClickCreateWorkoutBtn);

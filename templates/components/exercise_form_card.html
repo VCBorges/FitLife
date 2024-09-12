@@ -4,51 +4,69 @@
     data-exercise-id="{{ exercise_id }}"
 >
     <div class="exercise-form-card-header">
-        <div class="exercise-form-card-title">{{ name }}</div>
+        <div class="exercise-form-card-title">{{ workout_exercise.name }}</div>
         <c-close-button
             class="exercise-form-card-close-btn"
         />
     </div>
     <hr>
     <div class="exercise-form-card-content">
-        <c-primary-input
-            label="{% trans 'Séries' %}"
-            name="sets"
-            type="number"
-            required
-            min="0"
-            value="0"
-        />
-        <c-primary-input
-            label="{% trans 'Repetições' %}"
-            name="reps"
-            type="number"
-            required
-            min="0"
-            value="0"
-        />
-        <c-primary-input
-            label="{% trans 'Peso' %}"
-            name="weight"
-            type="number"
-            required
-            min="0"
-            value="0"
-        />
-        <c-primary-input
-            label="{% trans 'Descanso' %}"
-            name="rest_period"
-            type="number"
-            required
-            min="0"
-            value="0"
-        />
-        <c-primary-textarea
-            label="{% trans 'Notas' %}"
-            name="notes"
-            placeholder="{% trans 'Suas notas sobre o exercício' %}"
-            rows="5"
-            cols="50"
-        />
+        <form class="workout-exercise-form">
+            {% if workout_exercise %}
+                <c-primary-input
+                    name="workout_exercise_id"
+                    required
+                    value="{{ workout_exercise.workout_exercise_id }}"
+                    hidden
+                />
+            {% else %}
+                <c-primary-input
+                    name="exercise_id"
+                    required
+                    value="{{ workout_exercise.exercise_id | default:None }}"
+                    hidden
+                />    
+            {% endif %}
+            <c-primary-input
+                label="{% trans 'Séries' %}"
+                name="sets"
+                type="number"
+                required
+                min="0"
+                value="{{ workout_exercise.sets | default:1 }}"
+            />
+            <c-primary-input
+                label="{% trans 'Repetições' %}"
+                name="repetitions"
+                type="number"
+                required
+                min="0"
+                value="{{ workout_exercise.repetitions | default:1 }}"
+            />
+            <c-primary-input
+                label="{% trans 'Peso' %}"
+                name="weight"
+                type="number"
+                required
+                min="0"
+                value="{{ workout_exercise.weight | default:1 }}"
+            />
+            <c-primary-input
+                label="{% trans 'Descanso' %}"
+                name="rest_period"
+                type="number"
+                required
+                min="0"
+                value="{{ workout_exercise.rest_period | default:1 }}"
+            />
+            <c-primary-textarea
+                label="{% trans 'Notas' %}"
+                name="notes"
+                placeholder="{% trans 'Suas notas sobre o exercício' %}"
+                rows="5"
+                cols="50"
+                value="{{ workout_exercise.notes | default:None }}"
+            />
+        </form>
     </div>
 </div>

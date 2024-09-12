@@ -3,81 +3,16 @@
 {% load i18n %}
 
 {% block title %}
-Create Workout
+{% trans 'Criação de treino' %}
 {% endblock title %}
 
+
 {% block content %}
-<div class="container-fluid">
-    <div>{% trans 'Criação de Treinos' %}</div>
-    <c-primary-button
-        id="create-workout-btn-id"
-        text="{% trans 'Criar treino' %}"
-        data-endpoint="{% url 'create_list_workouts' %}"
-    />
-    <hr>
-
-    <c-error-alert id="create-workout-errors-alert-id"/>
-
-    <div id="selected-exercises-id"></div>
-
-    <div>
-        <c-primary-input
-            label="{% trans 'Título' %}"
-            name="title"
-            placeholder="{% trans 'Título do treino' %}"
-            required
-        />
-    </div>
-    <div>
-        <c-primary-textarea
-            label="{% trans 'Descrição' %}"
-            name="description"
-            placeholder="{% trans 'Descrição do treino' %}"
-            rows="5"
-            cols="50"
-        />
-    </div>
-    <div>
-        <c-primary-select
-            label="Músculos"
-            name="muscle"
-            id="muscle-select-id"
-            :options="{{ context.muscles | safe | escape }}"
-        />
-    </div>
-    <div>
-        <c-primary-select
-            label="Equipamentos"
-            name="equipment"
-            id="equipment-select-id"
-            :options="{{ context.equipments | safe | escape }}"
-        />
-    </div>
-    <div>
-        <c-primary-input
-            name="{% trans 'Busca' %}"
-            id="search-exercise-input-id"
-            placeholder="{% trans 'Busque um exercício' %}"
-        />
-    </div>
-</div>
-
-<div id="exercises-select-root">
-{% for exercise in context.exercises %}
-    <c-exercise-select-button
-        value="{{ exercise.value }}"
-        name="{{ exercise.text }}"
-    />
-{% endfor %}
-</div>
-
-<template id="exercise-select-btn-template-id">
-    <c-exercise-select-button/>
-</template>
-
-<template id="exercise-form-card-template-id">
-    <c-exercise-form-card/>  
-</template>
+<c-create-update-workout
+    title="{% trans 'Criação de Treinos' %}"
+    submit_btn_text="{% trans 'Criar treino' %}"
+    submit_btn_endpoint="{% url 'create_list_workouts' %}"
+/>
 {% endblock content %}
 
 

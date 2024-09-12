@@ -1,11 +1,24 @@
+<c-vars 
+    type="text"
+    placeholder=""
+    value=""
+/>
+
 {% if label %}
 <label 
     for="{{ name }}" 
-    class="primary-label {{ labelClass }}"
+    class="primary-label{% if label_class %} {{ label_class }}{% endif %}"
 >{{ label }}</label>
 {% endif %}
-<input 
-    class="primary-input {{ class }}"
+
+<input
+    class="primary-input{% if class %} {{ class }}{% endif %}"
+    type="{{ type }}"
+    label="{{ label }}"
+    value="{{ value | default:'' }}"
+    placeholder="{{ placeholder }}"
+    name="{{ name }}"
+    id="{{ id }}"
     {{ attrs }}
 >
 <div class="input-errors"></div>

@@ -1,3 +1,7 @@
+<c-vars
+    value=""
+/>
+
 {% if label %}
 <label 
     for="{{ name }}" 
@@ -13,5 +17,5 @@
     {% endif %}
     rows="{{ rows }}"
     cols="{{ cols }}"
-></textarea>
+>{{ value | default:'' }}</textarea>
 <div class="input-errors"></div>
