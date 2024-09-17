@@ -1,13 +1,8 @@
 import { showElement, hideElement } from "../core/utils.js";
 import { handleRequestSubmit } from "../core/requests.js";
+import { isFormValid, formToObject } from "../core/forms.js";
 
 /**
- * @typedef {object} Exercise
- * @property {string} value
- * @property {string} text
- * @property {string} muscle_id
- * @property {string} equipment_id
- *
  * @typedef {object} Muscle
  * @property {string} value
  * @property {string} text
@@ -35,6 +30,7 @@ const EXERCISES_FORM_CARD = {
   TITLE_CLS: ".exercise-form-card-title",
 };
 
+const WORKOUT_DATA_FORM_ID = "workout-data-form-id";
 const ERROR_ALERT_ID = "errors-alert-id";
 
 const TEMPLATES = {
@@ -63,6 +59,7 @@ const EQUIPMENT_SELECT = document.getElementById(EQUIPMENT_SELECT_ID);
 const SEARCH_EXERCISE_INPUT = document.getElementById(SEARCH_EXERCISE_INPUT_ID);
 const SUBMIT_WORKOUT_BTN = document.getElementById(SUBMIT_WORKOUT_BTN_ID);
 const ERROR_ALERT = document.getElementById(ERROR_ALERT_ID);
+const WORKOUT_DATA_FORM = document.getElementById(WORKOUT_DATA_FORM_ID);
 
 // TODO: Fix when the click is on the card title div the collapse does not work
 SELECTED_EXERCISES_ROOT.addEventListener("click", function (event) {
@@ -75,7 +72,7 @@ SELECTED_EXERCISES_ROOT.addEventListener("click", function (event) {
 
 EXERCISES_SELECT_ROOT.addEventListener("click", function (event) {
   if (event.target.matches(EXERCISE_SELECT_BTN_CLS)) {
-    onClickExerciseSelectBtn(event);
+    handleClickExerciseSelectBtn(event);
   }
 });
 
@@ -137,13 +134,32 @@ function ExerciseFormCard({ name, exerciseId }) {
   const templateClone = EXERCISE_FORM_CARD_TEMPLATE.content.cloneNode(true);
   const card = templateClone.querySelector(EXERCISES_FORM_CARD.CLS);
   card.querySelector(EXERCISES_FORM_CARD.TITLE_CLS).textContent = name;
-  card.dataset.exerciseId = exerciseId;
+  const exerciseIdInput = card.querySelector("input[name=exercise_id]");
+  exerciseIdInput.value = exerciseId;
   return card;
+}
+
+export function handleClickSelectedExercisesRoot(event) {
+  if (event.target.matches(EXERCISES_FORM_CARD.HEADER_CLS)) {
+    event.target.closest(EXERCISES_FORM_CARD.CLS).classList.toggle("collapsed");
+  } else if (event.target.matches(EXERCISES_FORM_CARD.CLOSE_BTN_CLS)) {
+    event.target.closest(EXERCISES_FORM_CARD.CLS).remove();
+  }
+}
+
+/**
+ *
+ * @param {MouseEvent} event
+ */
+export function handleClickExerciseSelectRoot(event) {
+  if (event.target.matches(EXERCISE_SELECT_BTN_CLS)) {
+    handleClickExerciseSelectBtn(event);
+  }
 }
 
 /**
  * @param {{
- * exercises: Array<Exercise>,
+ * exercises: Exercise[],
  * selectedMuscleId: string,
  * selectedEquipmentId: string,
  * searchValue: string,
@@ -222,7 +238,7 @@ function filterExercisesSelectOptions({
 }
 
 /** @param {MouseEvent} event  */
-function onClickExerciseSelectBtn(event) {
+function handleClickExerciseSelectBtn(event) {
   const exerciseValue = event.target.value;
 
   /** @type {Exercise} */
@@ -241,29 +257,33 @@ function onClickExerciseSelectBtn(event) {
  */
 async function onClickSubmitWorkoutBtn(event) {
   const url = event.target.dataset.endpoint;
-  const title = document.querySelector('input[name="title"]').value;
-  const description = document.querySelector(
-    'textarea[name="description"]'
-  ).value;
+  let isValid = true;
+  if (!isFormValid(WORKOUT_DATA_FORM)) {
+    isValid = false;
+  }
+  const workout = formToObject(WORKOUT_DATA_FORM);
   const exercises = Array.from(
     document.querySelectorAll(EXERCISES_FORM_CARD.CLS)
   ).map((card) => {
-    return {
-      exercise_id: card.dataset.exerciseId,
-      sets: card.querySelector('input[name="sets"]').value,
-      repetitions: card.querySelector('input[name="repetitions"]').value,
-      rest_period: card.querySelector('input[name="rest_period"]').value,
-      weight: card.querySelector('input[name="weight"]').value,
-      notes: card.querySelector('textarea[name="notes"]').value,
-    };
+    const form = card.querySelector("form");
+    if (!isFormValid(form)) {
+      isValid = false;
+    }
+    return formToObject(form);
   });
+  console.log({
+    ...workout,
+    exercises: exercises,
+  });
+  if (!isValid) {
+    return;
+  }
   handleRequestSubmit({
     url: url,
     method: "POST",
     body: {
-      title,
-      description,
-      exercises,
+      ...workout,
+      exercises: exercises,
     },
     beforeSend: async () => {
       event.target.disabled = true;

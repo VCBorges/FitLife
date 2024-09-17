@@ -1,16 +1,18 @@
 {% load i18n %}
 
 {% comment %}
-    For some reason this cotton component can access the view context variables
+    For some reason this django-cotton component can access the view context variables
     directly, so we don't need to pass them as props.
 {% endcomment %}
 
 <div class="container-fluid">
     <div>{{ title }}</div>
     <c-primary-button
-        id="create-workout-btn-id"
-        text="{{ submit_btn_text }}"
-        data-endpoint="{{ submit_btn_endpoint }}"
+        type="submit"
+        id="submit-workout-btn-id"
+        text="{{ submit_btn.text }}"
+        formaction="{{ submit_btn.formaction }}"
+        formmethod="{{ submit_btn.formmethod }}"
     />
     <hr>
     <c-error-alert id="errors-alert-id"/>
@@ -24,7 +26,7 @@
         {% endif %}
     </div>
 
-    <form id="workout-info-form-id">
+    <form id="workout-data-form-id">
         {% if workout %}
             <div>
                 <c-primary-input

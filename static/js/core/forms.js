@@ -1,17 +1,27 @@
 import { sendRequest, redirectIfApplicable } from "./requests.js";
 import { hideElement, showElement } from "./utils.js";
 
-const INPUT_VALIDATION_MESSAGES = {
+export const INPUT_VALIDATION_MESSAGES = {
   REQUIRED: "Please fill out this field.",
 };
-const INPUT_ERRORS_CLS = ".input-errors";
-const NON_FIELD_ERRORS = "__all__";
+export const INPUT_ERRORS_CLS = ".input-errors";
+export const NON_FIELD_ERRORS = "__all__";
+export const ERROR_ALERT_CLS = "errors-alert";
+export const SELECT_ALL_OPTION = "all";
+
+/**
+ * @param {HTMLFormElement} form
+ * @returns {Object<string, any>}
+ */
+export function formToObject(form) {
+  return Object.fromEntries(new FormData(form).entries());
+}
 
 /**
  * @param {HTMLFormElement} form
  * @returns {boolean}
  */
-function isFormValid(form) {
+export function isFormValid(form) {
   if (!form.checkValidity()) {
     const inputs = form.querySelectorAll("input");
     inputs.forEach((input) => {
