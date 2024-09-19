@@ -8,11 +8,12 @@ import {
   EXERCISE_SELECT_BTN_CLS,
   EXERCISES_FORM_CARD,
   TEMPLATES,
-  handleClickSelectedExercisesRoot,
-  handleClickExerciseSelectRoot,
+  WORKOUT_FORM_ID,
+  handleClickExerciseSelectBtn,
   submitWorkout,
   filterExercisesSelectOptions as filterExercisesOptions,
 } from "../submitWorkouts.js";
+import { isFormValid, formToObject } from "../../../core/forms.js";
 /**@import { Exercise } "../submitWorkouts.js" */
 
 /**
@@ -44,17 +45,37 @@ const EXERCISE_SELECT_BTN_TEMPLATE = document.getElementById(
 const EXERCISE_FORM_CARD_TEMPLATE = document.getElementById(
   TEMPLATES.EXERCISE_FORM_CARD_ID
 );
+const WORKOUT_FORM = document.getElementById(WORKOUT_FORM_ID);
 
-
+/** @type {Context} */
 const CONTEXT = JSON.parse(document.getElementById("context-id").textContent);
 
 SUBMIT_WORKOUT_BTN.addEventListener("click", async function (event) {
   /**@type {HTMLButtonElement} */
   const button = event.target;
-
+  let isValid = true;
+  if (!isFormValid(WORKOUT_FORM)) {
+    isValid = false;
+  }
+  const workoutData = formToObject(WORKOUT_FORM);
+  const exercises = Array.from(
+    document.querySelectorAll(EXERCISES_FORM_CARD.CLS)
+  ).map((card) => {
+    const form = card.querySelector("form");
+    if (!isFormValid(form)) {
+      isValid = false;
+    }
+    return formToObject(form);
+  });
+  if (!isValid) {
+    return;
+  }
   await submitWorkout({
-    method: button.formMethod,
-    url: button.formAction,
+    submitBtn: button,
+    body: {
+      ...workoutData,
+      exercises: exercises,
+    },
   });
 });
 
@@ -67,12 +88,14 @@ SELECTED_EXERCISES_ROOT.addEventListener("click", function (event) {
 });
 
 EXERCISES_SELECT_ROOT.addEventListener("click", function (event) {
-  handleClickExerciseSelectRoot({
-    event,
-    exercises: CONTEXT.exercises,
-    selectedExercisesRoot: SELECTED_EXERCISES_ROOT,
-    exerciseFormCardTemplate: EXERCISE_FORM_CARD_TEMPLATE,
-  });
+  if (event.target.matches(EXERCISE_SELECT_BTN_CLS)) {
+    handleClickExerciseSelectBtn({
+      event,
+      exercises: CONTEXT.exercises,
+      selectedExercisesRoot: SELECTED_EXERCISES_ROOT,
+      exerciseFormCardTemplate: EXERCISE_FORM_CARD_TEMPLATE,
+    });
+  }
 });
 
 MUSCLE_SELECT.addEventListener("change", function () {

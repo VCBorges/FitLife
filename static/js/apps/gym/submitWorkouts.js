@@ -22,12 +22,12 @@ export const EXERCISES_FORM_CARD = {
   HEADER_CLS: ".exercise-form-card-header",
   TITLE_CLS: ".exercise-form-card-title",
 };
-export const WORKOUT_DATA_FORM_ID = "workout-data-form-id";
 export const ERROR_ALERT_ID = "errors-alert-id";
 export const TEMPLATES = {
   EXERCISE_FORM_CARD_ID: "exercise-form-card-template-id",
   EXERCISE_SELECT_ID: "exercise-select-btn-template-id",
 };
+export const WORKOUT_FORM_ID = "workout-form-id";
 
 const SELECT_ALL_OPTION = "all";
 
@@ -161,7 +161,7 @@ function updateExerciseSelectRoot({
 
 /**
  * @param {{
- * exercises: Array<Exercise>,
+ * exercises: Exercise[],
  * muscleId: string,
  * equipmentId: string,
  * searchValue: string,
@@ -175,7 +175,7 @@ export function filterExercisesSelectOptions({
   equipmentId,
   searchValue,
   exerciseSelectRoot,
-  exerciseSelectBtnTemplate
+  exerciseSelectBtnTemplate,
 }) {
   const options = filterExercises({
     exercises: exercises,
@@ -220,56 +220,44 @@ export function handleClickExerciseSelectBtn({
 
 /**
  * @param {{
- * url: string,
- * method: string,
- * body: Object<String, Any>,
- * errorAlert: HTMLDivElement,
+ * submitBtn: HTMLButtonElement,
+ * body: Object<String, any>,
+ * url: string?,
+ * method: string?,
+ * errorAlert: HTMLDivElement?,
+ * onSuccess: Function,
  * }} props
  */
-export async function submitWorkout({ 
-  method,
-  url, 
-  body, 
-  errorAlert,
+export async function submitWorkout({
+  submitBtn,
+  body,
+  errorAlert = null,
+  url = null,
+  method = null,
+  onSuccess = () => {},
 }) {
-  //   const url = form.action;
-  // let isValid = true;
-  // if (!isFormValid(form)) {
-  // isValid = false;
-  // }
-  // const workout = formToObject(new FormData(form));
-
-  // const exercises = Array.from(
-  //   document.querySelectorAll(EXERCISES_FORM_CARD.CLS)
-  // ).map((card) => {
-  //   const form = card.querySelector("form");
-  //   if (!isFormValid(form)) {
-  //     isValid = false;
-  //   }
-  //   return formToObject(form);
-  // });
-
-  // if (!isValid) {
-  //   return;
-  // }
-
   handleRequestSubmit({
-    url: url,
-    method: method,
+    url: url || submitBtn.formAction,
+    method: method || submitBtn.getAttribute('formmethod'),
     body: body,
     beforeSend: () => {
-      button.disabled = true;
-      hideElement(errorAlert);
+      submitBtn.disabled = true;
+      if (errorAlert) {
+        hideElement(errorAlert);
+      }
     },
     onSuccess: (data) => {
-      button.disabled = false;
+      submitBtn.disabled = false;
+      onSuccess(data);
     },
     onError: (data, status) => {
-      button.disabled = false;
-      showElement(errorAlert);
-      const errorAlertContent = errorAlert.querySelector(".content");
-      errorAlertContent.innerHTML = "";
-      errorAlertContent.textContent = data.errors;
+      submitBtn.disabled = false;
+      if (errorAlert) {
+        showElement(errorAlert);
+        const errorAlertContent = errorAlert.querySelector(".content");
+        errorAlertContent.innerHTML = "";
+        errorAlertContent.textContent = data.errors;
+      }
     },
   });
 }

@@ -43,6 +43,7 @@ def default_translation() -> TranslationsSchema:
     }
 
 
+# TODO: To put it into a try-except block and raise the proper exception
 def clean_models(*models: typed.DjangoModelType) -> None:
     for model in models:
         model.full_clean()
@@ -50,4 +51,6 @@ def clean_models(*models: typed.DjangoModelType) -> None:
 
 class BaseDTO:
     def to_dict(self) -> dict[str, Any]:
-        return {key: value for key, value in asdict(self).items() if value is not None}
+        return {
+            key: value for key, value in asdict(self).items() if value is not None
+        }  # ftm: skip

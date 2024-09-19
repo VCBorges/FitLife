@@ -96,7 +96,7 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedFormView):
     model = models.Workouts
 
     def put(self, *args, **kwargs) -> JsonResponse:
-        data = self.get_cleaned_data(forms.UpdateWorkoutExerciseForm)
+        data = self.get_cleaned_data(forms.UpdateWorkoutForm)
         WorkoutService().update_workout(
             workout=self.object,
             title=data.get('title'),

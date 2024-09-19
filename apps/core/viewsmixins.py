@@ -83,8 +83,6 @@ class BaseFormViewMixin:
         kwargs['data'] = self.data
         kwargs['files'] = self.request.FILES
         kwargs['request'] = self.request
-        if self.object:
-            kwargs['instance'] = self.object
         return kwargs
 
     def form_valid(self, form: BaseFormType, *args, **kwargs) -> dict[str, Any]:
@@ -136,6 +134,7 @@ class BaseFormViewMixin:
     def setup(self, request: HttpRequest, *args, **kwargs):
         super().setup(request, *args, **kwargs)
         self.data = self.get_data()
+        print(f'{self.data = }')
         self.object = self.get_object()
 
     @override

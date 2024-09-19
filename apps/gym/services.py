@@ -67,18 +67,19 @@ class WorkoutService:
                 'description',
             ]
         )
+        print(f'{exercises = }')
         if exercises:
-            if 'create' in exercises:
+            if 'to_create' in exercises:
                 self._create_workout_exercises(
                     workout=workout,
-                    exercises=exercises['create'],
+                    exercises=exercises['to_create'],
                 )
 
-            if 'update' in exercises:
-                self._update_exercise(exercises['update'])
+            if 'to_update' in exercises:
+                self._update_exercise(exercises['to_update'])
 
-            if 'delete' in exercises:
-                self._delete_exercise(exercises['delete'])
+            if 'to_delete' in exercises:
+                self._delete_exercise(exercises['to_delete'])
 
         return workout
 
@@ -105,9 +106,9 @@ class WorkoutService:
             ],
         )
 
-    def _delete_exercise(self, exercises: list[models.WorkoutExercises]):
+    def _delete_exercise(self, exercises: list[dict[str, models.WorkoutExercises]]):
         models.WorkoutExercises.objects.filter(
-            id__in=[exercise.id for exercise in exercises]
+            id__in=[exercise['workout_exercise'].pk for exercise in exercises]
         ).delete()
 
     @transaction.atomic

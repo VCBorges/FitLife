@@ -1,12 +1,21 @@
 import { sendRequest, redirectIfApplicable } from "./requests.js";
 import { hideElement, showElement } from "./utils.js";
 
-export const INPUT_VALIDATION_MESSAGES = {
-  REQUIRED: "Please fill out this field.",
+export const CONTROLS_VALIDATION_MESSAGES = {
+  valueMissing: "Este campo é obrigatório",
+  typeMismatch: "Por favor, insira um valor válido",
+  patternMismatch: "Por favor, siga o formato solicitado",
+  tooLong: "Por favor, reduza este texto para {maxLength} caracteres ou menos",
+  tooShort: "Por favor, aumente este texto para {minLength} caracteres ou mais",
+  rangeUnderflow: "Por favor, selecione um valor maior ou igual a {min}",
+  rangeOverflow: "Por favor, selecione um valor menor ou igual a {max}",
+  stepMismatch: "Por favor, selecione um valor válido",
+  badInput: "Por favor, insira um valor válido",
+  customError: "Por favor, insira um valor válido",
 };
-export const INPUT_ERRORS_CLS = ".input-errors";
+export const CONTROL_ERRORS_CLS = ".control-errors";
 export const NON_FIELD_ERRORS = "__all__";
-export const ERROR_ALERT_CLS = "errors-alert";
+export const ERROR_ALERT_CLS = ".errors-alert";
 export const SELECT_ALL_OPTION = "all";
 
 /**
@@ -23,20 +32,30 @@ export function formToObject(form) {
  */
 export function isFormValid(form) {
   if (!form.checkValidity()) {
-    const inputs = form.querySelectorAll("input");
-    inputs.forEach((input) => {
-      if (!input.checkValidity()) {
-        if (input.validationMessage === INPUT_VALIDATION_MESSAGES.REQUIRED) {
-          const inputErrorsElement = input
-            .closest("div")
-            .querySelector(INPUT_ERRORS_CLS);
-          inputErrorsElement.textContent = "This field is required";
-        }
+    Array.from(form.elements).forEach((control) => {
+      if (!control.checkValidity()) {
+        const controlError = control
+          .closest("div")
+          .querySelector(CONTROL_ERRORS_CLS);
+        controlError.textContent = control.validationMessage;
       }
     });
     return false;
   }
   return true;
+}
+
+/**
+ * @param {HTMLFormElement} form
+ * @returns {[boolean, Object<string, any>]}
+ */
+export function validateForm(form) {
+  const isValid = isFormValid(form);
+  if (isValid){
+    const data = formToObject(form);
+    return [isValid, data];
+  }
+  return [isValid, null];
 }
 
 /**
@@ -46,7 +65,7 @@ export function isFormValid(form) {
  * }} props
  */
 function cleanFormErrors({ form, errorAlert }) {
-  const inputErrors = form.querySelectorAll(INPUT_ERRORS_CLS);
+  const inputErrors = form.querySelectorAll(CONTROL_ERRORS_CLS);
   inputErrors.forEach((errorMessage) => {
     if (errorMessage) {
       errorMessage.innerHTML = "";
@@ -71,7 +90,7 @@ function handleFormErrors({ form, data, errorAlert, flattenErrors = false }) {
     const inputElement = form.querySelector(`input[name="${field}"]`);
     if (inputElement) {
       const parentElement = inputElement.parentElement;
-      const errorElement = parentElement.querySelector(INPUT_ERRORS_CLS);
+      const errorElement = parentElement.querySelector(CONTROL_ERRORS_CLS);
       errorElement.textContent = error;
     } else {
       errorAlert.textContent = error;
