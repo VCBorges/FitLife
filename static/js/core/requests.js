@@ -31,18 +31,15 @@ export function redirectIfApplicable(redirectUrl) {
  * method: string,
  * body: FormData | Object<string, any>,
  * headers: object
- * }}
- * @returns {{
- * method: string,
- * headers: object,
- * body: string,
- * }}
+ * }} props
+ * @returns {RequestInit}
  */
 export function getRequestInit({ method, body, headers = {} }) {
   if (!(body instanceof FormData)) {
     headers["Content-Type"] = "application/json";
     body = JSON.stringify(body);
   }
+  
   return {
     method,
     headers: {
@@ -59,9 +56,9 @@ export function getRequestInit({ method, body, headers = {} }) {
  * method: string,
  * body: Object<string, any>,
  * headers: Object<string, string>,
- * onSuccess: function,
- * onError: function
- * }}
+ * onSuccess: function(Object): void,
+ * onError: function(Object, number): void,
+ * }} props
  * @returns {Promise<any>}
  */
 export async function sendRequest({
@@ -88,24 +85,24 @@ export async function sendRequest({
 
 /**
  * @param {{
-* url: string,
-* method: string,
-* body: FormData | Object<string, any>,
-* headers: object,
-* beforeSend: function,
-* onSuccess: function,
-* onError: function,
+* url: String,
+* method: String,
+* body: FormData | Object.<String, Any>,
+* headers: Object.<String, Any>,
+* beforeSend: Function(): Void,
+* onSuccess: Function(Object): Void,
+* onError: Function(Object, Number): Void,
 * }} props
-* @returns {Promise<any>}
+* @returns {Promise<Any>}
 */
 export async function handleRequestSubmit({
  url,
  method,
  body,
  headers = {},
- beforeSend = async () => null,
- onSuccess = async (data) => null,
- onError = async (data, status) => null,
+ beforeSend = () => {},
+ onSuccess =  (data) => {},
+ onError =  (data, status) => {},
 }) {
  beforeSend();
  await sendRequest({
@@ -113,11 +110,11 @@ export async function handleRequestSubmit({
    method,
    body,
    headers,
-   onSuccess: async (data) => {
+   onSuccess: (data) => {
      onSuccess(data);
      redirectIfApplicable(data.redirect_url);
    },
-   onError: async (data, status) => {
+   onError: (data, status) => {
      onError(data, status);
    },
  });

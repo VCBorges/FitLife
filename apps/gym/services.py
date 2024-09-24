@@ -67,7 +67,6 @@ class WorkoutService:
                 'description',
             ]
         )
-        print(f'{exercises = }')
         if exercises:
             if 'to_create' in exercises:
                 self._create_workout_exercises(

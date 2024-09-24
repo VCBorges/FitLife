@@ -1,0 +1,26 @@
+{% load static %}
+<nav class="">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'homepage_template' %}">
+        <img 
+            src="{% static 'fitlife_logo.jpeg' %}" 
+            alt="Fitlife" 
+            width="50" 
+            height="50"
+        >
+      </a>
+      <div class="logout-wrapper">
+        <form
+            id="logout-form-id"
+            action="{% url 'logout' %}"
+            method="POST"
+        >
+        {% csrf_token %}
+        <button
+            class="btn btn-primary"
+            type="submit"
+        >Logout</button>
+        </form>
+    </div>
+    </div>
+</nav>

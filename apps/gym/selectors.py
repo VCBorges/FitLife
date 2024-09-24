@@ -37,7 +37,7 @@ def list_exercises(
     )
     queryset = queryset.values(*fields)
     if lookups:
-        queryset = queryset.filter(**lookups.to_dict())
+        queryset = queryset.filter(**lookups.as_dict())
 
     if order_by:
         queryset = queryset.order_by(*order_by)
@@ -65,7 +65,7 @@ def list_muscles(
     )
     queryset = queryset.values(*fields)
     if lookups:
-        queryset = queryset.filter(**lookups.to_dict())
+        queryset = queryset.filter(**lookups.as_dict())
     if order_by:
         queryset = queryset.order_by(*order_by)
     return list(queryset)
@@ -92,7 +92,7 @@ def list_equipments(
     )
     queryset = queryset.values(*fields)
     if lookups:
-        queryset = queryset.filter(**lookups.to_dict())
+        queryset = queryset.filter(**lookups.as_dict())
     if order_by:
         queryset = queryset.order_by(*order_by)
     return list(queryset)

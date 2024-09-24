@@ -50,7 +50,7 @@ def clean_models(*models: typed.DjangoModelType) -> None:
 
 
 class BaseDTO:
-    def to_dict(self) -> dict[str, Any]:
+    def as_dict(self) -> dict[str, Any]:
         return {
             key: value for key, value in asdict(self).items() if value is not None
         }  # ftm: skip

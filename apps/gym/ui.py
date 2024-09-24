@@ -1,10 +1,15 @@
-from django.db.models import CharField, F, Value
+from typing import Any
+
+from django.core.paginator import Paginator
+from django.db.models import CharField, F, Prefetch, Value
 from django.db.models.fields.json import KeyTextTransform
 from django.db.models.functions import Cast, Concat
+from django.db.models.query import QuerySet
 
 from apps.core.constants import Language
 from apps.core.ui import SelectOptionsSchema, model_select_input_options
 from apps.gym import dtos, models
+from apps.users.models import Users
 
 
 def muscles_select_input_options(
@@ -13,7 +18,7 @@ def muscles_select_input_options(
     lookups: dtos.MusclesLookups = dtos.MusclesLookups(),
     order_by: list[str] | None = None,
 ) -> list[SelectOptionsSchema]:
-    queryset = models.MuscleGroups.objects.filter(**lookups.to_dict())
+    queryset = models.MuscleGroups.objects.filter(**lookups.as_dict())
     if order_by:
         queryset = queryset.order_by(*order_by)
     return model_select_input_options(
@@ -34,7 +39,7 @@ def exercises_select_input_options(
             'primary_muscle',
             'equipment',
         )
-        .filter(**lookups.to_dict())
+        .filter(**lookups.as_dict())
         .values('id')
         .annotate(
             name_language=KeyTextTransform(
@@ -80,7 +85,7 @@ def equipments_select_input_options(
     lookups: dtos.EquipmentsLookups = dtos.EquipmentsLookups(),
     order_by: list[str] | None = None,
 ) -> list[SelectOptionsSchema]:
-    queryset = models.Equipments.objects.filter(**lookups.to_dict())
+    queryset = models.Equipments.objects.filter(**lookups.as_dict())
     if order_by:
         queryset = queryset.order_by(*order_by)
     return model_select_input_options(
@@ -90,19 +95,44 @@ def equipments_select_input_options(
     )
 
 
-def workout_exercises_card_form(
+def workout_exercises_form_card(
     *,
     workout: models.Workouts,
     language: Language,
-    # lookups: dtos.WorkoutExercisesLookups = dtos.WorkoutExercisesLookups(),
-) -> list[dict[str, str]]:
+) -> QuerySet[str, str | int]:
+    """
+    Returns a value QuerySet with the fields to be used in workout exercises
+    form card
+
+    Parameters
+    ----------
+    - workout (models.Workouts):
+        A workout instance.
+    - language (Language):
+        The language to be used in the query.
+
+    Returns
+    -------
+    QuerySet[str, str | int]: A QuerySet with the fields mentioned above.
+    """
     queryset = (
-        workout.workout_exercises.select_related('exercise')
+        workout.workout_exercises.select_related('exercise', 'exercise__primary_muscle')
         .values('id')
         .annotate(
-            name=KeyTextTransform(
+            exercise_name=KeyTextTransform(
                 language,
                 'exercise__name',
+            ),
+            muscle_name=KeyTextTransform(
+                language,
+                'exercise__primary_muscle__name',
+            ),
+            name=Concat(
+                'exercise_name',
+                Value(' ('),
+                'muscle_name',
+                Value(')'),
+                output_field=CharField(),
             ),
             workout_exercise_id=Cast(
                 F('id'),
@@ -126,3 +156,81 @@ def workout_exercises_card_form(
         )
     )
     return queryset
+
+
+def workouts_list(
+    *,
+    user: Users,
+    language: Language,
+    page_number: int = 1,
+    page_size: int = 50,
+    order_by: list[str] = ['-created_at'],
+    lookups: dtos.WorkoutLookups = dtos.WorkoutLookups(),
+) -> dict[str, Any]:
+    exercises_qs = (
+        models.WorkoutExercises.objects.select_related(
+            'exercise',
+            'exercise__primary_muscle',
+        )
+        .annotate(
+            exercise_name=KeyTextTransform(
+                language,
+                'exercise__name',
+            ),
+            muscle_name=KeyTextTransform(
+                language,
+                'exercise__primary_muscle__name',
+            ),
+            name=Concat(
+                'exercise_name',
+                Value(' ('),
+                'muscle_name',
+                Value(')'),
+                output_field=CharField(),
+            ),
+        )
+        .only(
+            'exercise__id',
+            'exercise__primary_muscle__id',
+            'workout__id',
+            'sets',
+        )
+    )
+    workouts_qs = (
+        models.Workouts.objects.prefetch_related(
+            Prefetch(
+                'workout_exercises',
+                queryset=exercises_qs,
+            )
+        )
+        .filter(
+            user=user,
+            **lookups.as_dict(),
+        )
+        .order_by(*order_by)
+        .only(
+            'id',
+            'title',
+        )
+    )
+    paginator = Paginator(workouts_qs, page_size)
+    result_page = paginator.get_page(page_number)
+    result_qs: QuerySet[models.Workouts] = result_page.object_list
+    ret = dtos.PaginatedData(
+        total_pages=paginator.num_pages,
+        current_page=page_number,
+        total_size=paginator.count,
+        page_size=paginator.per_page,
+        data=[
+            {
+                'id': str(workout.pk),
+                'title': workout.title,
+                'exercises': [
+                    {'id': str(exercise.pk), 'name': exercise.name}
+                    for exercise in workout.workout_exercises.all()
+                ],
+            }
+            for workout in result_qs
+        ],
+    )
+    return ret.as_dict()

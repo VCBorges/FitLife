@@ -188,12 +188,14 @@ class WorkoutExercises(BaseModel):
         verbose_name=_('workout'),
         on_delete=models.SET_NULL,
         null=True,
+        editable=True,
     )
     exercise: Exercises = models.ForeignKey(
         'gym.Exercises',
         verbose_name=_('exercise'),
         on_delete=models.SET_NULL,
         null=True,
+        editable=True,
     )
     notes = models.TextField(_('notes'), null=True, blank=True)  # ruff: noqa
     repetitions = models.PositiveIntegerField(_('repetitions'), null=True, default=0)

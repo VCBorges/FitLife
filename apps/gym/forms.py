@@ -17,7 +17,6 @@ class CreateWorkoutExerciseForm(BaseForm):
     notes = forms.CharField(required=False)
 
     normalized_fields_mapping = {
-        'workout_exercise_id': 'workout_exercise',
         'exercise_id': 'exercise',
     }
 

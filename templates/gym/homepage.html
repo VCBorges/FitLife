@@ -1,31 +1,13 @@
 {% extends 'core/_base.html' %}
 
-{% block title %}
-Home
-{% endblock title %}
+{% block title %}Home{% endblock title %}
 
 {% block content %}
 <div class="container-fluid">
-    <div class="logout-wrapper">
-        <form
-            id="logout-form-id"
-            action="{% url 'logout' %}"
-            method="POST"
-        >
-        {% csrf_token %}
-        <button
-            class="btn btn-primary"
-            type="submit"
-        >Logout</button>
-        </form>
-    </div>
+    {{ context.workouts }}
 </div>
 {% endblock content %}
 
 {% block js %}
-<script>
-    document.querySelector('#logout-form-id').addEventListener('submit', function(event) {
-        handleFormSubmit({ event })
-    });
-</script>
+{{ context | json_script:"context-id" }}
 {% endblock js %}

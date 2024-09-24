@@ -14,6 +14,7 @@ def test_CreateWorkoutExerciseForm_cleaned_data_with_valid_input_to_have_expecte
         'repetitions',
         'weight',
         'rest_period',
+        'notes',
     ]
 
     exercise = factories.ExercisesFactory()
@@ -72,7 +73,6 @@ def test_UpdateWorkoutExerciseForm_cleaned_data_with_valid_input_to_have_expecte
     # Arrange
     expected_keys = [
         'workout_exercise',
-        'exercise',
         'sets',
         'repetitions',
         'weight',
@@ -170,7 +170,6 @@ def test_WorkoutExercisesUpdateWorkoutForm_cleaned_data_with_valid_to_have_expec
 def test_UpdateWorkoutForm_cleaned_data_with_valid_input_to_have_expected_keys():
     # Arrange
     expected_keys = [
-        'workout',
         'title',
         'description',
         'exercises',
@@ -178,13 +177,11 @@ def test_UpdateWorkoutForm_cleaned_data_with_valid_input_to_have_expected_keys()
     workout_exercise = factories.WorkoutExercisesFactory()
     exercise = factories.ExercisesFactory()
     data = {
-        'workout_id': factories.WorkoutsFactory().pk,
         'title': 'Test workout',
         'description': 'Test workout description',
         'exercises': {
             'to_create': [
                 {
-                    'workout_exercise_id': workout_exercise.pk,
                     'exercise_id': exercise.pk,
                     'sets': 3,
                     'repetitions': 10,
@@ -195,7 +192,6 @@ def test_UpdateWorkoutForm_cleaned_data_with_valid_input_to_have_expected_keys()
             'to_update': [
                 {
                     'workout_exercise_id': workout_exercise.pk,
-                    'exercise_id': exercise.pk,
                     'sets': 3,
                     'repetitions': 10,
                     'weight': 50.0,

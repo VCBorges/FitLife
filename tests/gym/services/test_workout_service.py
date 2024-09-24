@@ -105,7 +105,11 @@ def test_update_workout_to_delete_exercises():
     workout = workout_service.update_workout(
         workout=workout,
         title='Workout 2',
-        exercises={'delete': workout.workout_exercises.all()},
+        exercises={
+            'to_delete': [
+                {'workout_exercise': workout.workout_exercises.first()},
+            ]
+        },
     )
     execises_count_after = workout.workout_exercises.count()
 
@@ -117,13 +121,15 @@ def test_update_workout_to_delete_exercises():
 def test_update_workout_to_create_exercises(
     exercises_to_create: list[CreateWorkoutExerciseSchema],
 ):
+    print(f'{exercises_to_create = }')
     workout = factories.WorkoutsFactory()
     workout_service = WorkoutService()
     workout = workout_service.update_workout(
         workout=workout,
         title='Workout 2',
-        exercises={'create': exercises_to_create},
+        exercises={'to_create': exercises_to_create},
     )
+    print(f'{workout.workout_exercises.count() = }')
     assert workout.workout_exercises.count() == 3
 
 

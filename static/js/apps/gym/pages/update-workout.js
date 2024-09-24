@@ -55,8 +55,6 @@ const EXERCISES_TO_DELETE = [];
 SUBMIT_WORKOUT_BTN.addEventListener("click", async function (event) {
   /**@type {HTMLButtonElement} */
   const button = event.target;
-  console.log(button);
-  console.log(button.getAttribute('formmethod'));
   
   let isValid = true;
   if (!isFormValid(WORKOUT_FORM)) {

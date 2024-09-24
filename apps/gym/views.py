@@ -24,6 +24,16 @@ class LandingPageTemplateView(LoggedOutTemplateView):
 class HomepageTemplateView(AuthenticatedTemplateView):
     template_name = 'gym/homepage.html'
 
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['context'] = {
+            'workouts': ui.workouts_list(
+                user=self.request.user,
+                language=Language.PT,
+            ),
+        }
+        return context
+
 
 class CreateWorkoutTemplateView(AuthenticatedTemplateView):
     template_name = 'gym/create_workout.html'
@@ -65,7 +75,7 @@ class UpdateWorkoutTemplateView(AuthDetailTemplateView):
             ),
         }
         context['workout'] = self.object
-        context['workout_exercises'] = ui.workout_exercises_card_form(
+        context['workout_exercises'] = ui.workout_exercises_form_card(
             workout=self.object,
             language=language,
         )

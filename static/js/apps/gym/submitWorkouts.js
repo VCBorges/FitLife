@@ -38,11 +38,13 @@ const SELECT_ALL_OPTION = "all";
  * value: string,
  * name: string
  * template: HTMLTemplateElement,
- * }}
+ * }} props
  * @returns {HTMLButtonElement}
  */
 function ExerciseSelectBtn({ value, name, template }) {
-  const templateClone = template.content.cloneNode(true);
+  const templateClone = /** @type {DocumentFragment} */ (template.content.cloneNode(true));
+
+  /**@type {HTMLButtonElement} */
   const btn = templateClone.querySelector(EXERCISE_SELECT_BTN_CLS);
   btn.value = value;
   btn.textContent = `+ ${name}`;
@@ -58,9 +60,13 @@ function ExerciseSelectBtn({ value, name, template }) {
  * @returns {HTMLDivElement}
  */
 function ExerciseFormCard({ name, exerciseId, template }) {
-  const templateClone = template.content.cloneNode(true);
+  const templateClone = /** @type {DocumentFragment} */  (template.content.cloneNode(true));
+
+  /**@type {HTMLDivElement} */
   const card = templateClone.querySelector(EXERCISES_FORM_CARD.CLS);
   card.querySelector(EXERCISES_FORM_CARD.TITLE_CLS).textContent = name;
+
+  /**@type {HTMLInputElement} */
   const exerciseIdInput = card.querySelector("input[name=exercise_id]");
   exerciseIdInput.value = exerciseId;
   return card;
