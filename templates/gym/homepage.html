@@ -4,7 +4,9 @@
 
 {% block content %}
 <div class="container-fluid">
-    {{ context.workouts }}
+    <c-workouts-list
+        :workouts="{{ context.workouts | safe | escape }}"
+    />
 </div>
 {% endblock content %}
 

@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="workouts-list">
+    <c-primary-input
+        name="value"
+        id="search-workout-input-id"
+        placeholder="{% trans 'Buscar' %}"
+    />
+    {% for workout in workouts.data %}
+    <c-workout-list-item
+        :workout="{{ workout | safe | escape }}"
+    />  
+    {% endfor %}
+</div>
