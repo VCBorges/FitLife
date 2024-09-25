@@ -21,3 +21,11 @@ export function hideElement(element) {
 export function showElement(element) {
   element.classList.remove(HIDDEN_ELEMENT_CLS);
 }
+
+/**
+ * @param {String} elementID
+ * @returns {Object}
+ */
+export function getContext(elementID = "context-id") {
+  JSON.parse(document.getElementById(elementID).textContent);
+}

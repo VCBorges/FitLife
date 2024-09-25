@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import TYPE_CHECKING, Any
 
+from apps.core.constants import Language
 from apps.core.exceptions import ObjectDoesNotExist
 
 if TYPE_CHECKING:
@@ -15,12 +16,12 @@ def get_or_404(
     model: type[typed.DjangoModelType],
     pk: str,
     message: str | None = None,
-    **lookup_filters,
+    **lookups,
 ) -> typed.DjangoModelType:
     try:
         return model.objects.get(
             pk=pk,
-            **lookup_filters,
+            **lookups,
         )
     except model.DoesNotExist:
         if not message:
@@ -37,10 +38,7 @@ def set_model_fields(
 
 
 def default_translation() -> TranslationsSchema:
-    return {
-        'en': '',
-        'pt': '',
-    }
+    return {language.value: '' for language in Language}
 
 
 # TODO: To put it into a try-except block and raise the proper exception

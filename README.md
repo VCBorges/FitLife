@@ -1,14 +1,6 @@
 # FitLife
 
+## Todo
 
-## Features
-
-- [x] Create workouts
-- [x] Update Workouts
-- [x] Complete workouts
-- [x] Uncomplete workouts
-
-
-
-### Utils
-[Differences](https://www.futurefit.co.uk/blog/what-is-the-difference-between-a-fitness-instructor-and-a-personal-trainer/)
+- [ ] (**A**): Homepage Workouts list component
+- [ ] (**C**): Create the way that filtered queryset will be handled in views with get_object(), example when the queryset must be filtered only in the current user data (adapt base views to use django default get_queryset())

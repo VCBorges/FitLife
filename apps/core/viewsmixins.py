@@ -29,8 +29,8 @@ class BaseTemplateViewContextMixin:
 
 class BaseFormViewMixin:
     http_method_names: HTTPMethods = []
-    valid_form_message: str = ''
-    invalid_form_message: str = _('Invalid data')
+    success_message: str = ''
+    error_message: str = _('Invalid data')
     server_error_message: str = _(
         'There was an error processing your request. Please try again later.'
     )
@@ -90,7 +90,7 @@ class BaseFormViewMixin:
             data = self.process(form)
             response = self.get_response(
                 status_code=200,
-                message=self.valid_form_message,
+                message=self.success_message,
                 data=data,
             )
             return response
@@ -99,7 +99,7 @@ class BaseFormViewMixin:
         errors = self.get_form_errors(form)
         response = self.get_response(
             status_code=400,
-            message=self.invalid_form_message,
+            message=self.error_message,
             data=errors,
         )
         return response
@@ -127,8 +127,12 @@ class BaseFormViewMixin:
             return get_or_404(
                 model=self.model,
                 pk=self.kwargs.get(self.pk_url_kwarg),
+                **self.get_object_lookups(),
             )
         return None
+
+    def get_object_lookups(self) -> dict[str, Any]:
+        return {}
 
     @override
     def setup(self, request: HttpRequest, *args, **kwargs):

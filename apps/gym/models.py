@@ -140,6 +140,7 @@ class WorkoutHistory(BaseModel):
         on_delete=models.DO_NOTHING,
         null=True,
         blank=True,
+        help_text=_('The user who the completed workout'),
     )
     workout: Workouts = models.ForeignKey(
         'gym.Workouts',
@@ -155,6 +156,7 @@ class WorkoutHistory(BaseModel):
         null=True,
         blank=True,
         related_name='history_creator',
+        help_text=_('The user who created the completed workout'),
     )
     title = models.CharField(_('title'), max_length=255, null=True, blank=True)
     description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa

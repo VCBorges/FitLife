@@ -10,11 +10,10 @@ from apps.core.views import (
     AuthenticatedTemplateView,
     LoggedOutTemplateView,
 )
-from apps.gym import forms, models, ui
+from apps.gym import dtos, forms, models, ui
 from apps.gym.services import WorkoutService
 
 # Create your views here.
-from rich import print
 
 
 class LandingPageTemplateView(LoggedOutTemplateView):
@@ -28,7 +27,7 @@ class HomepageTemplateView(AuthenticatedTemplateView):
         context = super().get_context_data(**kwargs)
         context['context'] = {
             'workouts': ui.workouts_list(
-                user=self.request.user,
+                lookups=dtos.UserWorkoutLookups(user=self.request.user),
                 language=Language.PT,
             ),
         }
@@ -82,11 +81,26 @@ class UpdateWorkoutTemplateView(AuthDetailTemplateView):
         return context
 
 
+class CompleteWorkoutTemplateView(AuthDetailTemplateView):
+    template_name = 'gym/complete_workout.html'
+    model = models.Workouts
+    object: models.Workouts
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        language = Language.PT
+        context['workout'] = self.object
+        context['workout_exercises'] = ui.workout_exercises_form_card(
+            workout=self.object,
+            language=language,
+        )
+        return context
+
+
 class CreateListWorkoutsView(AuthenticatedFormView):
     http_method_names = ['post']
 
     def post(self, *args, **kwargs) -> JsonResponse:
-        print(f'{self.data = }')
         data = self.get_cleaned_data(forms.CreateWorkoutForm)
         workout = WorkoutService().create_workout(
             user=self.request.user,
@@ -117,4 +131,34 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedFormView):
     def delete(self, *args, **kwargs) -> dict[str, Any]:
         WorkoutService.delete_workout(
             workout=self.object,
+        )
+
+
+class CreateListWorkoutsHistoryView(AuthenticatedFormView):
+    http_method_names = ['post']
+
+    def post(self, *args, **kwargs) -> JsonResponse:
+        data = self.get_cleaned_data(forms.CompleteWorkoutForm)
+        WorkoutService().complete_workout(
+            user=self.request.user,
+            workout=data.get('workout'),
+            exercises=data.get('exercises'),
+        )
+        return self.get_response(
+            status_code=201,
+            message='Workout completed successfully',
+        )
+
+
+class DetailDeleteWorkoutHistoryView(AuthenticatedFormView):
+    http_method_names = ['delete']
+    model = models.WorkoutHistory
+
+    def delete(self, *args, **kwargs) -> JsonResponse:
+        WorkoutService().uncomplete_workout(
+            workout=self.object,
+        )
+        return self.get_response(
+            status_code=204,
+            message='Workout uncompleted successfully',
         )

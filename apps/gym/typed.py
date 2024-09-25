@@ -1,13 +1,19 @@
 from __future__ import annotations
 
-import datetime
-from typing import TYPE_CHECKING, TypedDict
+import typing as tp
 
-if TYPE_CHECKING:
+if tp.TYPE_CHECKING:
+    import datetime
+
     from apps.gym import models
 
 
-class CreateWorkoutExerciseSchema(TypedDict):
+class TranslationsSchema(tp.TypedDict):
+    en: str
+    pt: str
+
+
+class CreateWorkoutExerciseSchema(tp.TypedDict):
     exercise: models.Exercises
     sets: int | None
     repetitions: int | None
@@ -15,7 +21,7 @@ class CreateWorkoutExerciseSchema(TypedDict):
     rest: int | None
 
 
-class UpdateWorkoutExerciseSchema(TypedDict):
+class UpdateWorkoutExerciseSchema(tp.TypedDict):
     workout_exercise: models.WorkoutExercises
     exercise: models.Exercises
     sets: int | None
@@ -24,18 +30,21 @@ class UpdateWorkoutExerciseSchema(TypedDict):
     rest: int | None
 
 
-class ExercisesUpdateWorkout(TypedDict, total=False):
+class ExercisesUpdateWorkout(tp.TypedDict, total=False):
     create: list[CreateWorkoutExerciseSchema]
     update: list[models.WorkoutExercises]
     delete: list[models.WorkoutExercises]
 
 
-class ListWorkoutsHistoryLookups(TypedDict, total=False):
+class ListWorkoutsHistoryLookups(tp.TypedDict, total=False):
     title: str
     description: str
     completed_at: datetime.datetime
 
 
-class TranslationsSchema(TypedDict):
-    en: str
-    pt: str
+class CompleteWorkoutExerciseSchema(tp.TypedDict, total=False):
+    workout_exercise: models.WorkoutExercises
+    repetitions: int
+    sets: int
+    weight: int
+    rest_period: int

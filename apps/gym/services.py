@@ -122,6 +122,7 @@ class WorkoutService:
         *,
         user: Users,
         workout: models.Workouts,
+        exercises: list[typed.CompleteWorkoutExerciseSchema],
     ) -> models.WorkoutHistory:
         workout_history = models.WorkoutHistory(
             user=user,
@@ -133,16 +134,19 @@ class WorkoutService:
         )
         clean_models(workout_history)
         workout_history.save()
-        exercises = workout.workout_exercises.all()
         exercises_instances = [
             models.WorkoutHistoryExercises(
                 user=user,
                 workout_history=workout_history,
-                exercise=exercise.exercise,
-                sets=exercise.sets,
-                repetitions=exercise.repetitions,
-                weight=exercise.weight,
-                rest_period=exercise.rest_period,
+                exercise=exercise['workout_exercise'].exercise,
+                sets=exercise.get('sets', exercise['workout_exercise'].sets),
+                repetitions=exercise.get(
+                    'repetitions', exercise['workout_exercise'].repetitions
+                ),
+                weight=exercise.get('weight', exercise['workout_exercise'].weight),
+                rest_period=exercise.get(
+                    'rest_period', exercise['workout_exercise'].rest_period
+                ),
             )
             for exercise in exercises
         ]

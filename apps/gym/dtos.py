@@ -1,8 +1,13 @@
+from __future__ import annotations
+
+import typing as tp
 from dataclasses import dataclass
-from typing import Any
 
 from apps.core.utils import BaseDTO
-from apps.gym import models
+
+if tp.TYPE_CHECKING:
+    from apps.gym import models
+    from apps.users.models import Users
 
 
 @dataclass(frozen=True)
@@ -28,10 +33,16 @@ class WorkoutLookups(BaseDTO):
     description: str | None = None
 
 
+@dataclass(frozen=True, kw_only=True)
+class UserWorkoutLookups(WorkoutLookups):
+    user: Users
+
+
+# TODO: move to core module
 @dataclass(frozen=True)
 class PaginatedData(BaseDTO):
     total_pages: int
     current_page: int
     total_size: int
     page_size: int
-    data: list[dict[str, Any]]
+    data: list[dict[str, tp.Any]]

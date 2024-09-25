@@ -7,19 +7,18 @@
         <div>{{ workout.title }}</div>
         <a href="{% url 'complete_workout_template' workout.id %}">
             <c-primary-button
-                type=""
                 class="complete-workout-btn"
                 text="{% trans 'Completar' %}"
             />
         </a>
         <a href="{% url 'update_workout_template' workout.id %}">
             <c-primary-button
-                type=""
                 class="edit-workout-btn"
                 text="{% trans 'Editar' %}"
             />
         </a>
-        <form 
+        <form
+            class="regular-form"
             action="{% url 'update_detail_delete_workouts' workout.id %}" 
             method="delete"
         >

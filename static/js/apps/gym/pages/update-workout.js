@@ -14,7 +14,7 @@ import {
   filterExercisesSelectOptions as filterExercisesOptions,
 } from "../submitWorkouts.js";
 import { isFormValid, formToObject } from "../../../core/forms.js";
-/**@import { Exercise } "../submitWorkouts.js" */
+/**@import { Exercise } from "../submitWorkouts.js" */
 
 /**
  * @typedef {object} Muscle

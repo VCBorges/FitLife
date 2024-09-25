@@ -1,0 +1,23 @@
+{% extends 'core/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans 'Completar treino' %}
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container-fluid">
+    <c-primary-button
+        text="{% trans 'Completar' %}"
+    />
+</div>
+{% endblock content %}
+
+
+{% block js %}
+{{ context | json_script:"context-id" }}
+<script type="module" src="{% static 'js/apps/gym/pages/complete-workout.js' %}"></script>
+{% endblock js %}

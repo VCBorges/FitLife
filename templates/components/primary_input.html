@@ -3,7 +3,6 @@
     placeholder=""
     value=""
 />
-
 {% if label %}
 <label 
     for="{{ name }}" 
@@ -16,7 +15,9 @@
     type="{{ type }}"
     label="{{ label }}"
     value="{{ value | default:'' }}"
-    placeholder="{{ placeholder }}"
+    {% if placeholder %}
+        placeholder="{{ placeholder }}"
+    {% endif %}
     name="{{ name }}"
     id="{{ id }}"
     {{ attrs }}

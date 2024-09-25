@@ -9,7 +9,6 @@ from django.db.models.query import QuerySet
 from apps.core.constants import Language
 from apps.core.ui import SelectOptionsSchema, model_select_input_options
 from apps.gym import dtos, models
-from apps.users.models import Users
 
 
 def muscles_select_input_options(
@@ -116,7 +115,10 @@ def workout_exercises_form_card(
     QuerySet[str, str | int]: A QuerySet with the fields mentioned above.
     """
     queryset = (
-        workout.workout_exercises.select_related('exercise', 'exercise__primary_muscle')
+        workout.workout_exercises.select_related(
+            'exercise',
+            'exercise__primary_muscle',
+        )
         .values('id')
         .annotate(
             exercise_name=KeyTextTransform(
@@ -160,12 +162,11 @@ def workout_exercises_form_card(
 
 def workouts_list(
     *,
-    user: Users,
+    lookups: dtos.UserWorkoutLookups,
     language: Language,
     page_number: int = 1,
     page_size: int = 50,
     order_by: list[str] = ['-created_at'],
-    lookups: dtos.WorkoutLookups = dtos.WorkoutLookups(),
 ) -> dict[str, Any]:
     exercises_qs = (
         models.WorkoutExercises.objects.select_related(
@@ -194,6 +195,8 @@ def workouts_list(
             'exercise__primary_muscle__id',
             'workout__id',
             'sets',
+            'repetitions',
+            'weight',
         )
     )
     workouts_qs = (
@@ -204,7 +207,6 @@ def workouts_list(
             )
         )
         .filter(
-            user=user,
             **lookups.as_dict(),
         )
         .order_by(*order_by)
@@ -215,7 +217,7 @@ def workouts_list(
     )
     paginator = Paginator(workouts_qs, page_size)
     result_page = paginator.get_page(page_number)
-    result_qs: QuerySet[models.Workouts] = result_page.object_list
+    page_qs: QuerySet[models.Workouts] = result_page.object_list
     ret = dtos.PaginatedData(
         total_pages=paginator.num_pages,
         current_page=page_number,
@@ -226,11 +228,17 @@ def workouts_list(
                 'id': str(workout.pk),
                 'title': workout.title,
                 'exercises': [
-                    {'id': str(exercise.pk), 'name': exercise.name}
+                    {
+                        'id': str(exercise.pk),
+                        'name': exercise.name,
+                        'repetitions': exercise.repetitions,
+                        'sets': exercise.sets,
+                        'weight': exercise.weight,
+                    }
                     for exercise in workout.workout_exercises.all()
                 ],
             }
-            for workout in result_qs
+            for workout in page_qs
         ],
     )
     return ret.as_dict()

@@ -85,3 +85,35 @@ class UpdateWorkoutForm(BaseForm):
         form_class=WorkoutExercisesUpdateWorkoutForm,
         required=False,
     )
+
+
+class CompleteWorkoutExerciseForm(BaseForm):
+    workout_exercise_id = forms.ModelChoiceField(
+        queryset=models.WorkoutExercises.objects.all(),
+        required=True,
+    )
+    repetitions = forms.IntegerField(required=True, min_value=1)
+    sets = forms.IntegerField(required=True, min_value=1)
+    weight = forms.IntegerField(required=True, min_value=0)
+    rest_period = forms.IntegerField(required=True, min_value=0)
+
+    normalized_fields_mapping = {
+        'workout_exercise_id': 'workout_exercise',
+    }
+
+
+class CompleteWorkoutForm(BaseForm):
+    workout_id = forms.ModelChoiceField(
+        queryset=models.Workouts.objects.all(),
+        required=True,
+    )
+    exercises = form_fields.ListField(
+        children_field=form_fields.NestedFormField(
+            form_class=CompleteWorkoutExerciseForm,
+        ),
+        required=True,
+    )
+
+    normalized_fields_mapping = {
+        'workout_id': 'workout',
+    }
