@@ -84,9 +84,9 @@ def equipments_select_input_options(
     lookups: dtos.EquipmentsLookups = dtos.EquipmentsLookups(),
     order_by: list[str] | None = None,
 ) -> list[SelectOptionsSchema]:
-    queryset = models.Equipments.objects.filter(**lookups.as_dict())
-    if order_by:
-        queryset = queryset.order_by(*order_by)
+    queryset = models.Equipments.objects.filter(**lookups.as_dict()).order_by(
+        *order_by or []
+    )
     return model_select_input_options(
         queryset=queryset,
         value_field='id',
@@ -166,7 +166,7 @@ def workouts_list(
     language: Language,
     page_number: int = 1,
     page_size: int = 50,
-    order_by: list[str] = ['-created_at'],
+    order_by: list[str] | None = None,
 ) -> dict[str, Any]:
     exercises_qs = (
         models.WorkoutExercises.objects.select_related(
@@ -209,7 +209,7 @@ def workouts_list(
         .filter(
             **lookups.as_dict(),
         )
-        .order_by(*order_by)
+        .order_by(*order_by or ['-created_at'])
         .only(
             'id',
             'title',

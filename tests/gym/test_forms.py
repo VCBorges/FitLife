@@ -210,3 +210,54 @@ def test_UpdateWorkoutForm_cleaned_data_with_valid_input_to_have_expected_keys()
 
     # Assert
     assert set(form.cleaned_data.keys()) == set(expected_keys)
+
+
+@pytest.mark.django_db
+def test_CompleteWorkoutExerciseForm_to_have_expected_keys():
+    expected_keys = [
+        'workout_exercise',
+        'sets',
+        'repetitions',
+        'weight',
+        'rest_period',
+    ]
+    workout_exercise = factories.WorkoutExercisesFactory()
+    data = {
+        'workout_exercise_id': workout_exercise.pk,
+        'sets': 3,
+        'repetitions': 10,
+        'weight': 50.0,
+        'rest_period': 60,
+    }
+    form = forms.CompleteWorkoutExerciseForm(data=data)
+
+    form.is_valid(raise_exception=False)
+
+    assert set(form.cleaned_data.keys()) == set(expected_keys)
+
+
+@pytest.mark.django_db
+def test_CompleteWorkoutForm_to_have_expected_keys():
+    expected_keys = [
+        'workout',
+        'exercises',
+    ]
+    workout = factories.WorkoutsFactory()
+    workout_exercise = factories.WorkoutExercisesFactory()
+    data = {
+        'workout_id': workout.pk,
+        'exercises': [
+            {
+                'workout_exercise_id': workout_exercise.pk,
+                'sets': 3,
+                'repetitions': 10,
+                'weight': 50.0,
+                'rest_period': 60,
+            }
+        ],
+    }
+    form = forms.CompleteWorkoutForm(data=data)
+
+    form.is_valid(raise_exception=False)
+
+    assert set(form.cleaned_data.keys()) == set(expected_keys)
