@@ -50,7 +50,7 @@ class NestedFormField(forms.JSONField):
         return data
 
     def clean(self, value: Any) -> dict[str, Any]:
-        cleaned_data = super().clean(value)  # TODO: Check if this is necessary.
+        cleaned_data = super().clean(value)  # Necessary for validation.
         if cleaned_data in self.empty_values:
             return cleaned_data
 
@@ -65,6 +65,8 @@ class NestedFormField(forms.JSONField):
 
 
 class ListField(forms.JSONField):
+    empty_values = [None, []]
+
     def __init__(self, children_field: FieldType, *args, **kwargs):
         self.children_field = children_field
         if not isinstance(self.children_field, forms.Field):
@@ -73,24 +75,27 @@ class ListField(forms.JSONField):
 
     def to_python(self, value: list[Any]) -> list[Any]:
         data = super().to_python(value)
-        if data is None:
+        if data in self.empty_values:
             return data
+
         if not isinstance(data, list):
             raise forms.ValidationError('List expected.')
+
         return data
 
     def clean(self, value: Any) -> list[Any]:
-        if value is None:
-            return value
+        cleaned_data = super().clean(value)
+        if cleaned_data in self.empty_values:
+            return cleaned_data
 
-        if not isinstance(value, list):
+        if not isinstance(cleaned_data, list):
             raise forms.ValidationError('Input must be a list.')
 
-        cleaned_data = []
+        validated_data = []
         errors = []
-        for i in range(len(value)):
+        for i in range(len(cleaned_data)):
             try:
-                cleaned_data.append(self.children_field.clean(value[i]))
+                validated_data.append(self.children_field.clean(cleaned_data[i]))
             except forms.ValidationError as exc:
                 if hasattr(exc, 'error_dict'):
                     error = ErrorDict(exc.error_dict)
@@ -106,4 +111,4 @@ class ListField(forms.JSONField):
         if errors:
             raise FieldValidationError(errors)
 
-        return cleaned_data
+        return validated_data
