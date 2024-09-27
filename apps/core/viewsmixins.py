@@ -74,16 +74,18 @@ class BaseFormViewMixin:
         form = form_class(**self.get_form_kwargs())
         return form
 
-    def get_cleaned_data(self, form_class: type[BaseFormType]) -> dict[str, Any]:
-        form: BaseFormType = self.get_form(form_class)
-        form.is_valid()
-        return form.cleaned_data
-
     def get_form_kwargs(self, *args, **kwargs) -> dict[str, Any]:
         kwargs['data'] = self.data
         kwargs['files'] = self.request.FILES
         kwargs['request'] = self.request
+        if self.object:
+            kwargs['instance'] = self.object
         return kwargs
+
+    def get_cleaned_data(self, form_class: type[BaseFormType]) -> dict[str, Any]:
+        form: BaseFormType = self.get_form(form_class)
+        form.is_valid()
+        return form.cleaned_data
 
     def form_valid(self, form: BaseFormType, *args, **kwargs) -> dict[str, Any]:
         if form.is_valid():

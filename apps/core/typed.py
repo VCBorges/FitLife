@@ -1,15 +1,19 @@
-from typing import TypeVar
+from __future__ import annotations
+
+import typing as tp
 
 from django.db.models import Model
 from django.forms import Field
 from django.http import HttpRequest
 
 from apps.core.forms import BaseForm
-from apps.users.models import Users
 
-DjangoModelType = TypeVar('DjangoModelType', bound=Model)
-BaseFormType = TypeVar('BaseFormType', bound=BaseForm)
-FieldType = TypeVar('FieldType', bound=Field)
+if tp.TYPE_CHECKING:
+    from apps.users.models import Users
+
+DjangoModelType = tp.TypeVar('DjangoModelType', bound=Model)
+BaseFormType = tp.TypeVar('BaseFormType', bound=BaseForm)
+FieldType = tp.TypeVar('FieldType', bound=Field)
 
 
 class AuthenticatedRequest(HttpRequest):

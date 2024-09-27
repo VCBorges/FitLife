@@ -41,6 +41,11 @@ api_urls = [
         view=views.UpdateDetailDeleteWorkoutView.as_view(),
         name='update_detail_delete_workouts',
     ),
+    path(
+        route='workout/<uuid:pk>/complete/',
+        view=views.CompleteWorkoutView.as_view(),
+        name='create_list_workouts_history',
+    ),
 ]
 
 urlpatterns = templates_urls + api_urls

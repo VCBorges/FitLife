@@ -239,13 +239,10 @@ def test_CompleteWorkoutExerciseForm_to_have_expected_keys():
 @pytest.mark.django_db
 def test_CompleteWorkoutForm_to_have_expected_keys():
     expected_keys = [
-        'workout',
         'exercises',
     ]
-    workout = factories.WorkoutsFactory()
     workout_exercise = factories.WorkoutExercisesFactory()
     data = {
-        'workout_id': workout.pk,
         'exercises': [
             {
                 'workout_exercise_id': workout_exercise.pk,

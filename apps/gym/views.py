@@ -123,9 +123,9 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedFormView):
         data = self.get_cleaned_data(forms.UpdateWorkoutForm)
         WorkoutService().update_workout(
             workout=self.object,
-            title=data.get('title'),
-            description=data.get('description'),
-            exercises=data.get('exercises'),
+            title=data['title'],
+            description=data['description'],
+            exercises=data['exercises'],
         )
 
     def delete(self, *args, **kwargs) -> dict[str, Any]:
@@ -134,25 +134,23 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedFormView):
         )
 
 
-class CreateListWorkoutsHistoryView(AuthenticatedFormView):
-    http_method_names = ['post']
+class CompleteWorkoutView(AuthenticatedFormView):
+    http_method_names = ['post', 'delete']
+
+    model = models.Workouts
+    object: models.Workouts
 
     def post(self, *args, **kwargs) -> JsonResponse:
         data = self.get_cleaned_data(forms.CompleteWorkoutForm)
         WorkoutService().complete_workout(
             user=self.request.user,
-            workout=data.get('workout'),
-            exercises=data.get('exercises'),
+            workout=self.object,
+            exercises=data['exercises'],
         )
         return self.get_response(
             status_code=201,
             message='Workout completed successfully',
         )
-
-
-class UpdateDetailDeleteWorkoutHistoryView(AuthenticatedFormView):
-    http_method_names = ['delete']
-    model = models.WorkoutHistory
 
     def delete(self, *args, **kwargs) -> JsonResponse:
         WorkoutService().uncomplete_workout(

@@ -103,10 +103,6 @@ class CompleteWorkoutExerciseForm(BaseForm):
 
 
 class CompleteWorkoutForm(BaseForm):
-    workout_id = forms.ModelChoiceField(
-        queryset=models.Workouts.objects.all(),
-        required=True,
-    )
     exercises = form_fields.ListField(
         children_field=form_fields.NestedFormField(
             form_class=CompleteWorkoutExerciseForm,
@@ -114,6 +110,11 @@ class CompleteWorkoutForm(BaseForm):
         required=True,
     )
 
-    normalized_fields_mapping = {
-        'workout_id': 'workout',
-    }
+    def clean_exercises(self):
+        exercises = self.cleaned_data['exercises']
+        if not all(
+            exercise['workout_exercise'].workout == self.instance
+            for exercise in exercises
+        ):
+            self.add_error('exercises', 'Invalid workout exercises')
+        return exercises
