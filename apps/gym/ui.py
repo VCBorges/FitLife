@@ -157,7 +157,7 @@ def workout_exercises_form_card(
             'rest_period',
         )
     )
-    return queryset
+    return list(queryset)
 
 
 def workouts_list(

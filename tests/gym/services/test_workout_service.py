@@ -18,7 +18,7 @@ def workout_exercises_to_complete(
 
 
 @pytest.fixture
-def exercises_to_create() -> list[typed.CreateWorkoutExerciseSchema]:
+def workout_exercises_to_create() -> list[typed.CreateWorkoutExerciseSchema]:
     return [
         {
             'exercise': factories.ExercisesFactory(),
@@ -60,35 +60,35 @@ def test_create_workout_to_create_a_workout_without_exercises():
 
 @pytest.mark.django_db
 def test_create_workout_to_create_workout_exercises(
-    exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
+    workout_exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
 ):
     user = factories.UsersFactory()
     workout_service = WorkoutService()
     workout = workout_service.create_workout(
         user=user,
         title='Workout 1',
-        exercises=exercises_to_create,
+        exercises=workout_exercises_to_create,
     )
     assert workout.workout_exercises.count() == 3
 
 
 @pytest.mark.django_db
 def test_create_workout_to_exercises_have_the_correct_attrs(
-    exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
+    workout_exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
 ):
     user = factories.UsersFactory()
     workout_service = WorkoutService()
     workout = workout_service.create_workout(
         user=user,
         title='Workout 1',
-        exercises=exercises_to_create,
+        exercises=workout_exercises_to_create,
     )
     for i, exercise in enumerate(workout.workout_exercises.all()):
-        assert exercise.exercise == exercises_to_create[i]['exercise']
-        assert exercise.sets == exercises_to_create[i]['sets']
-        assert exercise.repetitions == exercises_to_create[i]['repetitions']
-        assert exercise.rest_period == exercises_to_create[i]['rest_period']
-        assert exercise.weight == exercises_to_create[i]['weight']
+        assert exercise.exercise == workout_exercises_to_create[i]['exercise']
+        assert exercise.sets == workout_exercises_to_create[i]['sets']
+        assert exercise.repetitions == workout_exercises_to_create[i]['repetitions']
+        assert exercise.rest_period == workout_exercises_to_create[i]['rest_period']
+        assert exercise.weight == workout_exercises_to_create[i]['weight']
 
 
 @pytest.mark.django_db
@@ -130,15 +130,15 @@ def test_update_workout_to_delete_exercises():
 
 @pytest.mark.django_db
 def test_update_workout_to_create_exercises(
-    exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
+    workout_exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
 ):
-    print(f'{exercises_to_create = }')
+    print(f'{workout_exercises_to_create = }')
     workout = factories.WorkoutsFactory()
     workout_service = WorkoutService()
     workout = workout_service.update_workout(
         workout=workout,
         title='Workout 2',
-        exercises={'to_create': exercises_to_create},
+        exercises={'to_create': workout_exercises_to_create},
     )
     print(f'{workout.workout_exercises.count() = }')
     assert workout.workout_exercises.count() == 3

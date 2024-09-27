@@ -15,11 +15,17 @@
     type="{{ type }}"
     label="{{ label }}"
     value="{{ value | default:'' }}"
+    
     {% if placeholder %}
         placeholder="{{ placeholder }}"
     {% endif %}
+
     name="{{ name }}"
-    id="{{ id }}"
+
+    {% if id %}
+        id="{{ id }}"
+    {% endif %}
+
     {{ attrs }}
 >
 <div class="control-errors"></div>

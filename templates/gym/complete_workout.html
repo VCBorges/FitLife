@@ -10,9 +10,64 @@
 
 {% block content %}
 <div class="container-fluid">
+    <div>{{ workout.title }}</div>
     <c-primary-button
+        type="submit"
         text="{% trans 'Completar' %}"
+        id="complete-workout-submit-btn"
     />
+    <div class="workout-excersise">
+        
+        {% for exercise in workout_exercises %}
+        <div class="workout-exercise">
+            <h3>{{ exercise.name }}</h3>
+            <c-primary-input
+                type="checkbox"
+                class="is-completed"
+            />
+            <form>
+                <c-primary-input
+                    name="workout_exercise_id"
+                    type="text"
+                    value="{{ exercise.workout_exercise_id }}"
+                    required
+                />
+                <c-primary-input
+                    label="{% trans 'Séries' %}"
+                    name="sets"
+                    type="number"
+                    required
+                    min="0"
+                    value="{{ exercise.sets }}"
+                />
+                <c-primary-input
+                    label="{% trans 'Repetições' %}"
+                    name="repetitions"
+                    type="number"
+                    required
+                    min="0"
+                    value="{{ exercise.repetitions }}"
+                />
+                <c-primary-input
+                    label="{% trans 'Peso' %}"
+                    name="weight"
+                    type="number"
+                    required
+                    min="0"
+                    value="{{ exercise.weight }}"
+                />
+                <c-primary-input
+                    label="{% trans 'Descanso' %}"
+                    name="rest_period"
+                    type="number"
+                    required
+                    min="0"
+                    value="{{ exercise.rest_period }}"
+                />
+            </form>
+        </div>    
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}
 

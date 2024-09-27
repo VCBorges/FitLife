@@ -5,9 +5,11 @@
         id="search-workout-input-id"
         placeholder="{% trans 'Buscar' %}"
     />
-    {% for workout in workouts.data %}
-    <c-workout-list-item
-        :workout="{{ workout | safe | escape }}"
-    />  
-    {% endfor %}
+    <div class="workouts-root">
+        {% for workout in workouts.data %}
+        <c-workout-list-item
+            :workout="{{ workout | safe | escape }}"
+        />  
+        {% endfor %}
+    </div>
 </div>

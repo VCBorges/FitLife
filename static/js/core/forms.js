@@ -19,6 +19,56 @@ export const ERROR_ALERT_CLS = ".errors-alert";
 export const SELECT_ALL_OPTION = "all";
 
 /**
+ * @param {{
+ * event: Event,
+ * beforeSend: function,
+ * onSuccess: function,
+ * onError: function,
+ * flattenErrors: boolean
+ * }} props
+ */
+export async function handleFormSubmit({
+  event,
+  beforeSend = async () => null,
+  onSuccess = async (data) => null,
+  onError = async (data, status) => null,
+  flattenErrors = false,
+}) {
+  event.preventDefault();
+  const form = event.target;
+  if (!isFormValid(form)) {
+    return;
+  }
+  const formData = new FormData(form);
+  const url = form.getAttribute("action");
+  const method = form.getAttribute("method");
+  const errorAlert = form.querySelector(form.dataset.errorsAlert);
+  cleanFormErrors({
+    form,
+    errorAlert,
+  });
+  beforeSend();
+  await sendRequest({
+    url,
+    method,
+    body: formData,
+    onSuccess: async (data) => {
+      onSuccess(data);
+      redirectIfApplicable(data.redirect_url);
+    },
+    onError: async (data, status) => {
+      handleFormErrors({
+        form,
+        data,
+        errorAlert,
+        flattenErrors,
+      });
+      onError(data, status);
+    },
+  });
+}
+
+/**
  * @param {HTMLFormElement} form
  * @returns {Object<string, any>}
  */
@@ -51,7 +101,7 @@ export function isFormValid(form) {
  */
 export function validateForm(form) {
   const isValid = isFormValid(form);
-  if (isValid){
+  if (isValid) {
     const data = formToObject(form);
     return [isValid, data];
   }
@@ -97,54 +147,4 @@ function handleFormErrors({ form, data, errorAlert, flattenErrors = false }) {
       showElement(errorAlert);
     }
   }
-}
-
-/**
- * @param {{
- * event: Event,
- * beforeSend: function,
- * onSuccess: function,
- * onError: function,
- * flattenErrors: boolean
- * }} props
- */
-export async function handleFormSubmit({
-  event,
-  beforeSend = async () => null,
-  onSuccess = async (data) => null,
-  onError = async (data, status) => null,
-  flattenErrors = false,
-}) {
-  event.preventDefault();
-  const form = event.target;
-  if (!isFormValid(form)) {
-    return;
-  }
-  const formData = new FormData(form);
-  const url = form.action;
-  const method = form.method;
-  const errorAlert = form.querySelector(form.dataset.errorsAlert);
-  cleanFormErrors({
-    form,
-    errorAlert,
-  });
-  beforeSend();
-  await sendRequest({
-    url,
-    method,
-    body: formData,
-    onSuccess: async (data) => {
-      onSuccess(data);
-      redirectIfApplicable(data.redirect_url);
-    },
-    onError: async (data, status) => {
-      handleFormErrors({
-        form,
-        data,
-        errorAlert,
-        flattenErrors,
-      });
-      onError(data, status);
-    },
-  });
 }
