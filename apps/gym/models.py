@@ -234,6 +234,7 @@ class WorkoutHistoryExercises(BaseModel):
         null=True,
         blank=True,
     )
+    is_done = models.BooleanField(_('is completed'), default=False)
     repetitions = models.PositiveIntegerField(_('repetitions'), null=True)
     sets = models.PositiveIntegerField(_('sets'), null=True, default=0)  # series
     name = models.CharField(_('name'), max_length=255, null=True, blank=True)

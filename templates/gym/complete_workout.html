@@ -22,17 +22,20 @@
         {% for exercise in workout_exercises %}
         <div class="workout-exercise">
             <h3>{{ exercise.name }}</h3>
-            <c-primary-input
-                type="checkbox"
-                class="is-completed"
-            />
             <form>
+                <c-primary-input
+                    type="checkbox"
+                    class="is-completed"
+                    name="is_done"
+                    value="true"
+                />
                 <c-primary-input
                     name="workout_exercise_id"
                     type="text"
                     value="{{ exercise.workout_exercise_id }}"
                     required
                     readonly
+                    hidden
                 />
                 <c-primary-input
                     label="{% trans 'Séries' %}"

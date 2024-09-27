@@ -92,6 +92,7 @@ class CompleteWorkoutExerciseForm(BaseForm):
         queryset=models.WorkoutExercises.objects.all(),
         required=True,
     )
+    is_done = forms.BooleanField(required=False)
     repetitions = forms.IntegerField(required=True, min_value=1)
     sets = forms.IntegerField(required=True, min_value=1)
     weight = forms.IntegerField(required=True, min_value=0)

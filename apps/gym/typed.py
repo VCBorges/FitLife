@@ -48,3 +48,4 @@ class CompleteWorkoutExerciseSchema(tp.TypedDict, total=False):
     sets: int
     weight: int
     rest_period: int
+    is_done: bool

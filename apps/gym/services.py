@@ -139,6 +139,7 @@ class WorkoutService:
                 user=user,
                 workout_history=workout_history,
                 exercise=exercise['workout_exercise'].exercise,
+                is_done=exercise['is_done'],
                 sets=exercise['repetitions'],
                 repetitions=exercise['repetitions'],
                 weight=exercise['weight'],
