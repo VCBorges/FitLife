@@ -1,7 +1,13 @@
+{% load i18n %}
+
 <div
     class="container"
 >
     <a href="{% url 'create_workout_template' %}">
-        Criar treino
+        {% trans 'Criar treino' %}
+    </a>
+    <br>
+    <a href="{% url 'workout_history_template' %}">
+        {% trans 'Histórico de treinos' %}
     </a>
 </div>

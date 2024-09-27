@@ -14,6 +14,7 @@ def workout_exercises_to_complete(
         'sets': 3,
         'weight': 50.0,
         'rest_period': 60,
+        'is_done': True,
     }
 
 

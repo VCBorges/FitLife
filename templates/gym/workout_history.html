@@ -1,0 +1,24 @@
+{% extends 'core/_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans 'Histórico de treinos' %}
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="workout-history-list">
+
+    </div>
+    {{ workout_histories }}
+</div>
+{% endblock content %}
+
+
+{% block js %}
+{{ context | json_script:"context-id" }}
+<script type="module" src="{% static 'js/apps/gym/pages/workouts-history.js' %}"></script>
+{% endblock js %}

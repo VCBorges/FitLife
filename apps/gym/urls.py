@@ -14,40 +14,45 @@ templates_urls = [
         name='homepage_template',
     ),
     path(
-        route='workout/create/',
+        route='workouts/create/',
         view=views.CreateWorkoutTemplateView.as_view(),
         name='create_workout_template',
     ),
     path(
-        route='workout/update/<uuid:pk>/',
+        route='workouts/update/<uuid:pk>/',
         view=views.UpdateWorkoutTemplateView.as_view(),
         name='update_workout_template',
     ),
     path(
-        route='workout/complete/<uuid:pk>/',
+        route='workouts/complete/<uuid:pk>/',
         view=views.CompleteWorkoutTemplateView.as_view(),
         name='complete_workout_template',
+    ),
+    path(
+        route='workouts/history/',
+        view=views.WorkoutsHistoryTemplateView.as_view(),
+        name='workout_history_template',
     ),
 ]
 
 api_urls = [
     path(
-        route='workout/',
+        route='workouts/',
         view=views.CreateListWorkoutsView.as_view(),
         name='create_list_workouts',
     ),
     path(
-        route='workout/<uuid:pk>/',
+        route='workouts/<uuid:pk>/',
         view=views.UpdateDetailDeleteWorkoutView.as_view(),
         name='update_detail_delete_workouts',
     ),
     path(
-        route='workout/<uuid:pk>/complete/',
+        route='workouts/<uuid:pk>/complete/',
         view=views.CompleteWorkoutView.as_view(),
         name='create_list_workouts_history',
     ),
     path(
-        route='workout/<uuid:pk>/uncomplete/',
+        route='workouts/<uuid:pk>/uncomplete/',
         view=views.CompleteWorkoutView.as_view(),
         name='create_list_workouts_history',
     ),

@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import datetime
 from dataclasses import asdict
 from typing import TYPE_CHECKING, Any
+
+from django.utils import dateformat
 
 from apps.core.constants import Language
 from apps.core.exceptions import ObjectDoesNotExist
@@ -52,3 +55,20 @@ class BaseDTO:
         return {
             key: value for key, value in asdict(self).items() if value is not None
         }  # ftm: skip
+
+
+def formatted_date(
+    date: datetime.date | datetime.datetime,
+    format_string: str | None = None,
+) -> str:
+    DATE_FORMAT = 'd/m/Y'
+    DATETIME_FORMAT = 'd/m/Y H:i'
+    if format_string is None:
+        if isinstance(date, datetime.datetime):
+            format_string = DATETIME_FORMAT
+        else:
+            format_string = DATE_FORMAT
+    return dateformat.format(date, format_string)
+
+
+# formatted_date: Callable[[date | datetime], str] = partial(dateformat.format, format_string='d/m/Y H:i')

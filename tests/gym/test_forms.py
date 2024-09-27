@@ -215,6 +215,7 @@ def test_UpdateWorkoutForm_cleaned_data_with_valid_input_to_have_expected_keys()
 @pytest.mark.django_db
 def test_CompleteWorkoutExerciseForm_to_have_expected_keys():
     expected_keys = [
+        'is_done',
         'workout_exercise',
         'sets',
         'repetitions',

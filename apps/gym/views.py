@@ -97,6 +97,23 @@ class CompleteWorkoutTemplateView(AuthDetailTemplateView):
         return context
 
 
+class WorkoutsHistoryTemplateView(AuthenticatedTemplateView):
+    template_name = 'gym/workout_history.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        language = Language.PT
+        context['workout_histories'] = ui.workout_history_list(
+            lookups=dtos.UserWorkoutLookups(user=self.request.user),
+            language=language,
+        )
+        # context['workout_exercises'] = ui.workout_exercises_form_card(
+        #     workout=self.object,
+        #     language=language,
+        # )
+        return context
+
+
 class CreateListWorkoutsView(AuthenticatedFormView):
     http_method_names = ['post']
 

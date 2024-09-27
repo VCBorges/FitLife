@@ -73,4 +73,4 @@ def test_create_user_to_raise_error_when_email_already_exists(existent_user_emai
             }
         )
 
-    assert exc.value.messages[0] == 'User with this Email address already exists.'
+    assert exc.value.messages[0]

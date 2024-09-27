@@ -8,6 +8,7 @@ from django.db.models.query import QuerySet
 
 from apps.core.constants import Language
 from apps.core.ui import SelectOptionsSchema, model_select_input_options
+from apps.core.utils import formatted_date
 from apps.gym import dtos, models
 
 
@@ -236,6 +237,94 @@ def workouts_list(
                         'weight': exercise.weight,
                     }
                     for exercise in workout.workout_exercises.all()
+                ],
+            }
+            for workout in page_qs
+        ],
+    )
+    return ret.as_dict()
+
+
+def workout_history_list(
+    *,
+    lookups: dtos.UserWorkoutLookups,
+    language: Language,
+    page_number: int = 1,
+    page_size: int = 50,
+    order_by: list[str] | None = None,
+) -> dict[str, Any]:
+    exercises_qs = (
+        models.WorkoutHistoryExercises.objects.select_related(
+            'exercise',
+            'exercise__primary_muscle',
+        )
+        .annotate(
+            exercise_name=KeyTextTransform(
+                language,
+                'exercise__name',
+            ),
+            muscle_name=KeyTextTransform(
+                language,
+                'exercise__primary_muscle__name',
+            ),
+            name=Concat(
+                'exercise_name',
+                Value(' ('),
+                'muscle_name',
+                Value(')'),
+                output_field=CharField(),
+            ),
+        )
+        .only(
+            'exercise__id',
+            'exercise__primary_muscle__id',
+            'workout_history__id',
+            'sets',
+            'repetitions',
+            'weight',
+            'is_done',
+        )
+    )
+    workouts_qs = (
+        models.WorkoutHistory.objects.prefetch_related(
+            Prefetch(
+                'workout_history_exercises',
+                queryset=exercises_qs,
+            )
+        )
+        .filter(
+            **lookups.as_dict(),
+        )
+        .order_by(*order_by or ['-created_at'])
+        .only(
+            'id',
+            'title',
+            'completed_at',
+        )
+    )
+    paginator = Paginator(workouts_qs, page_size)
+    result_page = paginator.get_page(page_number)
+    page_qs: QuerySet[models.WorkoutHistory] = result_page.object_list
+    ret = dtos.PaginatedData(
+        total_pages=paginator.num_pages,
+        current_page=page_number,
+        total_size=paginator.count,
+        page_size=paginator.per_page,
+        data=[
+            {
+                'id': str(workout.pk),
+                'title': workout.title,
+                'completed_at': formatted_date(workout.completed_at),
+                'exercises': [
+                    {
+                        'id': str(exercise.pk),
+                        'name': exercise.name,
+                        'repetitions': exercise.repetitions,
+                        'sets': exercise.sets,
+                        'weight': exercise.weight,
+                        'is_done': exercise.is_done,
+                    }
+                    for exercise in workout.workout_history_exercises.all()
                 ],
             }
             for workout in page_qs
