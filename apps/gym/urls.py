@@ -46,6 +46,11 @@ api_urls = [
         view=views.CompleteWorkoutView.as_view(),
         name='create_list_workouts_history',
     ),
+    path(
+        route='workout/<uuid:pk>/uncomplete/',
+        view=views.CompleteWorkoutView.as_view(),
+        name='create_list_workouts_history',
+    ),
 ]
 
 urlpatterns = templates_urls + api_urls

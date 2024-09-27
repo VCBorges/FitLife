@@ -152,6 +152,12 @@ class CompleteWorkoutView(AuthenticatedFormView):
             message='Workout completed successfully',
         )
 
+
+class UncompleteWorkoutView(AuthenticatedFormView):
+    http_method_names = ['delete']
+
+    model = models.WorkoutHistory
+
     def delete(self, *args, **kwargs) -> JsonResponse:
         WorkoutService().uncomplete_workout(
             workout=self.object,
