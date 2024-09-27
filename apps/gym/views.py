@@ -150,7 +150,7 @@ class CreateListWorkoutsHistoryView(AuthenticatedFormView):
         )
 
 
-class DetailDeleteWorkoutHistoryView(AuthenticatedFormView):
+class UpdateDetailDeleteWorkoutHistoryView(AuthenticatedFormView):
     http_method_names = ['delete']
     model = models.WorkoutHistory
 

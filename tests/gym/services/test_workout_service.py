@@ -1,13 +1,24 @@
-from apps.gym import models
+from apps.gym import models, typed
 from apps.gym.services import WorkoutService
-from apps.gym.typed import CreateWorkoutExerciseSchema
 from tests.gym import factories
 
 import pytest
 
 
+def workout_exercises_to_complete(
+    workout: models.Workouts,
+) -> typed.CompleteWorkoutExerciseSchema:
+    return {
+        'workout_exercise': factories.WorkoutExercisesFactory(workout=workout),
+        'repetitions': 10,
+        'sets': 3,
+        'weight': 50.0,
+        'rest_period': 60,
+    }
+
+
 @pytest.fixture
-def exercises_to_create() -> list[CreateWorkoutExerciseSchema]:
+def exercises_to_create() -> list[typed.CreateWorkoutExerciseSchema]:
     return [
         {
             'exercise': factories.ExercisesFactory(),
@@ -49,7 +60,7 @@ def test_create_workout_to_create_a_workout_without_exercises():
 
 @pytest.mark.django_db
 def test_create_workout_to_create_workout_exercises(
-    exercises_to_create: list[CreateWorkoutExerciseSchema],
+    exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
 ):
     user = factories.UsersFactory()
     workout_service = WorkoutService()
@@ -63,7 +74,7 @@ def test_create_workout_to_create_workout_exercises(
 
 @pytest.mark.django_db
 def test_create_workout_to_exercises_have_the_correct_attrs(
-    exercises_to_create: list[CreateWorkoutExerciseSchema],
+    exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
 ):
     user = factories.UsersFactory()
     workout_service = WorkoutService()
@@ -119,7 +130,7 @@ def test_update_workout_to_delete_exercises():
 
 @pytest.mark.django_db
 def test_update_workout_to_create_exercises(
-    exercises_to_create: list[CreateWorkoutExerciseSchema],
+    exercises_to_create: list[typed.CreateWorkoutExerciseSchema],
 ):
     print(f'{exercises_to_create = }')
     workout = factories.WorkoutsFactory()
@@ -137,44 +148,47 @@ def test_update_workout_to_create_exercises(
 def test_complete_workout_to_create_workout_history():
     workout = factories.WorkoutsFactory()
 
-    workkout_history = WorkoutService().complete_workout(
+    WorkoutService().complete_workout(
         user=workout.user,
         workout=workout,
+        exercises=[
+            workout_exercises_to_complete(workout),
+        ],
     )
-    assert isinstance(workkout_history, models.WorkoutHistory)
+    assert models.WorkoutHistory.objects.filter(workout=workout).count() == 1
 
 
 @pytest.mark.django_db
-def test_complete_workout_to_create_a_workout_with_the_same_attrs():
+def test_complete_workout_to_create_a_workout_history_with_the_same_attrs_as_the_source_workout():
     workout = factories.WorkoutsFactory()
-
-    workkout_history = WorkoutService().complete_workout(
-        user=workout.user,
-        workout=workout,
-    )
-
-    assert workkout_history.title == workout.title
-    assert workkout_history.description == workout.description
-    assert workkout_history.user == workout.user
-    assert workkout_history.workout == workout
-
-
-@pytest.mark.django_db
-def test_complete_workout_to_create_workout_history_exercises():
-    workout: models.Workouts = factories.WorkoutsFactory(with_exercises=True)
 
     workout_history = WorkoutService().complete_workout(
         user=workout.user,
         workout=workout,
+        exercises=[
+            workout_exercises_to_complete(workout),
+        ],
     )
 
-    assert workout_history.exercises.count() == workout.workout_exercises.count()
-    for i, exercise in enumerate(workout.workout_exercises.all()):
-        assert workout_history.exercises.all()[i].exercise == exercise.exercise
-        assert workout_history.exercises.all()[i].sets == exercise.sets
-        assert workout_history.exercises.all()[i].repetitions == exercise.repetitions
-        assert workout_history.exercises.all()[i].rest_period == exercise.rest_period
-        assert workout_history.exercises.all()[i].weight == exercise.weight
+    assert workout_history.title == workout.title
+    assert workout_history.description == workout.description
+    assert workout_history.user == workout.user
+    assert workout_history.workout == workout
+
+
+@pytest.mark.django_db
+def test_complete_workout_to_create_a_workout_history_exercise():
+    workout: models.Workouts = factories.WorkoutsFactory()
+
+    workout_history = WorkoutService().complete_workout(
+        user=workout.user,
+        workout=workout,
+        exercises=[
+            workout_exercises_to_complete(workout),
+        ],
+    )
+
+    assert workout_history.exercises.count() == 1
 
 
 @pytest.mark.django_db

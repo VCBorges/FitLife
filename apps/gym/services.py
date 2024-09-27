@@ -139,14 +139,10 @@ class WorkoutService:
                 user=user,
                 workout_history=workout_history,
                 exercise=exercise['workout_exercise'].exercise,
-                sets=exercise.get('sets', exercise['workout_exercise'].sets),
-                repetitions=exercise.get(
-                    'repetitions', exercise['workout_exercise'].repetitions
-                ),
-                weight=exercise.get('weight', exercise['workout_exercise'].weight),
-                rest_period=exercise.get(
-                    'rest_period', exercise['workout_exercise'].rest_period
-                ),
+                sets=exercise['repetitions'],
+                repetitions=exercise['repetitions'],
+                weight=exercise['weight'],
+                rest_period=exercise['rest_period'],
             )
             for exercise in exercises
         ]

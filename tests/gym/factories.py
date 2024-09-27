@@ -6,7 +6,7 @@ import factory
 translatable_field = factory.Dict(
     {
         'en': factory.Faker('word'),
-        'es': factory.Faker('word', locale='pt_BR'),
+        'pt': factory.Faker('word', locale='pt_BR'),
     }
 )
 
@@ -56,14 +56,15 @@ class WorkoutsFactory(factory.django.DjangoModelFactory):
     user = factory.SubFactory(UsersFactory)
     title = factory.Faker('word')
     description = factory.Faker('text')
-    user = factory.SubFactory(UsersFactory)
-    creator = factory.SubFactory(UsersFactory)
+    creator = factory.SelfAttribute('user')
 
     class Params:
         with_exercises = factory.Trait(
-            exercises=factory.RelatedFactory(WorkoutExercisesFactory, 'workout')
+            exercises=factory.RelatedFactory(
+                factory=WorkoutExercisesFactory,
+                factory_related_name='workout',
+            )
         )
-        without_exercises = factory.Trait(exercises=None)
 
 
 class WorkoutHistoryExercisesFactory(factory.django.DjangoModelFactory):
