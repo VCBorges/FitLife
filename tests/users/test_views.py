@@ -27,7 +27,7 @@ def test_UserLoginView_to_return_status_code_200_when_form_is_valid():
 
 
 @pytest.mark.django_db
-def test_UserLoginView_to_have_redirect_url_in_reponse_when_form_is_valid():
+def test_UserLoginView_to_have_redirect_url_in_response_when_form_is_valid():
     Users.objects.create_user(
         first_name='Test',
         email='test@test.com',

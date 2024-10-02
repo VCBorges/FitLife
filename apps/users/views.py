@@ -57,7 +57,7 @@ class UserLogoutView(AuthenticatedAPIView, LogoutFunctionalityMixin):
     def post(self, *args, **kwargs) -> dict[str, Any]:
         if self.request.user.is_authenticated:
             self.logout()
-        return self.get_response(
+        return self.render_to_json(
             status_code=200,
             data={
                 'redirect_url': reverse_lazy(settings.LOGOUT_REDIRECT_URL),
@@ -75,7 +75,7 @@ class UserSignUpView(LoggedOutAPIView):
     def post(self, *args, **kwargs) -> dict[str, Any]:
         data = self.get_cleaned_data(forms.UserSignUpForm)
         UserService.create_user(data)
-        return self.get_response(
+        return self.render_to_json(
             status_code=201,
             data={
                 'redirect_url': reverse_lazy(settings.LOGIN_URL),
