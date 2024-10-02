@@ -1,4 +1,4 @@
-from apps.core.exceptions import BaseError
+from apps.core.exceptions import BaseAPIError
 from apps.users import forms
 from apps.users.models import Users
 
@@ -30,7 +30,7 @@ def test_UserSignUpForm_to_be_invalid_when_email_already_exists(
             'password2': '123qaz123',
         },
     )
-    with pytest.raises(BaseError) as exc:
+    with pytest.raises(BaseAPIError) as exc:
         form.is_valid()
 
     assert 'email' in exc.value.error_dict

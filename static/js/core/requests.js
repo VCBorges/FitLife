@@ -29,17 +29,17 @@ export function redirectIfApplicable(redirectUrl) {
 /**
  * @param {{
  * method: string,
- * body: FormData | Object<string, any>,
+ * body: FormData | Object<string, any> | Null,
  * headers: object
  * }} props
  * @returns {RequestInit}
  */
-export function getRequestInit({ method, body, headers = {} }) {
+export function getRequestInit({ method, body = null, headers = {} }) {
   if (!(body instanceof FormData)) {
     headers["Content-Type"] = "application/json";
-    body = JSON.stringify(body);
+    body = JSON.stringify(body) ? body : null;
   }
-  
+
   return {
     method,
     headers: {
@@ -54,68 +54,79 @@ export function getRequestInit({ method, body, headers = {} }) {
  * @param {{
  * url: string,
  * method: string,
- * body: Object<string, any>,
+ * data: Object<string, any>,
  * headers: Object<string, string>,
  * onSuccess: function(Object): void,
  * onError: function(Object, number): void,
  * }} props
- * @returns {Promise<any>}
+ * @returns {Promise<Object>}
  */
 export async function sendRequest({
   url,
   method,
-  body,
+  data,
   headers = {},
   onSuccess = (data) => null,
   onError = (data, status) => null,
 }) {
-  const requestInit = getRequestInit({
-    method,
-    body,
-    headers,
-  });
-  const response = await fetch(url, requestInit);
-  const data = await response.json();
-  if (response.ok) {
-    return onSuccess(data);
+  let requestInit;
+  const isGetOrHead = ["GET", "HEAD"].includes(method.toUpperCase());
+  if (isGetOrHead) {
+    const searchParams = new URLSearchParams(data);
+    url += `?${searchParams.toString()}`;
+    requestInit = getRequestInit({
+      method,
+      headers,
+    });
+  } else {
+    requestInit = getRequestInit({
+      method,
+      body: data,
+      headers,
+    });
   }
-  return onError(data, response.status);
+  const response = await fetch(url, requestInit);
+  const responseData = await response.json();
+  if (response.ok) {
+    onSuccess(responseData);
+    return responseData;
+  }
+  onError(responseData, response.status);
 }
-
 
 /**
  * @param {{
-* url: String,
-* method: String,
-* body: FormData | Object.<String, Any>,
-* headers: Object.<String, Any>,
-* beforeSend: Function(): Void,
-* onSuccess: Function(Object): Void,
-* onError: Function(Object, Number): Void,
-* }} props
-* @returns {Promise<Any>}
-*/
+ * url: String,
+ * method: String,
+ * data: FormData | Object.<String, Any>,
+ * headers: Object.<String, Any>,
+ * beforeSend: Function(): Void,
+ * onSuccess: Function(Object): Void,
+ * onError: Function(Object, Number): Void,
+ * }} props
+ * @returns {Promise<Any>}
+ */
 export async function handleRequestSubmit({
- url,
- method,
- body,
- headers = {},
- beforeSend = () => {},
- onSuccess =  (data) => {},
- onError =  (data, status) => {},
+  url,
+  method,
+  data = {},
+  headers = {},
+  beforeSend = () => {},
+  onSuccess = (data) => {},
+  onError = (data, status) => {},
 }) {
- beforeSend();
- await sendRequest({
-   url,
-   method,
-   body,
-   headers,
-   onSuccess: (data) => {
-     onSuccess(data);
-     redirectIfApplicable(data.redirect_url);
-   },
-   onError: (data, status) => {
-     onError(data, status);
-   },
- });
+  beforeSend();
+  return await sendRequest({
+    url,
+    method,
+    data,
+    headers,
+    onSuccess: (data) => {
+      onSuccess(data);
+      redirectIfApplicable(data.redirect_url);
+    },
+    onError: (data, status) => {
+      onError(data, status);
+    },
+  });
 }

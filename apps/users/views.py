@@ -9,8 +9,8 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 
 from apps.core.views import (
-    AuthenticatedFormView,
-    LoggedOutFormView,
+    AuthenticatedAPIView,
+    LoggedOutAPIView,
     LoggedOutTemplateView,
 )
 from apps.users import forms
@@ -32,7 +32,7 @@ class UserLoginTemplateView(LoggedOutTemplateView):
         return super().get(request, *args, **kwargs)
 
 
-class UserLoginView(LoggedOutFormView):
+class UserLoginView(LoggedOutAPIView):
     http_method_names = ['post']
 
     @method_decorator(never_cache)
@@ -41,16 +41,17 @@ class UserLoginView(LoggedOutFormView):
 
     def post(self, *args: Any, **kwargs: Any) -> Any:
         form: forms.UserLoginForm = self.get_form(forms.UserLoginForm)
+        print(f'{form = }')
         form.is_valid()
         form.login(self.request)
-        return self.get_response(
+        return self.render_to_json(
             data={
                 'redirect_url': reverse_lazy(settings.LOGIN_REDIRECT_URL),
             },
         )
 
 
-class UserLogoutView(AuthenticatedFormView, LogoutFunctionalityMixin):
+class UserLogoutView(AuthenticatedAPIView, LogoutFunctionalityMixin):
     http_method_names = ['post']
 
     def post(self, *args, **kwargs) -> dict[str, Any]:
@@ -68,7 +69,7 @@ class UserSignUpTemplateView(LoggedOutTemplateView):
     template_name = 'users/signup.html'
 
 
-class UserSignUpView(LoggedOutFormView):
+class UserSignUpView(LoggedOutAPIView):
     http_method_names = ['post']
 
     def post(self, *args, **kwargs) -> dict[str, Any]:
@@ -82,9 +83,9 @@ class UserSignUpView(LoggedOutFormView):
         )
 
 
-class UserUpdateView(LoggedOutFormView):
+class UserUpdateView(LoggedOutAPIView):
     form_class = forms.UserUpdateView
 
 
-class EmailVerificationView(LoggedOutFormView):
+class EmailVerificationView(LoggedOutAPIView):
     form_class = forms.EmailVerificationForm

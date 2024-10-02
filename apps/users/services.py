@@ -13,7 +13,7 @@ class UserService:
 
     def update_user(self, user_data): ...
 
-    def unactivate_user(self, user: Users) -> None:
+    def deactivate_user(self, user: Users) -> None:
         user.is_active = False
         user.save()
 

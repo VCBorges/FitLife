@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime
 import typing as tp
 from dataclasses import dataclass
 
@@ -36,6 +37,13 @@ class WorkoutLookups(BaseDTO):
 @dataclass(frozen=True, kw_only=True)
 class UserWorkoutLookups(WorkoutLookups):
     user: Users
+
+
+@dataclass(frozen=True, kw_only=True)
+class UserWorkoutHistoryLookups(UserWorkoutLookups):
+    workout: models.Workouts | None = None
+    completed_at: datetime.datetime | None = None
+    creator: Users | None = None
 
 
 # TODO: move to core module

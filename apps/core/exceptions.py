@@ -5,18 +5,16 @@ from typing import Any, override
 from django.forms import ValidationError as DjangoValidationError
 
 
-class BaseError(Exception):
+class BaseAPIError(Exception):
     def __init__(
         self,
         *,
-        message: str = '',
         status_code: int = 500,
         data: dict[str, Any] | None = None,
     ) -> None:
-        super().__init__(message)
+        super().__init__(data)
         self.status_code = status_code
         self.error_dict = data
-        self.message = message
 
 
 class FieldValidationError(DjangoValidationError):
@@ -66,7 +64,7 @@ class FieldValidationError(DjangoValidationError):
         return f'{self.__class__.__name__}({self})'
 
 
-class FormValidationError(BaseError):
+class FormValidationError(BaseAPIError):
     MESSAGE = 'Invalid data.'
     STATUS_CODE = 400
 
@@ -74,26 +72,19 @@ class FormValidationError(BaseError):
     def __init__(
         self,
         errors: dict[str, Any],
-        *,
-        message: str | None = None,
     ) -> None:
         super().__init__(
-            message=message or self.MESSAGE,
             status_code=self.STATUS_CODE,
             data=errors,
         )
 
 
-class ObjectDoesNotExist(BaseError):
+class ObjectDoesNotExist(BaseAPIError):
     MESSAGE = 'Object does not exist.'
     STATUS_CODE = 404
 
     @override
     def __init__(
         self,
-        message: str | None = None,
     ) -> None:
-        super().__init__(
-            message=message or self.MESSAGE,
-            status_code=self.STATUS_CODE,
-        )
+        super().__init__(status_code=self.STATUS_CODE)

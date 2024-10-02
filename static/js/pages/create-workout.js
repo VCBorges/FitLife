@@ -281,7 +281,7 @@ async function onClickSubmitWorkoutBtn(event) {
   handleRequestSubmit({
     url: url,
     method: "POST",
-    body: {
+    data: {
       ...workout,
       exercises: exercises,
     },

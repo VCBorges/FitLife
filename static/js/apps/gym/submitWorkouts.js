@@ -42,7 +42,9 @@ const SELECT_ALL_OPTION = "all";
  * @returns {HTMLButtonElement}
  */
 function ExerciseSelectBtn({ value, name, template }) {
-  const templateClone = /** @type {DocumentFragment} */ (template.content.cloneNode(true));
+  const templateClone = /** @type {DocumentFragment} */ (
+    template.content.cloneNode(true)
+  );
 
   /**@type {HTMLButtonElement} */
   const btn = templateClone.querySelector(EXERCISE_SELECT_BTN_CLS);
@@ -60,7 +62,9 @@ function ExerciseSelectBtn({ value, name, template }) {
  * @returns {HTMLDivElement}
  */
 function ExerciseFormCard({ name, exerciseId, template }) {
-  const templateClone = /** @type {DocumentFragment} */  (template.content.cloneNode(true));
+  const templateClone = /** @type {DocumentFragment} */ (
+    template.content.cloneNode(true)
+  );
 
   /**@type {HTMLDivElement} */
   const card = templateClone.querySelector(EXERCISES_FORM_CARD.CLS);
@@ -244,8 +248,8 @@ export async function submitWorkout({
 }) {
   handleRequestSubmit({
     url: url || submitBtn.formAction,
-    method: method || submitBtn.getAttribute('formmethod'),
-    body: body,
+    method: method || submitBtn.getAttribute("formmethod"),
+    data: body,
     beforeSend: () => {
       submitBtn.disabled = true;
       if (errorAlert) {

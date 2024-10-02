@@ -30,7 +30,7 @@ templates_urls = [
     ),
     path(
         route='workouts/history/',
-        view=views.WorkoutsHistoryTemplateView.as_view(),
+        view=views.WorkoutHistoriesTemplateView.as_view(),
         name='workout_history_template',
     ),
 ]

@@ -11,10 +11,32 @@
 {% block content %}
 <div class="container-fluid">
     <div class="workout-history-list">
-
-    </div>
+        {% for workout in workout_histories.data %}
+        <div class="workout-history-item">
+            <div class="header">
+                <div>{{ workout.title }}</div>
+            </div>
+            <div class="exercises-list">
+                {% for exercise in workout.exercises %}
+                <div class="exercise-item">
+                    <div class="is-done">{{ exercise.is_done }}</div>
+                    <div class="name">{{ exercise.name }}</div>
+                    <div class="info">
+                        <div class="weight">{{ exercise.weight }}</div>
+                        <div class="">{{ exercise.repetitions }} X {{ exercise.sets }}</div>
+                        <div class="rest">{{ exercise.rest_period }} Min</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        </div>
     {{ workout_histories }}
+    </div>
 </div>
+<template>
+    
+</template>
 {% endblock content %}
 
 

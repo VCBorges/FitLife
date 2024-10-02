@@ -247,7 +247,7 @@ def workouts_list(
 
 def workout_history_list(
     *,
-    lookups: dtos.UserWorkoutLookups,
+    lookups: dtos.UserWorkoutHistoryLookups,
     language: Language,
     page_number: int = 1,
     page_size: int = 50,
@@ -283,6 +283,7 @@ def workout_history_list(
             'repetitions',
             'weight',
             'is_done',
+            'rest_period',
         )
     )
     workouts_qs = (
@@ -323,6 +324,7 @@ def workout_history_list(
                         'sets': exercise.sets,
                         'weight': exercise.weight,
                         'is_done': exercise.is_done,
+                        'rest_period': exercise.rest_period,
                     }
                     for exercise in workout.workout_history_exercises.all()
                 ],

@@ -1,8 +1,11 @@
 {% load i18n %}
-<div class="workouts-list">
+<div 
+    class="workouts-list"
+    data-endpoint="{% url 'create_list_workouts' %}"
+>
     <c-primary-input
         name="value"
-        id="search-workout-input-id"
+        class="search-input"
         placeholder="{% trans 'Buscar' %}"
     />
     <div class="workouts-root">
@@ -12,4 +15,11 @@
         />  
         {% endfor %}
     </div>
+    <template id="workout-list-item-template-id">
+        <c-workout-list-item/>
+    </template>
+    
+    <template id="workout-exercise-item-template-id">
+        <c-workout-exercise-item/>
+    </template>
 </div>

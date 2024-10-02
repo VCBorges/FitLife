@@ -1,4 +1,5 @@
 {% extends 'core/_base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
@@ -12,4 +13,5 @@
 
 {% block js %}
 {{ context | json_script:"context-id" }}
+<script type="module" src="{% static 'js/apps/gym/pages/homepage.js' %}"></script>
 {% endblock js %}

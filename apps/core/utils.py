@@ -4,6 +4,8 @@ import datetime
 from dataclasses import asdict
 from typing import TYPE_CHECKING, Any
 
+from django.db.models import Model
+from django.db.models.query import QuerySet
 from django.utils import dateformat
 
 from apps.core.constants import Language
@@ -15,20 +17,18 @@ if TYPE_CHECKING:
 
 
 def get_or_404(
+    model_or_queryset: typed.DjangoModelType | QuerySet[typed.DjangoModelType],
     *,
-    model: type[typed.DjangoModelType],
     pk: str,
     message: str | None = None,
-    **lookups,
 ) -> typed.DjangoModelType:
+    if isinstance(model_or_queryset, Model):
+        model_or_queryset = model_or_queryset.objects.all()
     try:
-        return model.objects.get(
-            pk=pk,
-            **lookups,
-        )
-    except model.DoesNotExist:
+        return model_or_queryset.get(pk=pk)
+    except model_or_queryset.DoesNotExist:
         if not message:
-            message = f'{model.__name__} with id {pk} not found'
+            message = f'{model_or_queryset.__name__} with id {pk} not found'
         raise ObjectDoesNotExist(message)
 
 

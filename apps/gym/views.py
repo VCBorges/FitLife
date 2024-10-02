@@ -6,14 +6,12 @@ from django.http.response import HttpResponse as HttpResponse
 from apps.core.constants import Language
 from apps.core.views import (
     AuthDetailTemplateView,
-    AuthenticatedFormView,
+    AuthenticatedAPIView,
     AuthenticatedTemplateView,
     LoggedOutTemplateView,
 )
 from apps.gym import dtos, forms, models, ui
 from apps.gym.services import WorkoutService
-
-# Create your views here.
 
 
 class LandingPageTemplateView(LoggedOutTemplateView):
@@ -97,7 +95,7 @@ class CompleteWorkoutTemplateView(AuthDetailTemplateView):
         return context
 
 
-class WorkoutsHistoryTemplateView(AuthenticatedTemplateView):
+class WorkoutHistoriesTemplateView(AuthenticatedTemplateView):
     template_name = 'gym/workout_history.html'
 
     def get_context_data(self, **kwargs):
@@ -107,15 +105,11 @@ class WorkoutsHistoryTemplateView(AuthenticatedTemplateView):
             lookups=dtos.UserWorkoutLookups(user=self.request.user),
             language=language,
         )
-        # context['workout_exercises'] = ui.workout_exercises_form_card(
-        #     workout=self.object,
-        #     language=language,
-        # )
         return context
 
 
-class CreateListWorkoutsView(AuthenticatedFormView):
-    http_method_names = ['post']
+class CreateListWorkoutsView(AuthenticatedAPIView):
+    http_method_names = ['post', 'get']
 
     def post(self, *args, **kwargs) -> JsonResponse:
         data = self.get_cleaned_data(forms.CreateWorkoutForm)
@@ -125,14 +119,25 @@ class CreateListWorkoutsView(AuthenticatedFormView):
             description=data.get('description'),
             exercises=data.get('exercises'),
         )
-        return self.get_response(
-            status_code=201,
-            message='Workout created successfully',
+        return self.render_to_json(
             data={'workout': workout.id},
+            status_code=201,
+        )
+
+    def get(self, *args, **kwargs) -> dict[str, Any]:
+        workouts = (
+            ui.workouts_list(
+                lookups=dtos.UserWorkoutLookups(user=self.request.user),
+                language=Language.PT,
+            ),
+        )
+        return self.render_to_json(
+            status_code=200,
+            data={'workouts': workouts},
         )
 
 
-class UpdateDetailDeleteWorkoutView(AuthenticatedFormView):
+class UpdateDetailDeleteWorkoutView(AuthenticatedAPIView):
     http_method_names = ['put', 'delete']
     model = models.Workouts
 
@@ -144,14 +149,16 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedFormView):
             description=data['description'],
             exercises=data['exercises'],
         )
+        return self.render_to_json(status_code=200)
 
     def delete(self, *args, **kwargs) -> dict[str, Any]:
         WorkoutService.delete_workout(
             workout=self.object,
         )
+        return self.render_to_json(status_code=204)
 
 
-class CompleteWorkoutView(AuthenticatedFormView):
+class CompleteWorkoutView(AuthenticatedAPIView):
     http_method_names = ['post', 'delete']
 
     model = models.Workouts
@@ -164,13 +171,12 @@ class CompleteWorkoutView(AuthenticatedFormView):
             workout=self.object,
             exercises=data['exercises'],
         )
-        return self.get_response(
+        return self.render_to_json(
             status_code=201,
-            message='Workout completed successfully',
         )
 
 
-class UncompleteWorkoutView(AuthenticatedFormView):
+class UncompleteWorkoutView(AuthenticatedAPIView):
     http_method_names = ['delete']
 
     model = models.WorkoutHistory
@@ -179,7 +185,6 @@ class UncompleteWorkoutView(AuthenticatedFormView):
         WorkoutService().uncomplete_workout(
             workout=self.object,
         )
-        return self.get_response(
+        return self.render_to_json(
             status_code=204,
-            message='Workout uncompleted successfully',
         )

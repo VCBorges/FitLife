@@ -51,7 +51,7 @@ export async function handleFormSubmit({
   await sendRequest({
     url,
     method,
-    body: formData,
+    data: formData,
     onSuccess: async (data) => {
       onSuccess(data);
       redirectIfApplicable(data.redirect_url);

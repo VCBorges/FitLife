@@ -6,7 +6,7 @@ def test_BaseError_error_dict_to_be_the_same_as_data():
     data = {'error': 'An error occurred'}
 
     # Act
-    error = exceptions.BaseError(
+    error = exceptions.BaseAPIError(
         message='An error occurred',
         status_code=400,
         data=data,
@@ -21,7 +21,7 @@ def test_BaseError_message_to_be_the_same_as_message():
     message = 'An error occurred'
 
     # Act
-    error = exceptions.BaseError(
+    error = exceptions.BaseAPIError(
         message=message,
         status_code=400,
         data={'error': 'An error occurred'},
@@ -36,7 +36,7 @@ def test_BaseError_status_code_to_be_the_same_as_status_code():
     status_code = 400
 
     # Act
-    error = exceptions.BaseError(
+    error = exceptions.BaseAPIError(
         message='An error occurred',
         status_code=status_code,
         data={'error': 'An error occurred'},

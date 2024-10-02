@@ -1,7 +1,6 @@
 from typing import Any
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models.base import Model as Model
 from django.views.generic import TemplateView, View
 from django.views.generic.detail import DetailView
 
@@ -9,17 +8,17 @@ from apps.core import viewsmixins
 from apps.core.typed import AuthenticatedRequest, DjangoModelType
 
 
-class AuthenticatedFormView(
+class AuthenticatedAPIView(
     LoginRequiredMixin,
-    viewsmixins.BaseFormViewMixin,
+    viewsmixins.BaseAPIView,
     View,
 ):
     request: AuthenticatedRequest
 
 
-class LoggedOutFormView(
+class LoggedOutAPIView(
     viewsmixins.CsrfExemptMixin,
-    viewsmixins.BaseFormViewMixin,
+    viewsmixins.BaseAPIView,
     View,
 ):
     pass
@@ -27,7 +26,7 @@ class LoggedOutFormView(
 
 class AuthenticatedTemplateView(
     LoginRequiredMixin,
-    viewsmixins.BaseTemplateViewContextMixin,
+    viewsmixins.BaseTemplateContextMixin,
     TemplateView,
 ):
     request: AuthenticatedRequest
@@ -39,14 +38,14 @@ class AuthenticatedTemplateView(
 
 class AuthDetailTemplateView(
     LoginRequiredMixin,
-    viewsmixins.BaseTemplateViewContextMixin,
+    viewsmixins.BaseTemplateContextMixin,
     DetailView,
 ):
     model: DjangoModelType
 
 
 class LoggedOutTemplateView(
-    viewsmixins.BaseTemplateViewContextMixin,
+    viewsmixins.BaseTemplateContextMixin,
     TemplateView,
 ):
     def dispatch(self, request, *args, **kwargs):

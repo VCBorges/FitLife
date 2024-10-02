@@ -41,7 +41,7 @@ document
     await handleRequestSubmit({
       url: event.target.getAttribute("formaction"),
       method: "POST",
-      body: {
+      data: {
         exercises: exercises,
       },
     });

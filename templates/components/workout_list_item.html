@@ -1,43 +1,43 @@
 {% load i18n %}
 <div 
-    class="workout-list-item" 
+    class="list-item" 
     data-workout-id="{{ workout.id }}"
 >
     <div class="header">
-        <div>{{ workout.title }}</div>
-        <a href="{% url 'complete_workout_template' workout.id %}">
+        <div class="title">{{ workout.title }}</div>
+        <a 
+            class="complete-workout-anchor"
+            {% if workout %}
+            href="{% url 'complete_workout_template' workout.id %}"
+            {% endif %}
+        >
             <c-primary-button
                 class="complete-workout-btn"
                 text="{% trans 'Completar' %}"
             />
         </a>
-        <a href="{% url 'update_workout_template' workout.id %}">
+        <a 
+            class="edit-workout-anchor"
+            {% if workout %}
+            href="{% url 'update_workout_template' workout.id %}"
+            {% endif %}
+        >
             <c-primary-button
                 class="edit-workout-btn"
                 text="{% trans 'Editar' %}"
             />
         </a>
-        <form
-            class="regular-form delete-workout-form"
-            action="{% url 'update_detail_delete_workouts' workout.id %}" 
-            method="delete"
-        >
-            <c-primary-button
-                type="submit"
-                class="delete-workout-btn"
-                text="{% trans 'Excluir' %}"
-            />
-        </form>
+        <c-primary-button
+            type="submit"
+            class="delete-workout-btn"
+            text="{% trans 'Excluir' %}"
+        />
     </div>
     <div class="exercises-list">
         {% for exercise in workout.exercises %}
-        <div class="exercise-item">
-            <div class="name">{{ exercise.name }}</div>
-            <div class="info">
-                <div class="weight">{{ exercise.weight }}</div>
-                <div class="">{{ exercise.repetitions }} X {{ exercise.sets }}</div>
-            </div>
-        </div>
+        <c-workout-exercise-item
+            :exercise="{{ exercise | safe | escape }}"
+        />
         {% endfor %}
     </div>
 </div>
