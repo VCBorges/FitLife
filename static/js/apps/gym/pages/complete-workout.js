@@ -42,6 +42,7 @@ document
       url: event.target.getAttribute("formaction"),
       method: "POST",
       data: {
+        workout_id: event.target.value,
         exercises: exercises,
       },
     });

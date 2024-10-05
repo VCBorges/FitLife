@@ -1,0 +1,10 @@
+<button
+    type="{{ type }}"
+    class="btn {{ class }}"
+
+    {% if id %}
+        id="{{ id }}"
+    {% endif %}
+
+    {{ attrs }}
+>{{ text }}</button>

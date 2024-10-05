@@ -27,10 +27,18 @@
                 text="{% trans 'Editar' %}"
             />
         </a>
-        <c-primary-button
+        <c-button.danger
             type="submit"
-            class="delete-workout-btn"
+            class="delete-workout-btn-modal"
+            data-delete-url="{% url 'update_detail_delete_workouts' workout.id %}"
+            @click="
+                deleteWorkoutUrl = $el.getAttribute('data-delete-url');
+                workoutId = $el.closest('.list-item').getAttribute('data-workout-id');
+                $nextTick(() => htmx.process(document.body));
+            "
             text="{% trans 'Excluir' %}"
+            data-bs-toggle="modal" 
+            data-bs-target="#delete-workout-modal-id"
         />
     </div>
     <div class="exercises-list">

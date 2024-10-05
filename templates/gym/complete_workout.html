@@ -14,11 +14,11 @@
     <c-primary-button
         type="submit"
         text="{% trans 'Completar' %}"
-        formaction="{% url 'create_list_workouts_history' workout.id %}"
+        formaction="{% url 'create_list_workouts_history' %}"
         id="complete-workout-submit-btn"
+        value="{{ workout.id }}"
     />
     <div class="workout-excersise">
-        
         {% for exercise in workout_exercises %}
         <div class="workout-exercise">
             <h3>{{ exercise.name }}</h3>

@@ -32,6 +32,7 @@ class EquipmentsLookups(BaseDTO):
 class WorkoutLookups(BaseDTO):
     title: str | None = None
     description: str | None = None
+    title__icontains: str | None = None
 
 
 @dataclass(frozen=True, kw_only=True)

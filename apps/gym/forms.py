@@ -1,3 +1,5 @@
+from typing import Any
+
 from django import forms
 
 from apps.core import form_fields
@@ -119,3 +121,31 @@ class CompleteWorkoutForm(BaseForm):
         ):
             self.add_error('exercises', 'Invalid workout exercises')
         return exercises
+
+
+class CreateWorkoutHistoryForm(BaseForm):
+    workout_id = forms.ModelChoiceField(
+        queryset=models.Workouts.objects.all(),
+        required=True,
+    )
+    exercises = form_fields.ListField(
+        children_field=form_fields.NestedFormField(
+            form_class=CompleteWorkoutExerciseForm,
+        ),
+        required=True,
+    )
+
+    normalized_fields_mapping = {
+        'workout_id': 'workout',
+    }
+
+    def clean(self) -> dict[str, Any]:
+        cleaned_data = super().clean()
+        exercises = cleaned_data.get('exercises')
+        if not all(
+            exercise['workout_exercise'].workout == cleaned_data['workout']
+            for exercise in exercises
+        ):
+            # self.add_error('exercises', 'Invalid workout exercises')
+            raise forms.ValidationError('Invalid workout exercises')
+        return cleaned_data

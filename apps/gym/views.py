@@ -109,7 +109,10 @@ class WorkoutHistoriesTemplateView(AuthenticatedTemplateView):
 
 
 class CreateListWorkoutsView(AuthenticatedAPIView):
-    http_method_names = ['post', 'get']
+    http_method_names = [
+        'post',
+        'get',
+    ]
 
     def post(self, *args, **kwargs) -> JsonResponse:
         data = self.get_cleaned_data(forms.CreateWorkoutForm)
@@ -125,15 +128,18 @@ class CreateListWorkoutsView(AuthenticatedAPIView):
         )
 
     def get(self, *args, **kwargs) -> dict[str, Any]:
-        workouts = (
-            ui.workouts_list(
-                lookups=dtos.UserWorkoutLookups(user=self.request.user),
-                language=Language.PT,
+        language = Language.PT
+        workouts = ui.workouts_list(
+            lookups=dtos.UserWorkoutLookups(
+                user=self.request.user,
+                title__icontains=self.data['query'],
             ),
+            language=language,
         )
-        return self.render_to_json(
-            status_code=200,
-            data={'workouts': workouts},
+
+        return self.render_to_template(
+            template='gym/htmx/_workout_list_item.html',
+            context={'workouts': workouts},
         )
 
 
@@ -152,7 +158,7 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedAPIView):
         return self.render_to_json(status_code=200)
 
     def delete(self, *args, **kwargs) -> dict[str, Any]:
-        WorkoutService.delete_workout(
+        WorkoutService().delete_workout(
             workout=self.object,
         )
         return self.render_to_json(status_code=204)
@@ -173,6 +179,39 @@ class CompleteWorkoutView(AuthenticatedAPIView):
         )
         return self.render_to_json(
             status_code=201,
+        )
+
+
+class CreateListWorkoutHistoryView(AuthenticatedAPIView):
+    http_method_names = [
+        'post',
+        'get',
+    ]
+
+    def post(self, *args, **kwargs) -> JsonResponse:
+        data = self.get_cleaned_data(forms.CreateWorkoutHistoryForm)
+        WorkoutService().complete_workout(
+            user=self.request.user,
+            workout=data['workout'],
+            exercises=data['exercises'],
+        )
+        return self.render_to_json(
+            status_code=201,
+        )
+
+    def get(self, *args, **kwargs) -> dict[str, Any]:
+        language = Language.PT
+        workout_histories = ui.workout_history_list(
+            lookups=dtos.UserWorkoutHistoryLookups(
+                user=self.request.user,
+                workout__title__icontains=self.data['query'],
+            ),
+            language=language,
+        )
+
+        return self.render_to_template(
+            template='gym/htmx/_workout_history_list_item.html',
+            context={'workout_histories': workout_histories},
         )
 
 

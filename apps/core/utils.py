@@ -22,7 +22,7 @@ def get_or_404(
     pk: str,
     message: str | None = None,
 ) -> typed.DjangoModelType:
-    if isinstance(model_or_queryset, Model):
+    if issubclass(model_or_queryset, Model):
         model_or_queryset = model_or_queryset.objects.all()
     try:
         return model_or_queryset.get(pk=pk)

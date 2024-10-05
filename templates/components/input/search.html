@@ -1,0 +1,12 @@
+<c-vars
+    trigger="keyup delay:500ms changed"
+/>
+
+<c-input.primary
+    name="query"
+    class="search-input"
+    placeholder="{{ placeholder }}"
+    hx-get="{{ get_url }}"
+    hx-trigger="keyup delay:500ms changed"
+    hx-target="{{ target }}"
+/>

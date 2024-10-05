@@ -10,37 +10,33 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="workout-history-list">
-        {% for workout in workout_histories.data %}
-        <div class="workout-history-item">
-            <div class="header">
-                <div>{{ workout.title }}</div>
-            </div>
-            <div class="exercises-list">
-                {% for exercise in workout.exercises %}
-                <div class="exercise-item">
-                    <div class="is-done">{{ exercise.is_done }}</div>
-                    <div class="name">{{ exercise.name }}</div>
-                    <div class="info">
-                        <div class="weight">{{ exercise.weight }}</div>
-                        <div class="">{{ exercise.repetitions }} X {{ exercise.sets }}</div>
-                        <div class="rest">{{ exercise.rest_period }} Min</div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
-        </div>
-    {{ workout_histories }}
+    <div 
+        class="workout-history-list"
+        x-data="{ 
+            workoutId: '',
+        }"
+    >
+        <c-input.primary
+            name="query"
+            class="search-input"
+            placeholder="{% trans 'Buscar' %}"
+            hx-get="{% url 'create_list_workouts' %}"
+            hx-trigger="keyup delay:500ms changed"
+            hx-target=".list-content"
+        />
+        <div class="list-content">
+            {% for workout in workout_histories.data %}
+            <c-workout-history.list-item
+                :workout="{{ workout | safe | escape }}"
+            />
+            {% endfor %}
+        </div>  
     </div>
 </div>
-<template>
-    
-</template>
 {% endblock content %}
 
 
 {% block js %}
 {{ context | json_script:"context-id" }}
-<script type="module" src="{% static 'js/apps/gym/pages/workouts-history.js' %}"></script>
+<!-- <script type="module" src="{% static 'js/apps/gym/pages/workouts-history.js' %}"></script> -->
 {% endblock js %}

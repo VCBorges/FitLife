@@ -29,7 +29,7 @@ export function redirectIfApplicable(redirectUrl) {
 /**
  * @param {{
  * method: string,
- * body: FormData | Object<string, any> | Null,
+ * body: FormData | Object<string, any> | null,
  * headers: object
  * }} props
  * @returns {RequestInit}
@@ -37,7 +37,7 @@ export function redirectIfApplicable(redirectUrl) {
 export function getRequestInit({ method, body = null, headers = {} }) {
   if (!(body instanceof FormData)) {
     headers["Content-Type"] = "application/json";
-    body = JSON.stringify(body) ? body : null;
+    body = body ? JSON.stringify(body) : null;;
   }
 
   return {
@@ -115,6 +115,7 @@ export async function handleRequestSubmit({
   onSuccess = (data) => {},
   onError = (data, status) => {},
 }) {
+  console.log("request data: ", data);
   beforeSend();
   return await sendRequest({
     url,

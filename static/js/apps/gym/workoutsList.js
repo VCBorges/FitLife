@@ -1,30 +1,16 @@
 import { handleRequestSubmit } from "../../core/requests.js";
 
-export class WorkoutsList {
-  /**
-   * @param {{
-   * rootElementSelector: string,
-   * }} props
-   */
-  constructor({ rootElementSelector }) {
-    /**@type {HTMLDivElement} */
-    this.rootElement = document.querySelector(rootElementSelector);
-    /**@type {String} */
-    this.endpoint = this.rootElement.getAttribute("data-endpoint");
-    this.searchInput = this.rootElement.querySelector(".search-input");
-    this.searchInput.addEventListener("input", async () => {
-      await this.fetchWorkouts();
-    });
-  }
+export const DELETE_WORKOUT_MODAL_ID = 'delete-workout-modal-id';
+export const DELETE_WORKOUT_BTN_ID = 'delete-workout-btn-id';
 
-  async fetchWorkouts() {
-    const workouts = await handleRequestSubmit({
-      url: this.endpoint,
-      method: "GET",
-      data: {
-        search: this.searchInput.value,
-      },
-    });
-    
-  }
+
+/**
+ * @param {{
+ * button: HTMLButtonElement,
+ * }} props
+ */
+export function handleClickDeleteWorkoutModalBtn({ button }){
+  const modal = document.getElementById(DELETE_WORKOUT_MODAL_ID);
+  const deleteWorkoutBtn = modal.getElementById(DELETE_WORKOUT_BTN_ID)
+  deleteWorkoutBtn.setAttribute('hx-delete', button.dataset.deleteUrl);
 }

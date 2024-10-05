@@ -68,16 +68,16 @@ class WorkoutService:
             ]
         )
         if exercises:
-            if 'to_create' in exercises:
+            if exercises['to_create']:
                 self._create_workout_exercises(
                     workout=workout,
                     exercises=exercises['to_create'],
                 )
 
-            if 'to_update' in exercises:
+            if exercises['to_update']:
                 self._update_exercise(exercises['to_update'])
 
-            if 'to_delete' in exercises:
+            if exercises['to_delete']:
                 self._delete_exercise(exercises['to_delete'])
 
         return workout

@@ -1,0 +1,14 @@
+<c-vars 
+    type="button" 
+/>
+
+<button
+    type="{{ type }}"
+    class="btn btn-primary {{ class }}"
+
+    {% if id %}
+        id="{{ id }}"
+    {% endif %}
+
+    {{ attrs }}
+>{{ text }}</button>

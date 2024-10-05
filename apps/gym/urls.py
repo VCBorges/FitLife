@@ -47,15 +47,15 @@ api_urls = [
         name='update_detail_delete_workouts',
     ),
     path(
-        route='workouts/<uuid:pk>/complete/',
-        view=views.CompleteWorkoutView.as_view(),
+        route='workout-histories/',
+        view=views.CreateListWorkoutHistoryView.as_view(),
         name='create_list_workouts_history',
     ),
-    path(
-        route='workouts/<uuid:pk>/uncomplete/',
-        view=views.CompleteWorkoutView.as_view(),
-        name='create_list_workouts_history',
-    ),
+    # path(
+    #     route='workouts/<uuid:pk>/uncomplete/',
+    #     view=views.CompleteWorkoutView.as_view(),
+    #     name='create_list_workouts_history',
+    # ),
 ]
 
 urlpatterns = templates_urls + api_urls

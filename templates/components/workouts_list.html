@@ -1,25 +1,55 @@
 {% load i18n %}
 <div 
     class="workouts-list"
-    data-endpoint="{% url 'create_list_workouts' %}"
+    x-data="{ 
+        deleteWorkoutUrl: '',
+        workoutId: '',
+    }"
 >
-    <c-primary-input
-        name="value"
+    <c-input.primary
+        name="query"
         class="search-input"
         placeholder="{% trans 'Buscar' %}"
+        hx-get="{% url 'create_list_workouts' %}"
+        hx-trigger="keyup delay:500ms changed"
+        hx-target=".workouts-root"
     />
-    <div class="workouts-root">
-        {% for workout in workouts.data %}
-        <c-workout-list-item
-            :workout="{{ workout | safe | escape }}"
-        />  
-        {% endfor %}
-    </div>
-    <template id="workout-list-item-template-id">
-        <c-workout-list-item/>
-    </template>
+    <div class="list-content">
+        <div class="workouts-root">
+            {% for workout in context.workouts.data %}
+            <c-workout-list-item
+                :workout="{{ workout | safe | escape }}"
+            />  
+            {% endfor %}
+        </div>
+    </div>  
     
-    <template id="workout-exercise-item-template-id">
-        <c-workout-exercise-item/>
-    </template>
+    <c-modal.base
+        id="delete-workout-modal-id"
+        dialog_class="modal-dialog-centered"
+    >
+        <c-modal.header>
+            <c-modal.title>{% trans 'Excluir treino' %}</c-modal.title>
+            <c-modal.close-button/>
+        </c-modal.header>
+        <c-modal.body>
+            <div>{% trans 'Voce tem certeza que voce deseja excluir este treino?' %}</div>    
+        </c-modal.body>
+        <c-modal.footer>
+            <c-button.secondary
+                text="{% trans 'Cancelar' %}"
+                data-bs-dismiss="modal"
+            />
+            <c-button.danger
+                x-bind:hx-delete="deleteWorkoutUrl"
+                @click="
+                    const workoutElement = document.querySelector(`.list-item[data-workout-id='${workoutId}']`);
+                    workoutElement.remove();
+                "
+                id="delete-workout-btn-id"
+                text="{% trans 'Excluir treino' %}"
+                data-bs-dismiss="modal"
+            />
+        </c-modal.footer>
+    </c-modal.base>
 </div>

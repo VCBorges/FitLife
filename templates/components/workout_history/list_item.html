@@ -1,0 +1,19 @@
+<div class="workout-history-item">
+    <div class="header">
+        <div class="title">{{ workout.title }}</div>
+        <div class="completed-at">{{ workout.completed_at }}</div>
+    </div>
+    <div class="exercises-list">
+        {% for exercise in workout.exercises %}
+        <div class="exercise-item">
+            <div class="is-done">{{ exercise.is_done }}</div>
+            <div class="name">{{ exercise.name }}</div>
+            <div class="info">
+                <div class="weight">{{ exercise.weight }}</div>
+                <div class="">{{ exercise.repetitions }} X {{ exercise.sets }}</div>
+                <div class="rest">{{ exercise.rest_period }} Min</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,5 @@
+{% for workout in workout_histories.data %}
+<c-workout-history.list-item
+    :workout="{{ workout | safe | escape }}"
+/>
+{% endfor %}

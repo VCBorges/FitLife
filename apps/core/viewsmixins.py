@@ -2,6 +2,7 @@ from __future__ import annotations, unicode_literals
 
 import json
 import logging
+import traceback
 from typing import Any, Literal, Mapping, override
 
 from django.db.models.query import QuerySet
@@ -38,15 +39,19 @@ class BaseAPIView:
     data: Mapping[str, Any]
     pk_url_kwarg = 'pk'
     kwargs: dict[str, Any]
+    template_engine: str = 'django'
 
-    def _parse_json(self, request: HttpRequest) -> dict[str, Any]:
+    def _parse_json(self) -> dict[str, Any]:
+        if self.request.body == b'':
+            return {}
         try:
-            parsed = json.loads(request.body.decode('utf-8'))
+            print(f'{self.request.body = }')
+            parsed = json.loads(self.request.body.decode('utf-8'))
             return parsed
         except json.JSONDecodeError as error:
+            traceback.print_exc()
             raise BaseAPIError(
-                code=400,
-                message='Invalid request body',
+                status_code=400,
                 params={'error': str(error)},
             )
 
@@ -67,27 +72,21 @@ class BaseAPIView:
         form.is_valid()
         return form.cleaned_data
 
-    def _set_request_data(self) -> Mapping[str, Any]:
-        if (
-            self.request.content_type == 'application/json'
-            and self.request.method not in ['GET', 'HEAD']
-        ):
-            data = self._parse_json(self.request)
-        else:
+    def _set_request_data(self) -> None:
+        if self.request.content_type != 'application/json' and self.request.method in [
+            'GET',
+            'POST',
+        ]:
             data = getattr(self.request, self.request.method)
+        else:
+            data = self._parse_json()
         self.data = data
 
     @override
     def get_object(self) -> DjangoModelType | None:
-        if self.queryset:
+        if self.queryset or self.model:
             return get_or_404(
-                model_or_queryset=self.queryset,
-                pk=self.kwargs.get(self.pk_url_kwarg),
-            )
-
-        if self.model:
-            return get_or_404(
-                model_or_queryset=self.model,
+                model_or_queryset=self.queryset or self.model,
                 pk=self.kwargs.get(self.pk_url_kwarg),
             )
 
@@ -104,6 +103,7 @@ class BaseAPIView:
         try:
             response = super().dispatch(*args, **kwargs)
         except Exception as error:
+            traceback.print_exc()
             response = self.handle_exception(error)
         return response
 
@@ -123,20 +123,27 @@ class BaseAPIView:
         data: dict[str, Any] | None = None,
         status_code: int = 200,
     ) -> JsonResponse:
+        if data is None:
+            data = {}
         return JsonResponse(
             data=data,
             status=status_code,
+            json_dumps_params={'ensure_ascii': False},
         )
 
     def render_to_template(
         self,
         template: str,
-        context: dict[str, Any],
+        context: dict[str, Any] | None = None,
+        status_code: int = 200,
         **response_kwargs,
     ) -> TemplateResponse:
-        response_kwargs.setdefault('content_type', self.content_type)
+        if context is None:
+            context = {}
+        response_kwargs.setdefault('content_type', self.request.content_type)
         return TemplateResponse(
             request=self.request,
+            status=status_code,
             template=template,
             context=self.get_context_data(**context),
             using=self.template_engine,
@@ -145,8 +152,6 @@ class BaseAPIView:
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         kwargs.setdefault('view', self)
-        if self.extra_context is not None:
-            kwargs.update(self.extra_context)
         return kwargs
 
     def post(self, *args, **kwargs) -> ResponseClass:
