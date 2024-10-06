@@ -1,4 +1,6 @@
 {% extends 'core/_base.html' %}
+{% load i18n %}
+{% load static %}
 
 {% block title %}
 Sign up
@@ -7,14 +9,14 @@ Sign up
 {% block content %}
 <div class="container-fluid">
     <form 
-        class="signup-form-id" 
+        id="signup-form-id" 
         action="{% url 'signup' %}"
         data-errors-alert="#signup-errors-alert"
         method="POST"
         novalidate
     >
         <div>
-            <label for="name" class="primary-label">Your first name</label>
+            <label for="name" class="primary-label">{% trans 'Seu nome' %}</label>
             <input 
                 type="text" 
                 class="primary-input"
@@ -25,7 +27,7 @@ Sign up
             <div class="input-errors"></div>
         </div>
         <div>
-            <label for="email" class="primary-label">Your email</label>
+            <label for="email" class="primary-label">{% trans 'Seu email' %}</label>
             <input 
                 type="text" 
                 class="primary-input"
@@ -36,7 +38,7 @@ Sign up
             <div class="input-errors"></div>
         </div>
         <div>
-            <label for="password" class="primary-label">Your password</label>
+            <label for="password" class="primary-label">{% trans 'Sua senha' %}</label>
             <input 
                 type="password" 
                 class="primary-input"
@@ -47,7 +49,7 @@ Sign up
             <div class="input-errors"></div>
         </div>
         <div>
-            <label for="password2" class="primary-label">Your password again</label>
+            <label for="password2" class="primary-label">{% trans 'Sua senha de novo' %}</label>
             <input 
                 type="password" 
                 class="primary-input"
@@ -61,13 +63,13 @@ Sign up
             <button 
                 type="submit"
                 class="btn btn-primary"
-            >Create Account</button>
+            >{% trans 'Criar conta' %}</button>
 
             <a 
                 type="button"
                 href="{% url 'login_template' %}" 
                 class="btn btn-secondary"
-            >Go to sign in</a>
+            >{% trans 'Ir para login' %}</a>
         <div 
             class="alert alert-danger form-alert d-none" 
             role="alert"
@@ -80,9 +82,5 @@ Sign up
 
 
 {% block js %}
-<script>
-    document.querySelector('.signup-form-id').addEventListener('submit', async function(event) {
-        handleFormSubmit({ event })
-    });
-</script>
+<script type="module" src="{% static 'js/apps/user/pages/signup.js' %}"></script>
 {% endblock js %}

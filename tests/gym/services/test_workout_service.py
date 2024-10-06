@@ -112,7 +112,7 @@ def test_update_workout_to_delete_exercises():
         with_exercises=True,
         user=user,
     )
-    execises_count_before = workout.workout_exercises.count()
+    exercises_count_before = workout.workout_exercises.count()
     workout_service = WorkoutService()
     workout = workout_service.update_workout(
         workout=workout,
@@ -120,13 +120,15 @@ def test_update_workout_to_delete_exercises():
         exercises={
             'to_delete': [
                 {'workout_exercise': workout.workout_exercises.first()},
-            ]
+            ],
+            'to_create': [],
+            'to_update': [],
         },
     )
-    execises_count_after = workout.workout_exercises.count()
+    exercises_count_after = workout.workout_exercises.count()
 
-    assert execises_count_before > 0
-    assert execises_count_after == 0
+    assert exercises_count_before > 0
+    assert exercises_count_after == 0
 
 
 @pytest.mark.django_db
@@ -139,7 +141,11 @@ def test_update_workout_to_create_exercises(
     workout = workout_service.update_workout(
         workout=workout,
         title='Workout 2',
-        exercises={'to_create': workout_exercises_to_create},
+        exercises={
+            'to_create': workout_exercises_to_create,
+            'to_update': [],
+            'to_delete': [],
+        },
     )
     print(f'{workout.workout_exercises.count() = }')
     assert workout.workout_exercises.count() == 3

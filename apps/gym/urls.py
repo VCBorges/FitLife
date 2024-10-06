@@ -48,7 +48,7 @@ api_urls = [
     ),
     path(
         route='workout-histories/',
-        view=views.CreateListWorkoutHistoryView.as_view(),
+        view=views.CreateListWorkoutHistoriesView.as_view(),
         name='create_list_workouts_history',
     ),
     # path(

@@ -164,25 +164,7 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedAPIView):
         return self.render_to_json(status_code=204)
 
 
-class CompleteWorkoutView(AuthenticatedAPIView):
-    http_method_names = ['post', 'delete']
-
-    model = models.Workouts
-    object: models.Workouts
-
-    def post(self, *args, **kwargs) -> JsonResponse:
-        data = self.get_cleaned_data(forms.CompleteWorkoutForm)
-        WorkoutService().complete_workout(
-            user=self.request.user,
-            workout=self.object,
-            exercises=data['exercises'],
-        )
-        return self.render_to_json(
-            status_code=201,
-        )
-
-
-class CreateListWorkoutHistoryView(AuthenticatedAPIView):
+class CreateListWorkoutHistoriesView(AuthenticatedAPIView):
     http_method_names = [
         'post',
         'get',

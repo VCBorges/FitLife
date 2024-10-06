@@ -31,9 +31,9 @@ class UpdateWorkoutExerciseSchema(tp.TypedDict):
 
 
 class ExercisesUpdateWorkout(tp.TypedDict, total=False):
-    create: list[CreateWorkoutExerciseSchema]
-    update: list[models.WorkoutExercises]
-    delete: list[models.WorkoutExercises]
+    to_create: list[CreateWorkoutExerciseSchema]
+    to_update: list[models.WorkoutExercises]
+    to_delete: list[models.WorkoutExercises]
 
 
 class ListWorkoutsHistoryLookups(tp.TypedDict, total=False):

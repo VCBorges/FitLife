@@ -11,24 +11,24 @@ if tp.TYPE_CHECKING:
     from apps.users.models import Users
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MusclesLookups(BaseDTO):
     name: str | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ExercisesLookups(BaseDTO):
     name: str | None = None
     primary_muscle: models.MuscleGroups | None = None
     equipment: models.Equipments | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class EquipmentsLookups(BaseDTO):
     name: str | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class WorkoutLookups(BaseDTO):
     title: str | None = None
     description: str | None = None
@@ -48,7 +48,7 @@ class UserWorkoutHistoryLookups(UserWorkoutLookups):
 
 
 # TODO: move to core module
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class PaginatedData(BaseDTO):
     total_pages: int
     current_page: int

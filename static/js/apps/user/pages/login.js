@@ -1,4 +1,4 @@
-import { handleFormSubmit } from "../core/forms.js";
+import { handleFormSubmit } from "../../../core/forms.js";
 
 const LOGIN_FORM_ID = "login-form-id";
 
