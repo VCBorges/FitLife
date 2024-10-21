@@ -4,7 +4,7 @@
 
 <button
     type="{{ type }}"
-    class="btn btn-primary {{ class }}"
+    class="btn btn-primary btn-sm{% if class %} {{ class }}{% endif %}"
 
     {% if id %}
         id="{{ id }}"

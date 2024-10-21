@@ -16,7 +16,7 @@ Sign up
         novalidate
     >
         <div>
-            <label for="name" class="primary-label">{% trans 'Seu nome' %}</label>
+            <!-- <label for="name" class="primary-label">{% trans 'Seu nome' %}</label>
             <input 
                 type="text" 
                 class="primary-input"
@@ -24,40 +24,42 @@ Sign up
                 name="first_name"
                 required
             >
-            <div class="input-errors"></div>
+            <div class="input-errors"></div> -->
+
+            <c-input.primary
+                label="{% trans 'Seu nome' %}"
+                placeholder="{% trans 'Seu nome' %}"
+                name="first_name"
+                required
+            />
         </div>
         <div>
-            <label for="email" class="primary-label">{% trans 'Seu email' %}</label>
-            <input 
-                type="text" 
+            <c-input.primary
+                label="{% trans 'Seu email' %}"
                 class="primary-input"
-                placeholder="email"
+                placeholder="{% trans 'Seu email' %}"
                 name="email"
                 required
-            >
-            <div class="input-errors"></div>
+            />
         </div>
         <div>
-            <label for="password" class="primary-label">{% trans 'Sua senha' %}</label>
-            <input 
-                type="password" 
-                class="primary-input"
-                placeholder="Your password"
+            <c-input.primary
+                label="{% trans 'Sua senha' %}"
+                placeholder="{% trans 'Sua senha' %}"
+                type="password"
                 name="password1"
                 required
-            >    
-            <div class="input-errors"></div>
+            />
         </div>
         <div>
-            <label for="password2" class="primary-label">{% trans 'Sua senha de novo' %}</label>
-            <input 
-                type="password" 
-                class="primary-input"
-                placeholder="Your password"
+         
+            <c-input.primary
+                label="{% trans 'Repita senha' %}"
+                placeholder="{% trans 'Repita senha' %}"
                 name="password2"
+                type="password"
                 required
-            >    
-            <div class="input-errors"></div>
+            />
         </div>
         <div>
             <button 

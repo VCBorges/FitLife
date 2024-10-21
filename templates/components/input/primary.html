@@ -6,12 +6,12 @@
 {% if label %}
 <label 
     for="{{ name }}" 
-    class="primary-label{% if label_class %} {{ label_class }}{% endif %}"
+    class="form-label primary-label{% if label_class %} {{ label_class }}{% endif %}"
 >{{ label }}</label>
 {% endif %}
 
 <input
-    class="primary-input{% if class %} {{ class }}{% endif %}"
+    class="form-control primary-input form-control-sm{% if class %} {{ class }}{% endif %}"
     type="{{ type }}"
     label="{{ label }}"
     value="{{ value | default:'' }}"

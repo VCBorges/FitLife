@@ -1,6 +1,6 @@
 {% load i18n %}
 <div 
-    class="list-item" 
+    class="workout-list-item" 
     data-workout-id="{{ workout.id }}"
 >
     <div class="header">
@@ -33,7 +33,7 @@
             data-delete-url="{% url 'update_detail_delete_workouts' workout.id %}"
             @click="
                 deleteWorkoutUrl = $el.getAttribute('data-delete-url');
-                workoutId = $el.closest('.list-item').getAttribute('data-workout-id');
+                workoutId = $el.closest('.workout-list-item').getAttribute('data-workout-id');
                 $nextTick(() => htmx.process(document.body));
             "
             text="{% trans 'Excluir' %}"
@@ -43,9 +43,20 @@
     </div>
     <div class="exercises-list">
         {% for exercise in workout.exercises %}
-        <c-workout-exercise-item
-            :exercise="{{ exercise | safe | escape }}"
-        />
+        <div class="workout-exercise-item">
+            <div class="name">{{ exercise.name }}</div>
+            <div class="info">
+                <div class="weight">{{ exercise.weight }} Kg</div>
+                <div class="repetitions-sets">
+                    <span class="repetitions">{{ exercise.repetitions }}</span>
+                    <span>X</span>
+                    <span class="sets">{{ exercise.sets }}</span>
+                </div>
+            </div>
+        </div>
+        {% if not forloop.last %}
+            <hr>    
+        {% endif %}
         {% endfor %}
     </div>
 </div>

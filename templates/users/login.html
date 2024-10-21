@@ -6,51 +6,57 @@
 Login
 {% endblock title %}
 
+{% block css %}
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/pages/login.less' %}"/>
+{% endblock css %}
+
 {% block content %}
 <div class="container-fluid">
-    <form 
-        id="login-form-id" 
-        action="{% url 'login' %}"
-        data-errors-alert="#login-errors-alert"
-        method="POST"
-        novalidate
-    >
-        <div>
-            <c-primary-input
-                label="{% trans 'Seu email' %}"
-                placeholder="{% trans 'Digite seu email' %}"
-                type="email"
-                name="login"
-                required="True"
-            />
-        </div>
-        <div>
-            <c-primary-input
-                label="{% trans 'Sua senha' %}"
-                placeholder="{% trans 'Digite sua senha' %}"
-                type="password"
-                name="password"
-                required="True"
-            />
-        </div>
-        <div>
-            <c-primary-button
-                text="Login"
-                type="submit"
-                class="btn-primary"
-            />
-            <a 
-                type="button"
-                href="{% url 'signup_template' %}" 
-                class="btn btn-secondary"
-            >{% trans 'Cadastre-se' %}</a>
-        </div>
-        <div 
-            class="alert alert-danger form-alert d-none" 
-            role="alert"
-            id="login-errors-alert"
-        ></div>
-    </form>
+    <div class="login-form-wrapper">
+        <form 
+            id="login-form-id" 
+            action="{% url 'login' %}"
+            data-errors-alert="#login-errors-alert"
+            method="POST"
+            novalidate
+        >
+            <div class="controls">
+                <div>
+                    <c-input.primary
+                        label="{% trans 'Seu email' %}"
+                        placeholder="{% trans 'Digite seu email' %}"
+                        type="email"
+                        name="login"
+                        required="True"
+                    />
+                </div>
+                <div>
+                    <c-input.primary
+                        label="{% trans 'Sua senha' %}"
+                        placeholder="{% trans 'Digite sua senha' %}"
+                        type="password"
+                        name="password"
+                        required="True"
+                    />
+                </div>
+            </div>
+            <div class="buttons-container">
+                <c-button.primary
+                    text="Login"
+                    type="submit"
+                    class="login-btn"
+                />
+                <a 
+                    href="{% url 'signup_template' %}" 
+                >{% trans 'Cadastre-se' %}</a>
+            </div>
+            <div 
+                class="alert alert-danger form-alert d-none" 
+                role="alert"
+                id="login-errors-alert"
+            ></div>
+        </form>
+    </div>
 </div>
 
 {% endblock content %}

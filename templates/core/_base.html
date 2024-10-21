@@ -6,17 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <script src="{% static 'js/vendor/htmx.min.js' %}"></script>
-    <script defer src="{% static 'js/vendor/alpinejs.min.js' %}"></script>
+    <link rel="stylesheet/less" type="text/css" href="{% static 'css/main.less' %}" />
     {% block css %}
     {% endblock css %}    
+    <script src="{% static 'js/vendor/less/less.min.js' %}"></script>
+    <script src="{% static 'js/vendor/htmx.min.js' %}"></script>
+    <script defer src="{% static 'js/vendor/alpinejs.min.js' %}"></script>
+
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    {% include 'core/_navbar.html' %}
-    {% include 'core/_sidebar.html' %}
+    {% if user.is_authenticated %}
+        {% include 'core/_navbar.html' %}
+        {% include 'core/_sidebar.html' %}
+    {% endif %}
+
     {% block content %}
     {% endblock content %}
 </body>
+
 <script src="{% static 'js/vendor/bootstrap.bundle.min.js' %}"></script>
 <script type="module" src="{% static 'js/main.js' %}"></script>
 {% block js %}

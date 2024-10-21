@@ -4,6 +4,9 @@
 
 {% block title %}Home{% endblock title %}
 
+{% block css %}
+{% endblock css %}
+
 {% block content %}
 <div class="container-fluid">
     <div 
@@ -48,7 +51,7 @@
                 <c-button.danger
                     x-bind:hx-delete="deleteWorkoutUrl"
                     @click="
-                        const workoutElement = document.querySelector(`.list-item[data-workout-id='${workoutId}']`);
+                        const workoutElement = document.querySelector(`.workout-list-item[data-workout-id='${workoutId}']`);
                         workoutElement.remove();
                     "
                     id="delete-workout-btn-id"
