@@ -5,11 +5,11 @@
 {% if label %}
 <label 
     for="{{ name }}" 
-    class="primary-label"
+    class="primary-label form-label"
 >{{ label }}</label>
 {% endif %}
 <textarea 
-    class="primary-textarea {{ class }}"
+    class="primary-textarea form-control{{ class }}"
     placeholder="{{ placeholder }}"
     name="{{ name }}"
     {% if required %}

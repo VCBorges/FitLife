@@ -6,6 +6,10 @@
 {% trans 'Atualização de Treinos' %}
 {% endblock title %}
 
+{% block css %}
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/pages/submitWorkout.less' %}"/>
+{% endblock css %}
+
 {% block content %}
 <c-submit-workout
     title="{% trans 'Atualização de Treinos' %}"
