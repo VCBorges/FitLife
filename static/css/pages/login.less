@@ -9,21 +9,33 @@ body {
     min-height: 100vh;
 }
 
+#login-form-id {
+    max-width: 280px;
+}
+
+.controls-wrapper {
+    display: flex;
+    flex-direction: column; /* This ensures the divs are stacked vertically */
+    gap: 10px; /* Adjust the gap value as needed */
+}
+
 .buttons-container {
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    gap: 0.2rem; /* Space between items */
+    gap: 10px; /* Space between items */
     align-items: center; /* Center items horizontally */
 }
 
 .login-btn {
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 20px;;
 }
 
-// #login-form-id {
-//     // background-color: #f0f0f0;
-//     padding: 2rem;
-//     // border-radius: 8px;
-//     // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-// }
+
+.fitlife-logo {
+    width: 90px;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }

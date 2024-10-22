@@ -6,6 +6,10 @@
 {% trans 'Criação de treino' %}
 {% endblock title %}
 
+{% block css %}
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/pages/submitWorkout.less' %}"/>
+{% endblock css %}
+
 
 {% block content %}
 <c-submit-workout

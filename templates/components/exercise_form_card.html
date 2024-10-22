@@ -13,21 +13,21 @@
     <div class="exercise-form-card-content">
         <form class="workout-exercise-form">
             {% if workout_exercise %}
-                <c-primary-input
+                <c-input.primary
                     name="workout_exercise_id"
                     required
                     value="{{ workout_exercise.workout_exercise_id }}"
                     hidden
                 />
             {% else %}
-                <c-primary-input
+                <c-input.primary
                     name="exercise_id"
                     required
                     value="{{ workout_exercise.exercise_id | default:None }}"
                     hidden
                 />    
             {% endif %}
-            <c-primary-input
+            <c-input.primary
                 label="{% trans 'Séries' %}"
                 name="sets"
                 type="number"
@@ -35,7 +35,7 @@
                 min="0"
                 value="{{ workout_exercise.sets | default:1 }}"
             />
-            <c-primary-input
+            <c-input.primary
                 label="{% trans 'Repetições' %}"
                 name="repetitions"
                 type="number"
@@ -43,7 +43,7 @@
                 min="0"
                 value="{{ workout_exercise.repetitions | default:1 }}"
             />
-            <c-primary-input
+            <c-input.primary
                 label="{% trans 'Peso' %}"
                 name="weight"
                 type="number"
@@ -51,7 +51,7 @@
                 min="0"
                 value="{{ workout_exercise.weight | default:1 }}"
             />
-            <c-primary-input
+            <c-input.primary
                 label="{% trans 'Descanso' %}"
                 name="rest_period"
                 type="number"

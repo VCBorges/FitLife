@@ -12,6 +12,7 @@ Login
 
 {% block content %}
 <div class="container-fluid">
+    <c-logo/>
     <div class="login-form-wrapper">
         <form 
             id="login-form-id" 
@@ -20,41 +21,47 @@ Login
             method="POST"
             novalidate
         >
-            <div class="controls">
-                <div>
-                    <c-input.primary
-                        label="{% trans 'Seu email' %}"
-                        placeholder="{% trans 'Digite seu email' %}"
-                        type="email"
-                        name="login"
-                        required="True"
-                    />
-                </div>
-                <div>
-                    <c-input.primary
-                        label="{% trans 'Sua senha' %}"
-                        placeholder="{% trans 'Digite sua senha' %}"
-                        type="password"
-                        name="password"
-                        required="True"
-                    />
-                </div>
-            </div>
-            <div class="buttons-container">
-                <c-button.primary
-                    text="Login"
-                    type="submit"
-                    class="login-btn"
-                />
-                <a 
-                    href="{% url 'signup_template' %}" 
-                >{% trans 'Cadastre-se' %}</a>
-            </div>
-            <div 
-                class="alert alert-danger form-alert d-none" 
-                role="alert"
-                id="login-errors-alert"
-            ></div>
+             <div class="content-wrapper">
+                 <div class="controls-wrapper">
+                     <div>
+                         <c-input.primary
+                             label="{% trans 'Email' %}"
+                             placeholder="{% trans 'Digite seu email' %}"
+                             type="email"
+                             name="login"
+                             required="True"
+                         />
+                     </div>
+             
+                     <div>
+                         <c-input.primary
+                             label="{% trans 'Senha' %}"
+                             placeholder="{% trans 'Digite sua senha' %}"
+                             type="password"
+                             name="password"
+                             required="True"
+                         />
+                     </div>
+                 </div>
+                 <div class="buttons-container">
+                     <c-button.primary
+                         text="{% trans 'Fazer login' %}"
+                         type="submit"
+                         class="login-btn"
+                     />
+                     <p>
+                         {% trans 'Ainda não tem uma conta?' %}
+                         <a 
+                             href="{% url 'signup_template' %}" 
+                         >{% trans 'Cadastre-se' %}</a>
+                     </p>
+                 </div>
+                 <div 
+                     class="alert alert-danger form-alert d-none" 
+                     role="alert"
+                     id="login-errors-alert"
+                 ></div>
+             </div>
         </form>
     </div>
 </div>

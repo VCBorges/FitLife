@@ -6,89 +6,97 @@ directly, so we don't need to pass them as props.
 {% endcomment %}
 
 <div class="container-fluid">
-    <div>{{ title }}</div>
-    <c-primary-button
-        type="submit"
-        id="submit-workout-btn-id"
-        text="{{ submit_btn.text }}"
-        formaction="{{ submit_btn.formaction }}"
-        formmethod="{{ submit_btn.formmethod }}"
-    />
-    <hr>
-    <c-error-alert id="errors-alert-id"/>
-    <div id="selected-exercises-id">
-        {% if workout_exercises %}
-            {% for workout_exercise in workout_exercises %}
-                <c-exercise-form-card
-                    :workout_exercise="{{ workout_exercise | safe | escape }}"
-                />
-            {% endfor %}            
-        {% endif %}
-    </div>
+    <div class="main-container">
+        <div class="workout-content-container">
+            <div>{{ title }}</div>
+            <c-primary-button
+                type="submit"
+                id="submit-workout-btn-id"
+                text="{{ submit_btn.text }}"
+                formaction="{{ submit_btn.formaction }}"
+                formmethod="{{ submit_btn.formmethod }}"
+            />
+            <hr>
+            <c-error-alert id="errors-alert-id"/>
+            
+            <form id="workout-form-id">
+                {% if workout %}
+                    <div>
+                        <c-input.primary
+                            name="workout_id"
+                            required
+                            readonly
+                            hidden
+                        />
+                    </div>    
+                {% endif %}
+                <div>
+                    <c-input.primary
+                        label="{% trans 'Título' %}"
+                        name="title"
+                        placeholder="{% trans 'Título do treino' %}"
+                        required
+                        value="{{ workout.title | default:None }}"
+                    />
+                </div>
+                <div>
+                    <c-primary-textarea
+                        label="{% trans 'Descrição' %}"
+                        name="description"
+                        placeholder="{% trans 'Descrição do treino' %}"
+                        value="{{ workout.description | default:None }}"
+                        rows="5"
+                        cols="50"
+                    />
+                </div>
+            </form>
 
-    <form id="workout-form-id">
-        {% if workout %}
+            <div id="selected-exercises-id">
+                {% if workout_exercises %}
+                    {% for workout_exercise in workout_exercises %}
+                        <c-exercise-form-card
+                            :workout_exercise="{{ workout_exercise | safe | escape }}"
+                        />
+                    {% endfor %}            
+                {% endif %}
+            </div>
+        
+        </div>
+        
+        <div class="search-exercise-container">
             <div>
-                <c-primary-input
-                    name="workout_id"
-                    required
-                    readonly
-                    hidden
+                <c-primary-select
+                    label="{% trans 'Músculos' %}"
+                    name="muscle"
+                    id="muscle-select-id"
+                    :options="{{ context.muscles | safe | escape }}"
                 />
-            </div>    
-        {% endif %}
-        <div>
-            <c-primary-input
-                label="{% trans 'Título' %}"
-                name="title"
-                placeholder="{% trans 'Título do treino' %}"
-                required
-                value="{{ workout.title | default:None }}"
-            />
-        </div>
-        <div>
-            <c-primary-textarea
-                label="{% trans 'Descrição' %}"
-                name="description"
-                placeholder="{% trans 'Descrição do treino' %}"
-                value="{{ workout.description | default:None }}"
-                rows="5"
-                cols="50"
-            />
-        </div>
-    </form>
+            </div>
+            <div>
+                <c-primary-select
+                    label="{% trans 'Equipamentos' %}"
+                    name="equipment"
+                    id="equipment-select-id"
+                    :options="{{ context.equipments | safe | escape }}"
+                />
+            </div>
+            <div>
+                <c-input.primary
+                    name="{% trans 'Busca' %}"
+                    id="search-exercise-input-id"
+                    placeholder="{% trans 'Busque um exercício' %}"
+                />
+            </div>
 
-    <div>
-        <c-primary-select
-            label="{% trans 'Músculos' %}"
-            name="muscle"
-            id="muscle-select-id"
-            :options="{{ context.muscles | safe | escape }}"
-        />
-    </div>
-    <div>
-        <c-primary-select
-            label="{% trans 'Equipamentos' %}"
-            name="equipment"
-            id="equipment-select-id"
-            :options="{{ context.equipments | safe | escape }}"
-        />
-    </div>
-    <div>
-        <c-primary-input
-            name="{% trans 'Busca' %}"
-            id="search-exercise-input-id"
-            placeholder="{% trans 'Busque um exercício' %}"
-        />
-    </div>
-
-    <div id="exercises-select-root">
-    {% for exercise in context.exercises %}
-        <c-exercise-select-button
-            value="{{ exercise.value }}"
-            name="{{ exercise.text }}"
-        />
-    {% endfor %}
+            <div id="exercises-select-root">
+            {% for exercise in context.exercises %}
+                <c-exercise-select-button
+                    value="{{ exercise.value }}"
+                    name="{{ exercise.text }}"
+                />
+            {% endfor %}
+            </div>
+        </div>
     </div>
     
     <template id="exercise-select-btn-template-id">

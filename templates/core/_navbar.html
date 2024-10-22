@@ -1,14 +1,18 @@
 {% load static %}
-<nav class="">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'homepage_template' %}">
-        <img 
-            src="{% static 'fitlife_logo.jpeg' %}" 
-            alt="Fitlife" 
-            width="50" 
-            height="50"
-        >
-      </a>
+<nav class="navbar border-bottom fixed-top border-body">
+    <!-- <div class="container"> -->
+        <div class="container navbar-brand-container">
+            <a
+                class="navbar-brand" 
+                href="{% url 'homepage_template' %}"
+            >
+                <c-logo 
+                    class="navbar-logo"
+                    width="60" 
+                    height="60"
+                />
+            </a>
+        </div>
       
     <div class="logout-wrapper">
         <form
@@ -24,5 +28,5 @@
         </form>
     </div>
           
-    </div>
+    <!-- </div> -->
 </nav>
