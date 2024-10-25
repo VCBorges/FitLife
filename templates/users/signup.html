@@ -6,78 +6,78 @@
 Sign up
 {% endblock title %}
 
+{% block css %}
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/pages/signup.less' %}"/>
+{% endblock css %}
+
 {% block content %}
 <div class="container-fluid">
-    <form 
-        id="signup-form-id" 
-        action="{% url 'signup' %}"
-        data-errors-alert="#signup-errors-alert"
-        method="POST"
-        novalidate
-    >
-        <div>
-            <!-- <label for="name" class="primary-label">{% trans 'Seu nome' %}</label>
-            <input 
-                type="text" 
-                class="primary-input"
-                placeholder="Your first name"
-                name="first_name"
-                required
-            >
-            <div class="input-errors"></div> -->
-
-            <c-input.primary
-                label="{% trans 'Seu nome' %}"
-                placeholder="{% trans 'Seu nome' %}"
-                name="first_name"
-                required
-            />
-        </div>
-        <div>
-            <c-input.primary
-                label="{% trans 'Seu email' %}"
-                class="primary-input"
-                placeholder="{% trans 'Seu email' %}"
-                name="email"
-                required
-            />
-        </div>
-        <div>
-            <c-input.primary
-                label="{% trans 'Sua senha' %}"
-                placeholder="{% trans 'Sua senha' %}"
-                type="password"
-                name="password1"
-                required
-            />
-        </div>
-        <div>
-         
-            <c-input.primary
-                label="{% trans 'Repita senha' %}"
-                placeholder="{% trans 'Repita senha' %}"
-                name="password2"
-                type="password"
-                required
-            />
-        </div>
-        <div>
-            <button 
-                type="submit"
-                class="btn btn-primary"
-            >{% trans 'Criar conta' %}</button>
-
-            <a 
-                type="button"
-                href="{% url 'login_template' %}" 
-                class="btn btn-secondary"
-            >{% trans 'Ir para login' %}</a>
-        <div 
-            class="alert alert-danger form-alert d-none" 
-            role="alert"
-            id="signup-errors-alert"
-        ></div>
-    </form>
+    <div class="form-container">
+        <h4>{% trans 'Faça sua conta' %}</h4>
+        <hr>
+        <form 
+            id="signup-form-id" 
+            action="{% url 'signup' %}"
+            data-errors-alert="#signup-errors-alert"
+            method="POST"
+            novalidate
+        >
+            <div>
+                <c-input.primary
+                    label="{% trans 'Seu nome' %}"
+                    placeholder="{% trans 'Seu nome' %}"
+                    name="first_name"
+                    required
+                />
+            </div>
+            <div>
+                <c-input.primary
+                    label="{% trans 'Seu email' %}"
+                    class="primary-input"
+                    placeholder="{% trans 'Seu email' %}"
+                    name="email"
+                    required
+                />
+            </div>
+            <div>
+                <c-input.primary
+                    label="{% trans 'Sua senha' %}"
+                    placeholder="{% trans 'Sua senha' %}"
+                    type="password"
+                    name="password1"
+                    required
+                />
+            </div>
+            <div>
+                <c-input.primary
+                    label="{% trans 'Repita senha' %}"
+                    placeholder="{% trans 'Repita senha' %}"
+                    name="password2"
+                    type="password"
+                    required
+                />
+            </div>
+            <div class="buttons-container">
+                <c-button.primary
+                    text="{% trans 'Criar conta' %}"
+                    type="submit"
+                    class="signup-btn"
+                />
+                <p>
+                    {% trans 'Ja possui uma conta?' %}
+                    <a class="login-link"
+                        href="{% url 'login_template' %}" 
+                    >{% trans 'Ir para login' %}</a>
+                </p>
+            <div 
+                class="alert alert-danger form-alert d-none" 
+                role="alert"
+                id="signup-errors-alert"
+            ></div>
+        </form>
+    </div>
+    <div>
+    </div>
 </div>
 
 {% endblock content %}

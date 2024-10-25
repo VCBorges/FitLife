@@ -1,0 +1,67 @@
+.workout-list-item {
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+
+.workout-list-item .header {
+	display: flex;               
+	justify-content: space-between;
+	align-items: center;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+    // padding: 5px;
+    margin-bottom: 10px; 
+    padding-bottom: 10px;
+}
+
+.workout-exercise-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3a3a3a; /* Dark gray background */
+    padding: 5px 20px;
+    border-radius: 10px; /* Rounded corners */
+    color: white; /* White text */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.workout-exercise-item .name {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Ensures the name takes up the remaining space */
+    margin-right: 20px;
+}
+
+.workout-exercise-item .name::before {
+    content: '\1F4AA'; /* Dumbbell emoji */
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+/* Vertical line between name and info */
+.workout-exercise-item .name {
+    border-right: 2px solid white; /* Vertical line */
+    padding-right: 20px; /* Padding to separate the text from the line */
+}
+
+.workout-exercise-item .info {
+    display: flex;
+    align-items: center;
+}
+
+.workout-exercise-item .weight {
+    margin-right: 20px;
+}
+
+.workout-exercise-item .repetitions-sets span {
+    margin: 0 5px;
+}
+
+.workout-exercise-sep {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

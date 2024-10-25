@@ -86,7 +86,7 @@ class BaseAPIView:
     def get_object(self) -> DjangoModelType | None:
         if self.queryset or self.model:
             return get_or_404(
-                model_or_queryset=self.queryset or self.model,
+                self.queryset or self.model,
                 pk=self.kwargs.get(self.pk_url_kwarg),
             )
 

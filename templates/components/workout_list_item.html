@@ -5,41 +5,44 @@
 >
     <div class="header">
         <div class="title">{{ workout.title }}</div>
-        <a 
-            class="complete-workout-anchor"
-            {% if workout %}
-            href="{% url 'complete_workout_template' workout.id %}"
-            {% endif %}
-        >
-            <c-primary-button
-                class="complete-workout-btn"
-                text="{% trans 'Completar' %}"
+        <div>
+
+            <a 
+                class="complete-workout-anchor"
+                {% if workout %}
+                href="{% url 'complete_workout_template' workout.id %}"
+                {% endif %}
+            >
+                <c-button.primary
+                    class="complete-workout-btn"
+                    text="{% trans 'Completar' %}"
+                />
+            </a>
+            <a 
+                class="edit-workout-anchor"
+                {% if workout %}
+                href="{% url 'update_workout_template' workout.id %}"
+                {% endif %}
+            >
+                <c-button.primary
+                    class="edit-workout-btn"
+                    text="{% trans 'Editar' %}"
+                />
+            </a>
+            <c-button.danger
+                type="submit"
+                class="delete-workout-btn-modal"
+                data-delete-url="{% url 'update_detail_delete_workouts' workout.id %}"
+                @click="
+                    deleteWorkoutUrl = $el.getAttribute('data-delete-url');
+                    workoutId = $el.closest('.workout-list-item').getAttribute('data-workout-id');
+                    $nextTick(() => htmx.process(document.body));
+                "
+                text="{% trans 'Excluir' %}"
+                data-bs-toggle="modal" 
+                data-bs-target="#delete-workout-modal-id"
             />
-        </a>
-        <a 
-            class="edit-workout-anchor"
-            {% if workout %}
-            href="{% url 'update_workout_template' workout.id %}"
-            {% endif %}
-        >
-            <c-primary-button
-                class="edit-workout-btn"
-                text="{% trans 'Editar' %}"
-            />
-        </a>
-        <c-button.danger
-            type="submit"
-            class="delete-workout-btn-modal"
-            data-delete-url="{% url 'update_detail_delete_workouts' workout.id %}"
-            @click="
-                deleteWorkoutUrl = $el.getAttribute('data-delete-url');
-                workoutId = $el.closest('.workout-list-item').getAttribute('data-workout-id');
-                $nextTick(() => htmx.process(document.body));
-            "
-            text="{% trans 'Excluir' %}"
-            data-bs-toggle="modal" 
-            data-bs-target="#delete-workout-modal-id"
-        />
+        </div>
     </div>
     <div class="exercises-list">
         {% for exercise in workout.exercises %}
@@ -55,7 +58,7 @@
             </div>
         </div>
         {% if not forloop.last %}
-            <hr>    
+            <hr class="workout-exercise-sep">    
         {% endif %}
         {% endfor %}
     </div>
