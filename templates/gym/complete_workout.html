@@ -6,29 +6,36 @@
 {% trans 'Completar treino' %}
 {% endblock title %}
 
-
+{% block css %}
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/pages/completeWorkout.less' %}"/>
+{% endblock css %}
 
 {% block content %}
 <div class="container-fluid">
-    <h1>{{ workout.title }}</h1>
-    <c-primary-button
-        type="submit"
-        text="{% trans 'Completar' %}"
-        formaction="{% url 'create_list_workouts_history' %}"
-        id="complete-workout-submit-btn"
-        value="{{ workout.id }}"
-    />
-    <div class="workout-excersise">
+    <div class="head">
+        <h1>{{ workout.title }}</h1>
+        <c-primary-button
+            type="submit"
+            text="{% trans 'Completar' %}"
+            formaction="{% url 'create_list_workouts_history' %}"
+            id="complete-workout-submit-btn"
+            value="{{ workout.id }}"
+        />
+    </div>
+    <hr>
+    <div class="workout-exercises">
         {% for exercise in workout_exercises %}
         <div class="workout-exercise">
-            <h3>{{ exercise.name }}</h3>
             <form>
-                <c-input.primary
-                    type="checkbox"
-                    class="is-completed"
-                    name="is_done"
-                    value="true"
-                />
+                <div class="header">
+                    <c-input.checkbox
+                        class="is-completed"
+                        name="is_done"
+                        value="true"
+                    />
+                    <h4 class="exercise-name">{{ exercise.name }}</h4>
+                </div>
+                <hr>
                 <c-input.primary
                     name="workout_exercise_id"
                     type="text"

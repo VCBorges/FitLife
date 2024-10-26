@@ -8,14 +8,16 @@ directly, so we don't need to pass them as props.
 <div class="container-fluid">
     <div class="main-container">
         <div class="workout-content-container">
-            <div>{{ title }}</div>
-            <c-primary-button
-                type="submit"
-                id="submit-workout-btn-id"
-                text="{{ submit_btn.text }}"
-                formaction="{{ submit_btn.formaction }}"
-                formmethod="{{ submit_btn.formmethod }}"
-            />
+            <div class="head">
+                <h4>{{ title }}</h4>
+                <c-primary-button
+                    type="submit"
+                    id="submit-workout-btn-id"
+                    text="{{ submit_btn.text }}"
+                    formaction="{{ submit_btn.formaction }}"
+                    formmethod="{{ submit_btn.formmethod }}"
+                />
+            </div>
             <hr>
             <c-error-alert id="errors-alert-id"/>
             
@@ -32,7 +34,7 @@ directly, so we don't need to pass them as props.
                 {% endif %}
                 <div>
                     <c-input.primary
-                        label="{% trans 'Título' %}"
+                        label="{% trans 'Título do treino' %}"
                         name="title"
                         placeholder="{% trans 'Título do treino' %}"
                         required
@@ -41,7 +43,7 @@ directly, so we don't need to pass them as props.
                 </div>
                 <div>
                     <c-primary-textarea
-                        label="{% trans 'Descrição' %}"
+                        label="{% trans 'Descrição do treino' %}"
                         name="description"
                         placeholder="{% trans 'Descrição do treino' %}"
                         value="{{ workout.description | default:None }}"

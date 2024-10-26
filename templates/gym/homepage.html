@@ -10,6 +10,8 @@
 
 {% block content %}
 <div class="container-fluid">
+    <h4>Meus treinos</h4>
+    <hr>
     <div 
         class="workouts-list"
         x-data="{ 
@@ -19,17 +21,22 @@
     >
         <c-input.primary
             name="query"
+            label="{% trans 'Pesquisar treino' %}"
             class="search-input"
             placeholder="{% trans 'Buscar' %}"
             hx-get="{% url 'create_list_workouts' %}"
             hx-trigger="keyup delay:500ms changed"
             hx-target=".list-body"
         />
-        <div class="list-body">
+        <div class="list-body {% if not context.workouts.data %}empty{% endif %}">
             {% for workout in context.workouts.data %}
             <c-workout-list-item
                 :workout="{{ workout | safe | escape }}"
-            />  
+            />
+            {% empty %}
+            <div class="empty-workouts-container">
+                <p>{% trans 'Voce ainda não tem nenhum treino disponível.' %}</p>
+            </div>
             {% endfor %}
         </div>  
         

@@ -1,0 +1,44 @@
+.list-content {
+    border: 1px solid white; /* Vertical line */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns */
+    gap: 10px; /* Adds space between the grid items */
+}
+
+.workout-history-item {
+    border: 1px solid white; /* Vertical line */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+}
+
+.workout-history-item .header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exercises-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.exercise-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3a3a3a; /* Dark gray background */
+    padding: 5px 20px;
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* White text */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.exercise-item .info {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

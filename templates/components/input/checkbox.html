@@ -1,0 +1,21 @@
+<div class="form-check">
+    <input 
+        class="form-check-input{% if class %} {{ class }}{% endif %}" 
+        type="checkbox" 
+        name="{{ name }}"
+        value="{{ value | default:'' }}"
+        {% if id %}
+            id="{{ id }}"
+        {% endif %}
+
+        {% if is_checked %}
+            checked
+        {% endif %}
+
+        {{ attrs }}
+    >
+    <label 
+        class="form-check-label" 
+        for="{{ name }}" 
+    >{{ label }}</label>
+</div>

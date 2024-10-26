@@ -2,6 +2,7 @@
     border-radius: 10px;
     border: 1px solid white;
     padding: 10px;
+    // font-size: 10px;
 }
 
 
@@ -11,7 +12,6 @@
 	align-items: center;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
-    // padding: 5px;
     margin-bottom: 10px; 
     padding-bottom: 10px;
 }
@@ -25,7 +25,7 @@
     border-radius: 10px; /* Rounded corners */
     color: white; /* White text */
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -45,7 +45,7 @@
 /* Vertical line between name and info */
 .workout-exercise-item .name {
     border-right: 2px solid white; /* Vertical line */
-    padding-right: 20px; /* Padding to separate the text from the line */
+    // padding-right: 20px; /* Padding to separate the text from the line */
 }
 
 .workout-exercise-item .info {
@@ -57,11 +57,52 @@
     margin-right: 20px;
 }
 
-.workout-exercise-item .repetitions-sets span {
-    margin: 0 5px;
-}
+// .workout-exercise-item .repetitions-sets span {
+//     margin: 0 5px;
+// }
 
 .workout-exercise-sep {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+
+.empty-workouts-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(-100px + 100vh); /* Takes the available space minus 50px */
+    border: 1px solid white; /* Vertical line */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.list-body {
+    border: 1px solid white; /* Vertical line */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns */
+    gap: 10px; /* Adds space between the grid items */
+}
+
+.list-body.empty {
+    display: flex; /* Override grid for empty state */
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+
+// .list-body.empty::before {
+//     content: "No items available"; /* Message to show */
+//     font-size: 1.2em;
+//     color: gray;
+// }
+
+.search-input {
+    margin-bottom: 10px;
+    max-width: 300px;
 }

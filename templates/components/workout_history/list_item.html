@@ -4,18 +4,28 @@
 <div class="workout-history-item">
     <div class="header">
         <div class="title">{{ workout.title }}</div>
-        <div class="completed-at">{{ workout.completed_at }}</div>
+        <div class="completed-at">{% trans 'Completo em: ' %}{{ workout.completed_at }}</div>
     </div>
+    <hr>
     <div class="exercises-list">
         {% for exercise in workout.exercises %}
         <div class="exercise-item">
-            <div class="is-done">{{ exercise.is_done }}</div>
-            <div class="name">{{ exercise.name }}</div>
+            <!-- <div class="is-done">{{ exercise.is_done }}</div> -->
+            <div class="header">
+                <c-input.checkbox
+                    class="is-done"
+                    name="is_done"
+                    value="true"
+                    is_checked="{{ exercise.is_done }}"
+                    disabled
+                />
+                <div class="name">{{ exercise.name }}</div>
+            </div>
             <div class="info">
-                <div class="weight">{{ exercise.weight }}</div>
+                <div class="weight">{{ exercise.weight }} Kg</div>
                 <div class="repetitions">{{ exercise.repetitions }} Reps</div>
                 <div class="sets">{{ exercise.sets }} Series</div>
-                <div class="rest">{{ exercise.rest_period }} Min</div>
+                <!-- <div class="rest">{{ exercise.rest_period }} Min</div> -->
             </div>
         </div>
         {% endfor %}

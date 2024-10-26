@@ -1,5 +1,4 @@
 <c-vars 
-    type="text"
     placeholder=""
     value=""
 />
@@ -13,7 +12,6 @@
 <input
     class="form-control primary-input form-control-sm{% if class %} {{ class }}{% endif %}"
     type="{{ type }}"
-    label="{{ label }}"
     value="{{ value | default:'' }}"
     
     {% if placeholder %}

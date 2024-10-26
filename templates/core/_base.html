@@ -11,6 +11,7 @@
     {% endblock css %}
     {% if user.is_authenticated %}
         <link rel="stylesheet/less" type="text/css" href="{% static 'css/navbar.less' %}" />
+        <link rel="stylesheet/less" type="text/css" href="{% static 'css/sidebar.less' %}" />
     {% endif %}
     <script src="{% static 'js/vendor/less/less.min.js' %}"></script>
     <script src="{% static 'js/vendor/htmx.min.js' %}"></script>

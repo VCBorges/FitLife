@@ -6,7 +6,9 @@
 {% trans 'Histórico de treinos' %}
 {% endblock title %}
 
-
+{% block css %}
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/pages/workoutHistory.less' %}"/>
+{% endblock css %}
 
 {% block content %}
 <div class="container-fluid">
@@ -16,6 +18,10 @@
             workoutId: '',
         }"
     >
+        <div class="header">
+            <h4>{% trans 'Histórico de treinos' %}</h4>
+        </div>
+        <hr>
         <c-input.primary
             name="query"
             class="search-input"
