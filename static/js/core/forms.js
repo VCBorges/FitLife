@@ -40,6 +40,7 @@ export async function handleFormSubmit({
     return;
   }
   const formData = new FormData(form);
+  console.log("Form data: ", formData);
   const url = form.getAttribute("action");
   const method = form.getAttribute("method");
   const errorAlert = form.querySelector(form.dataset.errorsAlert);
@@ -87,7 +88,17 @@ export function isFormValid(form) {
         const controlError = control
           .closest("div")
           .querySelector(CONTROL_ERRORS_CLS);
-        controlError.textContent = control.validationMessage;
+        console.log("Control VALIDITY: ", control.validity);
+
+        if (control.validity.valueMissing) {
+          controlError.textContent = CONTROLS_VALIDATION_MESSAGES.valueMissing;
+        } else if (control.validity.rangeUnderflow) {
+          controlError.textContent = CONTROLS_VALIDATION_MESSAGES.rangeUnderflow;
+        } else if (control.validity.rangeOverflow) {
+          controlError.textContent = CONTROLS_VALIDATION_MESSAGES.rangeOverflow;
+        } else {
+          controlError.textContent = control.validationMessage;
+        }
       }
     });
     return false;

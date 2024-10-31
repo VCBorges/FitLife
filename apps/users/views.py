@@ -10,6 +10,7 @@ from django.views.decorators.cache import never_cache
 
 from apps.core.views import (
     AuthenticatedAPIView,
+    AuthenticatedTemplateView,
     LoggedOutAPIView,
     LoggedOutTemplateView,
 )
@@ -30,6 +31,17 @@ class UserLoginTemplateView(LoggedOutTemplateView):
 
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         return super().get(request, *args, **kwargs)
+
+
+class UserProfileTemplateView(AuthenticatedTemplateView):
+    template_name = 'users/profile.html'
+
+    # def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+    #     return super().get(request, *args, **kwargs)
+
+
+class UserSignUpTemplateView(LoggedOutTemplateView):
+    template_name = 'users/signup.html'
 
 
 class UserLoginView(LoggedOutAPIView):
@@ -65,10 +77,6 @@ class UserLogoutView(AuthenticatedAPIView, LogoutFunctionalityMixin):
         )
 
 
-class UserSignUpTemplateView(LoggedOutTemplateView):
-    template_name = 'users/signup.html'
-
-
 class UserSignUpView(LoggedOutAPIView):
     http_method_names = ['post']
 
@@ -83,8 +91,18 @@ class UserSignUpView(LoggedOutAPIView):
         )
 
 
-class UserUpdateView(LoggedOutAPIView):
-    form_class = forms.UserUpdateView
+class UpdateUserView(AuthenticatedAPIView):
+    http_method_names = ['post']
+
+    def post(self, *args, **kwargs) -> dict[str, Any]:
+        data = self.get_cleaned_data(forms.UpdateUserView)
+        UserService().update_user(
+            user=self.request.user,
+            data=data,
+        )
+        return self.render_to_json(
+            status_code=200,
+        )
 
 
 class EmailVerificationView(LoggedOutAPIView):

@@ -34,7 +34,12 @@ class UserSignUpForm(BaseForm, SignupForm):
         return email
 
 
-class UserUpdateView(BaseForm): ...
+class UpdateUserView(BaseForm):
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    birth_date = forms.DateField(required=True)
+    height = forms.FloatField(required=True)
+    weight = forms.FloatField(required=True)
 
 
 class EmailVerificationForm(BaseForm): ...

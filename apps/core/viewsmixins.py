@@ -52,7 +52,7 @@ class BaseAPIView:
             traceback.print_exc()
             raise BaseAPIError(
                 status_code=400,
-                params={'error': str(error)},
+                data={'error': str(error)},
             )
 
     def get_form(self, form_class: type[BaseFormType]) -> BaseFormType:
@@ -73,6 +73,9 @@ class BaseAPIView:
         return form.cleaned_data
 
     def _set_request_data(self) -> None:
+        # print(f'{self.request.POST = }')
+        # print(f'{self.request.content_type = }')
+        # print(f'{self.request.method = }')
         if self.request.content_type != 'application/json' and self.request.method in [
             'GET',
             'POST',

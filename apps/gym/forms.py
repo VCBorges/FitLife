@@ -1,9 +1,11 @@
+import datetime
 from typing import Any
 
 from django import forms
 
 from apps.core import form_fields
 from apps.core.forms import BaseForm
+from apps.core.utils import get_tomorrow
 from apps.gym import models
 
 
@@ -149,3 +151,33 @@ class CreateWorkoutHistoryForm(BaseForm):
             # self.add_error('exercises', 'Invalid workout exercises')
             raise forms.ValidationError('Invalid workout exercises')
         return cleaned_data
+
+
+class FilterWorkoutHistoriesForm(BaseForm):
+    title = forms.CharField(required=False)
+    start_date = forms.DateField(required=False, input_formats=['%Y-%m-%d'])
+    end_date = forms.DateField(required=False)
+
+    DEFAULT_START_DATE = datetime.date(2021, 1, 1)
+    DEFAULT_END_DATE = get_tomorrow()
+
+    def clean_title(self) -> str | None:
+        title = self.cleaned_data.get('title')
+        if title == 'all':
+            return None
+
+        return title
+
+    def clean_start_date(self) -> str | None:
+        start_date = self.cleaned_data.get('start_date')
+        if not start_date:
+            return self.DEFAULT_START_DATE
+
+        return start_date
+
+    def clean_end_date(self) -> str | None:
+        end_date = self.cleaned_data.get('end_date')
+        if not end_date:
+            return self.DEFAULT_END_DATE
+
+        return end_date

@@ -66,30 +66,32 @@ directly, so we don't need to pass them as props.
         </div>
         
         <div class="search-exercise-container">
-            <div>
-                <c-primary-select
-                    label="{% trans 'Músculos' %}"
-                    name="muscle"
-                    id="muscle-select-id"
-                    :options="{{ context.muscles | safe | escape }}"
-                />
+            <div class="filters">
+                <div>
+                    <c-primary-select
+                        label="{% trans 'Músculos' %}"
+                        name="muscle"
+                        id="muscle-select-id"
+                        :options="{{ context.muscles | safe | escape }}"
+                    />
+                </div>
+                <div>
+                    <c-primary-select
+                        label="{% trans 'Equipamentos' %}"
+                        name="equipment"
+                        id="equipment-select-id"
+                        :options="{{ context.equipments | safe | escape }}"
+                    />
+                </div>
+                <div>
+                    <c-input.primary
+                        name="{% trans 'Busca' %}"
+                        id="search-exercise-input-id"
+                        placeholder="{% trans 'Busque um exercício' %}"
+                    />
+                </div>
             </div>
-            <div>
-                <c-primary-select
-                    label="{% trans 'Equipamentos' %}"
-                    name="equipment"
-                    id="equipment-select-id"
-                    :options="{{ context.equipments | safe | escape }}"
-                />
-            </div>
-            <div>
-                <c-input.primary
-                    name="{% trans 'Busca' %}"
-                    id="search-exercise-input-id"
-                    placeholder="{% trans 'Busque um exercício' %}"
-                />
-            </div>
-
+            <hr>
             <div id="exercises-select-root">
             {% for exercise in context.exercises %}
                 <c-exercise-select-button

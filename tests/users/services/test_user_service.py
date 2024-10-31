@@ -1,3 +1,5 @@
+from datetime import date
+
 from django import forms
 
 from apps.users.models import Users
@@ -74,3 +76,25 @@ def test_create_user_to_raise_error_when_email_already_exists(existent_user_emai
         )
 
     assert exc.value.messages[0]
+
+
+@pytest.mark.django_db
+def test_update_user_to_update_fields(user: Users):
+    UserService().update_user(
+        user=user,
+        data={
+            'first_name': 'Test',
+            'last_name': 'Test',
+            'birth_date': date(2021, 1, 1),
+            'height': 180,
+            'weight': 80,
+        },
+    )
+
+    user.refresh_from_db()
+
+    assert user.first_name == 'Test'
+    assert user.last_name == 'Test'
+    assert user.birth_date == date(2021, 1, 1)
+    assert user.height == 180
+    assert user.weight == 80

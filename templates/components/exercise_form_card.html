@@ -27,38 +27,48 @@
                     hidden
                 />    
             {% endif %}
-            <c-input.primary
-                label="{% trans 'Séries' %}"
-                name="sets"
-                type="number"
-                required
-                min="0"
-                value="{{ workout_exercise.sets | default:1 }}"
-            />
-            <c-input.primary
-                label="{% trans 'Repetições' %}"
-                name="repetitions"
-                type="number"
-                required
-                min="0"
-                value="{{ workout_exercise.repetitions | default:1 }}"
-            />
-            <c-input.primary
-                label="{% trans 'Peso' %}"
-                name="weight"
-                type="number"
-                required
-                min="0"
-                value="{{ workout_exercise.weight | default:1 }}"
-            />
-            <c-input.primary
-                label="{% trans 'Descanso' %}"
-                name="rest_period"
-                type="number"
-                required
-                min="0"
-                value="{{ workout_exercise.rest_period | default:1 }}"
-            />
+            <div class="frequency">
+                <div class="sets">
+                    <c-input.primary
+                        label="{% trans 'Séries' %}"
+                        name="sets"
+                        type="number"
+                        required
+                        min="0"
+                        value="{{ workout_exercise.sets | default:1 }}"
+                    />
+                </div>
+                <div class="weight">
+                    <c-input.primary
+                        label="{% trans 'Peso (Kg)' %}"
+                        name="weight"
+                        type="number"
+                        required
+                        min="0"
+                        value="{{ workout_exercise.weight | default:1 }}"
+                    />
+                </div>
+                <div class="reps">
+                    <c-input.primary
+                        label="{% trans 'Repetições' %}"
+                        name="repetitions"
+                        type="number"
+                        required
+                        min="0"
+                        value="{{ workout_exercise.repetitions | default:1 }}"
+                    />
+                </div>
+            </div>
+            <div class="rest">
+                <c-input.primary
+                    label="{% trans 'Descanso (Seg)' %}"
+                    name="rest_period"
+                    type="number"
+                    required
+                    min="0"
+                    value="{{ workout_exercise.rest_period | default:1 }}"
+                />
+            </div>
             <c-primary-textarea
                 label="{% trans 'Notas' %}"
                 name="notes"

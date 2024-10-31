@@ -1,3 +1,20 @@
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters {
+    // max-width: 292px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters .date{
+    display: flex;
+    // i want then to be on the right side
+    // justify-content: flex-start;
+    gap: 10px;
+}
+
 .list-content {
     border: 1px solid white; /* Vertical line */
     border-radius: 10px; /* Rounded corners */
@@ -10,7 +27,7 @@
 .workout-history-item {
     border: 1px solid white; /* Vertical line */
     border-radius: 10px; /* Rounded corners */
-    padding: 10px;
+    padding: 20px;
 }
 
 .workout-history-item .header {
@@ -41,4 +58,23 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+}
+
+
+.list-content.empty {
+    display: flex; /* Override grid for empty state */
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+
+
+.list-content.empty::before {
+    content: "Voce ainda não concluiu nenhum treino.";
+    font-size: 1.2em;
+    color: rgb(255, 255, 255);
+    height: calc(-270px + 100vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -16,7 +16,7 @@
         <h1>{{ workout.title }}</h1>
         <c-primary-button
             type="submit"
-            text="{% trans 'Completar' %}"
+            text="{% trans 'Concluir' %}"
             formaction="{% url 'create_list_workouts_history' %}"
             id="complete-workout-submit-btn"
             value="{{ workout.id }}"
@@ -33,7 +33,7 @@
                         name="is_done"
                         value="true"
                     />
-                    <h4 class="exercise-name">{{ exercise.name }}</h4>
+                    <h5 class="exercise-name">{{ exercise.name }}</h5>
                 </div>
                 <hr>
                 <c-input.primary
@@ -43,39 +43,49 @@
                     required
                     readonly
                     hidden
-                />
-                <c-input.primary
-                    label="{% trans 'Séries' %}"
-                    name="sets"
-                    type="number"
-                    required
-                    min="0"
-                    value="{{ exercise.sets }}"
-                />
-                <c-input.primary
-                    label="{% trans 'Repetições' %}"
-                    name="repetitions"
-                    type="number"
-                    required
-                    min="0"
-                    value="{{ exercise.repetitions }}"
-                />
-                <c-input.primary
-                    label="{% trans 'Peso' %}"
-                    name="weight"
-                    type="number"
-                    required
-                    min="0"
-                    value="{{ exercise.weight }}"
-                />
-                <c-input.primary
-                    label="{% trans 'Descanso' %}"
-                    name="rest_period"
-                    type="number"
-                    required
-                    min="0"
-                    value="{{ exercise.rest_period }}"
-                />
+                    />
+                <div class="frequency">
+                    <div>
+                        <c-input.primary
+                            label="{% trans 'Séries' %}"
+                            name="sets"
+                            type="number"
+                            required
+                            min="0"
+                            value="{{ exercise.sets }}"
+                        />
+                    </div>
+                    <div>
+                        <c-input.primary
+                            label="{% trans 'Peso (Kg)' %}"
+                            name="weight"
+                            type="number"
+                            required
+                            min="0"
+                            value="{{ exercise.weight }}"
+                        />
+                    </div>
+                    <div>
+                        <c-input.primary
+                            label="{% trans 'Repetições' %}"
+                            name="repetitions"
+                            type="number"
+                            required
+                            min="0"
+                            value="{{ exercise.repetitions }}"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <c-input.primary
+                        label="{% trans 'Descanso (Seg)' %}"
+                        name="rest_period"
+                        type="number"
+                        required
+                        min="0"
+                        value="{{ exercise.rest_period }}"
+                    />
+                </div>
             </form>
         </div>    
         {% endfor %}

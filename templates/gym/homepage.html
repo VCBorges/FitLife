@@ -23,7 +23,7 @@
             name="query"
             label="{% trans 'Pesquisar treino' %}"
             class="search-input"
-            placeholder="{% trans 'Buscar' %}"
+            placeholder="{% trans 'Buscar treino' %}"
             hx-get="{% url 'create_list_workouts' %}"
             hx-trigger="keyup delay:500ms changed"
             hx-target=".list-body"
@@ -33,10 +33,13 @@
             <c-workout-list-item
                 :workout="{{ workout | safe | escape }}"
             />
+            {% comment %}
             {% empty %}
             <div class="empty-workouts-container">
                 <p>{% trans 'Voce ainda não tem nenhum treino disponível.' %}</p>
             </div>
+            {% endcomment %}
+            
             {% endfor %}
         </div>  
         
@@ -58,9 +61,14 @@
                 />
                 <c-button.danger
                     x-bind:hx-delete="deleteWorkoutUrl"
+                    hx-target="none"
                     @click="
                         const workoutElement = document.querySelector(`.workout-list-item[data-workout-id='${workoutId}']`);
                         workoutElement.remove();
+                        const listContent = document.querySelector('.list-body');
+                        if (!listContent.children.length) {
+                            listContent.classList.add('empty');
+                        }
                     "
                     id="delete-workout-btn-id"
                     text="{% trans 'Excluir treino' %}"

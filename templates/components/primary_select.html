@@ -10,6 +10,7 @@
     class="primary-select form-select form-select-sm {{ class }}" 
     name="{{ name }}"
     id="{{ id }}"
+    {{ attrs }}
 >
     <option selected value="all">{% trans 'Todos' %}</option>
     {% if options %}

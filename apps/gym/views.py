@@ -2,8 +2,10 @@ from typing import Any
 
 from django.http import JsonResponse
 from django.http.response import HttpResponse as HttpResponse
+from django.urls import reverse_lazy
 
 from apps.core.constants import Language
+from apps.core.utils import get_tomorrow
 from apps.core.views import (
     AuthDetailTemplateView,
     AuthenticatedAPIView,
@@ -105,6 +107,9 @@ class WorkoutHistoriesTemplateView(AuthenticatedTemplateView):
             lookups=dtos.UserWorkoutLookups(user=self.request.user),
             language=language,
         )
+        context['workout_histories_select_options'] = (
+            ui.workout_history_select_filter_options()
+        )
         return context
 
 
@@ -123,7 +128,10 @@ class CreateListWorkoutsView(AuthenticatedAPIView):
             exercises=data.get('exercises'),
         )
         return self.render_to_json(
-            data={'workout': workout.id},
+            data={
+                'workout': workout.id,
+                'redirect_url': reverse_lazy('homepage_template'),
+            },
             status_code=201,
         )
 
@@ -161,7 +169,7 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedAPIView):
         WorkoutService().delete_workout(
             workout=self.object,
         )
-        return self.render_to_json(status_code=204)
+        return self.render_to_json(status_code=200)
 
 
 class CreateListWorkoutHistoriesView(AuthenticatedAPIView):
@@ -179,20 +187,28 @@ class CreateListWorkoutHistoriesView(AuthenticatedAPIView):
         )
         return self.render_to_json(
             status_code=201,
+            data={
+                'redirect_url': reverse_lazy('workout_history_template'),
+            },
         )
 
     def get(self, *args, **kwargs) -> dict[str, Any]:
         language = Language.PT
+        data = self.get_cleaned_data(forms.FilterWorkoutHistoriesForm)
+        print(f'{data = }')
         workout_histories = ui.workout_history_list(
             lookups=dtos.UserWorkoutHistoryLookups(
                 user=self.request.user,
-                workout__title__icontains=self.data['query'],
+                title=data.get('title'),
+                completed_at__range=(
+                    data.get('start_date'),
+                    data.get('end_date', get_tomorrow()),
+                ),
             ),
             language=language,
         )
-
         return self.render_to_template(
-            template='gym/htmx/_workout_history_list_item.html',
+            template='gym/htmx/_workout_history_list_items.html',
             context={'workout_histories': workout_histories},
         )
 

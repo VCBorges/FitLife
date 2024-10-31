@@ -1,3 +1,6 @@
+from typing import Any
+
+from apps.core.utils import clean_models, set_model_fields
 from apps.users.models import Users
 
 
@@ -11,7 +14,20 @@ class UserService:
         )
         return user
 
-    def update_user(self, user_data): ...
+    def update_user(self, user: Users, data: dict[str, Any]) -> None:
+        update_fields = [
+            'first_name',
+            'last_name',
+            'birth_date',
+            'height',
+            'weight',
+        ]
+        set_model_fields(
+            model=user,
+            data=data,
+        )
+        clean_models(user)
+        user.save(update_fields=update_fields)
 
     def deactivate_user(self, user: Users) -> None:
         user.is_active = False

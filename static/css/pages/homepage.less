@@ -81,7 +81,7 @@
 
 
 .list-body {
-    border: 1px solid white; /* Vertical line */
+    border: 1px solid rgb(126, 126, 126); /* Vertical line */
     border-radius: 10px; /* Rounded corners */
     padding: 10px;
     display: grid;
@@ -96,11 +96,17 @@
     color: gray;
 }
 
-// .list-body.empty::before {
-//     content: "No items available"; /* Message to show */
-//     font-size: 1.2em;
-//     color: gray;
-// }
+.list-body.empty::before {
+    content: "Voce ainda não criou nenhum treino.";
+    font-size: 1.2em;
+    color: rgb(255, 255, 255);
+    height: calc(-260px + 100vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// 69 + 20 + 40 + 24 + 32 + 29 = 214
 
 .search-input {
     margin-bottom: 10px;

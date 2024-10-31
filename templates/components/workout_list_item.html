@@ -8,27 +8,17 @@
         <div>
 
             <a 
-                class="complete-workout-anchor"
+                class="complete-workout-anchor btn btn-outline-light btn-sm"
                 {% if workout %}
                 href="{% url 'complete_workout_template' workout.id %}"
                 {% endif %}
-            >
-                <c-button.primary
-                    class="complete-workout-btn"
-                    text="{% trans 'Completar' %}"
-                />
-            </a>
+            >{% trans 'Concluir' %}</a>
             <a 
-                class="edit-workout-anchor"
+                class="edit-workout-anchor btn btn-outline-light btn-sm"
                 {% if workout %}
                 href="{% url 'update_workout_template' workout.id %}"
                 {% endif %}
-            >
-                <c-button.primary
-                    class="edit-workout-btn"
-                    text="{% trans 'Editar' %}"
-                />
-            </a>
+            >{% trans 'Editar' %}</a>
             <c-button.danger
                 type="submit"
                 class="delete-workout-btn-modal"

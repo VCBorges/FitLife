@@ -28,8 +28,8 @@ class Users(
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)
-    height = models.FloatField(_('height'), blank=True, null=True)
-    weight = models.FloatField(_('weight'), blank=True, null=True)
+    height = models.IntegerField(_('height'), blank=True, null=True)
+    weight = models.IntegerField(_('weight'), blank=True, null=True)
     # role = models.CharField(
     #     _('role'),
     #     max_length=15,

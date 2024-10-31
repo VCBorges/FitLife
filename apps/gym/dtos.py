@@ -45,6 +45,7 @@ class UserWorkoutHistoryLookups(UserWorkoutLookups):
     workout: models.Workouts | None = None
     completed_at: datetime.datetime | None = None
     creator: Users | None = None
+    completed_at__range: tuple[datetime.datetime, datetime.datetime] | None = None
 
 
 # TODO: move to core module

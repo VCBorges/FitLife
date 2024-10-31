@@ -22,15 +22,46 @@
             <h4>{% trans 'Histórico de treinos' %}</h4>
         </div>
         <hr>
-        <c-input.primary
-            name="query"
-            class="search-input"
-            placeholder="{% trans 'Buscar' %}"
-            hx-get="{% url 'create_list_workouts' %}"
-            hx-trigger="keyup delay:500ms changed"
-            hx-target=".list-content"
-        />
-        <div class="list-content">
+        <div class="filters">
+            <div>
+                <c-primary-select
+                    label="{% trans 'Filtrar por treino' %}"
+                    name="title"
+                    :options="{{ workout_histories_select_options | safe | escape }}"
+                    hx-get="{% url 'create_list_workouts_history' %}"
+                    hx-trigger="change"
+                    hx-include="[name='start_date'],[name='end_date']"
+                    hx-target=".list-content"
+                />
+            </div>
+    
+            <div class="date">
+                <div>
+                    <c-input.primary
+                        type="date"
+                        name="start_date"
+                        label="{% trans 'Inicio' %}"
+                        hx-get="{% url 'create_list_workouts_history' %}"
+                        hx-trigger="change"
+                        hx-include="[name='title'],[name='end_date']"
+                        hx-target=".list-content"
+                    />
+                </div>
+                
+                <div>
+                    <c-input.primary
+                        type="date"
+                        name="end_date"
+                        label="{% trans 'Fim' %}"
+                        hx-get="{% url 'create_list_workouts_history' %}"
+                        hx-trigger="change"
+                        hx-include="[name='title'],[name='start_date']"
+                        hx-target=".list-content"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="list-content{% if not workout_histories.data %} empty{% endif %}">
             {% for workout in workout_histories.data %}
             <c-workout-history.list-item
                 :workout="{{ workout | safe | escape }}"

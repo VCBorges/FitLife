@@ -1,9 +1,10 @@
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from django.core.paginator import Paginator
 from django.db.models import CharField, F, Prefetch, Value
 from django.db.models.fields.json import KeyTextTransform
-from django.db.models.functions import Cast, Concat
+from django.db.models.functions import Cast, Concat, Trunc
 from django.db.models.query import QuerySet
 
 from apps.core.constants import Language
@@ -253,6 +254,7 @@ def workout_history_list(
     page_size: int = 50,
     order_by: list[str] | None = None,
 ) -> dict[str, Any]:
+    print(f'{lookups.as_dict() = }')
     exercises_qs = (
         models.WorkoutHistoryExercises.objects.select_related(
             'exercise',
@@ -302,6 +304,13 @@ def workout_history_list(
             'title',
             'completed_at',
         )
+        .annotate(
+            local_completed_at=Trunc(
+                'completed_at',
+                kind='minute',  # or 'minute', 'hour', 'day' depending on your needs
+                tzinfo=ZoneInfo('America/Sao_Paulo'),
+            )
+        )
     )
     paginator = Paginator(workouts_qs, page_size)
     result_page = paginator.get_page(page_number)
@@ -315,7 +324,7 @@ def workout_history_list(
             {
                 'id': str(workout.pk),
                 'title': workout.title,
-                'completed_at': formatted_date(workout.completed_at),
+                'completed_at': formatted_date(workout.local_completed_at),
                 'exercises': [
                     {
                         'id': str(exercise.pk),
@@ -333,3 +342,18 @@ def workout_history_list(
         ],
     )
     return ret.as_dict()
+
+
+def workout_history_select_filter_options() -> list[SelectOptionsSchema]:
+    queryset = (
+        models.WorkoutHistory.objects.values(
+            'title',
+        )
+        .order_by('title')
+        .distinct()
+    )
+    return model_select_input_options(
+        queryset=queryset,
+        value_field='title',
+        text_field='title',
+    )

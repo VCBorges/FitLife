@@ -53,7 +53,15 @@ def clean_models(*models: typed.DjangoModelType) -> None:
 class BaseDTO:
     def as_dict(self) -> dict[str, Any]:
         return {
-            key: value for key, value in asdict(self).items() if value is not None
+            key: value
+            for key, value in asdict(self).items()
+            if value is not None
+            and value
+            not in [
+                (None, None),
+                (None, None),
+            ]
+            # and
         }  # ftm: skip
 
 
@@ -71,4 +79,30 @@ def formatted_date(
     return dateformat.format(date, format_string)
 
 
-# formatted_date: Callable[[date | datetime], str] = partial(dateformat.format, format_string='d/m/Y H:i')
+def get_tomorrow() -> datetime.date:
+    return datetime.date.today() + datetime.timedelta(days=1)
+
+
+# def convert_to_local_time(utc_dt: datetime.datetime) -> datetime.datetime:
+#     """
+#     Convert a UTC datetime to the timezone specified in Django settings.
+
+#     Args:
+#         utc_dt (datetime): A datetime object in UTC
+
+#     Returns:
+#         datetime: The datetime converted to the local timezone from settings.TIME_ZONE
+
+#     Example:
+#         >>> utc_time = datetime.utcnow()
+#         >>> local_time = convert_to_local_time(utc_time)
+#     """
+#     if utc_dt.tzinfo is None:
+#         utc_dt = timezone.make_aware(utc_dt, timezone.UTC)
+
+#     return timezone.localtime(
+#         utc_dt,
+#         timezone=timezone.get_default_timezone()
+#     )
+
+# # formatted_date: Callable[[date | datetime], str] = partial(dateformat.format, format_string='d/m/Y H:i')

@@ -1,4 +1,9 @@
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,6 +14,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if not DEBUG:
+    ALLOWED_HOSTS = ['*']
+
 LOCAL_APPS = [
     'apps.core',
     'apps.users',
@@ -18,10 +26,17 @@ LOCAL_APPS = [
 THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
-    'django_extensions',
-    'django_browser_reload',
     'django_cotton',
+    'whitenoise.runserver_nostatic',
 ]
+
+if not DEBUG:
+    THIRD_PARTY_APPS.extend(
+        [
+            'django_extensions',
+            'django_browser_reload',
+        ]
+    )
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -44,6 +59,7 @@ LOGOUT_REDIRECT_URL = 'login_template'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -51,8 +67,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
+
+if not DEBUG:
+    MIDDLEWARE.append('django_browser_reload.middleware.BrowserReloadMiddleware')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'config.urls'
 
@@ -84,11 +104,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fitlife',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'),
+        'PORT': os.getenv('PORT'),
     }
 }
 
@@ -124,8 +144,9 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
+USE_TZ = True
 
 STATIC_URL = '/static/'
 
@@ -136,7 +157,6 @@ STATIC_ROOT = BASE_DIR / 'dist'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = '/media/'
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
