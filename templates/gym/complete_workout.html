@@ -96,4 +96,5 @@
 
 {% block js %}
 {{ context | json_script:"context-id" }}
+<script type="module" src="{% static 'js/apps/gym/pages/complete-workout.js' %}"></script>
 {% endblock js %}
