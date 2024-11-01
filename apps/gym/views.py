@@ -200,7 +200,6 @@ class CreateListWorkoutHistoriesView(AuthenticatedAPIView):
     def get(self, *args, **kwargs) -> dict[str, Any]:
         language = Language.PT
         data = self.get_cleaned_data(forms.FilterWorkoutHistoriesForm)
-        print(f'{data = }')
         workout_histories = ui.workout_history_list(
             lookups=dtos.UserWorkoutHistoryLookups(
                 user=self.request.user,

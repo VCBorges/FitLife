@@ -32,14 +32,7 @@
             {% for workout in context.workouts.data %}
             <c-workout-list-item
                 :workout="{{ workout | safe | escape }}"
-            />
-            {% comment %}
-            {% empty %}
-            <div class="empty-workouts-container">
-                <p>{% trans 'Voce ainda não tem nenhum treino disponível.' %}</p>
-            </div>
-            {% endcomment %}
-            
+            />            
             {% endfor %}
         </div>  
         
@@ -61,7 +54,6 @@
                 />
                 <c-button.danger
                     x-bind:hx-delete="deleteWorkoutUrl"
-                    hx-target="none"
                     @click="
                         const workoutElement = document.querySelector(`.workout-list-item[data-workout-id='${workoutId}']`);
                         workoutElement.remove();
