@@ -17,9 +17,6 @@ ALLOWED_HOSTS = []
 
 if not DEBUG:
     ALLOWED_HOSTS = ['*']
-    # ALLOWED_HOSTS = [os.getenv('ALLOWED_HOST')]
-
-print(f'{ALLOWED_HOSTS = }')
 
 LOCAL_APPS = [
     'apps.core',

@@ -3,13 +3,13 @@ from django.urls import path
 from apps.gym import views
 
 templates_urls = [
+    # path(
+    #     route='',
+    #     view=views.LandingPageTemplateView.as_view(),
+    #     name='landing_page_template',
+    # ),
     path(
         route='',
-        view=views.LandingPageTemplateView.as_view(),
-        name='landing_page_template',
-    ),
-    path(
-        route='home/',
         view=views.HomepageTemplateView.as_view(),
         name='homepage_template',
     ),

@@ -163,7 +163,12 @@ class UpdateDetailDeleteWorkoutView(AuthenticatedAPIView):
             description=data['description'],
             exercises=data['exercises'],
         )
-        return self.render_to_json(status_code=200)
+        return self.render_to_json(
+            data={
+                'redirect_url': reverse_lazy('homepage_template'),
+            },
+            status_code=200,
+        )
 
     def delete(self, *args, **kwargs) -> dict[str, Any]:
         WorkoutService().delete_workout(
