@@ -30,7 +30,7 @@ THIRD_PARTY_APPS = [
     'whitenoise.runserver_nostatic',
 ]
 
-if not DEBUG:
+if DEBUG:
     THIRD_PARTY_APPS.extend(
         [
             'django_extensions',
@@ -69,7 +69,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-if not DEBUG:
+if DEBUG:
     MIDDLEWARE.append('django_browser_reload.middleware.BrowserReloadMiddleware')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
