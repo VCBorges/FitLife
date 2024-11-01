@@ -15,7 +15,7 @@ DEBUG = os.getenv('DEBUG') == 'True'
 ALLOWED_HOSTS = []
 
 if not DEBUG:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = [os.getenv('ALLOWED_HOST')]
 
 LOCAL_APPS = [
     'apps.core',
