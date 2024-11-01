@@ -16,7 +16,10 @@ DEBUG = os.getenv('DEBUG') == 'True'
 ALLOWED_HOSTS = []
 
 if not DEBUG:
-    ALLOWED_HOSTS = [os.getenv('ALLOWED_HOST')]
+    ALLOWED_HOSTS = ['*']
+    # ALLOWED_HOSTS = [os.getenv('ALLOWED_HOST')]
+
+print(f'{ALLOWED_HOSTS = }')
 
 LOCAL_APPS = [
     'apps.core',
@@ -102,17 +105,6 @@ COTTON_DIR = 'components'
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DATABASE_NAME'),
-#         'USER': os.getenv('USER'),
-#         'PASSWORD': os.getenv('PASSWORD'),
-#         'HOST': os.getenv('HOST'),
-#         'PORT': os.getenv('PORT'),
-#     }
-# }
-
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 DATABASES = {
@@ -184,3 +176,18 @@ if not DEBUG:
     CSRF_TRUSTED_ORIGINS = [
         os.getenv('CSRF_TRUSTED_ORIGINS'),
     ]
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
