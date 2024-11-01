@@ -40,7 +40,7 @@ def set_model_fields(
         setattr(model, key, value)
 
 
-def default_translation() -> TranslationsSchema:
+def default_translation(*args, **kwargs) -> TranslationsSchema:
     return {language.value: '' for language in Language}
 
 
