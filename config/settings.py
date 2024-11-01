@@ -176,5 +176,5 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS = [
-        os.getenv('ALLOWED_HOST'),
+        os.getenv('CSRF_TRUSTED_ORIGINS'),
     ]
