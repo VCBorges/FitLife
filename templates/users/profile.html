@@ -18,6 +18,7 @@ Perfil
             id="profile-form-id" 
             action="{% url 'update_user' %}" 
             method="POST"
+            data-toast-id="update-profile-toast-id"
         >
             <div class="name">
                 <div>
@@ -38,13 +39,12 @@ Perfil
                     />
                 </div>
             </div>
-    
             <div>
                 <c-input.primary
                     label="{% trans 'Data de nascimento' %}"
                     type="date"
                     name="birth_date"
-                    value="{{ user.birth_date | default:None }}"
+                    value="{{ user.birth_date | date:'Y-m-d' | default:None }}"
                 />
             </div>
     
@@ -72,14 +72,14 @@ Perfil
                     />
                 </div>
             </div>
-
-    
             <hr>
-    
             <c-button.primary
                 text="{% trans 'Atualizar perfil' %}"
                 type="submit"
                 class="update-profile-btn"
+            />
+            <c-toast
+                id="update-profile-toast-id"
             />
         </form>
     </div>
