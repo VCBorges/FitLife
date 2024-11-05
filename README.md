@@ -51,7 +51,7 @@ FitLife é uma aplicação web desenvolvida para ajudar os usuários a gerenciar
 2. Crie e ative um ambiente virtual:
     ```sh
     python -m venv venv
-    source venv/bin/activate  # No Windows use `venv\Scripts\activate`
+    source venv/bin/activate
     ```
 
 3. Instale as dependências:

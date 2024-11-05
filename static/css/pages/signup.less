@@ -6,20 +6,46 @@
     height: 100vh;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 100px;
+    max-width: 600px;
+}
+
+.image-container {
+    padding-right: 20px;
+    position: relative; /* Ensure positioning context if needed */
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;    /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        padding: 20px;
+        height: 100vh;          /* Fill the viewport height for vertical centering */
+    }
+
+    .form-container {
+        max-width: 100%;
+        padding: 0;
+        height: auto;           /* Let the form-container adjust its height */
+    }
+
+    .image-container {
+        display: none;
+    }
+}
+
 .form-container h4 {
     text-align: center;
 }
 
-.form-container {
-    display: flex; /* Enable Flexbox */
-    flex-direction: column; /* Optional: stack items vertically */
-    justify-content: center; /* Center vertically */
-    // align-items: center; /* Center horizontally */
-    // text-align: center; /* Center text inside child elements */
-    height: 100%; /* Ensure it takes full height of the grid cell */
-    padding: 0 100px;
-    max-width: 600px;
-}
 
 .buttons-container {
     display: flex; /* Enable Flexbox */
@@ -33,12 +59,6 @@
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
-}
-
-.image-container {
-    padding-right: 20px;
-    position: relative; /* Ensure positioning context if needed */
-    overflow: hidden;
 }
 
 .image-container img {
