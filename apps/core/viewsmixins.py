@@ -5,14 +5,15 @@ import logging
 import traceback
 from typing import Any, Literal, Mapping, override
 
+from django.conf import settings
 from django.db.models.query import QuerySet
-
-# from django.conf import settings
 from django.http import HttpRequest, JsonResponse
 from django.template.response import TemplateResponse
 from django.utils.decorators import method_decorator
+from django.utils.translation import get_language
 from django.views.decorators.csrf import csrf_exempt
 
+from apps.core.constants import Language
 from apps.core.exceptions import BaseAPIError
 from apps.core.typed import BaseFormType, DjangoModelType
 from apps.core.utils import get_or_404
@@ -24,13 +25,20 @@ HTTPMethods = list[Literal['post', 'get', 'put', 'delete']]
 ResponseClass = JsonResponse | TemplateResponse
 
 
-class BaseTemplateContextMixin:
+class BaseView:
+    def __init__(self):
+        super().__init__()
+        self.language = Language[get_language().upper()]
+
+
+class BaseTemplateContextMixin(BaseView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
+        context.update({'LANGUAGES': settings.LANGUAGES})
         return context
 
 
-class BaseAPIView:
+class BaseAPIView(BaseView):
     http_method_names: HTTPMethods = []
     request: HttpRequest
     model: type[DjangoModelType] | None = None
