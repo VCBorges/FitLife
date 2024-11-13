@@ -12,7 +12,7 @@ Sign up
 {% block content %}
 <div class="container-fluid">
     <div class="form-container">
-        <h4>{% trans 'Crie sua conta' %}</h4>
+        <h4>{% trans 'Sign up to FitLife' %}</h4>
         <hr>
         <form 
             id="signup-form-id" 
@@ -23,25 +23,22 @@ Sign up
         >
             <div>
                 <c-input.primary
-                    label="{% trans 'Seu nome' %}"
-                    placeholder="{% trans 'Seu nome' %}"
+                    label="{% trans 'Your name' %}"
                     name="first_name"
                     required
                 />
             </div>
             <div>
                 <c-input.primary
-                    label="{% trans 'Seu email' %}"
+                    label="{% trans 'Your email' %}"
                     class="primary-input"
-                    placeholder="{% trans 'Seu email' %}"
                     name="email"
                     required
                 />
             </div>
             <div>
                 <c-input.primary
-                    label="{% trans 'Sua senha' %}"
-                    placeholder="{% trans 'Sua senha' %}"
+                    label="{% trans 'Your password' %}"
                     type="password"
                     name="password1"
                     required
@@ -49,8 +46,7 @@ Sign up
             </div>
             <div>
                 <c-input.primary
-                    label="{% trans 'Confirme a senha' %}"
-                    placeholder="{% trans 'Repita senha' %}"
+                    label="{% trans 'Your password again' %}"
                     name="password2"
                     type="password"
                     required
@@ -58,15 +54,15 @@ Sign up
             </div>
             <div class="buttons-container">
                 <c-button.primary
-                    text="{% trans 'Criar conta' %}"
+                    text="{% trans 'Signup' %}"
                     type="submit"
                     class="signup-btn"
                 />
                 <p>
-                    {% trans 'Ja possui uma conta?' %}
+                    {% trans 'Already have an account?' %}
                     <a class="login-link"
                         href="{% url 'login_template' %}" 
-                    >{% trans 'Ir para login' %}</a>
+                    >{% trans 'Go to login' %}</a>
                 </p>
             <div 
                 class="alert alert-danger form-alert d-none" 
@@ -76,7 +72,7 @@ Sign up
         </form>
     </div>
     <div class="image-container">
-        <img src="{% static 'images/signup.jpeg' %}" alt="">
+        <!-- <img src="{% static 'images/signup.jpeg' %}" alt=""> -->
     </div>
 </div>
 

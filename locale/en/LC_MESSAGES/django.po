@@ -1,0 +1,396 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-12 21:26-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: apps/gym/models.py:19 apps/gym/models.py:40 apps/gym/models.py:61
+msgid "name"
+msgstr ""
+
+#: apps/gym/models.py:24 apps/gym/models.py:45 apps/gym/models.py:66
+#: apps/gym/models.py:105 apps/gym/models.py:162
+msgid "description"
+msgstr ""
+
+#: apps/gym/models.py:72
+msgid "primary muscle"
+msgstr ""
+
+#: apps/gym/models.py:80
+msgid "secondary muscle"
+msgstr ""
+
+#: apps/gym/models.py:88
+msgid "equipment"
+msgstr ""
+
+#: apps/gym/models.py:104 apps/gym/models.py:161
+msgid "title"
+msgstr ""
+
+#: apps/gym/models.py:108 apps/gym/models.py:139 apps/gym/models.py:184
+#: apps/gym/models.py:232 apps/users/models.py:41
+msgid "user"
+msgstr ""
+
+#: apps/gym/models.py:115 apps/gym/models.py:154
+msgid "creator"
+msgstr ""
+
+#: apps/gym/models.py:143
+msgid "The user who the completed workout"
+msgstr ""
+
+#: apps/gym/models.py:147 apps/gym/models.py:190
+msgid "workout"
+msgstr ""
+
+#: apps/gym/models.py:159
+msgid "The user who created the completed workout"
+msgstr ""
+
+#: apps/gym/models.py:163
+msgid "completed at"
+msgstr ""
+
+#: apps/gym/models.py:197 apps/gym/models.py:225
+msgid "exercise"
+msgstr ""
+
+#: apps/gym/models.py:202
+msgid "notes"
+msgstr ""
+
+#: apps/gym/models.py:203 apps/gym/models.py:238
+msgid "repetitions"
+msgstr ""
+
+#: apps/gym/models.py:204 apps/gym/models.py:239
+msgid "sets"
+msgstr ""
+
+#: apps/gym/models.py:205 apps/gym/models.py:240 apps/users/models.py:32
+msgid "weight"
+msgstr ""
+
+#: apps/gym/models.py:206 apps/gym/models.py:241
+msgid "rest period"
+msgstr ""
+
+#: apps/gym/models.py:218
+msgid "workout history"
+msgstr ""
+
+#: apps/gym/models.py:237
+msgid "is completed"
+msgstr ""
+
+#: apps/users/managers.py:28
+msgid "The Email must be set"
+msgstr ""
+
+#: apps/users/managers.py:49
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: apps/users/managers.py:52
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: apps/users/managers.py:75
+msgid "This email is already in use."
+msgstr ""
+
+#: apps/users/managers.py:77
+msgid "Error while saving user."
+msgstr ""
+
+#: apps/users/models.py:17
+msgid "email address"
+msgstr ""
+
+#: apps/users/models.py:18
+msgid "first name"
+msgstr ""
+
+#: apps/users/models.py:19
+msgid "last name"
+msgstr ""
+
+#: apps/users/models.py:20
+msgid "birth date"
+msgstr ""
+
+#: apps/users/models.py:22
+msgid "CPF"
+msgstr ""
+
+#: apps/users/models.py:31
+msgid "height"
+msgstr ""
+
+#: apps/users/models.py:42
+msgid "users"
+msgstr ""
+
+#: config/settings.py:138
+msgid "English"
+msgstr ""
+
+#: config/settings.py:139
+msgid "Portuguese"
+msgstr ""
+
+#: templates/components/exercise_form_card.html:33
+#: templates/gym/complete_workout.html:50
+msgid "Séries"
+msgstr ""
+
+#: templates/components/exercise_form_card.html:43
+#: templates/gym/complete_workout.html:60 templates/users/profile.html:56
+msgid "Peso (Kg)"
+msgstr ""
+
+#: templates/components/exercise_form_card.html:53
+#: templates/gym/complete_workout.html:70
+msgid "Repetições"
+msgstr ""
+
+#: templates/components/exercise_form_card.html:64
+#: templates/gym/complete_workout.html:81
+msgid "Descanso (Seg)"
+msgstr ""
+
+#: templates/components/exercise_form_card.html:73
+msgid "Notas"
+msgstr ""
+
+#: templates/components/exercise_form_card.html:75
+msgid "Suas notas sobre o exercício"
+msgstr ""
+
+#: templates/components/modal/confirmation.html:37
+#: templates/components/workouts_list.html:40 templates/gym/homepage.html:52
+msgid "Cancelar"
+msgstr ""
+
+#: templates/components/modal/confirmation.html:41
+#: templates/components/workouts_list.html:32
+#: templates/components/workouts_list.html:50 templates/gym/homepage.html:44
+#: templates/gym/homepage.html:66
+msgid "Excluir treino"
+msgstr ""
+
+#: templates/components/primary_select.html:15
+msgid "Todos"
+msgstr ""
+
+#: templates/components/submit_workout.html:37
+#: templates/components/submit_workout.html:39
+msgid "Título do treino"
+msgstr ""
+
+#: templates/components/submit_workout.html:46
+#: templates/components/submit_workout.html:48
+msgid "Descrição do treino"
+msgstr ""
+
+#: templates/components/submit_workout.html:72
+msgid "Músculos"
+msgstr ""
+
+#: templates/components/submit_workout.html:80
+msgid "Equipamentos"
+msgstr ""
+
+#: templates/components/submit_workout.html:88
+msgid "Busca"
+msgstr ""
+
+#: templates/components/submit_workout.html:90
+msgid "Busque um exercício"
+msgstr ""
+
+#: templates/components/workout_history/list_item.html:7
+msgid "Concluído em "
+msgstr ""
+
+#: templates/components/workout_list_item.html:15
+#: templates/gym/complete_workout.html:19
+msgid "Concluir"
+msgstr ""
+
+#: templates/components/workout_list_item.html:21
+msgid "Editar"
+msgstr ""
+
+#: templates/components/workout_list_item.html:31
+msgid "Excluir"
+msgstr ""
+
+#: templates/components/workouts_list.html:12
+msgid "Buscar"
+msgstr ""
+
+#: templates/components/workouts_list.html:36 templates/gym/homepage.html:48
+msgid "Voce tem certeza que voce deseja excluir este treino?"
+msgstr ""
+
+#: templates/core/_sidebar.html:12
+msgid "Meus treinos"
+msgstr ""
+
+#: templates/core/_sidebar.html:16 templates/gym/create_workout.html:16
+msgid "Criar treino"
+msgstr ""
+
+#: templates/core/_sidebar.html:20 templates/gym/workout_history.html:6
+#: templates/gym/workout_history.html:22
+msgid "Histórico de treinos"
+msgstr ""
+
+#: templates/core/_sidebar.html:24 templates/users/profile.html:15
+msgid "Perfil"
+msgstr ""
+
+#: templates/gym/complete_workout.html:6
+msgid "Completar treino"
+msgstr ""
+
+#: templates/gym/create_workout.html:6
+msgid "Criação de treino"
+msgstr ""
+
+#: templates/gym/create_workout.html:20 templates/gym/update_workout.html:19
+msgid "Salvar treino"
+msgstr ""
+
+#: templates/gym/homepage.html:24
+msgid "Pesquisar treino"
+msgstr ""
+
+#: templates/gym/homepage.html:26
+msgid "Buscar treino"
+msgstr ""
+
+#: templates/gym/update_workout.html:6
+msgid "Atualização de Treinos"
+msgstr ""
+
+#: templates/gym/update_workout.html:15
+msgid "Editar Treino"
+msgstr ""
+
+#: templates/gym/workout_history.html:28
+msgid "Filtrar por treino"
+msgstr ""
+
+#: templates/gym/workout_history.html:43
+msgid "Inicio"
+msgstr ""
+
+#: templates/gym/workout_history.html:55
+msgid "Fim"
+msgstr ""
+
+#: templates/users/login.html:24
+msgid "Bem vindo ao FitLife"
+msgstr ""
+
+#: templates/users/login.html:30
+msgid "Email"
+msgstr ""
+
+#: templates/users/login.html:31
+msgid "Digite seu email"
+msgstr ""
+
+#: templates/users/login.html:40
+msgid "Senha"
+msgstr ""
+
+#: templates/users/login.html:41
+msgid "Digite sua senha"
+msgstr ""
+
+#: templates/users/login.html:50
+msgid "Fazer login"
+msgstr ""
+
+#: templates/users/login.html:55
+msgid "Ainda não tem uma conta?"
+msgstr ""
+
+#: templates/users/login.html:58
+msgid "Cadastre-se"
+msgstr ""
+
+#: templates/users/profile.html:26
+msgid "Nome"
+msgstr ""
+
+#: templates/users/profile.html:35
+msgid "Sobrenome"
+msgstr ""
+
+#: templates/users/profile.html:44
+msgid "Data de nascimento"
+msgstr ""
+
+#: templates/users/profile.html:66
+msgid "Altura (cm)"
+msgstr ""
+
+#: templates/users/profile.html:77
+msgid "Atualizar perfil"
+msgstr ""
+
+#: templates/users/signup.html:15
+msgid "Crie sua conta"
+msgstr ""
+
+#: templates/users/signup.html:26 templates/users/signup.html:27
+msgid "Seu nome"
+msgstr ""
+
+#: templates/users/signup.html:34 templates/users/signup.html:36
+msgid "Seu email"
+msgstr ""
+
+#: templates/users/signup.html:43 templates/users/signup.html:44
+msgid "Sua senha"
+msgstr ""
+
+#: templates/users/signup.html:52
+msgid "Confirme a senha"
+msgstr ""
+
+#: templates/users/signup.html:53
+msgid "Repita senha"
+msgstr ""
+
+#: templates/users/signup.html:61
+msgid "Criar conta"
+msgstr ""
+
+#: templates/users/signup.html:66
+msgid "Ja possui uma conta?"
+msgstr ""
+
+#: templates/users/signup.html:69
+msgid "Ir para login"
+msgstr ""

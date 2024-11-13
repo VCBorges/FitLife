@@ -21,14 +21,13 @@ Login
             method="POST"
             novalidate
         >
-            <h4>{% trans 'Bem vindo ao FitLife' %}</h4>
+            <h4>{% trans 'Welcome to FitLife' %}</h4>
             <hr>
              <div class="content-wrapper">
                  <div class="controls-wrapper">
                      <div>
                          <c-input.primary
                              label="{% trans 'Email' %}"
-                             placeholder="{% trans 'Digite seu email' %}"
                              type="email"
                              name="login"
                              required="True"
@@ -37,8 +36,7 @@ Login
              
                      <div>
                          <c-input.primary
-                             label="{% trans 'Senha' %}"
-                             placeholder="{% trans 'Digite sua senha' %}"
+                             label="{% trans 'Password' %}"
                              type="password"
                              name="password"
                              required="True"
@@ -47,15 +45,15 @@ Login
                  </div>
                  <div class="buttons-container">
                      <c-button.primary
-                         text="{% trans 'Fazer login' %}"
+                         text="{% trans 'Login' %}"
                          type="submit"
                          class="login-btn"
                      />
                      <p>
-                         {% trans 'Ainda não tem uma conta?' %}
+                         {% trans "Don't have an account?" %}
                          <a 
                              href="{% url 'signup_template' %}" 
-                         >{% trans 'Cadastre-se' %}</a>
+                         >{% trans 'Signup' %}</a>
                      </p>
                  </div>
                  <div 

@@ -10,7 +10,7 @@
 
 {% block content %}
 <div class="container-fluid">
-    <h4>Meus treinos</h4>
+    <h4>{% trans 'My workouts' %}</h4>
     <hr>
     <div 
         class="workouts-list"
@@ -21,9 +21,9 @@
     >
         <c-input.primary
             name="query"
-            label="{% trans 'Pesquisar treino' %}"
+            label="{% trans 'Find workout' %}"
             class="search-input"
-            placeholder="{% trans 'Buscar treino' %}"
+            placeholder="{% trans 'Workout name' %}"
             hx-get="{% url 'create_list_workouts' %}"
             hx-trigger="keyup delay:500ms changed"
             hx-target=".list-body"
@@ -41,15 +41,15 @@
             dialog_class="modal-dialog-centered"
         >
             <c-modal.header>
-                <c-modal.title>{% trans 'Excluir treino' %}</c-modal.title>
+                <c-modal.title>{% trans 'Delete workout' %}</c-modal.title>
                 <c-modal.close-button/>
             </c-modal.header>
             <c-modal.body>
-                <div>{% trans 'Voce tem certeza que voce deseja excluir este treino?' %}</div>    
+                <div>{% trans 'Are you sure you want to delete this workout?' %}</div>    
             </c-modal.body>
             <c-modal.footer>
                 <c-button.secondary
-                    text="{% trans 'Cancelar' %}"
+                    text="{% trans 'Cancel' %}"
                     data-bs-dismiss="modal"
                 />
                 <c-button.danger
@@ -63,7 +63,7 @@
                         }
                     "
                     id="delete-workout-btn-id"
-                    text="{% trans 'Excluir treino' %}"
+                    text="{% trans 'Delete' %}"
                     data-bs-dismiss="modal"
                 />
             </c-modal.footer>

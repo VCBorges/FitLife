@@ -2,7 +2,7 @@
 {% load static i18n %}
 
 {% block title %}
-Perfil
+{% trans 'Profile' %}
 {% endblock title %}
 
 {% block css %}
@@ -12,7 +12,7 @@ Perfil
 {% block content %}
 <div class="container-fluid">
     <div class="user-info">
-        <h3>{% trans 'Perfil' %}</h3>
+        <h3>{% trans 'Profile' %}</h3>
         <hr>
         <form
             id="profile-form-id" 
@@ -23,7 +23,7 @@ Perfil
             <div class="name">
                 <div>
                     <c-input.primary
-                        label="{% trans 'Nome' %}"
+                        label="{% trans 'Name' %}"
                         type="text"
                         name="first_name"
                         required="True"
@@ -32,7 +32,7 @@ Perfil
                 </div>
                 <div>
                     <c-input.primary
-                        label="{% trans 'Sobrenome' %}"
+                        label="{% trans 'Last name' %}"
                         type="text"
                         name="last_name"
                         value="{{ user.last_name | default:None }}"
@@ -41,7 +41,7 @@ Perfil
             </div>
             <div>
                 <c-input.primary
-                    label="{% trans 'Data de nascimento' %}"
+                    label="{% trans 'Birth date' %}"
                     type="date"
                     name="birth_date"
                     value="{{ user.birth_date | date:'Y-m-d' | default:None }}"
@@ -53,7 +53,7 @@ Perfil
             <div class="height-weight">
                 <div>
                     <c-input.primary
-                        label="{% trans 'Peso (Kg)' %}"
+                        label="{% trans 'Weight' %} (Kg)"
                         name="weight"
                         type="number"
                         min="0"
@@ -63,7 +63,7 @@ Perfil
 
                 <div>
                     <c-input.primary
-                        label="{% trans 'Altura (cm)' %}"
+                        label="{% trans 'Height' %} (cm)"
                         name="height"
                         step="0.01"
                         type="number"
@@ -74,7 +74,7 @@ Perfil
             </div>
             <hr>
             <c-button.primary
-                text="{% trans 'Atualizar perfil' %}"
+                text="{% trans 'Update profile' %}"
                 type="submit"
                 class="update-profile-btn"
             />

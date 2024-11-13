@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-{% trans 'Criação de treino' %}
+{% trans 'Create Workout' %}
 {% endblock title %}
 
 {% block css %}
@@ -13,11 +13,11 @@
 
 {% block content %}
 <c-submit-workout
-    title="{% trans 'Criar treino' %}"
+    title="{% trans 'Create workout' %}"
     :submit_btn="{
         'formaction': '{% url 'create_list_workouts' %}',
         'formmethod': 'POST',
-        'text': '{% trans 'Salvar treino' %}',
+        'text': '{% trans 'Save' %}',
     }"
 />
 {% endblock content %}

@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-{% trans 'Histórico de treinos' %}
+{% trans 'Workout History' %}
 {% endblock title %}
 
 {% block css %}
@@ -19,13 +19,13 @@
         }"
     >
         <div class="header">
-            <h4>{% trans 'Histórico de treinos' %}</h4>
+            <h4>{% trans 'Workout history' %}</h4>
         </div>
         <hr>
         <div class="filters">
             <div>
                 <c-primary-select
-                    label="{% trans 'Filtrar por treino' %}"
+                    label="{% trans 'Find by workout' %}"
                     name="title"
                     :options="{{ workout_histories_select_options | safe | escape }}"
                     hx-get="{% url 'create_list_workouts_history' %}"
@@ -40,7 +40,7 @@
                     <c-input.primary
                         type="date"
                         name="start_date"
-                        label="{% trans 'Inicio' %}"
+                        label="{% trans 'Start' %}"
                         hx-get="{% url 'create_list_workouts_history' %}"
                         hx-trigger="change"
                         hx-include="[name='title'],[name='end_date']"
@@ -52,7 +52,7 @@
                     <c-input.primary
                         type="date"
                         name="end_date"
-                        label="{% trans 'Fim' %}"
+                        label="{% trans 'End' %}"
                         hx-get="{% url 'create_list_workouts_history' %}"
                         hx-trigger="change"
                         hx-include="[name='title'],[name='start_date']"

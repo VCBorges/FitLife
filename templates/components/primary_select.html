@@ -12,7 +12,7 @@
     id="{{ id }}"
     {{ attrs }}
 >
-    <option selected value="all">{% trans 'Todos' %}</option>
+    <option selected value="all">{% trans 'All' %}</option>
     {% if options %}
         {% for option in options %}
             <option value="{{ option.value }}">{{ option.text }}</option>

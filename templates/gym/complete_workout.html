@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-{% trans 'Completar treino' %}
+{% trans 'Complete Workout' %}
 {% endblock title %}
 
 {% block css %}
@@ -16,7 +16,7 @@
         <h1>{{ workout.title }}</h1>
         <c-primary-button
             type="submit"
-            text="{% trans 'Concluir' %}"
+            text="{% trans 'Finish' %}"
             formaction="{% url 'create_list_workouts_history' %}"
             id="complete-workout-submit-btn"
             value="{{ workout.id }}"
@@ -47,7 +47,7 @@
                 <div class="frequency">
                     <div>
                         <c-input.primary
-                            label="{% trans 'Séries' %}"
+                            label="{% trans 'Sets' %}"
                             name="sets"
                             type="number"
                             required
@@ -57,7 +57,7 @@
                     </div>
                     <div>
                         <c-input.primary
-                            label="{% trans 'Peso (Kg)' %}"
+                            label="{% trans 'Weight' %} (Kg)"
                             name="weight"
                             type="number"
                             required
@@ -67,7 +67,7 @@
                     </div>
                     <div>
                         <c-input.primary
-                            label="{% trans 'Repetições' %}"
+                            label="{% trans 'Reps' %}"
                             name="repetitions"
                             type="number"
                             required
@@ -78,7 +78,7 @@
                 </div>
                 <div>
                     <c-input.primary
-                        label="{% trans 'Descanso (Seg)' %}"
+                        label="{% trans 'Interval' %} (Seg)"
                         name="rest_period"
                         type="number"
                         required

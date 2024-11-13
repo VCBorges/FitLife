@@ -34,18 +34,16 @@ directly, so we don't need to pass them as props.
                 {% endif %}
                 <div>
                     <c-input.primary
-                        label="{% trans 'Título do treino' %}"
+                        label="{% trans 'Workout title' %}"
                         name="title"
-                        placeholder="{% trans 'Título do treino' %}"
                         required
                         value="{{ workout.title | default:None }}"
                     />
                 </div>
                 <div>
                     <c-primary-textarea
-                        label="{% trans 'Descrição do treino' %}"
+                        label="{% trans 'Workout description' %}"
                         name="description"
-                        placeholder="{% trans 'Descrição do treino' %}"
                         value="{{ workout.description | default:None }}"
                         rows="5"
                         cols="50"
@@ -69,7 +67,7 @@ directly, so we don't need to pass them as props.
             <div class="filters">
                 <div>
                     <c-primary-select
-                        label="{% trans 'Músculos' %}"
+                        label="{% trans 'Muscles' %}"
                         name="muscle"
                         id="muscle-select-id"
                         :options="{{ context.muscles | safe | escape }}"
@@ -77,7 +75,7 @@ directly, so we don't need to pass them as props.
                 </div>
                 <div>
                     <c-primary-select
-                        label="{% trans 'Equipamentos' %}"
+                        label="{% trans 'Equipments' %}"
                         name="equipment"
                         id="equipment-select-id"
                         :options="{{ context.equipments | safe | escape }}"
@@ -85,9 +83,8 @@ directly, so we don't need to pass them as props.
                 </div>
                 <div>
                     <c-input.primary
-                        name="{% trans 'Busca' %}"
+                        name="{% trans 'Find exercise' %}"
                         id="search-exercise-input-id"
-                        placeholder="{% trans 'Busque um exercício' %}"
                     />
                 </div>
             </div>

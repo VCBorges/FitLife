@@ -12,13 +12,13 @@
                 {% if workout %}
                 href="{% url 'complete_workout_template' workout.id %}"
                 {% endif %}
-            >{% trans 'Concluir' %}</a>
+            >{% trans 'Start' %}</a>
             <a 
                 class="edit-workout-anchor btn btn-outline-light btn-sm"
                 {% if workout %}
                 href="{% url 'update_workout_template' workout.id %}"
                 {% endif %}
-            >{% trans 'Editar' %}</a>
+            >{% trans 'Edit' %}</a>
             <c-button.danger
                 type="submit"
                 class="delete-workout-btn-modal"
@@ -28,7 +28,7 @@
                     workoutId = $el.closest('.workout-list-item').getAttribute('data-workout-id');
                     $nextTick(() => htmx.process(document.body));
                 "
-                text="{% trans 'Excluir' %}"
+                text="{% trans 'Delete' %}"
                 data-bs-toggle="modal" 
                 data-bs-target="#delete-workout-modal-id"
             />

@@ -12,7 +12,7 @@ from apps.core.views import (
     AuthenticatedTemplateView,
     LoggedOutTemplateView,
 )
-from apps.gym import dtos, forms, models, ui
+from apps.gym import dtos, forms, models, selectors
 from apps.gym.services import WorkoutService
 
 
@@ -26,7 +26,7 @@ class HomepageTemplateView(AuthenticatedTemplateView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context['context'] = {
-            'workouts': ui.workouts_list(
+            'workouts': selectors.workouts_list(
                 lookups=dtos.UserWorkoutLookups(user=self.request.user),
                 language=Language.PT,
             ),
@@ -41,13 +41,13 @@ class CreateWorkoutTemplateView(AuthenticatedTemplateView):
         context = super().get_context_data(**kwargs)
         language = Language.PT
         context['context'] = {
-            'muscles': ui.muscles_select_input_options(
+            'muscles': selectors.muscles_select_input_options(
                 language=language,
             ),
-            'equipments': ui.equipments_select_input_options(
+            'equipments': selectors.equipments_select_input_options(
                 language=language,
             ),
-            'exercises': ui.exercises_select_input_options(
+            'exercises': selectors.exercises_select_input_options(
                 language=language,
             ),
         }
@@ -63,18 +63,18 @@ class UpdateWorkoutTemplateView(AuthDetailTemplateView):
         context = super().get_context_data(**kwargs)
         language = Language.PT
         context['context'] = {
-            'muscles': ui.muscles_select_input_options(
+            'muscles': selectors.muscles_select_input_options(
                 language=language,
             ),
-            'equipments': ui.equipments_select_input_options(
+            'equipments': selectors.equipments_select_input_options(
                 language=language,
             ),
-            'exercises': ui.exercises_select_input_options(
+            'exercises': selectors.exercises_select_input_options(
                 language=language,
             ),
         }
         context['workout'] = self.object
-        context['workout_exercises'] = ui.workout_exercises_form_card(
+        context['workout_exercises'] = selectors.workout_exercises_form_card(
             workout=self.object,
             language=language,
         )
@@ -90,7 +90,7 @@ class CompleteWorkoutTemplateView(AuthDetailTemplateView):
         context = super().get_context_data(**kwargs)
         language = Language.PT
         context['workout'] = self.object
-        context['workout_exercises'] = ui.workout_exercises_form_card(
+        context['workout_exercises'] = selectors.workout_exercises_form_card(
             workout=self.object,
             language=language,
         )
@@ -103,12 +103,12 @@ class WorkoutHistoriesTemplateView(AuthenticatedTemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         language = Language.PT
-        context['workout_histories'] = ui.workout_history_list(
+        context['workout_histories'] = selectors.workout_history_list(
             lookups=dtos.UserWorkoutLookups(user=self.request.user),
             language=language,
         )
         context['workout_histories_select_options'] = (
-            ui.workout_history_select_filter_options()
+            selectors.workout_history_select_filter_options()
         )
         return context
 
@@ -137,7 +137,7 @@ class CreateListWorkoutsView(AuthenticatedAPIView):
 
     def get(self, *args, **kwargs) -> dict[str, Any]:
         language = Language.PT
-        workouts = ui.workouts_list(
+        workouts = selectors.workouts_list(
             lookups=dtos.UserWorkoutLookups(
                 user=self.request.user,
                 title__icontains=self.data['query'],
@@ -200,7 +200,7 @@ class CreateListWorkoutHistoriesView(AuthenticatedAPIView):
     def get(self, *args, **kwargs) -> dict[str, Any]:
         language = Language.PT
         data = self.get_cleaned_data(forms.FilterWorkoutHistoriesForm)
-        workout_histories = ui.workout_history_list(
+        workout_histories = selectors.workout_history_list(
             lookups=dtos.UserWorkoutHistoryLookups(
                 user=self.request.user,
                 title=data.get('title'),

@@ -30,7 +30,7 @@
             <div class="frequency">
                 <div class="sets">
                     <c-input.primary
-                        label="{% trans 'Séries' %}"
+                        label="{% trans 'Sets' %}"
                         name="sets"
                         type="number"
                         required
@@ -40,7 +40,7 @@
                 </div>
                 <div class="weight">
                     <c-input.primary
-                        label="{% trans 'Peso (Kg)' %}"
+                        label="{% trans 'Weight' %} (Kg)"
                         name="weight"
                         type="number"
                         required
@@ -50,7 +50,7 @@
                 </div>
                 <div class="reps">
                     <c-input.primary
-                        label="{% trans 'Repetições' %}"
+                        label="{% trans 'Reps' %}"
                         name="repetitions"
                         type="number"
                         required
@@ -61,7 +61,7 @@
             </div>
             <div class="rest">
                 <c-input.primary
-                    label="{% trans 'Descanso (Seg)' %}"
+                    label="{% trans 'Interval' %} (Seg)"
                     name="rest_period"
                     type="number"
                     required
@@ -70,9 +70,9 @@
                 />
             </div>
             <c-primary-textarea
-                label="{% trans 'Notas' %}"
+                label="{% trans 'Notes' %}"
                 name="notes"
-                placeholder="{% trans 'Suas notas sobre o exercício' %}"
+                placeholder="{% trans 'Write here your notes about the exercise' %}"
                 rows="5"
                 cols="50"
                 value="{{ workout_exercise.notes | default:None }}"

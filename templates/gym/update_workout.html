@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-{% trans 'Atualização de Treinos' %}
+{% trans 'Edit Workout' %}
 {% endblock title %}
 
 {% block css %}
@@ -12,11 +12,11 @@
 
 {% block content %}
 <c-submit-workout
-    title="{% trans 'Editar Treino' %}"
+    title="{% trans 'Edit workout' %}"
     :submit_btn="{
         'formaction': '{% url 'update_detail_delete_workouts' workout.pk %}',
         'formmethod': 'PUT',
-        'text': '{% trans 'Salvar treino' %}',
+        'text': '{% trans 'Save' %}',
     }"
 />
 {% endblock content %}

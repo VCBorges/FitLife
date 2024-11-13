@@ -4,7 +4,7 @@
 <div class="workout-history-item">
     <div class="header">
         <div class="title">{{ workout.title }}</div>
-        <div class="completed-at">{% trans 'Concluído em ' %}{{ workout.completed_at  }}</div>
+        <div class="completed-at">{% trans 'Finished in ' %}{{ workout.completed_at  }}</div>
     </div>
     <hr>
     <div class="exercises-list">
@@ -23,8 +23,8 @@
             </div>
             <div class="info">
                 <div class="weight">{{ exercise.weight }} Kg</div>
-                <div class="sets">{{ exercise.sets }} Series</div>
-                <div class="repetitions">{{ exercise.repetitions }} Reps</div>
+                <div class="sets">{{ exercise.sets }} {% trans 'Sets' %}</div>
+                <div class="repetitions">{{ exercise.repetitions }} {% trans 'Reps' %}</div>
                 <!-- <div class="rest">{{ exercise.rest_period }} Min</div> -->
             </div>
         </div>
