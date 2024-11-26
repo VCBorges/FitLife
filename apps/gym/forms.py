@@ -11,7 +11,7 @@ from apps.gym import models
 
 class CreateWorkoutExerciseForm(BaseForm):
     exercise_id = forms.ModelChoiceField(
-        queryset=models.Exercises.objects.all(),
+        queryset=models.Exercise.objects.all(),
         required=True,
     )
     sets = forms.IntegerField(required=False, min_value=0)
@@ -38,7 +38,7 @@ class CreateWorkoutForm(BaseForm):
 
 class UpdateWorkoutExerciseForm(BaseForm):
     workout_exercise_id = forms.ModelChoiceField(
-        queryset=models.WorkoutExercises.objects.all(),
+        queryset=models.WorkoutExercise.objects.all(),
         required=True,
     )
     sets = forms.IntegerField(required=False)
@@ -53,7 +53,7 @@ class UpdateWorkoutExerciseForm(BaseForm):
 
 class DeleteWorkoutExerciseForm(BaseForm):
     workout_exercise_id = forms.ModelChoiceField(
-        queryset=models.WorkoutExercises.objects.all()
+        queryset=models.WorkoutExercise.objects.all()
     )
 
     normalized_fields_mapping = {
@@ -93,7 +93,7 @@ class UpdateWorkoutForm(BaseForm):
 
 class CompleteWorkoutExerciseForm(BaseForm):
     workout_exercise_id = forms.ModelChoiceField(
-        queryset=models.WorkoutExercises.objects.all(),
+        queryset=models.WorkoutExercise.objects.all(),
         required=True,
     )
     is_done = forms.BooleanField(required=False)
@@ -127,7 +127,7 @@ class CompleteWorkoutForm(BaseForm):
 
 class CreateWorkoutHistoryForm(BaseForm):
     workout_id = forms.ModelChoiceField(
-        queryset=models.Workouts.objects.all(),
+        queryset=models.Workout.objects.all(),
         required=True,
     )
     exercises = form_fields.ListField(

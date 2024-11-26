@@ -1,6 +1,6 @@
 from typing import Any
 
-from apps.core.utils import clean_models, set_model_fields
+from apps.core.utils import clean_model, set_model_fields
 from apps.users.models import Users
 
 
@@ -26,7 +26,7 @@ class UserService:
             model=user,
             data=data,
         )
-        clean_models(user)
+        clean_model(user)
         user.save(update_fields=update_fields)
 
     def deactivate_user(self, user: Users) -> None:

@@ -19,8 +19,8 @@ class MusclesLookups(BaseDTO):
 @dataclass(frozen=True, kw_only=True)
 class ExercisesLookups(BaseDTO):
     name: str | None = None
-    primary_muscle: models.MuscleGroups | None = None
-    equipment: models.Equipments | None = None
+    primary_muscle: models.MuscleGroup | None = None
+    equipment: models.Equipment | None = None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -42,7 +42,7 @@ class UserWorkoutLookups(WorkoutLookups):
 
 @dataclass(frozen=True, kw_only=True)
 class UserWorkoutHistoryLookups(UserWorkoutLookups):
-    workout: models.Workouts | None = None
+    workout: models.Workout | None = None
     completed_at: datetime.datetime | None = None
     creator: Users | None = None
     completed_at__range: tuple[datetime.datetime, datetime.datetime] | None = None

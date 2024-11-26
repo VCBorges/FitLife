@@ -14,7 +14,7 @@ class TranslationsSchema(tp.TypedDict):
 
 
 class CreateWorkoutExerciseSchema(tp.TypedDict):
-    exercise: models.Exercises
+    exercise: models.Exercise
     sets: int | None
     repetitions: int | None
     weight: float | None
@@ -22,8 +22,8 @@ class CreateWorkoutExerciseSchema(tp.TypedDict):
 
 
 class UpdateWorkoutExerciseSchema(tp.TypedDict):
-    workout_exercise: models.WorkoutExercises
-    exercise: models.Exercises
+    workout_exercise: models.WorkoutExercise
+    exercise: models.Exercise
     sets: int | None
     repetitions: int | None
     weight: float | None
@@ -32,8 +32,8 @@ class UpdateWorkoutExerciseSchema(tp.TypedDict):
 
 class ExercisesUpdateWorkout(tp.TypedDict, total=False):
     to_create: list[CreateWorkoutExerciseSchema]
-    to_update: list[models.WorkoutExercises]
-    to_delete: list[models.WorkoutExercises]
+    to_update: list[models.WorkoutExercise]
+    to_delete: list[models.WorkoutExercise]
 
 
 class ListWorkoutsHistoryLookups(tp.TypedDict, total=False):
@@ -43,7 +43,7 @@ class ListWorkoutsHistoryLookups(tp.TypedDict, total=False):
 
 
 class CompleteWorkoutExerciseSchema(tp.TypedDict, total=False):
-    workout_exercise: models.WorkoutExercises
+    workout_exercise: models.WorkoutExercise
     repetitions: int
     sets: int
     weight: int

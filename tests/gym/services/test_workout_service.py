@@ -6,7 +6,7 @@ import pytest
 
 
 def workout_exercises_to_complete(
-    workout: models.Workouts,
+    workout: models.Workout,
 ) -> typed.CompleteWorkoutExerciseSchema:
     return {
         'workout_exercise': factories.WorkoutExercisesFactory(workout=workout),
@@ -185,7 +185,7 @@ def test_complete_workout_to_create_a_workout_history_with_the_same_attrs_as_the
 
 @pytest.mark.django_db
 def test_complete_workout_to_create_a_workout_history_exercise():
-    workout: models.Workouts = factories.WorkoutsFactory()
+    workout: models.Workout = factories.WorkoutsFactory()
 
     workout_history = WorkoutService().complete_workout(
         user=workout.user,

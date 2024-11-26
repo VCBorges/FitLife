@@ -13,7 +13,7 @@ translatable_field = factory.Dict(
 
 class MuscleGroupsFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = models.MuscleGroups
+        model = models.MuscleGroup
 
     name = translatable_field
     description = translatable_field
@@ -21,7 +21,7 @@ class MuscleGroupsFactory(factory.django.DjangoModelFactory):
 
 class EquipmentsFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = models.Equipments
+        model = models.Equipment
 
     name = translatable_field
     description = translatable_field
@@ -29,7 +29,7 @@ class EquipmentsFactory(factory.django.DjangoModelFactory):
 
 class ExercisesFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = models.Exercises
+        model = models.Exercise
 
     name = translatable_field
     description = translatable_field
@@ -41,7 +41,7 @@ class ExercisesFactory(factory.django.DjangoModelFactory):
 # FIXME: To have the same user from the workout
 class WorkoutExercisesFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = models.WorkoutExercises
+        model = models.WorkoutExercise
 
     workout = factory.SubFactory('tests.gym.factories.WorkoutsFactory')
     exercise = factory.SubFactory(ExercisesFactory)
@@ -51,7 +51,7 @@ class WorkoutExercisesFactory(factory.django.DjangoModelFactory):
 
 class WorkoutsFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = models.Workouts
+        model = models.Workout
 
     user = factory.SubFactory(UsersFactory)
     title = factory.Faker('word')

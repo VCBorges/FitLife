@@ -45,7 +45,7 @@ def default_translation(*args, **kwargs) -> TranslationsSchema:
 
 
 # TODO: To put it into a try-except block and raise the proper exception
-def clean_models(*models: typed.DjangoModelType) -> None:
+def clean_model(*models: typed.DjangoModelType) -> None:
     for model in models:
         model.full_clean()
 

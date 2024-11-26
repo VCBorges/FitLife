@@ -55,8 +55,8 @@ class CreateWorkoutTemplateView(AuthenticatedTemplateView):
 
 class UpdateWorkoutTemplateView(AuthDetailTemplateView):
     template_name = 'gym/update_workout.html'
-    model = models.Workouts
-    object: models.Workouts
+    model = models.Workout
+    object: models.Workout
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -81,8 +81,8 @@ class UpdateWorkoutTemplateView(AuthDetailTemplateView):
 
 class CompleteWorkoutTemplateView(AuthDetailTemplateView):
     template_name = 'gym/complete_workout.html'
-    model = models.Workouts
-    object: models.Workouts
+    model = models.Workout
+    object: models.Workout
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -148,7 +148,7 @@ class CreateListWorkoutsView(AuthenticatedAPIView):
 
 class UpdateDetailDeleteWorkoutView(AuthenticatedAPIView):
     http_method_names = ['put', 'delete']
-    model = models.Workouts
+    model = models.Workout
 
     def put(self, *args, **kwargs) -> JsonResponse:
         data = self.get_cleaned_data(forms.UpdateWorkoutForm)

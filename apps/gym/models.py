@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from apps.gym.typed import TranslationsSchema
 
 
-class MuscleGroups(BaseModel):
+class MuscleGroup(BaseModel):
     name: TranslationsSchema = models.JSONField(
         _('name'),
         validators=[translated_field_validator],
@@ -35,7 +35,7 @@ class MuscleGroups(BaseModel):
     REPR_FIELDS = ['name']
 
 
-class Equipments(BaseModel):
+class Equipment(BaseModel):
     name: TranslationsSchema = models.JSONField(
         _('name'),
         validators=[translated_field_validator],
@@ -56,7 +56,7 @@ class Equipments(BaseModel):
     REPR_FIELDS = ['name']
 
 
-class Exercises(BaseModel):
+class Exercise(BaseModel):
     name: TranslationsSchema = models.JSONField(
         _('name'),
         validators=[translated_field_validator],
@@ -68,7 +68,7 @@ class Exercises(BaseModel):
         default=default_translation,
     )
     primary_muscle = models.ForeignKey(
-        'gym.MuscleGroups',
+        'gym.MuscleGroup',
         verbose_name=_('primary muscle'),
         on_delete=models.SET_NULL,
         null=True,
@@ -76,7 +76,7 @@ class Exercises(BaseModel):
         related_name='primary_muscle_group',
     )
     secondary_muscle = models.ForeignKey(
-        'gym.MuscleGroups',
+        'gym.MuscleGroup',
         verbose_name=_('secondary muscle'),
         on_delete=models.SET_NULL,
         null=True,
@@ -84,7 +84,7 @@ class Exercises(BaseModel):
         related_name='secondary_muscle_group',
     )
     equipment = models.ForeignKey(
-        'gym.Equipments',
+        'gym.Equipment',
         verbose_name=_('equipment'),
         on_delete=models.SET_NULL,
         null=True,
@@ -100,7 +100,7 @@ class Exercises(BaseModel):
     REPR_FIELDS = ['name']
 
 
-class Workouts(BaseModel):
+class Workout(BaseModel):
     title = models.CharField(_('title'), max_length=255)
     description = models.TextField(_('description'), null=True, blank=True)  # ruff: noqa
     user: Users = models.ForeignKey(
@@ -128,8 +128,65 @@ class Workouts(BaseModel):
     REPR_FIELDS = ['title']
 
     @property
-    def workout_exercises(self) -> models.BaseManager[WorkoutExercises]:
+    def workout_exercises(self) -> models.BaseManager[WorkoutExercise]:
         return self.workout_exercises
+
+
+class WorkoutExercise(BaseModel):
+    user: Users = models.ForeignKey(
+        'users.Users',
+        verbose_name=_('user'),
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    workout: Workout = models.ForeignKey(
+        'gym.Workout',
+        verbose_name=_('workout'),
+        on_delete=models.SET_NULL,
+        null=True,
+        editable=True,
+    )
+    exercise: Exercise = models.ForeignKey(
+        'gym.Exercise',
+        verbose_name=_('exercise'),
+        on_delete=models.SET_NULL,
+        null=True,
+        editable=True,
+    )
+    notes = models.TextField(_('notes'), null=True, blank=True)  # ruff: noqa
+    repetitions = models.PositiveIntegerField(_('repetitions'), null=True, default=0)
+    sets = models.PositiveIntegerField(_('sets'), null=True, default=0)  # series
+    weight = models.IntegerField(_('weight'), null=True, default=0)
+    rest_period = models.IntegerField(_('rest period'), null=True, default=0)
+
+    class Meta:
+        db_table = 'workout_exercises'
+        verbose_name = 'Workout Exercise'
+        verbose_name_plural = 'Workouts Exercises'
+        default_related_name = 'workout_exercises'
+
+
+class WorkoutExerciseSets(BaseModel):
+    user: Users = models.ForeignKey(
+        'users.Users',
+        verbose_name=_('user'),
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    workout_exercise: WorkoutExercise = models.ForeignKey(
+        'gym.WorkoutExercise',
+        verbose_name=_('workout exercise'),
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    repetitions = models.PositiveIntegerField(_('repetitions'), null=True, default=0)
+    weight = models.PositiveIntegerField(_('weight'), null=True, default=0)
+
+    class Meta:
+        db_table = 'workout_exercise_sets'
+        verbose_name = 'Workout Exercise Set'
+        verbose_name_plural = 'Workout Exercise Sets'
+        default_related_name = 'workout_exercise_sets'
 
 
 # TODO: Fix the plural name to <Histories>
@@ -142,8 +199,8 @@ class WorkoutHistory(BaseModel):
         blank=True,
         help_text=_('The user who the completed workout'),
     )
-    workout: Workouts = models.ForeignKey(
-        'gym.Workouts',
+    workout: Workout = models.ForeignKey(
+        'gym.Workout',
         verbose_name=_('workout'),
         on_delete=models.SET_NULL,
         null=True,
@@ -178,40 +235,6 @@ class WorkoutHistory(BaseModel):
         return self.workout_history_exercises
 
 
-class WorkoutExercises(BaseModel):
-    user: Users = models.ForeignKey(
-        'users.Users',
-        verbose_name=_('user'),
-        on_delete=models.SET_NULL,
-        null=True,
-    )
-    workout: Workouts = models.ForeignKey(
-        'gym.Workouts',
-        verbose_name=_('workout'),
-        on_delete=models.SET_NULL,
-        null=True,
-        editable=True,
-    )
-    exercise: Exercises = models.ForeignKey(
-        'gym.Exercises',
-        verbose_name=_('exercise'),
-        on_delete=models.SET_NULL,
-        null=True,
-        editable=True,
-    )
-    notes = models.TextField(_('notes'), null=True, blank=True)  # ruff: noqa
-    repetitions = models.PositiveIntegerField(_('repetitions'), null=True, default=0)
-    sets = models.PositiveIntegerField(_('sets'), null=True, default=0)  # series
-    weight = models.IntegerField(_('weight'), null=True, default=0)
-    rest_period = models.IntegerField(_('rest period'), null=True, default=0)
-
-    class Meta:
-        db_table = 'workout_exercises'
-        verbose_name = 'Workout Exercise'
-        verbose_name_plural = 'Workouts Exercises'
-        default_related_name = 'workout_exercises'
-
-
 class WorkoutHistoryExercises(BaseModel):
     workout_history: WorkoutHistory = models.ForeignKey(
         'gym.WorkoutHistory',
@@ -220,8 +243,8 @@ class WorkoutHistoryExercises(BaseModel):
         null=True,
         blank=True,
     )
-    exercise: Exercises = models.ForeignKey(
-        'gym.Exercises',
+    exercise: Exercise = models.ForeignKey(
+        'gym.Exercise',
         verbose_name=_('exercise'),
         on_delete=models.SET_NULL,
         null=True,
@@ -246,24 +269,26 @@ class WorkoutHistoryExercises(BaseModel):
         verbose_name_plural = 'Workout History Exercises'
         default_related_name = 'workout_history_exercises'
 
-    # class GymMember(BaseModel):
-    ...
 
-    # class GymInstructor(BaseModel):
-    ...
-    # user = models.ForeignKey(
-    #     'users.Users',
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True,
-    # )
-    # gym = models.ForeignKey(
-    #     'users.Gym',
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True,
-    # )
-    # instructor_type = models.CharField(max_length=255)
+class WorkoutHistorySets(BaseModel):
+    user = models.ForeignKey(
+        'users.Users',
+        verbose_name=_('user'),
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    workout_history_exercise = models.ForeignKey(
+        'gym.WorkoutHistoryExercises',
+        verbose_name=_('workout history exercise'),
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+    repetitions = models.PositiveIntegerField(_('repetitions'), null=True, default=0)
+    weight = models.PositiveIntegerField(_('weight'), null=True, default=0)
+    is_done = models.BooleanField(_('is completed'), default=False)
 
-    # class Meta:
-    #
+    class Meta:
+        db_table = 'workout_history_sets'
+        verbose_name = 'Workout History Set'
+        verbose_name_plural = 'Workout History Sets'
+        default_related_name = 'workout_history_sets'

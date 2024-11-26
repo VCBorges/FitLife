@@ -19,7 +19,7 @@ def muscles_select_input_options(
     lookups: dtos.MusclesLookups = dtos.MusclesLookups(),
     order_by: list[str] | None = None,
 ) -> list[SelectOptionsSchema]:
-    queryset = models.MuscleGroups.objects.filter(**lookups.as_dict())
+    queryset = models.MuscleGroup.objects.filter(**lookups.as_dict())
     if order_by:
         queryset = queryset.order_by(*order_by)
     return model_select_input_options(
@@ -36,7 +36,7 @@ def exercises_select_input_options(
     order_by: list[str] | None = None,
 ) -> list[SelectOptionsSchema]:
     queryset = (
-        models.Exercises.objects.select_related(
+        models.Exercise.objects.select_related(
             'primary_muscle',
             'equipment',
         )
@@ -86,7 +86,7 @@ def equipments_select_input_options(
     lookups: dtos.EquipmentsLookups = dtos.EquipmentsLookups(),
     order_by: list[str] | None = None,
 ) -> list[SelectOptionsSchema]:
-    queryset = models.Equipments.objects.filter(**lookups.as_dict()).order_by(
+    queryset = models.Equipment.objects.filter(**lookups.as_dict()).order_by(
         *order_by or []
     )
     return model_select_input_options(
@@ -98,7 +98,7 @@ def equipments_select_input_options(
 
 def workout_exercises_form_card(
     *,
-    workout: models.Workouts,
+    workout: models.Workout,
     language: Language,
 ) -> QuerySet[str, str | int]:
     """
@@ -171,7 +171,7 @@ def workouts_list(
     order_by: list[str] | None = None,
 ) -> dict[str, Any]:
     exercises_qs = (
-        models.WorkoutExercises.objects.select_related(
+        models.WorkoutExercise.objects.select_related(
             'exercise',
             'exercise__primary_muscle',
         )
@@ -202,7 +202,7 @@ def workouts_list(
         )
     )
     workouts_qs = (
-        models.Workouts.objects.prefetch_related(
+        models.Workout.objects.prefetch_related(
             Prefetch(
                 'workout_exercises',
                 queryset=exercises_qs,
@@ -219,7 +219,7 @@ def workouts_list(
     )
     paginator = Paginator(workouts_qs, page_size)
     result_page = paginator.get_page(page_number)
-    page_qs: QuerySet[models.Workouts] = result_page.object_list
+    page_qs: QuerySet[models.Workout] = result_page.object_list
     ret = dtos.PaginatedData(
         total_pages=paginator.num_pages,
         current_page=page_number,
