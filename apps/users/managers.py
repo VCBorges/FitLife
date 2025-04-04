@@ -8,6 +8,8 @@ from django.db.utils import IntegrityError
 from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from apps.core.utils import clean_model
+
 from allauth.account.models import EmailAddress
 
 if TYPE_CHECKING:
@@ -30,6 +32,7 @@ class UsersManager(BaseUserManager):
         email = self.normalize_email(email).lower()
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
+        clean_model(user)
         self._try_save_user(user)
         self._setup_user_email(user)
         return user

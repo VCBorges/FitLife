@@ -32,7 +32,7 @@ class StrictCharField(forms.CharField):
         return cleaned_data
 
 
-class NestedFormField(forms.JSONField):
+class FormField(forms.JSONField):
     empty_values = [None, {}]
 
     def __init__(self, form_class: type[BaseFormType], *args, **kwargs):

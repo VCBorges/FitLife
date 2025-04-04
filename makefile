@@ -35,3 +35,8 @@ rundb:
 .PHONY: shell
 shell:
 	python manage.py shell_plus
+
+
+.PHONY: compilemessages
+compilemessages:
+	python manage.py compilemessages

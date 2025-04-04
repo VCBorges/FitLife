@@ -16,7 +16,7 @@ class SelectOptionsSchema(TypedDict):
     text: str
 
 
-def model_select_input_options(
+def queryset_to_select_options(
     *,
     queryset: QuerySet,
     value_field: str,

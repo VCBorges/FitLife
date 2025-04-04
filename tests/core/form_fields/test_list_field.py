@@ -54,7 +54,7 @@ def test_ListField_with_NestedFormField_children_field_to_return_cleaned_data():
     class MockForm(BaseForm):
         field1 = ff.StrictCharField()
 
-    field = ff.ListField(children_field=ff.NestedFormField(form_class=MockForm))
+    field = ff.ListField(children_field=ff.FormField(form_class=MockForm))
     data = [{'field1': '1'}, {'field1': '2'}, {'field1': '3'}]
 
     assert field.clean(data) == data
@@ -64,7 +64,7 @@ def test_ListField_with_NestedFormField_children_field_to_raise_error_if_data_is
     class MockForm(BaseForm):
         field1 = ff.StrictCharField()
 
-    field = ff.ListField(children_field=ff.NestedFormField(form_class=MockForm))
+    field = ff.ListField(children_field=ff.FormField(form_class=MockForm))
     data = [{'field1': '1'}, {'field1': None}, {'field1': '  '}]
 
     try:
@@ -78,7 +78,7 @@ def test_with_NestedFormField_children_field_to_raise_error_if_data_is_empty_lis
         field1 = ff.StrictCharField()
 
     field = ff.ListField(
-        children_field=ff.NestedFormField(form_class=MockForm), required=True
+        children_field=ff.FormField(form_class=MockForm), required=True
     )
     data = []
 

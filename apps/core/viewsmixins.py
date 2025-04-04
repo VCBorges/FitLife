@@ -53,7 +53,6 @@ class BaseAPIView(BaseView):
         if self.request.body == b'':
             return {}
         try:
-            print(f'{self.request.body = }')
             parsed = json.loads(self.request.body.decode('utf-8'))
             return parsed
         except json.JSONDecodeError as error:

@@ -36,9 +36,6 @@ class UserLoginTemplateView(LoggedOutTemplateView):
 class UserProfileTemplateView(AuthenticatedTemplateView):
     template_name = 'users/profile.html'
 
-    # def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-    #     return super().get(request, *args, **kwargs)
-
 
 class UserSignUpTemplateView(LoggedOutTemplateView):
     template_name = 'users/signup.html'

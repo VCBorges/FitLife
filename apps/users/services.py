@@ -1,6 +1,6 @@
 from typing import Any
 
-from apps.core.utils import clean_model, set_model_fields
+from apps.core.utils import clean_model, update_model_fields
 from apps.users.models import Users
 
 
@@ -22,7 +22,7 @@ class UserService:
             'height',
             'weight',
         ]
-        set_model_fields(
+        update_model_fields(
             model=user,
             data=data,
         )

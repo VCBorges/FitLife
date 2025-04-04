@@ -114,8 +114,8 @@ class Workout(BaseModel):
         'users.Users',
         verbose_name=_('creator'),
         on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
+        null=True,  # TODO: Cannot be null
+        blank=True,  # TODO: Cannot be blank
         related_name='creator',
     )
 

@@ -29,7 +29,7 @@ class CreateWorkoutForm(BaseForm):
     title = forms.CharField(max_length=255, required=True)
     description = forms.CharField(required=False)
     exercises = form_fields.ListField(
-        children_field=form_fields.NestedFormField(
+        children_field=form_fields.FormField(
             form_class=CreateWorkoutExerciseForm,
         ),
         required=False,
@@ -63,19 +63,19 @@ class DeleteWorkoutExerciseForm(BaseForm):
 
 class WorkoutExercisesUpdateWorkoutForm(BaseForm):
     to_create = form_fields.ListField(
-        children_field=form_fields.NestedFormField(
+        children_field=form_fields.FormField(
             form_class=CreateWorkoutExerciseForm,
         ),
         required=False,
     )
     to_update = form_fields.ListField(
-        children_field=form_fields.NestedFormField(
+        children_field=form_fields.FormField(
             form_class=UpdateWorkoutExerciseForm,
         ),
         required=False,
     )
     to_delete = form_fields.ListField(
-        children_field=form_fields.NestedFormField(
+        children_field=form_fields.FormField(
             form_class=DeleteWorkoutExerciseForm,
         ),
         required=False,
@@ -85,7 +85,7 @@ class WorkoutExercisesUpdateWorkoutForm(BaseForm):
 class UpdateWorkoutForm(BaseForm):
     title = forms.CharField(max_length=255)
     description = forms.CharField(required=False)
-    exercises = form_fields.NestedFormField(
+    exercises = form_fields.FormField(
         form_class=WorkoutExercisesUpdateWorkoutForm,
         required=False,
     )
@@ -109,7 +109,7 @@ class CompleteWorkoutExerciseForm(BaseForm):
 
 class CompleteWorkoutForm(BaseForm):
     exercises = form_fields.ListField(
-        children_field=form_fields.NestedFormField(
+        children_field=form_fields.FormField(
             form_class=CompleteWorkoutExerciseForm,
         ),
         required=True,
@@ -131,7 +131,7 @@ class CreateWorkoutHistoryForm(BaseForm):
         required=True,
     )
     exercises = form_fields.ListField(
-        children_field=form_fields.NestedFormField(
+        children_field=form_fields.FormField(
             form_class=CompleteWorkoutExerciseForm,
         ),
         required=True,

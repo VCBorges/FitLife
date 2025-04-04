@@ -8,7 +8,7 @@ from django.db.models.functions import Cast, Concat, Trunc
 from django.db.models.query import QuerySet
 
 from apps.core.constants import Language
-from apps.core.selectors import SelectOptionsSchema, model_select_input_options
+from apps.core.selectors import SelectOptionsSchema, queryset_to_select_options
 from apps.core.utils import formatted_date
 from apps.gym import dtos, models
 
@@ -22,7 +22,7 @@ def muscles_select_input_options(
     queryset = models.MuscleGroup.objects.filter(**lookups.as_dict())
     if order_by:
         queryset = queryset.order_by(*order_by)
-    return model_select_input_options(
+    return queryset_to_select_options(
         queryset=queryset,
         value_field='id',
         text_field=f'name__{language}',
@@ -69,7 +69,7 @@ def exercises_select_input_options(
         )
         .order_by(*order_by or [])
     )
-    return model_select_input_options(
+    return queryset_to_select_options(
         queryset=queryset,
         value_field='id',
         text_field='text_field',
@@ -86,10 +86,12 @@ def equipments_select_input_options(
     lookups: dtos.EquipmentsLookups = dtos.EquipmentsLookups(),
     order_by: list[str] | None = None,
 ) -> list[SelectOptionsSchema]:
-    queryset = models.Equipment.objects.filter(**lookups.as_dict()).order_by(
-        *order_by or []
-    )
-    return model_select_input_options(
+    queryset = (
+        models.Equipment.objects
+        .filter(**lookups.as_dict())
+        .order_by(*order_by or [])
+    )  # fmt: skip
+    return queryset_to_select_options(
         queryset=queryset,
         value_field='id',
         text_field=f'name__{language}',
@@ -254,7 +256,6 @@ def workout_history_list(
     page_size: int = 50,
     order_by: list[str] | None = None,
 ) -> dict[str, Any]:
-    print(f'{lookups.as_dict() = }')
     exercises_qs = (
         models.WorkoutHistoryExercises.objects.select_related(
             'exercise',
@@ -352,7 +353,7 @@ def workout_history_select_filter_options() -> list[SelectOptionsSchema]:
         .order_by('title')
         .distinct()
     )
-    return model_select_input_options(
+    return queryset_to_select_options(
         queryset=queryset,
         value_field='title',
         text_field='title',

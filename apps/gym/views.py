@@ -118,7 +118,7 @@ class CreateListWorkoutsView(AuthenticatedAPIView):
     def post(self, *args, **kwargs) -> JsonResponse:
         data = self.get_cleaned_data(forms.CreateWorkoutForm)
         workout = WorkoutService().create_workout(
-            user=self.request.user,
+            creator=self.request.user,
             title=data['title'],
             description=data.get('description'),
             exercises=data.get('exercises'),

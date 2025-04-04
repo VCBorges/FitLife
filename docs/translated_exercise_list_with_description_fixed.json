@@ -1,0 +1,5198 @@
+[
+    {
+        "name": {
+            "en": "Bench Press",
+            "pt": "Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Press",
+            "pt": "Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bent Over Row",
+            "pt": "Remada Curvada"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A back exercise that involves pulling a weight towards your torso while bent over.",
+            "pt": "Um exercício de costas que envolve puxar um peso em direção ao tronco enquanto está inclinado."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicep Curl",
+            "pt": "Rosca Bíceps"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "An isolation exercise that targets the biceps using a barbell, dumbbell, or cable.",
+            "pt": "Um exercício de isolamento que trabalha os bíceps usando uma barra, halteres ou cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Cable Fly Crossovers",
+            "pt": "Cable Fly Crossovers"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Deadlift",
+            "pt": "Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Face Pull",
+            "pt": "Puxada Face"
+        },
+        "muscle": "Shoulders",
+        "equipment": null,
+        "description": {
+            "en": "An exercise that targets the rear delts and upper back using a cable machine.",
+            "pt": "Um exercício que trabalha os deltoides traseiros e a parte superior das costas usando uma máquina de cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Hammer Curl",
+            "pt": "Rosca Martelo"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A variation of the bicep curl that targets the brachialis muscle using dumbbells.",
+            "pt": "Uma variação da rosca bíceps que trabalha o músculo braquial usando halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Incline Bench Press",
+            "pt": "Incline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Lat Pulldown",
+            "pt": "Puxada Lat"
+        },
+        "muscle": "Lats",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Raise",
+            "pt": "Lateral Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Leg Extension",
+            "pt": "Extensão de Pernas"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Leg Press",
+            "pt": "Leg Press"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A lower body exercise that targets the quadriceps by pressing a weight with your legs.",
+            "pt": "Um exercício de parte inferior do corpo que trabalha os quadríceps ao pressionar um peso com as pernas."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Leg Curl",
+            "pt": "Flexão de Pernas"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Cable Row - V Grip",
+            "pt": "Remada Sentada - V Grip"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Leg Curl",
+            "pt": "Seated Leg Curl"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shoulder Press",
+            "pt": "Desenvolvimento de Ombros"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Pushdown",
+            "pt": "Puxada Tríceps"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "An isolation exercise that targets the triceps using a cable machine.",
+            "pt": "Um exercício de isolamento que trabalha os tríceps usando uma máquina de cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Rope Pushdown",
+            "pt": "Triceps Rope Pushdown"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "21s Bicep Curl",
+            "pt": "21s Rosca Bíceps"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "An isolation exercise that targets the biceps using a barbell, dumbbell, or cable.",
+            "pt": "Um exercício de isolamento que trabalha os bíceps usando uma barra, halteres ou cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Ab Scissors",
+            "pt": "Ab Scissors"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Ab Wheel",
+            "pt": "Ab Wheel"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Aerobics",
+            "pt": "Aerobics"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Air Bike",
+            "pt": "Air Bike"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Arnold Press",
+            "pt": "Desenvolvimento Arnold"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Around The World",
+            "pt": "Around The World"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Assisted Pistol Squats",
+            "pt": "Assisted Pistol Agachamentos"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Back Extension",
+            "pt": "Extensão Lombar"
+        },
+        "muscle": "Lower Back",
+        "equipment": "Hyperextension",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Back Extension",
+            "pt": "Extensão Lombar"
+        },
+        "muscle": "Lower Back",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Back Extension",
+            "pt": "Extensão Lombar"
+        },
+        "muscle": "Lower Back",
+        "equipment": "Weighted Hyperextension",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Ball Slams",
+            "pt": "Batida de Bola"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Band Pullaparts",
+            "pt": "Band Pullaparts"
+        },
+        "muscle": "Shoulders",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Battle Ropes",
+            "pt": "Cordas de Batalha"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Behind the Back Bicep Wrist Curl",
+            "pt": "Behind the Back Bicep Wrist Curl"
+        },
+        "muscle": "Forearms",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Dip",
+            "pt": "Bench Dip"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Press",
+            "pt": "Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Press",
+            "pt": "Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Cable",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Press",
+            "pt": "Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Press",
+            "pt": "Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Smith Machine",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Press - Close Grip",
+            "pt": "Supino - Close Grip"
+        },
+        "muscle": "Triceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bench Press - Wide Grip",
+            "pt": "Supino - Wide Grip"
+        },
+        "muscle": "Chest",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Bent Over Row",
+            "pt": "Remada Curvada"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Band",
+        "description": {
+            "en": "A back exercise that involves pulling a weight towards your torso while bent over.",
+            "pt": "Um exercício de costas que envolve puxar um peso em direção ao tronco enquanto está inclinado."
+        }
+    },
+    {
+        "name": {
+            "en": "Bent Over Row",
+            "pt": "Remada Curvada"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A back exercise that involves pulling a weight towards your torso while bent over.",
+            "pt": "Um exercício de costas que envolve puxar um peso em direção ao tronco enquanto está inclinado."
+        }
+    },
+    {
+        "name": {
+            "en": "Bent Over Row",
+            "pt": "Remada Curvada"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A back exercise that involves pulling a weight towards your torso while bent over.",
+            "pt": "Um exercício de costas que envolve puxar um peso em direção ao tronco enquanto está inclinado."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicep Curl",
+            "pt": "Rosca Bíceps"
+        },
+        "muscle": "Biceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "An isolation exercise that targets the biceps using a barbell, dumbbell, or cable.",
+            "pt": "Um exercício de isolamento que trabalha os bíceps usando uma barra, halteres ou cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicep Curl",
+            "pt": "Rosca Bíceps"
+        },
+        "muscle": "Biceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "An isolation exercise that targets the biceps using a barbell, dumbbell, or cable.",
+            "pt": "Um exercício de isolamento que trabalha os bíceps usando uma barra, halteres ou cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicep Curl",
+            "pt": "Rosca Bíceps"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "An isolation exercise that targets the biceps using a barbell, dumbbell, or cable.",
+            "pt": "Um exercício de isolamento que trabalha os bíceps usando uma barra, halteres ou cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicep Curl",
+            "pt": "Rosca Bíceps"
+        },
+        "muscle": "Biceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "An isolation exercise that targets the biceps using a barbell, dumbbell, or cable.",
+            "pt": "Um exercício de isolamento que trabalha os bíceps usando uma barra, halteres ou cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicep Curl",
+            "pt": "Rosca Bíceps"
+        },
+        "muscle": "Biceps",
+        "equipment": "Suspension",
+        "description": {
+            "en": "An isolation exercise that targets the biceps using a barbell, dumbbell, or cable.",
+            "pt": "Um exercício de isolamento que trabalha os bíceps usando uma barra, halteres ou cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicycle Crunch",
+            "pt": "Bicycle Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Bicycle Crunch Raised Legs",
+            "pt": "Bicycle Crunch Raised Legs"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Bird Dog",
+            "pt": "Bird Dog"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Box Jump",
+            "pt": "Box Jump"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Box Squat",
+            "pt": "Box Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Boxing",
+            "pt": "Boxing"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Bulgarian Split Squat",
+            "pt": "Bulgarian Split Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Burpee",
+            "pt": "Burpee"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Burpee Over the Bar",
+            "pt": "Burpee Over the Bar"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Butterfly",
+            "pt": "Butterfly"
+        },
+        "muscle": "Chest",
+        "equipment": "Pec Deck",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cable Core Palloff Press",
+            "pt": "Cable Core Palloff Press"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cable Crunch",
+            "pt": "Cable Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cable Fly Crossovers",
+            "pt": "Cable Fly Crossovers"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cable Pull Through",
+            "pt": "Cable Pull Through"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cable Twist",
+            "pt": "Cable Twist"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Down to up",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cable Twist",
+            "pt": "Cable Twist"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Up to down",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Calf Extension",
+            "pt": "Calf Extension"
+        },
+        "muscle": "Calves",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Calf Press",
+            "pt": "Calf Press"
+        },
+        "muscle": "Calves",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Dip",
+            "pt": "Chest Dip"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Dip",
+            "pt": "Chest Dip"
+        },
+        "muscle": "Chest",
+        "equipment": "Assisted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Dip",
+            "pt": "Chest Dip"
+        },
+        "muscle": "Chest",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Fly",
+            "pt": "Chest Fly"
+        },
+        "muscle": "Chest",
+        "equipment": "Band",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Fly",
+            "pt": "Chest Fly"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Fly",
+            "pt": "Chest Fly"
+        },
+        "muscle": "Chest",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Fly",
+            "pt": "Chest Fly"
+        },
+        "muscle": "Chest",
+        "equipment": "Suspension",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Press",
+            "pt": "Chest Press"
+        },
+        "muscle": "Chest",
+        "equipment": "Band",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Press",
+            "pt": "Chest Press"
+        },
+        "muscle": "Chest",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Supported Incline Row",
+            "pt": "Chest Supported Incline Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Supported Reverse Fly",
+            "pt": "Chest Supported Reverse Fly"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chest Supported Y Raise",
+            "pt": "Chest Supported Y Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chin Up",
+            "pt": "Chin Up"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chin Up",
+            "pt": "Chin Up"
+        },
+        "muscle": "Lats",
+        "equipment": "Assisted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Chin Up",
+            "pt": "Chin Up"
+        },
+        "muscle": "Lats",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Clamshell",
+            "pt": "Clamshell"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Clap Push Ups",
+            "pt": "Clap Push Ups"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Clean",
+            "pt": "Clean"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Clean and Jerk",
+            "pt": "Clean and Jerk"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Clean and Press",
+            "pt": "Clean and Press"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Clean Pull",
+            "pt": "Clean Pull"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Climbing",
+            "pt": "Climbing"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Concentration Curl",
+            "pt": "Concentration Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cross Body Hammer Curl",
+            "pt": "Cross Body Rosca Martelo"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A variation of the bicep curl that targets the brachialis muscle using dumbbells.",
+            "pt": "Uma variação da rosca bíceps que trabalha o músculo braquial usando halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Crunch",
+            "pt": "Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Crunch",
+            "pt": "Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Crunch",
+            "pt": "Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Curtsy Lunge",
+            "pt": "Curtsy Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Cycling",
+            "pt": "Cycling"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dead Bug",
+            "pt": "Dead Bug"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dead Hang",
+            "pt": "Dead Hang"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Deadlift",
+            "pt": "Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Band",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Deadlift",
+            "pt": "Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Deadlift",
+            "pt": "Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Deadlift",
+            "pt": "Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Smith Machine",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Deadlift",
+            "pt": "Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Trap bar",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Deadlift High Pull",
+            "pt": "Levantamento Terra High Pull"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Bench Press",
+            "pt": "Decline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Bench Press",
+            "pt": "Decline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Bench Press",
+            "pt": "Decline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Machine",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Bench Press",
+            "pt": "Decline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Smith Machine",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Chest Fly",
+            "pt": "Decline Chest Fly"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Crunch",
+            "pt": "Decline Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Crunch",
+            "pt": "Decline Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Decline Push Up",
+            "pt": "Decline Push Up"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Diamond Push Up",
+            "pt": "Diamond Push Up"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Downward Dog",
+            "pt": "Downward Dog"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Drag Curl",
+            "pt": "Drag Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dragon Flag",
+            "pt": "Dragon Flag"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dragonfly",
+            "pt": "Dragonfly"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dumbbell Row",
+            "pt": "Halteres Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dumbbell Snatch",
+            "pt": "Halteres Snatch"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dumbbell Squeeze Press",
+            "pt": "Halteres Squeeze Press"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Dumbbell Step Up",
+            "pt": "Halteres Step Up"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Elbow to Knee",
+            "pt": "Elbow to Knee"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Elliptical Trainer",
+            "pt": "Elliptical Trainer"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "EZ Bar Biceps Curl",
+            "pt": "EZ Bar Biceps Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Face Pull",
+            "pt": "Puxada Face"
+        },
+        "muscle": "Shoulders",
+        "equipment": null,
+        "description": {
+            "en": "An exercise that targets the rear delts and upper back using a cable machine.",
+            "pt": "Um exercício que trabalha os deltoides traseiros e a parte superior das costas usando uma máquina de cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Farmers Walk",
+            "pt": "Farmers Walk"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Fire Hydrants",
+            "pt": "Fire Hydrants"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Floor Press",
+            "pt": "Floor Press"
+        },
+        "muscle": "Chest",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Floor Press",
+            "pt": "Floor Press"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Floor Triceps Dip",
+            "pt": "Floor Triceps Dip"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Flutter Kicks",
+            "pt": "Flutter Kicks"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Frog Jumps",
+            "pt": "Frog Jumps"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Frog Pumps",
+            "pt": "Frog Pumps"
+        },
+        "muscle": "Glutes",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Lever Hold",
+            "pt": "Front Lever Hold"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Lever Raise",
+            "pt": "Front Lever Raise"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Raise",
+            "pt": "Front Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Band",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Raise",
+            "pt": "Front Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Raise",
+            "pt": "Front Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Raise",
+            "pt": "Front Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Raise",
+            "pt": "Front Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Suspension",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Front Squat",
+            "pt": "Front Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Full Squat",
+            "pt": "Full Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Glute Bridge",
+            "pt": "Glute Bridge"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Glute Ham Raise",
+            "pt": "Glute Ham Raise"
+        },
+        "muscle": "Hamstrings",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Glute Kickback",
+            "pt": "Glute Kickback"
+        },
+        "muscle": "Glutes",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Glute Kickback on Floor",
+            "pt": "Glute Kickback on Floor"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Goblet Squat",
+            "pt": "Goblet Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Good Morning",
+            "pt": "Good Morning"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Gorilla Row",
+            "pt": "Gorilla Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Kettlebell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hack Squat",
+            "pt": "Hack Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hack Squat",
+            "pt": "Hack Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hammer Curl",
+            "pt": "Rosca Martelo"
+        },
+        "muscle": "Biceps",
+        "equipment": "Band",
+        "description": {
+            "en": "A variation of the bicep curl that targets the brachialis muscle using dumbbells.",
+            "pt": "Uma variação da rosca bíceps que trabalha o músculo braquial usando halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Hammer Curl",
+            "pt": "Rosca Martelo"
+        },
+        "muscle": "Biceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "A variation of the bicep curl that targets the brachialis muscle using dumbbells.",
+            "pt": "Uma variação da rosca bíceps que trabalha o músculo braquial usando halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Hammer Curl",
+            "pt": "Rosca Martelo"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A variation of the bicep curl that targets the brachialis muscle using dumbbells.",
+            "pt": "Uma variação da rosca bíceps que trabalha o músculo braquial usando halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Handstand Hold",
+            "pt": "Handstand Hold"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Handstand Push Up",
+            "pt": "Handstand Push Up"
+        },
+        "muscle": "Shoulders",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hang Clean",
+            "pt": "Hang Clean"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hang Snatch",
+            "pt": "Hang Snatch"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hanging Knee Raise",
+            "pt": "Hanging Knee Raise"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hanging Leg Raise",
+            "pt": "Hanging Leg Raise"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Heel Taps",
+            "pt": "Heel Taps"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hex Press",
+            "pt": "Hex Press"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "High Knee Skips",
+            "pt": "High Knee Skips"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "High Knees",
+            "pt": "High Knees"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "HIIT",
+            "pt": "HIIT"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hiking",
+            "pt": "Hiking"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hip Abduction",
+            "pt": "Hip Abduction"
+        },
+        "muscle": "Abductors",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hip Adduction",
+            "pt": "Hip Adduction"
+        },
+        "muscle": "Adductors",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hip Thrust",
+            "pt": "Hip Thrust"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hip Thrust",
+            "pt": "Hip Thrust"
+        },
+        "muscle": "Glutes",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hip Thrust",
+            "pt": "Hip Thrust"
+        },
+        "muscle": "Glutes",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Hollow Rock",
+            "pt": "Hollow Rock"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Incline Bench Press",
+            "pt": "Incline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Incline Bench Press",
+            "pt": "Incline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Incline Bench Press",
+            "pt": "Incline Supino"
+        },
+        "muscle": "Chest",
+        "equipment": "Smith Machine",
+        "description": {
+            "en": "A compound exercise that targets the chest, shoulders, and triceps using a barbell or dumbbells.",
+            "pt": "Um exercício composto que trabalha o peito, ombros e tríceps usando uma barra ou halteres."
+        }
+    },
+    {
+        "name": {
+            "en": "Incline Chest Fly",
+            "pt": "Incline Chest Fly"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Incline Chest Press",
+            "pt": "Incline Chest Press"
+        },
+        "muscle": "Chest",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Incline Push Ups",
+            "pt": "Incline Push Ups"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Inverted Row",
+            "pt": "Inverted Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Iso-Lateral Chest Press",
+            "pt": "Iso-Lateral Chest Press"
+        },
+        "muscle": "Chest",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Iso-Lateral High Row",
+            "pt": "Iso-Lateral High Row"
+        },
+        "muscle": "Lats",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Iso-Lateral Low Row",
+            "pt": "Iso-Lateral Low Row"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Iso-Lateral Row",
+            "pt": "Iso-Lateral Row"
+        },
+        "muscle": "Lats",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Jack Knife",
+            "pt": "Jack Knife"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Suspension",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Jackknife Sit Up",
+            "pt": "Jackknife Sit Up"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "JM Press",
+            "pt": "JM Press"
+        },
+        "muscle": "Triceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Jump Rope",
+            "pt": "Jump Rope"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Jump Shrug",
+            "pt": "Jump Shrug"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Jump Squat",
+            "pt": "Jump Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Jumping Jack",
+            "pt": "Jumping Jack"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Jumping Lunge",
+            "pt": "Jumping Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell Clean",
+            "pt": "Kettlebell Clean"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell Curl",
+            "pt": "Kettlebell Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell Goblet Squat",
+            "pt": "Kettlebell Goblet Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell High Pull",
+            "pt": "Kettlebell High Pull"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell Shoulder Press",
+            "pt": "Kettlebell Desenvolvimento de Ombros"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell Snatch",
+            "pt": "Kettlebell Snatch"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell Swing",
+            "pt": "Kettlebell Swing"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kettlebell Turkish Get Up",
+            "pt": "Kettlebell Turkish Get Up"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kipping Pull Up",
+            "pt": "Kipping Pull Up"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Knee Raise Parallel Bars",
+            "pt": "Knee Raise Parallel Bars"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kneeling Pulldown",
+            "pt": "Kneeling Pulldown"
+        },
+        "muscle": "Lats",
+        "equipment": "band",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Kneeling Push Up",
+            "pt": "Kneeling Push Up"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "L-Sit Hold",
+            "pt": "L-Sit Hold"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Landmine 180",
+            "pt": "Landmine 180"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Landmine Row",
+            "pt": "Landmine Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Landmine Squat and Press",
+            "pt": "Landmine Agachamento and Press"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lat Pulldown",
+            "pt": "Puxada Lat"
+        },
+        "muscle": "Lats",
+        "equipment": "Band",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lat Pulldown",
+            "pt": "Puxada Lat"
+        },
+        "muscle": "Lats",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lat Pulldown",
+            "pt": "Puxada Lat"
+        },
+        "muscle": "Lats",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lat Pulldown - Close Grip",
+            "pt": "Puxada Lat - Close Grip"
+        },
+        "muscle": "Lats",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Band Walks",
+            "pt": "Lateral Band Walks"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Box Jump",
+            "pt": "Lateral Box Jump"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Leg Raises",
+            "pt": "Lateral Leg Raises"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Lunge",
+            "pt": "Lateral Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Raise",
+            "pt": "Lateral Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Band",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Raise",
+            "pt": "Lateral Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Raise",
+            "pt": "Lateral Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Raise",
+            "pt": "Lateral Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lateral Squat",
+            "pt": "Lateral Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Leg Extension",
+            "pt": "Extensão de Pernas"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Leg Press",
+            "pt": "Leg Press"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A lower body exercise that targets the quadriceps by pressing a weight with your legs.",
+            "pt": "Um exercício de parte inferior do corpo que trabalha os quadríceps ao pressionar um peso com as pernas."
+        }
+    },
+    {
+        "name": {
+            "en": "Leg Press Horizontal",
+            "pt": "Leg Press Horizontal"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A lower body exercise that targets the quadriceps by pressing a weight with your legs.",
+            "pt": "Um exercício de parte inferior do corpo que trabalha os quadríceps ao pressionar um peso com as pernas."
+        }
+    },
+    {
+        "name": {
+            "en": "Leg Raise Parallel Bars",
+            "pt": "Leg Raise Parallel Bars"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Low Cable Fly Crossovers",
+            "pt": "Low Cable Fly Crossovers"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Low Row",
+            "pt": "Low Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Suspension",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lunge",
+            "pt": "Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lunge",
+            "pt": "Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lunge",
+            "pt": "Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Knee Raise",
+            "pt": "Lying Knee Raise"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Leg Curl",
+            "pt": "Flexão de Pernas"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Leg Raise",
+            "pt": "Lying Leg Raise"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Neck Curls",
+            "pt": "Lying Neck Curls"
+        },
+        "muscle": "Neck",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Neck Curls",
+            "pt": "Lying Neck Curls"
+        },
+        "muscle": "Neck",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Neck Extension",
+            "pt": "Lying Neck Extension"
+        },
+        "muscle": "Neck",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Lying Neck Extension",
+            "pt": "Lying Neck Extension"
+        },
+        "muscle": "Neck",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Meadows Rows",
+            "pt": "Meadows Rows"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Mountain Climber",
+            "pt": "Mountain Climber"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Muscle Up",
+            "pt": "Muscle Up"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Negative Pull Up",
+            "pt": "Negative Pull Up"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Nordic Hamstrings Curls",
+            "pt": "Nordic Hamstrings Curls"
+        },
+        "muscle": "Hamstrings",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Oblique Crunch",
+            "pt": "Oblique Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "One Arm Push Up",
+            "pt": "One Arm Push Up"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Overhead Curl",
+            "pt": "Overhead Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Overhead Dumbbell Lunge",
+            "pt": "Overhead Halteres Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Overhead Press",
+            "pt": "Overhead Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Overhead Press",
+            "pt": "Overhead Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Overhead Press",
+            "pt": "Overhead Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Smith Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Overhead Squat",
+            "pt": "Overhead Agachamento"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pause Squat",
+            "pt": "Pause Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pendlay Row",
+            "pt": "Pendlay Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pendulum Squat",
+            "pt": "Pendulum Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pike Pushup",
+            "pt": "Pike Pushup"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pilates",
+            "pt": "Pilates"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pinwheel Curl",
+            "pt": "Pinwheel Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pistol Squat",
+            "pt": "Pistol Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Plank",
+            "pt": "Plank"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Plank Pushup",
+            "pt": "Plank Pushup"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Plate Curl",
+            "pt": "Plate Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Plate Front Raise",
+            "pt": "Plate Front Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Plate Press",
+            "pt": "Plate Press"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Plate Squeeze",
+            "pt": "Plate Squeeze"
+        },
+        "muscle": "Chest",
+        "equipment": "Svend Press",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Power Clean",
+            "pt": "Power Clean"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Power Snatch",
+            "pt": "Power Snatch"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Preacher Curl",
+            "pt": "Preacher Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Preacher Curl",
+            "pt": "Preacher Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Preacher Curl",
+            "pt": "Preacher Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Press Under",
+            "pt": "Press Under"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pull Up",
+            "pt": "Pull Up"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pull Up",
+            "pt": "Pull Up"
+        },
+        "muscle": "Lats",
+        "equipment": "Assisted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pull Up",
+            "pt": "Pull Up"
+        },
+        "muscle": "Lats",
+        "equipment": "Band",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pull Up",
+            "pt": "Pull Up"
+        },
+        "muscle": "Lats",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pullover",
+            "pt": "Pullover"
+        },
+        "muscle": "Chest",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Pullover",
+            "pt": "Pullover"
+        },
+        "muscle": "Chest",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Push Press",
+            "pt": "Push Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Push Up",
+            "pt": "Push Up"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Push Up",
+            "pt": "Push Up"
+        },
+        "muscle": "Chest",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Push Up - Close Grip",
+            "pt": "Push Up - Close Grip"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Rack Pull",
+            "pt": "Rack Pull"
+        },
+        "muscle": "Lower Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Rear Delt Reverse Fly",
+            "pt": "Rear Delt Reverse Fly"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Rear Delt Reverse Fly",
+            "pt": "Rear Delt Reverse Fly"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Rear Delt Reverse Fly",
+            "pt": "Rear Delt Reverse Fly"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Renegade Row",
+            "pt": "Renegade Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Crunch",
+            "pt": "Reverse Crunch"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Curl",
+            "pt": "Reverse Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Curl",
+            "pt": "Reverse Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Curl",
+            "pt": "Reverse Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Fly Single Arm",
+            "pt": "Reverse Fly Single Arm"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Grip Concentration Curl",
+            "pt": "Reverse Grip Concentration Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Grip Lat Pulldown",
+            "pt": "Reverse Grip Puxada Lat"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Hyperextension",
+            "pt": "Reverse Hyperextension"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Lunge",
+            "pt": "Reverse Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Lunge",
+            "pt": "Reverse Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Lunge",
+            "pt": "Reverse Lunge"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Reverse Plank",
+            "pt": "Reverse Plank"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Ring Dips",
+            "pt": "Ring Dips"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Romanian Deadlift",
+            "pt": "Romanian Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Romanian Deadlift",
+            "pt": "Romanian Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Rope Cable Curl",
+            "pt": "Rope Cable Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Rope Straight Arm Pulldown",
+            "pt": "Rope Straight Arm Pulldown"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Rowing Machine",
+            "pt": "Rowing Machine"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Running",
+            "pt": "Running"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Russian Twist",
+            "pt": "Russian Twist"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Bodyweight",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Russian Twist",
+            "pt": "Russian Twist"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Scapular Pull Ups",
+            "pt": "Scapular Pull Ups"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Cable Row - Bar Grip",
+            "pt": "Remada Sentada - Bar Grip"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Cable Row - Bar Wide Grip",
+            "pt": "Remada Sentada - Bar Wide Grip"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Cable Row - V Grip",
+            "pt": "Remada Sentada - V Grip"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Calf Raise",
+            "pt": "Seated Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Chest Flys",
+            "pt": "Seated Chest Flys"
+        },
+        "muscle": "Chest",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Dip Machine",
+            "pt": "Seated Dip Machine"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Incline Curl",
+            "pt": "Seated Incline Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Lateral Raise",
+            "pt": "Seated Lateral Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Leg Curl",
+            "pt": "Seated Leg Curl"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Overhead Press",
+            "pt": "Seated Overhead Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Overhead Press",
+            "pt": "Seated Overhead Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Palms Up Wrist Curl",
+            "pt": "Seated Palms Up Wrist Curl"
+        },
+        "muscle": "Forearms",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Row",
+            "pt": "Seated Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Shoulder Press",
+            "pt": "Seated Desenvolvimento de Ombros"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Triceps Press",
+            "pt": "Seated Triceps Press"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Seated Wrist Extension",
+            "pt": "Seated Wrist Extension"
+        },
+        "muscle": "Forearms",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shoulder Press",
+            "pt": "Desenvolvimento de Ombros"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shoulder Press",
+            "pt": "Desenvolvimento de Ombros"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Machine Plates",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shoulder Taps",
+            "pt": "Shoulder Taps"
+        },
+        "muscle": "Shoulders",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shrug",
+            "pt": "Shrug"
+        },
+        "muscle": "Traps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shrug",
+            "pt": "Shrug"
+        },
+        "muscle": "Traps",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shrug",
+            "pt": "Shrug"
+        },
+        "muscle": "Traps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shrug",
+            "pt": "Shrug"
+        },
+        "muscle": "Traps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Shrug",
+            "pt": "Shrug"
+        },
+        "muscle": "Traps",
+        "equipment": "Smith Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Side Bend",
+            "pt": "Side Bend"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Side Bend",
+            "pt": "Side Bend"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Side Plank",
+            "pt": "Side Plank"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Cable Crossover",
+            "pt": "Single Arm Cable Crossover"
+        },
+        "muscle": "Chest",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Cable Row",
+            "pt": "Single Arm Cable Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Curl",
+            "pt": "Single Arm Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Landmine Press",
+            "pt": "Single Arm Landmine Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Lat Pulldown",
+            "pt": "Single Arm Puxada Lat"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Lateral Raise",
+            "pt": "Single Arm Lateral Raise"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Tricep Extension",
+            "pt": "Single Arm Tricep Extension"
+        },
+        "muscle": "Triceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Arm Triceps Pushdown",
+            "pt": "Single Arm Puxada Tríceps"
+        },
+        "muscle": "Triceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "An isolation exercise that targets the triceps using a cable machine.",
+            "pt": "Um exercício de isolamento que trabalha os tríceps usando uma máquina de cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Extensions",
+            "pt": "Single Extensão de Pernass"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Glute Bridge",
+            "pt": "Single Leg Glute Bridge"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Hip Thrust",
+            "pt": "Single Leg Hip Thrust"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Hip Thrust",
+            "pt": "Single Leg Hip Thrust"
+        },
+        "muscle": "Glutes",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Press",
+            "pt": "Single Leg Press"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A lower body exercise that targets the quadriceps by pressing a weight with your legs.",
+            "pt": "Um exercício de parte inferior do corpo que trabalha os quadríceps ao pressionar um peso com as pernas."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Romanian Deadlift",
+            "pt": "Single Leg Romanian Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Romanian Deadlift",
+            "pt": "Single Leg Romanian Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Standing Calf Raise",
+            "pt": "Single Leg Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Standing Calf Raise",
+            "pt": "Single Leg Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Standing Calf Raise",
+            "pt": "Single Leg Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Single Leg Standing Calf Raise",
+            "pt": "Single Leg Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sissy Squat",
+            "pt": "Sissy Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sit Up",
+            "pt": "Sit Up"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sit Up",
+            "pt": "Sit Up"
+        },
+        "muscle": "Abdominals",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Skating",
+            "pt": "Skating"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Skiing",
+            "pt": "Skiing"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Skullcrusher",
+            "pt": "Skullcrusher"
+        },
+        "muscle": "Triceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Skullcrusher",
+            "pt": "Skullcrusher"
+        },
+        "muscle": "Triceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sled Push",
+            "pt": "Sled Push"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Snatch",
+            "pt": "Snatch"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Snowboarding",
+            "pt": "Snowboarding"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Spider Curl",
+            "pt": "Spider Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Spider Curl",
+            "pt": "Spider Curl"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Spiderman",
+            "pt": "Spiderman"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Spinning",
+            "pt": "Spinning"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Split Jerk",
+            "pt": "Split Jerk"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Split Squat",
+            "pt": "Split Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sprints",
+            "pt": "Sprints"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Band",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Bodyweight",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Smith Machine",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat",
+            "pt": "Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Suspension",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Squat Row",
+            "pt": "Agachamento Row"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Stair Machine",
+            "pt": "Stair Machine"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Cable Glute Kickbacks",
+            "pt": "Standing Cable Glute Kickbacks"
+        },
+        "muscle": "Glutes",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Calf Raise",
+            "pt": "Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Calf Raise",
+            "pt": "Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Calf Raise",
+            "pt": "Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Calf Raise",
+            "pt": "Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Calf Raise",
+            "pt": "Standing Calf Raise"
+        },
+        "muscle": "Calves",
+        "equipment": "Smith",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Leg Curls",
+            "pt": "Standing Leg Curls"
+        },
+        "muscle": "Hamstrings",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Standing Military Press",
+            "pt": "Standing Military Press"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Step Up",
+            "pt": "Step Up"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sternum Pull up",
+            "pt": "Sternum Pull up"
+        },
+        "muscle": "Lats",
+        "equipment": "Gironda",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Straight Arm Lat Pulldown",
+            "pt": "Straight Arm Puxada Lat"
+        },
+        "muscle": "Lats",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Straight Leg Deadlift",
+            "pt": "Straight Leg Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": null,
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Stretching",
+            "pt": "Stretching"
+        },
+        "muscle": "Other",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sumo Deadlift",
+            "pt": "Sumo Levantamento Terra"
+        },
+        "muscle": "Hamstrings",
+        "equipment": null,
+        "description": {
+            "en": "A full-body exercise that focuses on lifting a barbell from the ground to hip level.",
+            "pt": "Um exercício de corpo inteiro que foca em levantar uma barra do chão até o nível dos quadris."
+        }
+    },
+    {
+        "name": {
+            "en": "Sumo Squat",
+            "pt": "Sumo Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sumo Squat",
+            "pt": "Sumo Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sumo Squat",
+            "pt": "Sumo Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Sumo Squat",
+            "pt": "Sumo Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Kettlebell",
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Superman",
+            "pt": "Superman"
+        },
+        "muscle": "Lower Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Swimming",
+            "pt": "Swimming"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "T Bar Row",
+            "pt": "T Bar Row"
+        },
+        "muscle": "Upper Back",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Thruster",
+            "pt": "Thruster"
+        },
+        "muscle": "Full Body",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Thruster",
+            "pt": "Thruster"
+        },
+        "muscle": "Full Body",
+        "equipment": "Kettlebell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Toe Touch",
+            "pt": "Toe Touch"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Toes to Bar",
+            "pt": "Toes to Bar"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Torso Rotation",
+            "pt": "Torso Rotation"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Treadmill",
+            "pt": "Treadmill"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Dip",
+            "pt": "Triceps Dip"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Dip",
+            "pt": "Triceps Dip"
+        },
+        "muscle": "Triceps",
+        "equipment": "Assisted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Dip",
+            "pt": "Triceps Dip"
+        },
+        "muscle": "Triceps",
+        "equipment": "Weighted",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Extension",
+            "pt": "Triceps Extension"
+        },
+        "muscle": "Triceps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Extension",
+            "pt": "Triceps Extension"
+        },
+        "muscle": "Triceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Extension",
+            "pt": "Triceps Extension"
+        },
+        "muscle": "Triceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Extension",
+            "pt": "Triceps Extension"
+        },
+        "muscle": "Triceps",
+        "equipment": "Machine",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Extension",
+            "pt": "Triceps Extension"
+        },
+        "muscle": "Triceps",
+        "equipment": "Suspension",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Kickback",
+            "pt": "Triceps Kickback"
+        },
+        "muscle": "Triceps",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Kickback",
+            "pt": "Triceps Kickback"
+        },
+        "muscle": "Triceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Pressdown",
+            "pt": "Triceps Pressdown"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Pushdown",
+            "pt": "Puxada Tríceps"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "An isolation exercise that targets the triceps using a cable machine.",
+            "pt": "Um exercício de isolamento que trabalha os tríceps usando uma máquina de cabo."
+        }
+    },
+    {
+        "name": {
+            "en": "Triceps Rope Pushdown",
+            "pt": "Triceps Rope Pushdown"
+        },
+        "muscle": "Triceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Upright Row",
+            "pt": "Upright Row"
+        },
+        "muscle": "Traps",
+        "equipment": "Barbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Upright Row",
+            "pt": "Upright Row"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Cable",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Upright Row",
+            "pt": "Upright Row"
+        },
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "V Up",
+            "pt": "V Up"
+        },
+        "muscle": "Abdominals",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Walking",
+            "pt": "Caminhada"
+        },
+        "muscle": "Cardio",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Walking Lunge",
+            "pt": "Caminhada Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Walking Lunge",
+            "pt": "Caminhada Lunge"
+        },
+        "muscle": "Quadriceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Wall Ball",
+            "pt": "Bola na Parede"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Wall Sit",
+            "pt": "Wall Sit"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Warm Up",
+            "pt": "Warm Up"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Wide Pull Up",
+            "pt": "Wide Pull Up"
+        },
+        "muscle": "Lats",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Wrist Roller",
+            "pt": "Wrist Roller"
+        },
+        "muscle": "Forearms",
+        "equipment": null,
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    },
+    {
+        "name": {
+            "en": "Yoga",
+            "pt": "Yoga"
+        },
+        "muscle": "Full Body",
+        "equipment": null,
+        "description": {
+            "en": "A mind and body practice that involves various postures and breathing techniques.",
+            "pt": "Uma prática de mente e corpo que envolve várias posturas e técnicas de respiração."
+        }
+    },
+    {
+        "name": {
+            "en": "Zercher Squat",
+            "pt": "Zercher Agachamento"
+        },
+        "muscle": "Quadriceps",
+        "equipment": null,
+        "description": {
+            "en": "A fundamental exercise that targets the lower body, primarily the quadriceps and glutes.",
+            "pt": "Um exercício fundamental que trabalha a parte inferior do corpo, principalmente os quadríceps e glúteos."
+        }
+    },
+    {
+        "name": {
+            "en": "Zottman Curl",
+            "pt": "Rosca Zottman"
+        },
+        "muscle": "Biceps",
+        "equipment": "Dumbbell",
+        "description": {
+            "en": "A detailed exercise involving specific movements to target muscles.",
+            "pt": "Um exercício detalhado envolvendo movimentos específicos para trabalhar os músculos."
+        }
+    }
+]

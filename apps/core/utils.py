@@ -32,7 +32,7 @@ def get_or_404(
         raise ObjectDoesNotExist(message)
 
 
-def set_model_fields(
+def update_model_fields(
     model: typed.DjangoModelType,
     data: dict[str, Any],
 ) -> None:

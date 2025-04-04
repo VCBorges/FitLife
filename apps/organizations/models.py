@@ -32,16 +32,14 @@ class Gym(BaseModel):
 class GymEmployee(BaseModel):
     class Roles(models.TextChoices):
         OWNER = 'owner'
-        INSTRUCTOR = 'instructor'
-        RECEPTIONIST = 'receptionist'
-        MANAGER = 'manager'
+        PROFESSOR = 'professor'
 
     user = models.OneToOneField(Users, on_delete=models.CASCADE)
     gym = models.ForeignKey(Gym, related_name='instructors')
     role = models.CharField(
         max_length=15,
         choices=Roles.choices,
-        default=Roles.INSTRUCTOR,
+        default=Roles.PROFESSOR,
     )
     joined_at = models.DateTimeField()
 

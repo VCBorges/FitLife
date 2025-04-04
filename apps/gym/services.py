@@ -1,7 +1,7 @@
 from django.db import transaction
 from django.utils import timezone
 
-from apps.core.utils import clean_model, set_model_fields
+from apps.core.utils import clean_model, update_model_fields
 from apps.gym import models, typed
 from apps.users.models import Users
 
@@ -11,17 +11,17 @@ class WorkoutService:
     def create_workout(
         self,
         *,
-        user: Users,
+        creator: Users,
         title: str,
+        user: Users | None = None,
         description: str | None = None,
-        creator: Users | None = None,
         exercises: list[typed.CreateWorkoutExerciseSchema] | None = None,
     ) -> models.Workout:
         workout = models.Workout(
-            user=user,
+            creator=creator,
+            user=user or creator,
             title=title,
             description=description,
-            creator=creator or user,
         )
         clean_model(workout)
         workout.save()
@@ -89,7 +89,7 @@ class WorkoutService:
         instances = []
         for exercise in exercises:
             exercise_instance = exercise.pop('workout_exercise')
-            set_model_fields(
+            update_model_fields(
                 model=exercise_instance,
                 data=exercise,
             )

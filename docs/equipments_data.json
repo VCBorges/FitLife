@@ -1,0 +1,242 @@
+[
+{
+    "model": "gym.equipments",
+    "pk": "013c5908-7a5f-41f3-aa40-34d6fd13c1fd",
+    "fields": {
+        "created_at": "2024-08-28T11:44:38.809Z",
+        "updated_at": "2024-08-30T00:44:58.426Z",
+        "name": {
+            "en": "kettlebell",
+            "pt": "kettlebell"
+        },
+        "description": {
+            "en": "A cast-iron or steel ball with a handle, used for ballistic exercises.",
+            "pt": "Uma bola de ferro fundido ou aço com uma alça, usada para exercícios balísticos."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "06303031-54dd-4b75-b127-e0ec1bcd81e4",
+    "fields": {
+        "created_at": "2024-08-29T00:33:01.018Z",
+        "updated_at": "2024-08-30T00:44:58.467Z",
+        "name": {
+            "en": "weighted hyperextension",
+            "pt": "hiperextensão com peso"
+        },
+        "description": {
+            "en": "An exercise performed on a hyperextension bench with added weight to increase resistance, targeting the lower back, glutes, and hamstrings.",
+            "pt": "Um exercício realizado em um banco de hiperextensão com peso adicional para aumentar a resistência, focando na parte inferior das costas, glúteos e isquiotibiais."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "1cc70764-dd41-403c-a999-db1c2f01f352",
+    "fields": {
+        "created_at": "2024-08-28T23:55:39.197Z",
+        "updated_at": "2024-08-30T00:44:58.464Z",
+        "name": {
+            "en": "smith machine",
+            "pt": "máquina smith"
+        },
+        "description": {
+            "en": "A weightlifting machine that allows vertical movement of a barbell on fixed rails for safer strength training.",
+            "pt": "Uma máquina de musculação que permite o movimento vertical de uma barra em trilhos fixos para um treino de força mais seguro."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "2e56a543-8f8b-48f0-9eed-83617cfafb88",
+    "fields": {
+        "created_at": "2024-08-29T00:38:26.563Z",
+        "updated_at": "2024-08-30T00:44:58.451Z",
+        "name": {
+            "en": "trap bar",
+            "pt": "barra hexagonal"
+        },
+        "description": {
+            "en": "A hexagonal-shaped barbell that allows for safer lifting by positioning the weight around the body rather than in front.",
+            "pt": "Uma barra em formato hexagonal que permite um levantamento mais seguro ao posicionar o peso ao redor do corpo em vez de à frente."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "41554e5e-c6e8-4e4f-889a-c313c0cfffa7",
+    "fields": {
+        "created_at": "2024-08-28T11:44:38.821Z",
+        "updated_at": "2024-08-30T00:44:58.435Z",
+        "name": {
+            "en": "suspension",
+            "pt": "suspensão"
+        },
+        "description": {
+            "en": "Equipment used for suspension training, allowing for bodyweight exercises.",
+            "pt": "Equipamento usado para treinamento em suspensão, permitindo exercícios com o peso corporal."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "558640e7-4777-42c8-b29b-91a945434978",
+    "fields": {
+        "created_at": "2024-08-28T11:44:38.797Z",
+        "updated_at": "2024-08-30T00:44:58.416Z",
+        "name": {
+            "en": "barbell",
+            "pt": "barra"
+        },
+        "description": {
+            "en": "A long bar with weights attached, used for strength training.",
+            "pt": "Uma barra longa com pesos anexados, usada para treinamento de força."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "83e149b4-f946-4d4b-83a7-2c17eb0c9d73",
+    "fields": {
+        "created_at": "2024-08-29T00:35:34.364Z",
+        "updated_at": "2024-08-30T00:44:58.448Z",
+        "name": {
+            "en": "pec deck",
+            "pt": "máquina pec deck"
+        },
+        "description": {
+            "en": "A machine designed to isolate and work the chest muscles by allowing a seated user to perform a fly motion.",
+            "pt": "Uma máquina projetada para isolar e trabalhar os músculos do peito, permitindo ao usuário realizar um movimento de crucifixo sentado."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "844e7d62-a1f6-4824-8792-2b2b63f6c3dd",
+    "fields": {
+        "created_at": "2024-08-28T11:44:38.816Z",
+        "updated_at": "2024-08-30T00:44:58.430Z",
+        "name": {
+            "en": "plate",
+            "pt": "anilha"
+        },
+        "description": {
+            "en": "A flat, typically circular weight used in various exercises, often with barbells.",
+            "pt": "Um peso plano, tipicamente circular, usado em vários exercícios, geralmente com barras."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "945dfef8-fb12-41f3-9a79-48d9bca22226",
+    "fields": {
+        "created_at": "2024-08-28T11:44:38.818Z",
+        "updated_at": "2024-08-30T00:44:58.461Z",
+        "name": {
+            "en": "resistance band",
+            "pt": "faixa de resistência"
+        },
+        "description": {
+            "en": "A stretchable band used for strength training and rehabilitation exercises.",
+            "pt": "Uma faixa elástica usada para treinamento de força e exercícios de reabilitação."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "b359b627-a558-4a3e-b34a-64516ac12dd7",
+    "fields": {
+        "created_at": "2024-08-29T00:41:03.341Z",
+        "updated_at": "2024-08-30T00:44:58.455Z",
+        "name": {
+            "en": "smith",
+            "pt": "smith"
+        },
+        "description": {
+            "en": "A gym machine that allows a barbell to move vertically on fixed rails, providing safety and control during weightlifting exercises.",
+            "pt": "Uma máquina de academia que permite que uma barra se mova verticalmente em trilhos fixos, proporcionando segurança e controle durante exercícios de levantamento de peso."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "bf39c669-ed60-40d8-b61d-ffb1ae8d8df8",
+    "fields": {
+        "created_at": "2024-08-29T00:33:50.444Z",
+        "updated_at": "2024-08-30T00:44:58.445Z",
+        "name": {
+            "en": "band",
+            "pt": "faixa"
+        },
+        "description": {
+            "en": "A stretchable loop or strip used in resistance training to strengthen and tone muscles.",
+            "pt": "Uma faixa ou tira elástica usada em treinamento de resistência para fortalecer e tonificar os músculos."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "cf632e19-a0c0-4909-a445-bfc5b6ce2d0d",
+    "fields": {
+        "created_at": "2024-08-28T11:44:38.813Z",
+        "updated_at": "2024-08-30T00:44:58.458Z",
+        "name": {
+            "en": "machine",
+            "pt": "máquina"
+        },
+        "description": {
+            "en": "Equipment designed to assist with specific exercises, often found in gyms.",
+            "pt": "Equipamento projetado para auxiliar em exercícios específicos, geralmente encontrado em academias."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "e7f23108-fbe9-470f-9245-20f7be2067a3",
+    "fields": {
+        "created_at": "2024-08-29T00:31:49.282Z",
+        "updated_at": "2024-08-30T00:44:58.442Z",
+        "name": {
+            "en": "hyperextension",
+            "pt": "hiperextensão"
+        },
+        "description": {
+            "en": "A piece of equipment designed to strengthen the lower back, glutes, and hamstrings by allowing controlled bending and extending of the torso.",
+            "pt": "Um equipamento projetado para fortalecer a parte inferior das costas, glúteos e isquiotibiais, permitindo a flexão e extensão controladas do tronco."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "fd6179ef-06ba-4100-8927-df1489fae7d0",
+    "fields": {
+        "created_at": "2024-08-28T23:56:38.010Z",
+        "updated_at": "2024-08-30T00:44:58.438Z",
+        "name": {
+            "en": "cable",
+            "pt": "cabo"
+        },
+        "description": {
+            "en": "A versatile piece of equipment used in strength training exercises, typically attached to a pulley system for resistance.",
+            "pt": "Um equipamento versátil usado em exercícios de treinamento de força, geralmente acoplado a um sistema de polias para resistência."
+        }
+    }
+},
+{
+    "model": "gym.equipments",
+    "pk": "fe8c8b17-5977-4bbc-83c6-65a0b6eef087",
+    "fields": {
+        "created_at": "2024-08-28T11:44:38.804Z",
+        "updated_at": "2024-08-30T00:44:58.422Z",
+        "name": {
+            "en": "dumbbell",
+            "pt": "halteres"
+        },
+        "description": {
+            "en": "A short bar with a weight at each end, used for weight training.",
+            "pt": "Uma barra curta com um peso em cada extremidade, usada para treinamento de peso."
+        }
+    }
+}
+]
